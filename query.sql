@@ -45,3 +45,5 @@ VALUES (15, 'Trattoria d Giovanni', '11.30', '22.30', 1, 5, 'puntiRistoro');
 
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
 VALUES (16, 'CandyShop by Francesca', '11.30', '22.30', 1, 1, 'puntiRistoro');
+
+INSERT INTO abbonamento (scadenza, codAbbonamento, nomeAbbonamento) VALUES ('2026-10-31', 7, 'stagionale');
