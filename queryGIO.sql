@@ -332,3 +332,9 @@ VALUES ('Il Trenino Arcobaleno', NULL, 20, 1, 2, 240, FALSE, 10, 5, 150, 'Bambin
 
 INSERT INTO GIOSTRA(nomeGiostra, CF, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Le Tazze Magiche', NULL, 30, 1, 3, 120, FALSE, 12, 10, 160, 'Bambini');
+
+/* QUERY PER MODIFICA NOME Area Tematiche in Area Tematica e rispettivo nome*/
+RENAME TABLE AREA_TEMATICHE TO AREA_TEMATICA;
+
+ALTER TABLE AREA_TEMATICA 
+RENAME COLUMN nomeAreaTematiche TO nomeAreaTematica;
