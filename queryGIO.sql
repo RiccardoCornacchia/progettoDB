@@ -440,3 +440,10 @@ INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (99, '2026-05-11
 
 /*Ruota Panoramica*/
 INSERT INTO RUOTA_PANORAMICA(nomeRouta, CF, disponibilita, durataRuotaPanoramica, altezzaRuotaPanoramica) VALUES ('AlgigaWheel', NULL, 1, 8, 135);
+
+/*Spettacoli*/
+INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (35,'Scuola di Polizia',1);
+INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (25,'Ultimo Pan',1);
+INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (30,'Hot Wheels City',1);
+INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (15,'Otto Party',1);
+INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (25,'Hall of Fame',1);
