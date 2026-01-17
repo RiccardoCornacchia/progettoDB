@@ -12,7 +12,7 @@
 -- Database Section
 -- ________________ 
 
-create database raffinamento_schema_da_trasformare;
+create database raffinamento_schema_da_trasforamare;
 use raffinamento_schema_da_trasformare;
 
 
