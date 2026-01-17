@@ -2,6 +2,19 @@
 ALTER TABLE ATTIVITA_COMMERCIALE
 MODIFY COLUMN nomeAttivita CHAR(35);
 
+/* MODIFICA DELLE COLONNE data e orario in ACQUISTO FOTO (erano char(1))*/
+ALTER TABLE ACQUISTO_FOTO
+MODIFY COLUMN data  CHAR(10);
+
+ALTER TABLE ACQUISTO_FOTO
+MODIFY COLUMN orario  CHAR(10);
+
+/* QUERY PER MODIFICA NOME Area Tematiche in Area Tematica e rispettivo nome*/
+RENAME TABLE AREA_TEMATICHE TO AREA_TEMATICA;
+
+ALTER TABLE AREA_TEMATICA 
+RENAME COLUMN nomeAreaTematiche TO nomeAreaTematica;
+
 /* Attivita Commerciale - Punti Ristoro */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
 VALUES (1, 'Toro InPiedi Saloon', '11.30', '22.30', 1, 4, 'puntiRistoro');
@@ -331,11 +344,25 @@ VALUES ('Il Trenino Arcobaleno', NULL, 20, 1, 2, 240, FALSE, 10, 5, 150, 'Bambin
 INSERT INTO GIOSTRA(nomeGiostra, CF, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Le Tazze Magiche', NULL, 30, 1, 3, 120, FALSE, 12, 10, 160, 'Bambini');
 
-/* QUERY PER MODIFICA NOME Area Tematiche in Area Tematica e rispettivo nome*/
-RENAME TABLE AREA_TEMATICHE TO AREA_TEMATICA;
+/* FOTO */
+INSERT INTO FOTO(codiceFoto, prezzo) VALUES
+/* Primo terzo: 7.99 */
+(1, 7.99), (2, 7.99), (3, 7.99), (4, 7.99), (5, 7.99), (6, 7.99), (7, 7.99), (8, 7.99), (9, 7.99), (10, 7.99),
+(11, 7.99), (12, 7.99), (13, 7.99), (14, 7.99), (15, 7.99), (16, 7.99), (17, 7.99), (18, 7.99), (19, 7.99), (20, 7.99),
+(21, 7.99), (22, 7.99), (23, 7.99), (24, 7.99), (25, 7.99), (26, 7.99), (27, 7.99), (28, 7.99), (29, 7.99), (30, 7.99),
+(31, 7.99), (32, 7.99), (33, 7.99),
 
-ALTER TABLE AREA_TEMATICA 
-RENAME COLUMN nomeAreaTematiche TO nomeAreaTematica;
+/* Secondo terzo: 10.99 */
+(34, 10.99), (35, 10.99), (36, 10.99), (37, 10.99), (38, 10.99), (39, 10.99), (40, 10.99), (41, 10.99), (42, 10.99), (43, 10.99),
+(44, 10.99), (45, 10.99), (46, 10.99), (47, 10.99), (48, 10.99), (49, 10.99), (50, 10.99), (51, 10.99), (52, 10.99), (53, 10.99),
+(54, 10.99), (55, 10.99), (56, 10.99), (57, 10.99), (58, 10.99), (59, 10.99), (60, 10.99), (61, 10.99), (62, 10.99), (63, 10.99),
+(64, 10.99), (65, 10.99), (66, 10.99),
+
+/* Terzo terzo: 12.99 */
+(67, 12.99), (68, 12.99), (69, 12.99), (70, 12.99), (71, 12.99), (72, 12.99), (73, 12.99), (74, 12.99), (75, 12.99), (76, 12.99),
+(77, 12.99), (78, 12.99), (79, 12.99), (80, 12.99), (81, 12.99), (82, 12.99), (83, 12.99), (84, 12.99), (85, 12.99), (86, 12.99),
+(87, 12.99), (88, 12.99), (89, 12.99), (90, 12.99), (91, 12.99), (92, 12.99), (93, 12.99), (94, 12.99), (95, 12.99), (96, 12.99),
+(97, 12.99), (98, 12.99), (99, 12.99);
 
 /*Acquisto Foto basato sui primi 100 visitatori inseriti dalla FRA (vedi QueryFra.sql)*/
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (1, '2026-05-02', '10.30', 'MR12IL');
@@ -438,6 +465,106 @@ INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (97, '2026-05-30
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (98, '2026-06-01', '13.40', 'AC12LL');
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (99, '2026-05-11', '16.15', 'LF21MM');
 
+/* VENDITA_FOTO non funzionano perche attivita commerciale non va per questione CF*/
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (1, '2026-05-02', '10.30', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (2, '2026-05-15', '14.45', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (3, '2026-06-01', '11.15', 48);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (4, '2026-05-20', '16.20', 32);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (5, '2026-05-05', '12.00', 25);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (6, '2026-06-10', '15.30', 24);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (7, '2026-05-28', '13.45', 45);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (8, '2026-05-11', '10.15', 36);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (9, '2026-06-05', '17.00', 23);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (10, '2026-05-08', '11.50', 19);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (11, '2026-06-12', '14.10', 18);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (12, '2026-05-22', '12.30', 45);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (13, '2026-05-03', '15.55', 29);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (14, '2026-06-08', '10.40', 33);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (15, '2026-05-19', '13.20', 49);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (16, '2026-05-30', '16.45', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (17, '2026-05-14', '11.10', 40);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (18, '2026-06-02', '15.15', 31);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (19, '2026-05-25', '12.50', 25);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (20, '2026-05-07', '14.30', 20);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (21, '2026-06-14', '10.20', 22);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (22, '2026-05-17', '16.00', 37);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (23, '2026-05-09', '11.45', 24);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (24, '2026-06-06', '13.30', 46);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (25, '2026-05-21', '15.10', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (26, '2026-05-04', '10.55', 30);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (27, '2026-06-11', '14.05', 30);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (28, '2026-05-27', '12.40', 26);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (29, '2026-05-12', '16.30', 28);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (30, '2026-06-03', '11.25', 49);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (31, '2026-05-24', '15.40', 35);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (32, '2026-05-06', '13.15', 18);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (33, '2026-06-13', '10.50', 25);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (34, '2026-05-16', '14.25', 21);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (35, '2026-05-31', '12.10', 23);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (36, '2026-05-10', '16.50', 32);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (37, '2026-06-07', '11.35', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (38, '2026-05-23', '15.00', 44);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (39, '2026-05-01', '13.50', 38);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (40, '2026-06-09', '10.25', 19);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (41, '2026-05-18', '14.55', 27);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (42, '2026-05-29', '12.20', 38);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (43, '2026-05-13', '16.15', 24);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (44, '2026-06-04', '11.05', 47);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (45, '2026-05-26', '15.25', 20);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (46, '2026-05-05', '13.40', 28);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (47, '2026-06-15', '10.45', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (48, '2026-05-20', '14.15', 42);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (49, '2026-05-02', '12.35', 34);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (50, '2026-06-10', '16.40', 25);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (51, '2026-05-15', '11.55', 18);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (52, '2026-05-30', '15.50', 30);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (53, '2026-06-01', '13.00', 21);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (54, '2026-05-11', '10.30', 39);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (55, '2026-06-05', '14.45', 24);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (56, '2026-05-22', '12.00', 43);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (57, '2026-05-08', '16.20', 25);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (58, '2026-06-12', '11.15', 28);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (59, '2026-05-19', '15.30', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (60, '2026-05-03', '13.45', 30);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (61, '2026-06-08', '10.15', 41);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (62, '2026-05-25', '14.10', 22);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (63, '2026-05-14', '11.50', 29);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (64, '2026-06-02', '16.00', 23);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (65, '2026-05-07', '12.30', 48);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (66, '2026-06-14', '15.15', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (67, '2026-05-28', '11.10', 29);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (68, '2026-05-09', '13.20', 36);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (69, '2026-06-06', '16.45', 25);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (70, '2026-05-21', '10.40', 44);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (71, '2026-05-04', '15.55', 24);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (72, '2026-06-11', '12.50', 31);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (73, '2026-05-27', '11.45', 18);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (74, '2026-05-12', '14.30', 45);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (75, '2026-06-03', '10.20', 26);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (76, '2026-05-24', '15.10', 33);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (77, '2026-05-06', '13.30', 35);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (78, '2026-06-13', '16.00', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (79, '2026-05-16', '11.25', 28);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (80, '2026-05-31', '14.05', 40);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (81, '2026-05-10', '12.40', 27);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (82, '2026-06-07', '15.40', 22);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (83, '2026-05-23', '11.00', 37);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (84, '2026-05-01', '13.15', 24);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (85, '2026-06-09', '16.30', 49);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (86, '2026-05-18', '10.50', 35);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (87, '2026-05-29', '14.25', 17);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (88, '2026-05-13', '12.10', 29);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (89, '2026-06-04', '15.00', 25);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (90, '2026-05-26', '11.35', 30);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (91, '2026-05-05', '13.50', 19);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (92, '2026-06-15', '16.50', 46);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (93, '2026-05-20', '10.25', 23);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (94, '2026-05-02', '14.55', 27);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (95, '2026-06-10', '12.20', 32);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (96, '2026-05-15', '15.25', 44);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (97, '2026-05-30', '11.05', 21);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (98, '2026-06-01', '13.40', 18);
+INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (99, '2026-05-11', '16.15', 19);
 /*Ruota Panoramica*/
 INSERT INTO RUOTA_PANORAMICA(nomeRouta, CF, disponibilita, durataRuotaPanoramica, altezzaRuotaPanoramica) VALUES ('AlgigaWheel', NULL, 1, 8, 135);
 
@@ -447,3 +574,10 @@ INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (
 INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (30,'Hot Wheels City',1);
 INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (15,'Otto Party',1);
 INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (25,'Hall of Fame',1);
+
+/**Replica Spettacolo*/
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-15', 1, '14.30', '15.05', 'Scuola di Polizia');
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-14', 2, '14.30', '15.05', 'Scuola di Polizia');
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-16', 3, '14.30', '15.05', 'Scuola di Polizia');
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-17', 4, '14.30', '15.05', 'Scuola di Polizia');
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-18', 5, '14.30', '15.05', 'Scuola di Polizia');
