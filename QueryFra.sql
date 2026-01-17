@@ -525,3 +525,21 @@ INSERT INTO vendita_b (codiceBiglietto, data, orario, numeroCassa) VALUES
 (98, '2026-06-04', '17:45:36', NULL),
 (99, '2026-06-04', '17:50:24', NULL),
 (100, '2026-06-04', '17:55:12', NULL);
+
+INSERT INTO sconto (nomeBiglietto, motivazione, percentuale) VALUES 
+('Pomeridiano', 'Disabilità', 60),
+('Pomeridiano', 'Over 65', 40),
+('Pomeridiano', 'Bambino', 50),
+('Pomeridiano', 'Sponsor', 50),
+('Pomeridiano', 'Gruppo', 10),
+('Due giorni con pernottamento', 'Disabilità', 30),
+('Due giorni con pernottamento', 'Over 65', 20),
+('Due giorni con pernottamento', 'Bambino', 20),
+('Giornaliero', 'Disabilità', 60),
+('Giornaliero', 'Over 65', 40),
+('Giornaliero', 'Bambino', 50),
+('Giornaliero', 'Sponsor', 50),
+('Giornaliero', 'Gruppo', 10),
+('Flash Pass', 'Disabilità', 10),
+('Flash Pass', 'Bambino', 10),
+('Flash Pass', 'Over 65', 10);
