@@ -320,9 +320,7 @@ VALUES ('Monosauro', NULL, 4, 1, 3, 300, FALSE, 99, 5, 200, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, CF, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Raptotana', NULL, 6, 1, 3, 180, FALSE, 99, 5, 200, 'Bambini');
-
-INSERT INTO GIOSTRA(nomeGiostra, CF, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('AlgigaWheel', NULL, 100, 1, 0, 600, FALSE, 99, 2, 210, 'Bambini');
+/*Manca Una Giostra*/
 
 INSERT INTO GIOSTRA(nomeGiostra, CF, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Reptilium', NULL, 40, 1, 4, 150, FALSE, 99, 10, 180, 'Bambini');
@@ -439,3 +437,6 @@ INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (96, '2026-05-15
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (97, '2026-05-30', '11.05', 'CA28KK');
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (98, '2026-06-01', '13.40', 'AC12LL');
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (99, '2026-05-11', '16.15', 'LF21MM');
+
+/*Ruota Panoramica*/
+INSERT INTO RUOTA_PANORAMICA(nomeRouta, CF, disponibilita, durataRuotaPanoramica, altezzaRuotaPanoramica) VALUES ('AlgigaWheel', NULL, 1, 8, 135);
