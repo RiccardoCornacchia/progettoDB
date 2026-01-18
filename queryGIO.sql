@@ -15,6 +15,13 @@ RENAME TABLE AREA_TEMATICHE TO AREA_TEMATICA;
 ALTER TABLE AREA_TEMATICA 
 RENAME COLUMN nomeAreaTematiche TO nomeAreaTematica;
 
+/* MODIFICA DELLE COLONNA tema in AREA_TEMATICA (erano char(20))*/
+ALTER TABLE AREA_TEMATICA
+MODIFY COLUMN tema  CHAR(40);
+
+/* MODIFICA DELLE COLONNA nomeEvento in EVENTO (erano char(20))*/
+ALTER TABLE EVENTO
+MODIFY COLUMN  nomeEvento CHAR(40);
 /* Attivita Commerciale - Punti Ristoro */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
 VALUES (1, 'Toro InPiedi Saloon', '11.30', '22.30', 1, 4, 'puntiRistoro');
@@ -581,3 +588,19 @@ INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpet
 INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-16', 3, '14.30', '15.05', 'Scuola di Polizia');
 INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-17', 4, '14.30', '15.05', 'Scuola di Polizia');
 INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-18', 5, '14.30', '15.05', 'Scuola di Polizia');
+
+/* Area Tematica */
+INSERT INTO AREA_TEMATICA(nomeAreaTematica, CF, disponibilita, tema, dataInizio, dataFine) VALUES 
+('Adventureland', null, 1, 'avventura e natura', '2026-04-01', '2026-10-31'),
+('Nickelodeon Land', null, 1, 'cartoni animati Nickelodeon', '2026-04-01', '2026-10-31'), 
+('Ducati World', null, 1, 'Ducati e moto', '2026-04-01', '2026-10-31'),
+('FarWest Valley', null, 1, 'farwest', '2026-04-01', '2026-10-31'),
+('Route 66', null, 1, 'Viaggio e USA', '2025-04-01', '2025-10-31');
+
+/* Evento */
+INSERT INTO EVENTO(codiceEvento, nomeEvento, tematica, oraInizio, oraFine, data) VALUES
+(1, 'Summer Beach Party', 'estate e musica', '17.30', '22.30', '2026-06-08'),
+(2, 'Schiuma Party', 'schiuma e musica', '16.30', '20.30','2026-05-22' ),
+(3, 'Cosplay Wonder', 'travestimento, anime', '11.30', '15.30', '2026-04-27'),
+(4, 'La Grande Caccia alle Uova', 'pasqua e uova', '14.00', '18.00', '2026-04-06'),
+(5, 'Spring Street Art Festival', 'primavera e arte', '11.00', '16.30', '2026-05-10');
