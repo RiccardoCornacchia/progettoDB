@@ -19,9 +19,14 @@ RENAME COLUMN nomeAreaTematiche TO nomeAreaTematica;
 ALTER TABLE AREA_TEMATICA
 MODIFY COLUMN tema  CHAR(40);
 
-/* MODIFICA DELLE COLONNA nomeEvento in EVENTO (erano char(20))*/
+/* MODIFICA DELLE COLONNA nomeEvento in EVENTO (era char(20))*/
 ALTER TABLE EVENTO
 MODIFY COLUMN  nomeEvento CHAR(40);
+
+/* MODIFICA DELLE COLONNA acquisto in USUFRUIZIONE (era char(20))*/
+ALTER TABLE USUFRUIZIONE
+MODIFY COLUMN acquisto  CHAR(50);
+
 /* Attivita Commerciale - Punti Ristoro */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
 VALUES (1, 'Toro InPiedi Saloon', '11.30', '22.30', 1, 4, 'puntiRistoro');
@@ -1073,3 +1078,107 @@ INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
 ('TB09RR', 'El Dorado Falls', '2026-06-04', '15:03:00'),
 ('TB09RR', 'Raratonga', '2026-06-04', '16:08:00'),
 ('TB09RR', 'Rubble''s Rapids', '2026-06-04', '17:13:00');
+
+/* --- COLAZIONI E ACQUISTI MATTUTINI (10:00 - 11:50) --- */
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (2, 'MR12AB', 'Colazione Cappuccino e Brioche', 5.50, '2026-06-04', '10:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (50, 'LB05CD', 'Mappa del Parco e Magnete', 8.00, '2026-06-04', '10:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (2, 'AV22EF', 'Caffè Espresso', 1.50, '2026-06-04', '10:25:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (57, 'GN09GH', 'Peluche Orso Gigante', 29.99, '2026-06-04', '10:40:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (50, 'MG18IJ', 'T-Shirt Mirabilandia', 19.90, '2026-06-04', '10:50:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (9, 'SF30KL', 'Porzione Churros Cioccolato', 6.50, '2026-06-04', '11:05:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (2, 'PR14MN', 'Succo di Frutta e Muffin', 6.00, '2026-06-04', '11:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (56, 'ER03OP', 'Cappellino Ducati', 25.00, '2026-06-04', '11:30:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (53, 'DC27QR', 'Spada Laser Giocattolo', 15.90, '2026-06-04', '11:45:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (16, 'FM16ST', 'Sacchetto Caramelle Miste 200g', 5.90, '2026-06-04', '11:50:00');
+
+/* --- PRANZO (12:00 - 14:30) --- */
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (8, 'AC11UV', 'Menu Big Mac Large', 11.90, '2026-06-04', '12:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (8, 'CG24WX', 'Happy Meal', 7.50, '2026-06-04', '12:12:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (5, 'SR02YZ', 'Katun Burger Menu', 14.50, '2026-06-04', '12:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (5, 'ML19AA', 'Cheeseburger e Patatine', 12.00, '2026-06-04', '12:18:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (4, 'FM08BB', 'Trancio Pizza Margherita e Coca', 8.50, '2026-06-04', '12:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (4, 'VB25CC', 'Trancio Pizza Diavola', 5.50, '2026-06-04', '12:22:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (13, 'SF06DD', 'Pizza Tonda 4 Stagioni', 13.00, '2026-06-04', '12:30:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (13, 'LD13EE', 'Pizza Tonda Wurstel', 11.50, '2026-06-04', '12:35:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (15, 'MS29FF', 'Lasagna alla Bolognese', 14.00, '2026-06-04', '12:40:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (15, 'IG21GG', 'Tortellini Panna e Prosciutto', 13.50, '2026-06-04', '12:45:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (3, 'NT17HH', 'Sushi Box Mix 12pz', 18.90, '2026-06-04', '12:50:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (3, 'BP04II', 'Ramen Tonkotsu', 15.00, '2026-06-04', '12:55:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (6, 'GF28JJ', 'Costine BBQ con Pannocchia', 19.90, '2026-06-04', '13:00:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (6, 'SR10KK', 'Pollo Arrosto e Patate', 16.50, '2026-06-04', '13:05:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (7, 'AL15LL', 'Tacos di Manzo x3', 12.50, '2026-06-04', '13:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (7, 'MP07MM', 'Nachos con Formaggio e Jalapenos', 8.50, '2026-06-04', '13:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (1, 'RM23NN', 'Bistecca Fiorentina 500g', 28.00, '2026-06-04', '13:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (1, 'CV14OO', 'Grigliata Mista Carne', 24.00, '2026-06-04', '13:25:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (12, 'FL01PP', 'Spaghetti Carbonara', 12.00, '2026-06-04', '13:30:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (12, 'AC18QQ', 'Cotoletta e Patatine', 14.00, '2026-06-04', '13:35:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (8, 'TB09RR', 'McChicken Menu', 10.50, '2026-06-04', '13:40:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (5, 'SF26SS', 'Insalata Caesar con Pollo', 11.00, '2026-06-04', '13:50:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (4, 'EP03TT', 'Focaccia Ripiena', 7.00, '2026-06-04', '14:00:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (8, 'GS20UU', 'Chicken McNuggets 9pz', 6.50, '2026-06-04', '14:10:00');
+
+/* --- POMERIGGIO: SNACK, GELATI E SOUVENIR (14:30 - 18:30) --- */
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (14, 'DA31VV', 'Gelato Artigianale 3 Gusti', 4.50, '2026-06-04', '14:40:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (14, 'VC27WW', 'Granita Limone', 3.50, '2026-06-04', '14:45:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (51, 'RF06XX', 'Dinosauro T-Rex Snodabile', 18.00, '2026-06-04', '15:00:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (51, 'EM12YY', 'Uovo di Dinosauro Magico', 5.00, '2026-06-04', '15:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (10, 'PC19AZ', 'Pretzel Salato Classico', 4.50, '2026-06-04', '15:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (10, 'NV08BA', 'Pretzel al Formaggio', 5.50, '2026-06-04', '15:25:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (54, 'GO24CB', 'Bandana Pirata', 7.00, '2026-06-04', '15:30:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (54, 'FS16DC', 'Monete d''Oro Cioccolato', 4.00, '2026-06-04', '15:35:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (55, 'ED02ED', 'Ali da Fata Glitter', 12.90, '2026-06-04', '15:45:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (55, 'CF11FE', 'Bacchetta Magica Luminosa', 10.00, '2026-06-04', '15:50:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (11, 'SP29GF', 'Popcorn Maxibag', 6.00, '2026-06-04', '16:00:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (11, 'IG05HG', 'Bibita XL Refill', 5.00, '2026-06-04', '16:05:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (52, 'CM14IH', 'Cappello da Cowboy', 14.90, '2026-06-04', '16:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (52, 'AR23JI', 'Pistola Giocattolo West', 9.90, '2026-06-04', '16:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (16, 'LB30KJ', 'Lecca Lecca Gigante', 4.50, '2026-06-04', '16:30:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (14, 'SP09LK', 'Coppa Gelato Mista', 5.50, '2026-06-04', '16:40:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (56, 'GF10ML', 'Modellino Moto Ducati', 22.00, '2026-06-04', '16:50:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (56, 'RN21NM', 'Portachiavi Casco', 6.50, '2026-06-04', '16:55:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (53, 'LM05OP', 'Maschera Alieno', 8.90, '2026-06-04', '17:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (53, 'AB15PQ', 'Robot Giocattolo', 19.90, '2026-06-04', '17:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (57, 'MF22QR', 'Cuscino Morbido', 15.00, '2026-06-04', '17:30:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (9, 'EL28RS', 'Churros Semplici', 5.00, '2026-06-04', '17:45:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (50, 'DP11ST', 'Felpa con Cappuccio', 35.00, '2026-06-04', '18:00:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (50, 'GM07TU', 'Tazza Mug Personalizzata', 9.90, '2026-06-04', '18:15:00');
+
+/* --- CENA E SERATA (19:00 - 22:00) --- */
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (13, 'FV30UV', 'Pizza Bufala e Pomodorini', 14.00, '2026-06-04', '19:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (13, 'SL02VW', 'Calzone Farcito', 12.50, '2026-06-04', '19:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (8, 'TC18WX', 'Crispy McBacon Menu', 11.50, '2026-06-04', '19:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (8, 'MB10XY', 'Chicken Salad', 9.00, '2026-06-04', '19:25:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (6, 'AF25YZ', 'Galletto alla Brace', 15.00, '2026-06-04', '19:30:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (6, 'CP19ZA', 'Panino Pulled Pork', 13.50, '2026-06-04', '19:35:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (7, 'AS14AB', 'Burrito di Pollo', 11.00, '2026-06-04', '19:40:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (7, 'VA23BC', 'Fajitas Miste', 16.00, '2026-06-04', '19:45:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (5, 'SC05CD', 'Double Burger Menu', 16.50, '2026-06-04', '19:50:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (5, 'IF10DE', 'Veggie Burger Menu', 13.50, '2026-06-04', '19:55:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (1, 'MM01EF', 'Filetto al Pepe Verde', 26.00, '2026-06-04', '20:00:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (1, 'EC17FG', 'Birra Media alla Spina', 6.00, '2026-06-04', '20:05:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (3, 'NV28GH', 'Barca Sushi 24pz', 35.00, '2026-06-04', '20:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (3, 'BO13HI', 'Edamame e Gyoza', 9.00, '2026-06-04', '20:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (12, 'GS04IJ', 'Gnocchi al Ragù', 11.00, '2026-06-04', '20:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (12, 'SD22JK', 'Tagliere Salumi e Formaggi', 14.00, '2026-06-04', '20:25:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (15, 'AF16KL', 'Melanzane alla Parmigiana', 10.00, '2026-06-04', '20:30:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (15, 'MP09LM', 'Tiramisù della Casa', 6.00, '2026-06-04', '20:35:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (4, 'RG01MN', 'Trancio Pizza Farcito', 6.00, '2026-06-04', '20:45:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (11, 'CM07NO', 'Popcorn e Bibita Combo', 8.00, '2026-06-04', '21:00:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (9, 'FR19OP', 'Churros Caramello', 6.50, '2026-06-04', '21:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (14, 'AB05PQ', 'Frappè alla Fragola', 5.00, '2026-06-04', '21:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (10, 'TP20QR', 'Pretzel Dolce Cannella', 4.50, '2026-06-04', '21:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (16, 'SF06RS', 'Barretta di Cioccolato', 3.50, '2026-06-04', '21:30:00');
+
+/* --- ACQUISTI LAST MINUTE (21:40 - 22:20) --- */
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (50, 'EN13ST', 'Cartolina Notturna', 2.00, '2026-06-04', '21:40:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (50, 'GM30TU', 'Portachiavi Logo', 5.00, '2026-06-04', '21:45:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (50, 'DB08UV', 'Magneti Set x3', 12.00, '2026-06-04', '21:50:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (57, 'VF01VW', 'Peluche Mascotte Otto', 22.00, '2026-06-04', '21:55:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (56, 'RL11WX', 'Poster Ducati', 8.00, '2026-06-04', '22:00:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (53, 'EP18XY', 'Portachiavi Alieno', 4.50, '2026-06-04', '22:05:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (54, 'PM02YZ', 'Benda Pirata', 3.00, '2026-06-04', '22:10:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (52, 'NV24ZA', 'Stella da Sceriffo', 5.50, '2026-06-04', '22:15:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (2, 'GL12AB', 'Caffè Decaffeinato', 1.60, '2026-06-04', '22:18:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (11, 'FC06BC', 'Acqua Naturale 50cl', 2.00, '2026-06-04', '22:20:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (50, 'EB15CD', 'Felpa Mirabilandia', 39.90, '2026-06-04', '22:25:00');
+INSERT INTO USUFRUIZIONE(codiceAttivita, CF, acquisto, prezzoAcquisto, data, orario) VALUES (57, 'CF21DE', 'Cuscino a cuore', 18.00, '2026-06-04', '22:28:00');
