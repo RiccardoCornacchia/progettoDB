@@ -583,12 +583,170 @@ INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (
 INSERT INTO SPETTACOLO(durataSpettacolo, nomeSpettacolo, disponibilita) VALUES (25,'Hall of Fame',1);
 
 /**Replica Spettacolo*/
-INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-15', 1, '14.30', '15.05', 'Scuola di Polizia');
-INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-14', 2, '14.30', '15.05', 'Scuola di Polizia');
-INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-16', 3, '14.30', '15.05', 'Scuola di Polizia');
-INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-17', 4, '14.30', '15.05', 'Scuola di Polizia');
-INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES ('2026-06-18', 5, '14.30', '15.05', 'Scuola di Polizia');
+/* --- 1 GIUGNO 2026 (Repliche 1-8) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-01', 1, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-01', 2, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-01', 3, '12.30', '12.45', 'Otto Party'),
+('2026-06-01', 4, '17.00', '17.15', 'Otto Party'),
+('2026-06-01', 5, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-01', 6, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-01', 7, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-01', 8, '15.00', '15.25', 'Ultimo Pan');
 
+/* --- 2 GIUGNO 2026 (Repliche 9-16) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-02', 9, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-02', 10, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-02', 11, '12.30', '12.45', 'Otto Party'),
+('2026-06-02', 12, '17.00', '17.15', 'Otto Party'),
+('2026-06-02', 13, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-02', 14, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-02', 15, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-02', 16, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 3 GIUGNO 2026 (Repliche 17-24) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-03', 17, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-03', 18, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-03', 19, '12.30', '12.45', 'Otto Party'),
+('2026-06-03', 20, '17.00', '17.15', 'Otto Party'),
+('2026-06-03', 21, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-03', 22, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-03', 23, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-03', 24, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 4 GIUGNO 2026 (Repliche 25-32) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-04', 25, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-04', 26, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-04', 27, '12.30', '12.45', 'Otto Party'),
+('2026-06-04', 28, '17.00', '17.15', 'Otto Party'),
+('2026-06-04', 29, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-04', 30, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-04', 31, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-04', 32, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 5 GIUGNO 2026 (Repliche 33-40) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-05', 33, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-05', 34, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-05', 35, '12.30', '12.45', 'Otto Party'),
+('2026-06-05', 36, '17.00', '17.15', 'Otto Party'),
+('2026-06-05', 37, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-05', 38, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-05', 39, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-05', 40, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 6 GIUGNO 2026 (Repliche 41-48) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-06', 41, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-06', 42, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-06', 43, '12.30', '12.45', 'Otto Party'),
+('2026-06-06', 44, '17.00', '17.15', 'Otto Party'),
+('2026-06-06', 45, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-06', 46, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-06', 47, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-06', 48, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 7 GIUGNO 2026 (Repliche 49-56) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-07', 49, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-07', 50, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-07', 51, '12.30', '12.45', 'Otto Party'),
+('2026-06-07', 52, '17.00', '17.15', 'Otto Party'),
+('2026-06-07', 53, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-07', 54, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-07', 55, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-07', 56, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 8 GIUGNO 2026 (Repliche 57-64) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-08', 57, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-08', 58, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-08', 59, '12.30', '12.45', 'Otto Party'),
+('2026-06-08', 60, '17.00', '17.15', 'Otto Party'),
+('2026-06-08', 61, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-08', 62, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-08', 63, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-08', 64, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 9 GIUGNO 2026 (Repliche 65-72) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-09', 65, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-09', 66, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-09', 67, '12.30', '12.45', 'Otto Party'),
+('2026-06-09', 68, '17.00', '17.15', 'Otto Party'),
+('2026-06-09', 69, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-09', 70, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-09', 71, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-09', 72, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 10 GIUGNO 2026 (Repliche 73-80) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-10', 73, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-10', 74, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-10', 75, '12.30', '12.45', 'Otto Party'),
+('2026-06-10', 76, '17.00', '17.15', 'Otto Party'),
+('2026-06-10', 77, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-10', 78, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-10', 79, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-10', 80, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 11 GIUGNO 2026 (Repliche 81-88) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-11', 81, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-11', 82, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-11', 83, '12.30', '12.45', 'Otto Party'),
+('2026-06-11', 84, '17.00', '17.15', 'Otto Party'),
+('2026-06-11', 85, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-11', 86, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-11', 87, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-11', 88, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 12 GIUGNO 2026 (Repliche 89-96) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-12', 89, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-12', 90, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-12', 91, '12.30', '12.45', 'Otto Party'),
+('2026-06-12', 92, '17.00', '17.15', 'Otto Party'),
+('2026-06-12', 93, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-12', 94, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-12', 95, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-12', 96, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 13 GIUGNO 2026 (Repliche 97-104) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-13', 97, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-13', 98, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-13', 99, '12.30', '12.45', 'Otto Party'),
+('2026-06-13', 100, '17.00', '17.15', 'Otto Party'),
+('2026-06-13', 101, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-13', 102, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-13', 103, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-13', 104, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 14 GIUGNO 2026 (Repliche 105-112) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-14', 105, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-14', 106, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-14', 107, '12.30', '12.45', 'Otto Party'),
+('2026-06-14', 108, '17.00', '17.15', 'Otto Party'),
+('2026-06-14', 109, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-14', 110, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-14', 111, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-14', 112, '15.00', '15.25', 'Ultimo Pan');
+
+/* --- 15 GIUGNO 2026 (Repliche 113-120) --- */
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-06-15', 113, '11.30', '12.05', 'Scuola di Polizia'),
+('2026-06-15', 114, '14.30', '15.05', 'Scuola di Polizia'),
+('2026-06-15', 115, '12.30', '12.45', 'Otto Party'),
+('2026-06-15', 116, '17.00', '17.15', 'Otto Party'),
+('2026-06-15', 117, '11.00', '11.30', 'Hot Wheels City'),
+('2026-06-15', 118, '18.00', '18.30', 'Hot Wheels City'),
+('2026-06-15', 119, '16.05', '16.30', 'Hall of Fame'),
+('2026-06-15', 120, '15.00', '15.25', 'Ultimo Pan');
 /* Area Tematica */
 INSERT INTO AREA_TEMATICA(nomeAreaTematica, CF, disponibilita, tema, dataInizio, dataFine) VALUES 
 ('Adventureland', null, 1, 'avventura e natura', '2026-04-01', '2026-10-31'),
