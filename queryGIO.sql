@@ -893,3 +893,183 @@ INSERT INTO PARTECIPAZIONE(codicePartecipazione, orario, data, codiceReplica, CF
 (118, '11:21:36', '2026-06-04', NULL, 'CV14OO', NULL, 'Ducati World', NULL),
 (119, '11:26:24', '2026-06-04', NULL, 'FL01PP', NULL, 'FarWest Valley', NULL),
 (120, '11:31:12', '2026-06-04', NULL, 'TB09RR', NULL, 'Ducati World', NULL);
+
+/* Salita */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('MR12AB', 'Reset', '2026-06-04', '11:10:00'),
+('MR12AB', 'Rio Bravo', '2026-06-04', '12:15:00'),
+('MR12AB', 'Autosplash', '2026-06-04', '13:20:00'),
+('MR12AB', 'El Dorado Falls', '2026-06-04', '14:25:00'),
+('MR12AB', 'Raratonga', '2026-06-04', '15:30:00'),
+('MR12AB', 'Rubble''s Rapids', '2026-06-04', '16:35:00');
+
+/* 2. AV22EF */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('AV22EF', 'Reset', '2026-06-04', '11:12:00'),
+('AV22EF', 'Rio Bravo', '2026-06-04', '12:17:00'),
+('AV22EF', 'Autosplash', '2026-06-04', '13:22:00'),
+('AV22EF', 'El Dorado Falls', '2026-06-04', '14:27:00'),
+('AV22EF', 'Raratonga', '2026-06-04', '15:32:00'),
+('AV22EF', 'Rubble''s Rapids', '2026-06-04', '16:37:00');
+
+/* 3. SF30KL */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('SF30KL', 'Reset', '2026-06-04', '11:14:00'),
+('SF30KL', 'Rio Bravo', '2026-06-04', '12:19:00'),
+('SF30KL', 'Autosplash', '2026-06-04', '13:24:00'),
+('SF30KL', 'El Dorado Falls', '2026-06-04', '14:29:00'),
+('SF30KL', 'Raratonga', '2026-06-04', '15:34:00'),
+('SF30KL', 'Rubble''s Rapids', '2026-06-04', '16:39:00');
+
+/* 4. PR14MN */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('PR14MN', 'Reset', '2026-06-04', '11:16:00'),
+('PR14MN', 'Rio Bravo', '2026-06-04', '12:21:00'),
+('PR14MN', 'Autosplash', '2026-06-04', '13:26:00'),
+('PR14MN', 'El Dorado Falls', '2026-06-04', '14:31:00'),
+('PR14MN', 'Raratonga', '2026-06-04', '15:36:00'),
+('PR14MN', 'Rubble''s Rapids', '2026-06-04', '16:41:00');
+
+/* 5. ER03OP */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('ER03OP', 'Reset', '2026-06-04', '11:18:00'),
+('ER03OP', 'Rio Bravo', '2026-06-04', '12:23:00'),
+('ER03OP', 'Autosplash', '2026-06-04', '13:28:00'),
+('ER03OP', 'El Dorado Falls', '2026-06-04', '14:33:00'),
+('ER03OP', 'Raratonga', '2026-06-04', '15:38:00'),
+('ER03OP', 'Rubble''s Rapids', '2026-06-04', '16:43:00');
+
+/* 6. DC27QR */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('DC27QR', 'Reset', '2026-06-04', '11:20:00'),
+('DC27QR', 'Rio Bravo', '2026-06-04', '12:25:00'),
+('DC27QR', 'Autosplash', '2026-06-04', '13:30:00'),
+('DC27QR', 'El Dorado Falls', '2026-06-04', '14:35:00'),
+('DC27QR', 'Raratonga', '2026-06-04', '15:40:00'),
+('DC27QR', 'Rubble''s Rapids', '2026-06-04', '16:45:00');
+
+/* 7. FM16ST */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('FM16ST', 'Reset', '2026-06-04', '11:22:00'),
+('FM16ST', 'Rio Bravo', '2026-06-04', '12:27:00'),
+('FM16ST', 'Autosplash', '2026-06-04', '13:32:00'),
+('FM16ST', 'El Dorado Falls', '2026-06-04', '14:37:00'),
+('FM16ST', 'Raratonga', '2026-06-04', '15:42:00'),
+('FM16ST', 'Rubble''s Rapids', '2026-06-04', '16:47:00');
+
+/* 8. AC11UV */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('AC11UV', 'Reset', '2026-06-04', '11:24:00'),
+('AC11UV', 'Rio Bravo', '2026-06-04', '12:29:00'),
+('AC11UV', 'Autosplash', '2026-06-04', '13:34:00'),
+('AC11UV', 'El Dorado Falls', '2026-06-04', '14:39:00'),
+('AC11UV', 'Raratonga', '2026-06-04', '15:44:00'),
+('AC11UV', 'Rubble''s Rapids', '2026-06-04', '16:49:00');
+
+/* 9. CG24WX */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('CG24WX', 'Reset', '2026-06-04', '11:26:00'),
+('CG24WX', 'Rio Bravo', '2026-06-04', '12:31:00'),
+('CG24WX', 'Autosplash', '2026-06-04', '13:36:00'),
+('CG24WX', 'El Dorado Falls', '2026-06-04', '14:41:00'),
+('CG24WX', 'Raratonga', '2026-06-04', '15:46:00'),
+('CG24WX', 'Rubble''s Rapids', '2026-06-04', '16:51:00');
+
+/* 10. SR02YZ */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('SR02YZ', 'Reset', '2026-06-04', '11:28:00'),
+('SR02YZ', 'Rio Bravo', '2026-06-04', '12:33:00'),
+('SR02YZ', 'Autosplash', '2026-06-04', '13:38:00'),
+('SR02YZ', 'El Dorado Falls', '2026-06-04', '14:43:00'),
+('SR02YZ', 'Raratonga', '2026-06-04', '15:48:00'),
+('SR02YZ', 'Rubble''s Rapids', '2026-06-04', '16:53:00');
+
+/* 11. ML19AA */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('ML19AA', 'Reset', '2026-06-04', '11:30:00'),
+('ML19AA', 'Rio Bravo', '2026-06-04', '12:35:00'),
+('ML19AA', 'Autosplash', '2026-06-04', '13:40:00'),
+('ML19AA', 'El Dorado Falls', '2026-06-04', '14:45:00'),
+('ML19AA', 'Raratonga', '2026-06-04', '15:50:00'),
+('ML19AA', 'Rubble''s Rapids', '2026-06-04', '16:55:00');
+
+/* 12. SF06DD */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('SF06DD', 'Reset', '2026-06-04', '11:32:00'),
+('SF06DD', 'Rio Bravo', '2026-06-04', '12:37:00'),
+('SF06DD', 'Autosplash', '2026-06-04', '13:42:00'),
+('SF06DD', 'El Dorado Falls', '2026-06-04', '14:47:00'),
+('SF06DD', 'Raratonga', '2026-06-04', '15:52:00'),
+('SF06DD', 'Rubble''s Rapids', '2026-06-04', '16:57:00');
+
+/* 13. LD13EE */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('LD13EE', 'Reset', '2026-06-04', '11:34:00'),
+('LD13EE', 'Rio Bravo', '2026-06-04', '12:39:00'),
+('LD13EE', 'Autosplash', '2026-06-04', '13:44:00'),
+('LD13EE', 'El Dorado Falls', '2026-06-04', '14:49:00'),
+('LD13EE', 'Raratonga', '2026-06-04', '15:54:00'),
+('LD13EE', 'Rubble''s Rapids', '2026-06-04', '16:59:00');
+
+/* 14. MS29FF */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('MS29FF', 'Reset', '2026-06-04', '11:36:00'),
+('MS29FF', 'Rio Bravo', '2026-06-04', '12:41:00'),
+('MS29FF', 'Autosplash', '2026-06-04', '13:46:00'),
+('MS29FF', 'El Dorado Falls', '2026-06-04', '14:51:00'),
+('MS29FF', 'Raratonga', '2026-06-04', '15:56:00'),
+('MS29FF', 'Rubble''s Rapids', '2026-06-04', '17:01:00');
+
+/* 15. IG21GG */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('IG21GG', 'Reset', '2026-06-04', '11:38:00'),
+('IG21GG', 'Rio Bravo', '2026-06-04', '12:43:00'),
+('IG21GG', 'Autosplash', '2026-06-04', '13:48:00'),
+('IG21GG', 'El Dorado Falls', '2026-06-04', '14:53:00'),
+('IG21GG', 'Raratonga', '2026-06-04', '15:58:00'),
+('IG21GG', 'Rubble''s Rapids', '2026-06-04', '17:03:00');
+
+/* 16. GF28JJ */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('GF28JJ', 'Reset', '2026-06-04', '11:40:00'),
+('GF28JJ', 'Rio Bravo', '2026-06-04', '12:45:00'),
+('GF28JJ', 'Autosplash', '2026-06-04', '13:50:00'),
+('GF28JJ', 'El Dorado Falls', '2026-06-04', '14:55:00'),
+('GF28JJ', 'Raratonga', '2026-06-04', '16:00:00'),
+('GF28JJ', 'Rubble''s Rapids', '2026-06-04', '17:05:00');
+
+/* 17. RM23NN */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('RM23NN', 'Reset', '2026-06-04', '11:42:00'),
+('RM23NN', 'Rio Bravo', '2026-06-04', '12:47:00'),
+('RM23NN', 'Autosplash', '2026-06-04', '13:52:00'),
+('RM23NN', 'El Dorado Falls', '2026-06-04', '14:57:00'),
+('RM23NN', 'Raratonga', '2026-06-04', '16:02:00'),
+('RM23NN', 'Rubble''s Rapids', '2026-06-04', '17:07:00');
+
+/* 18. CV14OO */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('CV14OO', 'Reset', '2026-06-04', '11:44:00'),
+('CV14OO', 'Rio Bravo', '2026-06-04', '12:49:00'),
+('CV14OO', 'Autosplash', '2026-06-04', '13:54:00'),
+('CV14OO', 'El Dorado Falls', '2026-06-04', '14:59:00'),
+('CV14OO', 'Raratonga', '2026-06-04', '16:04:00'),
+('CV14OO', 'Rubble''s Rapids', '2026-06-04', '17:09:00');
+
+/* 19. FL01PP */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('FL01PP', 'Reset', '2026-06-04', '11:46:00'),
+('FL01PP', 'Rio Bravo', '2026-06-04', '12:51:00'),
+('FL01PP', 'Autosplash', '2026-06-04', '13:56:00'),
+('FL01PP', 'El Dorado Falls', '2026-06-04', '15:01:00'),
+('FL01PP', 'Raratonga', '2026-06-04', '16:06:00'),
+('FL01PP', 'Rubble''s Rapids', '2026-06-04', '17:11:00');
+
+/* 20. TB09RR */
+INSERT INTO SALITA(CF, nomeGiostra, data, orario) VALUES
+('TB09RR', 'Reset', '2026-06-04', '11:48:00'),
+('TB09RR', 'Rio Bravo', '2026-06-04', '12:53:00'),
+('TB09RR', 'Autosplash', '2026-06-04', '13:58:00'),
+('TB09RR', 'El Dorado Falls', '2026-06-04', '15:03:00'),
+('TB09RR', 'Raratonga', '2026-06-04', '16:08:00'),
+('TB09RR', 'Rubble''s Rapids', '2026-06-04', '17:13:00');
