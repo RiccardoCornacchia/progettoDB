@@ -1176,3 +1176,16 @@ INSERT INTO utilizzo (codiceBagno, CF) VALUES
 (5, 'GR11KK'), (2, 'FB23JJ'), (7, 'ES19MM'), (1, 'CM04LL'), (10, 'SR28PP'), 
 (3, 'IM10QQ'), (9, 'CV05RR'), (6, 'AL17SS'), (12, 'LC29TT'), (4, 'SB09UU'), 
 (11, 'MF06VV');
+
+INSERT INTO presenza (codiceEvento, CF) VALUES 
+(1, 'CM14IH'), (1, 'SP09LK'), (1, 'AM19OP'), (1, 'IP15TU'), (1, 'SF07XY'), (1, 'LF12YY'), (1, 'ES19MM'), (1, 'LC29TT');
+
+INSERT INTO presenza (codiceEvento, CF) VALUES
+(2, 'RM18UI'), (2, 'EP14DF'), (2, 'AM30LZ'), (2, 'IL11SD'), (2, 'UM19LK'), (2, 'IC10TY'), (2, 'LF17OP'), (2, 'TS09DF'), 
+(2, 'NC22JK'), (2, 'OC11VB'), (2, 'AO30NM'), (2, 'LM17OP');
+
+INSERT INTO presenza (codiceEvento, CF) VALUES
+(3, 'ML19AA'), (3, 'SF06DD'), (3, 'IG21GG'), (3, 'GF28JJ'), (3, 'RM23NN'), (3, 'TB09RR'), (3, 'DA31VV'), (3, 'NV08BA'), (3, 'IG05HG');
+
+INSERT INTO presenza (codiceEvento, CF) VALUES 
+(5, 'SB09UU'), (5, 'LM15BB'), (5, 'EP21GG'), (5, 'RN17YY'), (5, 'EL28TT'), (5, 'OG03TY');
