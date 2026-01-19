@@ -1,31 +1,10 @@
-/*MODIFICA LUNGHEZZA nomeAttivita in ATTIVITA COMMERCIALE*/
-ALTER TABLE ATTIVITA_COMMERCIALE
-MODIFY COLUMN nomeAttivita CHAR(35);
+/* MODIFICA DELLE COLONNA nomeGiostra in Giostra (era char(20))*/
+ALTER TABLE GIOSTRA
+MODIFY COLUMN nomeGiostra VARCHAR(50);
 
-/* MODIFICA DELLE COLONNE data e orario in ACQUISTO FOTO (erano char(1))*/
-ALTER TABLE ACQUISTO_FOTO
-MODIFY COLUMN data  CHAR(10);
-
-ALTER TABLE ACQUISTO_FOTO
-MODIFY COLUMN orario  CHAR(10);
-
-/* QUERY PER MODIFICA NOME Area Tematiche in Area Tematica e rispettivo nome*/
-RENAME TABLE AREA_TEMATICHE TO AREA_TEMATICA;
-
-ALTER TABLE AREA_TEMATICA 
-RENAME COLUMN nomeAreaTematiche TO nomeAreaTematica;
-
-/* MODIFICA DELLE COLONNA tema in AREA_TEMATICA (erano char(20))*/
-ALTER TABLE AREA_TEMATICA
-MODIFY COLUMN tema  CHAR(40);
-
-/* MODIFICA DELLE COLONNA nomeEvento in EVENTO (era char(20))*/
-ALTER TABLE EVENTO
-MODIFY COLUMN  nomeEvento CHAR(40);
-
-/* MODIFICA DELLE COLONNA acquisto in USUFRUIZIONE (era char(20))*/
-ALTER TABLE USUFRUIZIONE
-MODIFY COLUMN acquisto  CHAR(50);
+ALTER TABLE `schema_relazionale_aggiornato`.`VISITATORE` 
+CHANGE COLUMN `numeroTelefono` `numeroTelefono` BIGINT NULL ,
+CHANGE COLUMN `e_mail` `e_mail` VARCHAR(30) NULL ;
 
 /* Attivita Commerciale - Punti Ristoro */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) VALUES 
@@ -86,20 +65,20 @@ INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, o
 /* --- NEGOZI DI SOUVENIRS e Sala Giochi --- */
 
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) VALUES 
-(50, 'Mirabilia Emporium', '10:00:00', '23:00:00', 1, 3, 'NegozioSouvenirs'),
-(51, 'Dino Market', '11:30:00', '22:30:00', 1, 3, 'NegozioSouvenirs'),
-(52, 'Western General Store', '11:30:00', '22:30:00', 1, 3, 'NegozioSouvenirs'),
-(53, 'Galactic Gadgets', '11:30:00', '22:30:00', 1, 3, 'NegozioSouvenirs'),
-(54, 'Il Tesoro dei Pirati', '11:30:00', '22:30:00', 1, 3, 'NegozioSouvenirs'),
-(55, 'La Bottega delle Fate', '11:30:00', '22:30:00', 1, 3, 'NegozioSouvenirs'),
-(56, 'Speed Shop', '11:30:00', '22:30:00', 1, 3, 'NegozioSouvenirs'),
-(57, 'Peluche Paradise', '11:30:00', '22:30:00', 1, 3, 'NegozioSouvenirs'),
+(50, 'Mirabilia Emporium', '10:00:00', '23:00:00', 1, 3, 'ShopSouvenirs'),
+(51, 'Dino Market', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
+(52, 'Western General Store', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
+(53, 'Galactic Gadgets', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
+(54, 'Il Tesoro dei Pirati', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
+(55, 'La Bottega delle Fate', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
+(56, 'Speed Shop', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
+(57, 'Peluche Paradise', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
 (58, 'Arcade Kingdom', '10:30:00', '22:45:00', 1, 3, 'salaGiochi');
 
 /*Giostre */
 /* Montagne Russe */
 INSERT INTO GIOSTRA(nomeGiostra,capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Katun',32, 1, 12, 145, FALSE, 80, 110, 200, 'Montagne Russe');
+VALUES ('Katun',32, 1, 12, 145, 1, 80, 110, 200, 'Montagne Russe');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Desmo Race', 24, 1, 10, 120, FALSE, 80, 100, 200, 'Montagne Russe');
@@ -126,7 +105,7 @@ INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiost
 VALUES ('Titan', 32, 1, 14, 160, FALSE, 80, 120, 200, 'Montagne Russe');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Sky Piercer', NULL, 16, 1, 12, 60, FALSE, 80, 130, 200, 'Montagne Russe');
+VALUES ('Sky Piercer', 16, 1, 12, 60, FALSE, 80, 130, 200, 'Montagne Russe');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Shadow Racer', 20, 1, 10, 110, FALSE, 80, 70, 200, 'Montagne Russe');
@@ -158,41 +137,43 @@ VALUES ('Rubble''s Rapids', 6, 1, 4, 240, TRUE, 99, 10, 200, 'Avventura');
 
 /* Bambini */
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Adventure Bay Carousel', 30, 1, 3, 180, FALSE, 12, 5, 160, 'Bambini');
+VALUES ('Adventure Bay Carousel', 30, 1, 3, 180, FALSE, 12, 25, 160, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Aquila Tonante', 16, 1, 4, 120, FALSE, 14, 10, 170, 'Bambini');
+VALUES ('Aquila Tonante', 16, 1, 4, 120, FALSE, 14, 20, 170, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Torri Geronimo', 12, 1, 5, 100, FALSE, 14, 15, 180, 'Bambini');
+VALUES ('Torri Geronimo', 12, 1, 5, 100, FALSE, 14, 25, 180, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Boots'' Balloons', 16, 1, 3, 120, FALSE, 12, 5, 160, 'Bambini');
+VALUES ('Boots'' Balloons', 16, 1, 3, 120, FALSE, 12, 15, 160, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Bicisauro', 12, 1, 4, 150, FALSE, 12, 8, 160, 'Bambini');
+VALUES ('Bicisauro', 12, 1, 4, 150, FALSE, 12, 18, 160, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Cowabunga Carts', 20, 1, 3, 120, FALSE, 10, 6, 150, 'Bambini');
+VALUES ('Cowabunga Carts', 20, 1, 3, 120, FALSE, 10, 16, 150, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Jellyfish Jam', 24, 1, 3, 120, FALSE, 12, 5, 160, 'Bambini');
+VALUES ('Jellyfish Jam', 24, 1, 3, 120, FALSE, 12,15, 160, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Kiddy Monster', 16, 1, 3, 120, FALSE, 12, 5, 160, 'Bambini');
+VALUES ('Kiddy Monster', 16, 1, 3, 120, FALSE, 12, 15, 160, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Monosauro', 4, 1, 3, 300, FALSE, 99, 5, 200, 'Bambini');
+VALUES ('Monosauro', 4, 1, 3, 300, FALSE, 99, 25, 200, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Raptotana', 6, 1, 3, 180, FALSE, 99, 5, 200, 'Bambini');
-/*Manca Una Giostra*/
+VALUES ('Raptotana', 6, 1, 3, 180, FALSE, 99, 25, 200, 'Bambini');
+
+INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
+VALUES ('CastoroFalls', 6, 1, 3, 180, TRUE, 99, 35, 200, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Reptilium', 40, 1, 4, 150, FALSE, 99, 10, 180, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Il Trenino Arcobaleno', 20, 1, 2, 240, FALSE, 10, 5, 150, 'Bambini');
+VALUES ('Il Trenino Arcobaleno', 20, 1, 2, 240, FALSE, 10, 15, 150, 'Bambini');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Le Tazze Magiche', 30, 1, 3, 120, FALSE, 12, 10, 160, 'Bambini');
