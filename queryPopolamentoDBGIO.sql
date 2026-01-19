@@ -767,7 +767,17 @@ INSERT INTO EVENTO(codiceEvento, nomeEvento, tematica, oraInizio, oraFine, data)
 (2, 'Schiuma Party', 'schiuma e musica', '16.30', '20.30','2026-06-04'),
 (3, 'Cosplay Wonder', 'travestimento, anime', '11.30', '15.30', '2023-07-16'),
 (4, 'La Grande Caccia alle Uova', 'pasqua e uova', '14.00', '18.00', '2026-04-06'),
-(5, 'Spring Street Art Festival', 'primavera e arte', '11.00', '16.30', '2025-08-07');
+(5, 'Ducati Red Weekend', 'moto', '11.00', '16.30', '2025-08-07'),
+(6, 'Spring Street Art Festival', 'primavera e arte', '11.00', '16.30', '2026-04-11'),
+(7, 'Nickelodeon Slime Fest', 'slime', '11.00', '16.30', '2026-07-17'),
+(8, 'Me Contro Te Matrimonio', 'star del web', '16.00', '16.45', '2026-04-25'),
+(9, 'Stunt City Night Show', 'macchine e stunt', '19.00', '22.30', '2026-07-07'),
+(10, 'Ferragosto Beach Party', 'estate e acqua', '16.00', '20.30', '2026-08-15'),
+(11, 'Oktoberfest Romagnolo', 'birra e germania', '18.00', '22.30', '2026-07-25'),
+(12, 'School''s Out - Water War', 'fine della scuola', '15.00', '18.30', '2026-06-19'),
+(13, 'Mira-Run', 'corsa', '11.30', '14.30', '2026-05-01'),
+(14, 'International Street Food', 'cibo da strada', '11.00', '17.30', '2026-08-27'),
+(15, 'Choco-Mania', 'cioccolato', '11.00', '13.30', '2026-05-16');
 
 /*Partecipazioni, fatte di conseguenze dei biglietti generati dalla fra (18/01/26)*/
 /* --- 1/5 dei visitatori (20) su Attrazioni di Paura --- */
