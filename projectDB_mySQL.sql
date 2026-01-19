@@ -125,7 +125,7 @@ create table FOTO (
      constraint ID_FOTO_ID primary key (codiceFoto));
 
 create table GIOSTRA (
-     nomeGiostra varchar(20) not null,
+     nomeGiostra varchar(50) not null,
      capienza int not null,
      disponibilita char not null,
      etaMinima int not null,
@@ -310,8 +310,8 @@ create table VISITATORE (
      cognome varchar(20) not null,
      dataNascita char(10) not null,
      CF varchar(20) not null,
-     numeroTelefono bigint not null,
-     e_mail varchar(30) not null,
+     numeroTelefono bigint,
+     e_mail varchar(30),
      altezzaVisitatore int not null,
      codiceGruppo int,
      constraint ID_VISITATORE_ID primary key (CF));
