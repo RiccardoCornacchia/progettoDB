@@ -81,147 +81,147 @@ VALUES (16, 'CandyShop by Francesca', '11.30', '22.30', 1, 1, 'puntiRistoro');
 
 /* Giostra: Katun */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (17, 'Katun Scream Shot', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (17, 'Katun Scream Shot', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Desmo Race */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (18, 'Desmo Photo Finish', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (18, 'Desmo Photo Finish', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Gold Digger */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (19, 'Gold Digger Click', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (19, 'Gold Digger Click', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Master Thai */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (20, 'Master Thai Photo', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (20, 'Master Thai Photo', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Rexplorer */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (21, 'Rexplorer Memories', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (21, 'Rexplorer Memories', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Buffalo Bill Rodeo */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (22, 'Buffalo Bill Snaps', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (22, 'Buffalo Bill Snaps', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Diavel Ring */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (23, 'Diavel Ring Pic', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (23, 'Diavel Ring Pic', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Vortex */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (24, 'Vortex Action Photo', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (24, 'Vortex Action Photo', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Titan */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (25, 'Titan Sky View', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (25, 'Titan Sky View', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Sky Piercer */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (26, 'Sky Piercer Shot', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (26, 'Sky Piercer Shot', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Shadow Racer */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (27, 'Shadow Racer Flash', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (27, 'Shadow Racer Flash', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Cobra Express */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (28, 'Cobra Photo Point', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (28, 'Cobra Photo Point', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Meteorite */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (29, 'Meteorite Space Shot', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (29, 'Meteorite Space Shot', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 
 /* --- AVVENTURA (6 Negozi) --- */
 
 /* Giostra: Reset */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (30, 'Reset Future Cam', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (30, 'Reset Future Cam', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Rio Bravo */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (31, 'Rio Bravo Splash', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (31, 'Rio Bravo Splash', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Autosplash */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (32, 'Autosplash Wash', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (32, 'Autosplash Wash', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: El Dorado Falls */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (33, 'El Dorado Waterfall', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (33, 'El Dorado Waterfall', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Raratonga */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (34, 'Raratonga Volcano Pic', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (34, 'Raratonga Volcano Pic', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Rubble's Rapids */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (35, 'Rubble Rapids Photo', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (35, 'Rubble Rapids Photo', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 
 /* --- BAMBINI (14 Negozi) --- */
 
 /* Giostra: Adventure Bay Carousel */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (36, 'Adventure Bay Smiles', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (36, 'Adventure Bay Smiles', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Aquila Tonante */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (37, 'Aquila Flight Photo', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (37, 'Aquila Flight Photo', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Torri Geronimo */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (38, 'Geronimo Jump Shot', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (38, 'Geronimo Jump Shot', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Boots' Balloons */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (39, 'Boots Balloon Pic', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (39, 'Boots Balloon Pic', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Bicisauro */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (40, 'Bicisauro Photo', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (40, 'Bicisauro Photo', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Cowabunga Carts */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (41, 'Cowabunga Snap', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (41, 'Cowabunga Snap', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Jellyfish Jam */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (42, 'Jellyfish Memories', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (42, 'Jellyfish Memories', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Kiddy Monster */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (43, 'Kiddy Monster Pic', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (43, 'Kiddy Monster Pic', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Monosauro */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (44, 'Monosauro Egg Photo', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (44, 'Monosauro Egg Photo', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Raptotana */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (45, 'Raptotana Cave Pic', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (45, 'Raptotana Cave Pic', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: AlgigaWheel */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (46, 'AlgigaWheel View', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (46, 'AlgigaWheel View', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Reptilium */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (47, 'Reptilium Photo', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (47, 'Reptilium Photo', '11.30', '22.30', 1, 2, 'NegozioFoto');
 
 /* Giostra: Il Trenino Arcobaleno */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (48, 'Trenino Rainbow Pic', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (48, 'Trenino Rainbow Pic', '11.30', '22.30', 1, 3, 'NegozioFoto');
 
 /* Giostra: Le Tazze Magiche */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (49, 'Tazze Magiche Spin', '11.30', '22.30', 1, 1, 'NegozioFoto');
+VALUES (49, 'Tazze Magiche Spin', '11.30', '22.30', 1, 3, 'NegozioFoto');
 
 /* --- NEGOZI DI SOUVENIRS (8 Attività) --- */
 
 /* Negozio Principale (Ingresso) */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (50, 'Mirabilia Emporium', '10.00', '23.00', 1, 5, 'NegozioSouvenirs');
+VALUES (50, 'Mirabilia Emporium', '10.00', '23.00', 1, 3, 'NegozioSouvenirs');
 
 /* Area Dinosauri */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
@@ -233,15 +233,15 @@ VALUES (52, 'Western General Store', '11.30', '22.30', 1, 3, 'NegozioSouvenirs')
 
 /* Area Spazio/Futuro */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (53, 'Galactic Gadgets', '11.30', '22.30', 1, 2, 'NegozioSouvenirs');
+VALUES (53, 'Galactic Gadgets', '11.30', '22.30', 1, 3, 'NegozioSouvenirs');
 
 /* Area Pirati/Acquatica */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (54, 'Il Tesoro dei Pirati', '11.30', '22.30', 1, 2, 'NegozioSouvenirs');
+VALUES (54, 'Il Tesoro dei Pirati', '11.30', '22.30', 1, 3, 'NegozioSouvenirs');
 
 /* Area Fantasy */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (55, 'La Bottega delle Fate', '11.30', '22.30', 1, 2, 'NegozioSouvenirs');
+VALUES (55, 'La Bottega delle Fate', '11.30', '22.30', 1, 3, 'NegozioSouvenirs');
 
 /* Area Motori (Vicino Desmo Race) */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
@@ -249,11 +249,11 @@ VALUES (56, 'Speed Shop', '11.30', '22.30', 1, 3, 'NegozioSouvenirs');
 
 /* Area Bambini */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (57, 'Peluche Paradise', '11.30', '22.30', 1, 4, 'NegozioSouvenirs');
+VALUES (57, 'Peluche Paradise', '11.30', '22.30', 1, 3, 'NegozioSouvenirs');
 
 /* Attivita Commerciale - SalaGiochi*/
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita)
-VALUES (58, 'Arcade Kingdom', '10.30', '22.45', 1, 1, 'salaGiochi');
+VALUES (58, 'Arcade Kingdom', '10.30', '22.45', 1, 3, 'salaGiochi');
 
 /*Giostre - NON FUNZIONANO MANCA CF*/
 /* Montagne Russe */
@@ -764,7 +764,7 @@ INSERT INTO AREA_TEMATICA(nomeAreaTematica, CF, disponibilita, tema, dataInizio,
 /* Evento */
 INSERT INTO EVENTO(codiceEvento, nomeEvento, tematica, oraInizio, oraFine, data) VALUES
 (1, 'Summer Beach Party', 'estate e musica', '17.30', '22.30', '2024-06-18'),
-(2, 'Schiuma Party', 'schiuma e musica', '16.30', '20.30','2026-06-04' ),
+(2, 'Schiuma Party', 'schiuma e musica', '16.30', '20.30','2026-06-04'),
 (3, 'Cosplay Wonder', 'travestimento, anime', '11.30', '15.30', '2023-07-16'),
 (4, 'La Grande Caccia alle Uova', 'pasqua e uova', '14.00', '18.00', '2026-04-06'),
 (5, 'Spring Street Art Festival', 'primavera e arte', '11.00', '16.30', '2025-08-07');
