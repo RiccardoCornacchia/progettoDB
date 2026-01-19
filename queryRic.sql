@@ -125,15 +125,15 @@ values
 ('Valeria', 'Bosi', '1995-01-18', 'BSOVLR95A58L219Z', '3317766554', 'v.bosi@email.it', 'MANUTENTORE', '2023-06-20', 1890.00, null, null, null, null, null, null),
 ('Daniele', 'Rizzo', '1986-02-12', 'RZZDNL86B12F205X', '3298877661', 'd.rizzo@email.it', 'MANUTENTORE', '2020-07-01', 1915.00, null, null, null, null, null, null);
 
-insert into attrazione_di_paura(nomeAttrazionePaura, CF, disponibilita, prezzoAggiuntivo, dataInizio, dataFine)
-values ('Phobia', 'MNCMRO85E19L219G', 'true', 15, '2026-04-01', '2026-10-31'), ('Mortal Circus', 'BSSDBR93P62F205F', 'true', 12, '2026-10-01', '2026-10-31'),
-		('Acid Rain', 'LRSSFN86L08H501C', 'true', 0, '2026-10-01', '2026-10-31'), ('Llorona', 'MNCPTR77A55L219D', 'true', 0, '2026-04-01', '2026-10-31'),
-        ('Zombie Tunnel', 'VLLLND89R10F205W', 'true', 5, '2026-9-01', '2026-10-31'), ('Ghost House', 'GRDSLV94D44H501X', 'true', 0, '2026-08-01', '2026-10-31'),
-        ('Horror Forest', 'SNNNRC83S25L219Z', 'true', 8, '2026-04-01', '2026-10-31'), ('Red Wall', 'MNCPTR77A55L219D', 'false', 0, '2026-04-01', '2026-10-31'),
-        ('Booo', 'NRRCNZ90C52F205R', 'true', 0, '2026-04-01', '2026-10-31'), ('Scary Tunnel', 'VLLLND89R10F205W', 'false', 15, '2025-04-01', '2025-10-31'),
-        ('Scream', 'GRDSLV94D44H501X', 'false', 7, '2024-09-01', '2024-10-31'), ('Fireball', 'SNNNRC83S25L219Z', 'false', 0, '2024-04-01', '2024-10-31'),
-        ('Escape Room', 'RLNTMS88B14H501Q', 'true', 12, '2026-04-01', '2026-10-31'), ('Help!', 'NRRCNZ90C52F205R', 'false', 3, '2022-04-01', '2022-10-31'),
-        ('Ahooooo', 'RLNTMS88B14H501Q', 'false', 5, '2023-09-01', '2023-10-31');
+insert into attrazione_di_paura(nomeAttrazionePaura, disponibilita, prezzoAggiuntivo, dataInizio, dataFine)
+values ('Phobia', 1, 15, '2026-04-01', '2026-10-31'), ('Mortal Circus', 1, 12, '2026-10-01', '2026-10-31'),
+		('Acid Rain', 1, 0, '2026-10-01', '2026-10-31'), ('Llorona', 1, 0, '2026-04-01', '2026-10-31'),
+        ('Zombie Tunnel', 1, 5, '2026-9-01', '2026-10-31'), ('Ghost House', 1, 0, '2026-08-01', '2026-10-31'),
+        ('Horror Forest', 1, 8, '2026-04-01', '2026-10-31'), ('Red Wall', 0, 0, '2026-04-01', '2026-10-31'),
+        ('Booo', 1, 0, '2026-04-01', '2026-10-31'), ('Scary Tunnel', 0, 15, '2025-04-01', '2025-10-31'),
+        ('Scream', 0, 7, '2024-09-01', '2024-10-31'), ('Fireball', 0, 0, '2024-04-01', '2024-10-31'),
+        ('Escape Room', 1, 12, '2026-04-01', '2026-10-31'), ('Help!', 0, 3, '2022-04-01', '2022-10-31'),
+        ('Ahooooo', 0, 5, '2023-09-01', '2023-10-31');
 
 insert into bagno(disponibilita, codiceBagno)
 values ('true', 1), ('true', 2), ('false', 3), ('true', 4), ('true', 5), ('true', 6),
@@ -163,7 +163,37 @@ values (1, 'Giornaliero'), (2, 'Flash Pass'), (3, 'Pomeridiano'), (4, '2 giorni 
         (84, 'Pomeridiano'), (85, 'Flash Pass'), (86, 'Giornaliero'), (87, 'Giornaliero'), (88, 'Pomeridiano'),
         (89, 'Flash Pass'), (90, 'Giornaliero'), (91, '2 giorni con pernottamento'), (92, 'Pomeridiano'), (93, 'Flash Pass'),
         (94, 'Giornaliero'), (95, 'Giornaliero'), (96, 'Pomeridiano'), (97, 'Flash Pass'),
-        (98, '2 giorni con pernottamento'), (99, 'Giornaliero'), (100, 'Pomeridiano');
+        (98, '2 giorni con pernottamento'), (99, 'Giornaliero'), (100, 'Pomeridiano'), (101, 'Giornaliero'),
+		(102, 'Pomeridiano'), (103, '2 giorni con pernottamento'), (104, 'Giornaliero'), (105, 'Pomeridiano'),
+		(106, '2 giorni con pernottamento'), (107, 'Giornaliero'), (108, 'Pomeridiano'), (109, '2 giorni con pernottamento'),
+		(110, 'Giornaliero'), (111, 'Pomeridiano'), (112, '2 giorni con pernottamento'), (113, 'Giornaliero'), (114, 'Pomeridiano'),
+		(115, '2 giorni con pernottamento'), (116, 'Giornaliero'), (117, 'Pomeridiano'), (118, '2 giorni con pernottamento'),
+		(119, 'Giornaliero'), (120, 'Pomeridiano'), (121, '2 giorni con pernottamento'), (122, 'Giornaliero'), (123, 'Pomeridiano'),
+		(124, '2 giorni con pernottamento'), (125, 'Giornaliero'), (126, 'Pomeridiano'), (127, '2 giorni con pernottamento'),
+		(128, 'Giornaliero'), (129, 'Pomeridiano'), (130, '2 giorni con pernottamento'), (131, 'Giornaliero'), (132, 'Giornaliero'),
+        (133, 'Giornaliero'), (134, 'Giornaliero'), (135, 'Giornaliero'),
+		(136, 'Giornaliero'), (137, 'Giornaliero'), (138, 'Giornaliero'), (139, 'Giornaliero'), (140, 'Giornaliero'),
+		(141, 'Giornaliero'), (142, 'Giornaliero'), (143, 'Giornaliero'), (144, 'Giornaliero'), (145, 'Giornaliero'),
+		(146, 'Giornaliero'), (147, 'Giornaliero'), (148, 'Giornaliero'), (149, 'Giornaliero'), (150, 'Giornaliero'),
+		(151, 'Giornaliero'), (152, 'Giornaliero'), (153, 'Giornaliero'), (154, 'Giornaliero'), (155, 'Giornaliero'),
+		(156, 'Giornaliero'), (157, 'Giornaliero'), (158, 'Giornaliero'), (159, 'Giornaliero'), (160, 'Giornaliero'),
+		(161, 'Giornaliero'), (162, 'Giornaliero'), (163, 'Giornaliero'), (164, 'Giornaliero'), (165, 'Giornaliero'),
+		(166, 'Giornaliero'), (167, 'Giornaliero'), (168, 'Giornaliero'), (169, 'Giornaliero'), (170, 'Giornaliero'),
+		(171, 'Giornaliero'), (172, 'Giornaliero'), (173, 'Giornaliero'), (174, 'Giornaliero'), (175, 'Giornaliero'),
+		(176, 'Giornaliero'), (177, 'Giornaliero'), (178, 'Giornaliero'), (179, 'Giornaliero'), (180, 'Giornaliero'),
+		(181, 'Giornaliero'), (182, 'Giornaliero'), (183, 'Giornaliero'), (184, 'Giornaliero'), (185, 'Giornaliero'),
+		(186, 'Giornaliero'), (187, 'Giornaliero'), (188, 'Giornaliero'), (189, 'Giornaliero'), (190, 'Giornaliero'),
+		(191, 'Giornaliero'), (192, 'Giornaliero'), (193, 'Giornaliero'), (194, 'Giornaliero'), (195, 'Giornaliero'),
+		(196, 'Giornaliero'), (197, 'Giornaliero'), (198, 'Giornaliero'), (199, 'Giornaliero'), (200, 'Giornaliero'),
+		(201, 'Giornaliero'), (202, 'Giornaliero'), (203, 'Giornaliero'), (204, 'Giornaliero'), (205, 'Giornaliero'),
+		(206, 'Giornaliero'), (207, 'Giornaliero'), (208, 'Giornaliero'), (209, 'Giornaliero'), (210, 'Giornaliero'),
+		(211, 'Giornaliero'), (212, 'Giornaliero'), (213, 'Giornaliero'), (214, 'Giornaliero'), (215, 'Giornaliero'),
+		(216, 'Giornaliero'), (217, 'Giornaliero'), (218, 'Giornaliero'), (219, 'Giornaliero'), (220, 'Giornaliero'),
+		(221, 'Giornaliero'), (222, 'Giornaliero'), (223, 'Giornaliero'), (224, 'Giornaliero'), (225, 'Giornaliero'),
+		(226, 'Giornaliero'), (227, 'Giornaliero'), (228, 'Giornaliero'), (229, 'Giornaliero'), (230, 'Giornaliero'),
+		(231, 'Giornaliero'), (232, 'Giornaliero'), (233, 'Giornaliero'), (234, 'Giornaliero'), (235, 'Giornaliero'),
+		(236, 'Giornaliero'), (237, 'Giornaliero'), (238, 'Giornaliero'), (239, 'Giornaliero'), (240, 'Giornaliero'),
+		(241, 'Giornaliero'), (242, 'Giornaliero'), (243, 'Giornaliero'), (244, 'Giornaliero');
 
 insert into cassa(numeroCassa, CF, orarioApertura, orarioChiusura, stato)
 values ('1', 'PNISND95B14H501F', 10.00, 19.00, 'aperta'), ('2', 'LROMNC90E62F205L', 10.00, 19.00, 'aperta'),
@@ -264,10 +294,10 @@ values
 ('RZZDNL86B12F205X', '10.45', '17.15', '2026-07-28');
 
 insert into pulizia_b(codiceBagno, CF)
-values (4, 'FBBMNL85E30L219Q'), (12, 'VTLSBR91H58H501F'), (2, 'MRNVLR88P01F205W'), (4, 'MRCHLS97T52L219K'),
+values (4, 'FBBMNL85E30L219Q'), (12, 'VTLSBR91H58H501F'), (2, 'MRNVLR88P01F205W'), (7, 'MRCHLS97T52L219K'),
 (7, 'CRSMRA83M28H501X'), (11, 'BRNVNS94S60F205C'), (12, 'GRDTMS81D04L219D'), (5, 'DNTCNZ96R50H501H'),
 (1, 'SRTSLV79A55F205E'), (8, 'VTLLND92L08L219B'), (6, 'FBBMNL85E30L219Q'), (2, 'VTLSBR91H58H501F'),
-(4, 'CRSMRA83M28H501X'), (9, 'BRNVNS94S60F205C'), (5, 'GRDTMS81D04L219D'), (12, 'SRTSLV79A55F205E'),
+(4, 'CRSMRA83M28H501X'), (9, 'BRNVNS94S60F205C'), (5, 'GRDTMS81D04L219D'), (1, 'SRTSLV79A55F205E'),
 (8, 'DNTCNZ96R50H501H'), (6, 'VTLLND92L08L219B');
 
 insert into pulizia_a(codiceAttivita, CF)
@@ -285,26 +315,21 @@ values (1, 'FBBMNL85E30L219Q'), (2, 'VTLSBR91H58H501F'), (3, 'MRNVLR88P01F205W')
 (56, 'DMCPSQ80M08L219Y'), (57, 'FBBMNL85E30L219Q'), (58, 'VTLSBR91H58H501F');
 
 insert into esibizione_e(codiceEvento, CF, ruolo)
-values ('BTTGRG84A25L219S', 1, 'attore'), ('GLLNGL90L54H501A', 1, 'ballerino'), ('SNNNCL87D10F205O', 1, 'cantante'),
-('MRCHRS93S68L219U', 1, 'stuntman'), ('CNTSVT81T12H501I', 1, 'attore'), ('DLCBBR94M58F205P', 2, 'ballerino'),
-('GRDMSM86P08L219T', 2, 'ballerino'), ('RZZSMN96C43H501R', 2, 'stuntman'), ('MNCFBZ82R15F205B', 2, 'attore'),
-('MRTDNL92B45L219M', 3, 'ballerino'), ('LNECLD78S20H501N', 3, 'ballerino'), ('SNNBTR98D62F205V', 3, 'stuntman'),
-('BTTGRG84A25L219S', 4, 'ballerino'), ('GLLNGL90L54H501A', 4, 'cantante'), ('SNNNCL87D10F205O', 4, 'attore'),
-('MRCHRS93S68L219U', 5, 'stuntman'), ('CNTSVT81T12H501I', 5, 'cantante'), ('DLCBBR94M58F205P', 5, 'attore'),
-('GRDMSM86P08L219T', 6, 'ballerino'), ('RZZSMN96C43H501R', 6, 'stuntman'), ('MNCFBZ82R15F205B', 7, 'ballerino'),
-('MRTDNL92B45L219M', 7, 'attore'), ('LNECLD78S20H501N', 8, 'ballerino'), ('SNNBTR98D62F205V', 8, 'stuntman'),
-('BTTGRG84A25L219S', 9, 'ballerino'), ('GLLNGL90L54H501A', 9, 'attore'), ('SNNNCL87D10F205O', 10, 'ballerino'),
-('MRCHRS93S68L219U', 10, 'stuntman'), ('CNTSVT81T12H501I', 11, 'ballerino'), ('DLCBBR94M58F205P', 11, 'attore'),
-('GRDMSM86P08L219T', 12, 'ballerino'), ('RZZSMN96C43H501R', 12, 'stuntman'), ('MNCFBZ82R15F205B', 13, 'ballerino'),
-('MRTDNL92B45L219M', 13, 'attore'), ('LNECLD78S20H501N', 14, 'ballerino'), ('SNNBTR98D62F205V', 14, 'stuntman'),
-('BTTGRG84A25L219S', 15, 'attore'), ('GLLNGL90L54H501A', 15, 'ballerino'), ('SNNNCL87D10F205O', 15, 'cantante'),
-('MRCHRS93S68L219U', 15, 'stuntman'), ('CNTSVT81T12H501I', 15, 'ballerino'), ('DLCBBR94M58F205P', 1, 'cantante'),
-('GRDMSM86P08L219T', 1, 'stuntman'), ('RZZSMN96C43H501R', 1, 'attore'), ('MNCFBZ82R15F205B', 3, 'ballerino'),
-('MRTDNL92B45L219M', 2, 'ballerino'), ('LNECLD78S20H501N', 2, 'stuntman'), ('SNNBTR98D62F205V', 2, 'attore'),
-('BTTGRG84A25L219S', 3, 'stuntman'), ('GLLNGL90L54H501A', 3, 'attore'), ('SNNNCL87D10F205O', 5, 'ballerino'),
-('MRCHRS93S68L219U', 4, 'cantante'), ('CNTSVT81T12H501I', 4, 'stuntman'), ('DLCBBR94M58F205P', 6, 'attore'),
-('GRDMSM86P08L219T', 7, 'stuntman'), ('RZZSMN96C43H501R', 8, 'attore'), ('MNCFBZ82R15F205B', 9, 'ballerino'),
-('MRTDNL92B45L219M', 10, 'cantante'), ('LNECLD78S20H501N', 11, 'stuntman'), ('SNNBTR98D62F205V', 12, 'attore');
+values ('BTTGRG84A25L219S', 1, 'attore'), ('GLLNGL90L54H501A', 1, 'ballerino'), ('SNNNCL87D10F205O', 1, 'cantante'), ('MRCHRS93S68L219U', 1, 'stuntman'),
+('CNTSVT81T12H501I', 1, 'attore'), ('DLCBBR94M58F205P', 2, 'ballerino'), ('GRDMSM86P08L219T', 2, 'ballerino'), ('RZZSMN96C43H501R', 2, 'stuntman'),
+('MNCFBZ82R15F205B', 2, 'attore'), ('MRTDNL92B45L219M', 3, 'ballerino'), ('LNECLD78S20H501N', 3, 'ballerino'), ('SNNBTR98D62F205V', 3, 'stuntman'),
+('BTTGRG84A25L219S', 4, 'ballerino'), ('GLLNGL90L54H501A', 4, 'cantante'), ('SNNNCL87D10F205O', 4, 'attore'), ('MRCHRS93S68L219U', 5, 'stuntman'),
+('CNTSVT81T12H501I', 5, 'cantante'), ('DLCBBR94M58F205P', 5, 'attore'), ('GRDMSM86P08L219T', 6, 'ballerino'), ('RZZSMN96C43H501R', 6, 'stuntman'),
+('MNCFBZ82R15F205B', 7, 'ballerino'), ('MRTDNL92B45L219M', 7, 'attore'), ('LNECLD78S20H501N', 8, 'ballerino'), ('SNNBTR98D62F205V', 8, 'stuntman'),
+('BTTGRG84A25L219S', 9, 'ballerino'), ('GLLNGL90L54H501A', 9, 'attore'), ('SNNNCL87D10F205O', 10, 'ballerino'), ('MRCHRS93S68L219U', 10, 'stuntman'),
+('CNTSVT81T12H501I', 11, 'ballerino'), ('DLCBBR94M58F205P', 11, 'attore'), ('GRDMSM86P08L219T', 11, 'ballerino'), ('RZZSMN96C43H501R', 1, 'stuntman'),
+('MNCFBZ82R15F205B', 1, 'ballerino'), ('MRTDNL92B45L219M', 2, 'attore'), ('LNECLD78S20H501N', 3, 'ballerino'), ('SNNBTR98D62F205V', 4, 'stuntman'),
+('BTTGRG84A25L219S', 5, 'attore'), ('GLLNGL90L54H501A', 6, 'ballerino'), ('SNNNCL87D10F205O', 7, 'cantante'), ('MRCHRS93S68L219U', 8, 'stuntman'),
+('CNTSVT81T12H501I', 9, 'ballerino'), ('DLCBBR94M58F205P', 1, 'cantante'), ('GRDMSM86P08L219T', 1, 'stuntman'), ('RZZSMN96C43H501R', 1, 'attore'),
+('MNCFBZ82R15F205B', 3, 'ballerino'), ('MRTDNL92B45L219M', 2, 'ballerino'), ('LNECLD78S20H501N', 2, 'stuntman'), ('SNNBTR98D62F205V', 2, 'attore'),
+('BTTGRG84A25L219S', 3, 'stuntman'), ('GLLNGL90L54H501A', 3, 'attore'), ('SNNNCL87D10F205O', 5, 'ballerino'), ('MRCHRS93S68L219U', 4, 'cantante'),
+('CNTSVT81T12H501I', 4, 'stuntman'), ('DLCBBR94M58F205P', 6, 'attore'), ('GRDMSM86P08L219T', 7, 'stuntman'), ('RZZSMN96C43H501R', 8, 'attore'),
+('MNCFBZ82R15F205B', 9, 'ballerino'), ('MRTDNL92B45L219M', 10, 'cantante'), ('LNECLD78S20H501N', 11, 'stuntman'), ('SNNBTR98D62F205V', 1, 'attore');
 
 insert into esibizione_s(CF, codiceReplica, ruolo)
 values ('BTTGRG84A25L219S', 1, 'attore'), ('GLLNGL90L54H501A', 2, 'ballerino'), ('SNNNCL87D10F205O', 3, 'cantante'),
