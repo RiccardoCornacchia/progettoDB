@@ -29,7 +29,7 @@ MODIFY COLUMN acquisto  CHAR(50);
 
 /* Attivita Commerciale - Punti Ristoro */
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) VALUES 
-(1, 'Toro InPiedi Saloon', '11:30:00', '22:30:00', 1, 4, 'puntiRistoro'),
+(1, 'Toro In Piedi Saloon', '11:30:00', '22:30:00', 1, 4, 'puntiRistoro'),
 (2, 'Paddock Coffee', '11:30:00', '22:30:00', 1, 4, 'puntiRistoro'),
 (3, 'Akira Sushi', '11:30:00', '22:30:00', 1, 5, 'puntiRistoro'),
 (4, 'Dino''s pizza time', '11:30:00', '22:30:00', 1, 3, 'puntiRistoro'),
@@ -597,13 +597,55 @@ INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpet
 ('2026-06-15', 119, '16:05:00', '16:30:00', 'Hall of Fame'),
 ('2026-06-15', 120, '15:00:00', '15:25:00', 'Ultimo Pan');
 
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-07-26', 121, '11:30:00', '12:05:00', 'Scuola di Polizia'),
+('2026-07-26', 122, '14:30:00', '15:05:00', 'Scuola di Polizia'),
+('2026-07-26', 123, '12:30:00', '12:45:00', 'Otto Party'),
+('2026-07-26', 124, '17:00:00', '17:15:00', 'Otto Party'),
+('2026-07-26', 125, '11:00:00', '11:30:00', 'Hot Wheels City'),
+('2026-07-26', 126, '18:00:00', '18:30:00', 'Hot Wheels City'),
+('2026-07-26', 127, '16:05:00', '16:30:00', 'Hall of Fame'),
+('2026-07-26', 128, '15:00:00', '15:25:00', 'Ultimo Pan');
+
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-07-27', 129, '11:30:00', '12:05:00', 'Scuola di Polizia'),
+('2026-07-27', 130, '14:30:00', '15:05:00', 'Scuola di Polizia'),
+('2026-07-27', 131, '12:30:00', '12:45:00', 'Otto Party'),
+('2026-07-27', 132, '17:00:00', '17:15:00', 'Otto Party'),
+('2026-07-27', 133, '11:00:00', '11:30:00', 'Hot Wheels City'),
+('2026-07-27', 134, '18:00:00', '18:30:00', 'Hot Wheels City'),
+('2026-07-27', 135, '16:05:00', '16:30:00', 'Hall of Fame'),
+('2026-07-27', 136, '15:00:00', '15:25:00', 'Ultimo Pan');
+
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-07-28', 137, '11:30:00', '12:05:00', 'Scuola di Polizia'),
+('2026-07-28', 138, '14:30:00', '15:05:00', 'Scuola di Polizia'),
+('2026-07-28', 139, '12:30:00', '12:45:00', 'Otto Party'),
+('2026-07-28', 140, '17:00:00', '17:15:00', 'Otto Party'),
+('2026-07-28', 141, '11:00:00', '11:30:00', 'Hot Wheels City'),
+('2026-07-28', 142, '18:00:00', '18:30:00', 'Hot Wheels City'),
+('2026-07-28', 143, '16:05:00', '16:30:00', 'Hall of Fame'),
+('2026-07-28', 144, '15:00:00', '15:25:00', 'Ultimo Pan');
+
+INSERT INTO REPLICA_SPETTACOLO(data, codiceReplica, oraInizio, oraFine, nomeSpettacolo) VALUES 
+('2026-07-29', 145, '11:30:00', '12:05:00', 'Scuola di Polizia'),
+('2026-07-29', 146, '14:30:00', '15:05:00', 'Scuola di Polizia'),
+('2026-07-29', 147, '12:30:00', '12:45:00', 'Otto Party'),
+('2026-07-29', 148, '17:00:00', '17:15:00', 'Otto Party'),
+('2026-07-29', 149, '11:00:00', '11:30:00', 'Hot Wheels City'),
+('2026-07-29', 150, '18:00:00', '18:30:00', 'Hot Wheels City'),
+('2026-07-29', 151, '16:05:00', '16:30:00', 'Hall of Fame'),
+('2026-07-29', 152, '15:00:00', '15:25:00', 'Ultimo Pan');
+
+
 /* Area Tematica */
 INSERT INTO AREA_TEMATICA(nomeAreaTematica, CF, disponibilita, tema, dataInizio, dataFine) VALUES 
 ('Adventureland', 1, 'avventura e natura', '2026-04-01', '2026-10-31'),
 ('Nickelodeon Land', 1, 'cartoni animati Nickelodeon', '2026-04-01', '2026-10-31'), 
 ('Ducati World', 1, 'Ducati e moto', '2026-04-01', '2026-10-31'),
 ('FarWest Valley', 1, 'farwest', '2026-04-01', '2026-10-31'),
-('Route 66', 1, 'Viaggio e USA', '2025-04-01', '2025-10-31');
+('Route 66', 0, 'Viaggio e USA', '2025-04-01', '2025-10-31'),
+('Racing Track', 0, 'corse e auto', '2024-04-01', '2024-10-31');
 
 /* Evento */
 INSERT INTO EVENTO(codiceEvento, nomeEvento, tematica, oraInizio, oraFine, data) VALUES
