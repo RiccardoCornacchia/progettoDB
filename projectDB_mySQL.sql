@@ -20,7 +20,7 @@ use schema_relazionale_aggiornato;
 -- _____________ 
 
 create table ABBONAMENTO (
-     scadenza date not null,
+     scadenza char(10) not null,
      codAbbonamento int not null,
      nomeAbbonamento varchar(20) not null,
      constraint ID_ABBONAMENTO_ID primary key (codAbbonamento));
@@ -28,7 +28,7 @@ create table ABBONAMENTO (
 create table ACQUISTO_A (
      CF varchar(20) not null,
      codAbbonamento int not null,
-     data date not null,
+     data char(10) not null,
      orario varchar(10) not null,
      constraint FKACQ_VIS_2_ID primary key (CF),
      constraint FKACQ_ABB_ID unique (codAbbonamento));
@@ -36,7 +36,7 @@ create table ACQUISTO_A (
 create table ACQUISTO_B (
      CF varchar(20) not null,
      codiceBiglietto int not null,
-     data date not null,
+     data char(10) not null,
      orario varchar(10) not null,
      constraint FKACQ_VIS_1_ID primary key (CF),
      constraint FKACQ_BIG_ID unique (codiceBiglietto));
@@ -52,9 +52,9 @@ create table AREA_TEMATICA (
      nomeAreaTematica varchar(20) not null,
      disponibilita char not null,
      tema varchar(40) not null,
-     dataInizio date not null,
-     dataFine date not null,
-     constraint ID_AREA_TEMATICHE_ID primary key (nomeAreaTematiche));
+     dataInizio char(10) not null,
+     dataFine char(10) not null,
+     constraint ID_AREA_TEMATICA_ID primary key (nomeAreaTematica));
 
 create table ATTIVITA_COMMERCIALE (
      codiceAttivita int not null,
@@ -67,11 +67,11 @@ create table ATTIVITA_COMMERCIALE (
      constraint ID_ATTIVITA_COMMERCIALE_ID primary key (codiceAttivita));
 
 create table ATTRAZIONE_DI_PAURA (
-     nomeAttrazionePaura varchar(20) not null,
+     nomeAttrazionePaura varchar(30) not null,
      disponibilita char not null,
      prezzoAggiuntivo decimal(10,2) not null,
-     dataInizio date not null,
-     dataFine date not null,
+     dataInizio char(10) not null,
+     dataFine char(10) not null,
      constraint ID_ATTRAZIONE_DI_PAURA_ID primary key (nomeAttrazionePaura));
 
 create table BAGNO (
@@ -81,7 +81,7 @@ create table BAGNO (
 
 create table BIGLIETTO (
      codiceBiglietto int not null,
-     nomeBiglietto varchar(15) not null,
+     nomeBiglietto varchar(35) not null,
      constraint ID_BIGLIETTO_ID primary key (codiceBiglietto));
 
 create table CASSA (
@@ -116,7 +116,7 @@ create table EVENTO (
      tematica varchar(30) not null,
      oraInizio varchar(10) not null,
      oraFine varchar(10) not null,
-     data date not null,
+     data char(10) not null,
      constraint ID_EVENTO_ID primary key (codiceEvento));
 
 create table FOTO (
@@ -145,27 +145,27 @@ create table GRUPPO (
 create table LAVORATORE (
      nome varchar(20) not null,
      cognome varchar(20) not null,
-     dataNascita char(1) not null,
+     dataNascita char(10) not null,
      CF varchar(20) not null,
      numeroTelefono bigint not null,
      e_mail varchar(30) not null,
      mansione varchar(20) not null,
-     dataInizioContratto date not null,
+     dataInizioContratto char(10) not null,
      stipendio decimal(10,2) not null,
      codiceAttivita int,
      IMP_codiceAttivita int,
      nomeRuota varchar(20),
      nomeGiostra varchar(20),
      nomeAreaTematiche varchar(20),
-     nomeAttrazionePaura varchar(20),
+     nomeAttrazionePaura varchar(30),
      constraint ID_LAVORATORE_ID primary key (CF));
 
 create table MANUTENZIONE (
      codiceManutenzione int not null,
-     dataInizio date not null,
+     dataInizio char(10) not null,
      tipoGuasto varchar(30) not null,
-     dataFine date,
-     impiantoInManutenzione varchar(15) not null,
+     dataFine char(10),
+     impiantoInManutenzione varchar(20) not null,
      nomeRuota varchar(20),
      nomeGiostra varchar(20),
      nomeAreaTematiche varchar(20),
@@ -175,7 +175,7 @@ create table MANUTENZIONE (
 create table PARTECIPAZIONE (
      codicePartecipazione int not null,
      orario varchar(10) not null,
-     data date not null,
+     data char(10) not null,
      codiceReplica int,
      CF varchar(20) not null,
      nomeRuota varchar(20),
@@ -199,7 +199,7 @@ create table PULIZIA_B (
      constraint ID_PULIZIA_B_ID primary key (codiceBagno, CF));
 
 create table REPLICA_SPETTACOLO (
-     data date not null,
+     data char(10) not null,
      codiceReplica int not null,
      oraInizio varchar(10) not null,
      oraFine varchar(10) not null,
@@ -216,7 +216,7 @@ create table RUOTA_PANORAMICA (
 create table SALITA (
      CF varchar(20) not null,
      nomeGiostra varchar(20) not null,
-     data date not null,
+     data char(10) not null,
      orario varchar(10) not null,
      constraint ID_SALITA_ID primary key (CF, nomeGiostra, data, orario));
 
@@ -234,7 +234,7 @@ create table SPETTACOLO (
      constraint ID_SPETTACOLO_ID primary key (nomeSpettacolo));
 
 create table SUPERVISIONE_AP (
-     nomeAttrazionePaura varchar(20) not null,
+     nomeAttrazionePaura varchar(30) not null,
      CF varchar(20) not null,
      constraint ID_SUPERVISIONE_AP_ID primary key (nomeAttrazionePaura, CF));
 
@@ -259,7 +259,7 @@ create table TIPOLOGIA_ABBONAMENTO (
      constraint ID_TIPOLOGIA_ABBONAMENTO_ID primary key (nomeAbbonamento));
 
 create table TIPOLOGIA_BIGLIETTO (
-     nomeBiglietto varchar(15) not null,
+     nomeBiglietto varchar(35) not null,
      prezzo decimal(10,2) not null,
      constraint ID_TIPOLOGIA_BIGLIETTO_ID primary key (nomeBiglietto));
 
@@ -267,7 +267,7 @@ create table TURNO_DI_LAVORO (
      CF varchar(20) not null,
      oraInizio varchar(10) not null,
      oraFine varchar(10) not null,
-     data date not null,
+     data char(10) not null,
      constraint ID_TURNO_DI_LAVORO_ID primary key (CF, oraInizio, data));
 
 create table USUFRUIZIONE (
@@ -275,7 +275,7 @@ create table USUFRUIZIONE (
      CF varchar(20) not null,
      acquisto varchar(50) not null,
      prezzoAcquisto decimal(10,2) not null,
-     data date not null,
+     data char(10) not null,
      orario varchar(10) not null,
      constraint ID_USUFRUIZIONE_ID primary key (codiceAttivita, CF, data, orario));
 
@@ -286,21 +286,21 @@ create table UTILIZZO (
 
 create table VENDITA_A (
      codAbbonamento int not null,
-     data date not null,
+     data char(10) not null,
      orario varchar(10) not null,
      numeroCassa int not null,
      constraint FKVEN_ABB_ID primary key (codAbbonamento));
 
 create table VENDITA_B (
      codiceBiglietto int not null,
-     data date not null,
+     data char(10) not null,
      orario varchar(10) not null,
      numeroCassa int not null,
      constraint FKVEN_BIG_ID primary key (codiceBiglietto));
 
 create table VENDITA_FOTO (
      codiceFoto int not null,
-     data date not null,
+     data char(10) not null,
      orario varchar(10) not null,
      codiceAttivita int not null,
      constraint FKVEN_FOT_ID primary key (codiceFoto));
@@ -308,7 +308,7 @@ create table VENDITA_FOTO (
 create table VISITATORE (
      nome varchar(20) not null,
      cognome varchar(20) not null,
-     dataNascita date not null,
+     dataNascita char(10) not null,
      CF varchar(20) not null,
      numeroTelefono bigint not null,
      e_mail varchar(30) not null,
