@@ -43,22 +43,22 @@ create table ACQUISTO_B (
 
 create table ACQUISTO_FOTO (
      codiceFoto int not null,
-     data char(1) not null,
-     orario char(1) not null,
+     data char(10) not null,
+     orario char(10) not null,
      CF varchar(20) not null,
      constraint FKACQ_FOT_ID primary key (codiceFoto));
 
-create table AREA_TEMATICHE (
-     nomeAreaTematiche varchar(20) not null,
+create table AREA_TEMATICA (
+     nomeAreaTematica varchar(20) not null,
      disponibilita char not null,
-     tema varchar(20) not null,
+     tema varchar(40) not null,
      dataInizio date not null,
      dataFine date not null,
      constraint ID_AREA_TEMATICHE_ID primary key (nomeAreaTematiche));
 
 create table ATTIVITA_COMMERCIALE (
      codiceAttivita int not null,
-     nomeAttivita varchar(20) not null,
+     nomeAttivita varchar(35) not null,
      orarioApertura varchar(10) not null,
      orarioChiusura varchar(10) not null,
      disponibilita char not null,
@@ -112,7 +112,7 @@ create table ESIBIZIONE_S (
 
 create table EVENTO (
      codiceEvento int not null,
-     nomeEvento varchar(20) not null,
+     nomeEvento varchar(40) not null,
      tematica varchar(30) not null,
      oraInizio varchar(10) not null,
      oraFine varchar(10) not null,
@@ -273,7 +273,7 @@ create table TURNO_DI_LAVORO (
 create table USUFRUIZIONE (
      codiceAttivita int not null,
      CF varchar(20) not null,
-     acquisto varchar(20) not null,
+     acquisto varchar(50) not null,
      prezzoAcquisto decimal(10,2) not null,
      data date not null,
      orario varchar(10) not null,
