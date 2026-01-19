@@ -763,11 +763,11 @@ INSERT INTO AREA_TEMATICA(nomeAreaTematica, CF, disponibilita, tema, dataInizio,
 
 /* Evento */
 INSERT INTO EVENTO(codiceEvento, nomeEvento, tematica, oraInizio, oraFine, data) VALUES
-(1, 'Summer Beach Party', 'estate e musica', '17.30', '22.30', '2026-06-08'),
-(2, 'Schiuma Party', 'schiuma e musica', '16.30', '20.30','2026-05-22' ),
-(3, 'Cosplay Wonder', 'travestimento, anime', '11.30', '15.30', '2026-04-27'),
+(1, 'Summer Beach Party', 'estate e musica', '17.30', '22.30', '2024-06-18'),
+(2, 'Schiuma Party', 'schiuma e musica', '16.30', '20.30','2026-06-04' ),
+(3, 'Cosplay Wonder', 'travestimento, anime', '11.30', '15.30', '2023-07-16'),
 (4, 'La Grande Caccia alle Uova', 'pasqua e uova', '14.00', '18.00', '2026-04-06'),
-(5, 'Spring Street Art Festival', 'primavera e arte', '11.00', '16.30', '2026-05-10');
+(5, 'Spring Street Art Festival', 'primavera e arte', '11.00', '16.30', '2025-08-07');
 
 /*Partecipazioni, fatte di conseguenze dei biglietti generati dalla fra (18/01/26)*/
 /* --- 1/5 dei visitatori (20) su Attrazioni di Paura --- */
