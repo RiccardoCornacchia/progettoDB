@@ -653,22 +653,22 @@ INSERT INTO PARTECIPAZIONE(codicePartecipazione, orario, data, codiceReplica, CF
 (2, '10:04:48', '2026-06-04', NULL, 'AV22EF', NULL, NULL, 'Zombie Tunnel'),
 (3, '10:09:36', '2026-06-04', NULL, 'SF30KL', NULL, NULL, 'Acid Rain'),
 (4, '10:14:24', '2026-06-04', NULL, 'PR14MN', NULL, NULL, 'Acid Rain'),
-(5, '10:19:12', '2026-06-04', NULL, 'ER03OP', NULL, NULL, 'Zombie Tunnel'),
+(5, '10:19:12', '2026-06-04', NULL, 'ER03OP', NULL, NULL, 'Red Wall'),
 (6, '10:24:00', '2026-06-04', NULL, 'DC27QR', NULL, NULL, 'Zombie Tunnel'),
-(7, '10:28:48', '2026-06-04', NULL, 'FM16ST', NULL, NULL, 'Horror Forest'),
+(7, '10:28:48', '2026-06-04', NULL, 'FM16ST', NULL, NULL, 'Llorona'),
 (8, '10:33:36', '2026-06-04', NULL, 'AC11UV', NULL, NULL, 'Horror Forest'),
 (9, '10:38:24', '2026-06-04', NULL, 'CG24WX', NULL, NULL, 'Phobia'),
-(10, '10:43:12', '2026-06-04', NULL, 'SR02YZ', NULL, NULL, 'Phobia'),
+(10, '10:43:12', '2026-06-04', NULL, 'SR02YZ', NULL, NULL, 'Llorona'),
 (11, '10:48:00', '2026-06-04', NULL, 'ML19AA', NULL, NULL, 'Acid Rain'),
 (12, '10:52:48', '2026-06-04', NULL, 'SF06DD', NULL, NULL, 'Phobia'),
 (13, '10:57:36', '2026-06-04', NULL, 'LD13EE', NULL, NULL, 'Zombie Tunnel'),
-(14, '11:02:24', '2026-06-04', NULL, 'MS29FF', NULL, NULL, 'Zombie Tunnel'),
+(14, '11:02:24', '2026-06-04', NULL, 'MS29FF', NULL, NULL, 'Mortal Circus'),
 (15, '11:07:12', '2026-06-04', NULL, 'IG21GG', NULL, NULL, 'Horror Forest'),
 (16, '11:12:00', '2026-06-04', NULL, 'GF28JJ', NULL, NULL, 'Acid Rain'),
 (17, '11:16:48', '2026-06-04', NULL, 'RM23NN', NULL, NULL, 'Phobia'),
-(18, '11:21:36', '2026-06-04', NULL, 'CV14OO', NULL, NULL, 'Phobia'),
+(18, '11:21:36', '2026-06-04', NULL, 'CV14OO', NULL, NULL, 'Llorona'),
 (19, '11:26:24', '2026-06-04', NULL, 'FL01PP', NULL, NULL, 'Acid Rain'),
-(20, '11:31:12', '2026-06-04', NULL, 'TB09RR', NULL, NULL, 'Acid Rain');
+(20, '11:31:12', '2026-06-04', NULL, 'TB09RR', NULL, NULL, 'Mortal Circus');
 
 /* --- 6/10 dei visitatori (60) sulla Ruota Panoramica --- */
 INSERT INTO PARTECIPAZIONE(codicePartecipazione, orario, data, codiceReplica, CF, nomeRuota, nomeAreaTematica, nomeAttrazzionePaura) VALUES
