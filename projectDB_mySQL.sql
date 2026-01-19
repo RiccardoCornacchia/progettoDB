@@ -156,7 +156,7 @@ create table LAVORATORE (
      IMP_codiceAttivita int,
      nomeRuota varchar(20),
      nomeGiostra varchar(20),
-     nomeAreaTematiche varchar(20),
+     nomeAreaTematica varchar(20),
      nomeAttrazionePaura varchar(30),
      constraint ID_LAVORATORE_ID primary key (CF));
 
@@ -168,7 +168,7 @@ create table MANUTENZIONE (
      impiantoInManutenzione varchar(20) not null,
      nomeRuota varchar(20),
      nomeGiostra varchar(20),
-     nomeAreaTematiche varchar(20),
+     nomeAreaTematica varchar(20),
      nomeAttrazionePaura varchar(20),
      constraint ID_MANUTENZIONE_ID primary key (codiceManutenzione));
 
@@ -179,7 +179,7 @@ create table PARTECIPAZIONE (
      codiceReplica int,
      CF varchar(20) not null,
      nomeRuota varchar(20),
-     nomeAreaTematiche varchar(20),
+     nomeAreaTematica varchar(20),
      nomeAttrazionePaura varchar(20),
      constraint ID_PARTECIPAZIONE_ID primary key (codicePartecipazione));
 
@@ -239,9 +239,9 @@ create table SUPERVISIONE_AP (
      constraint ID_SUPERVISIONE_AP_ID primary key (nomeAttrazionePaura, CF));
 
 create table SUPERVISIONE_AT (
-     nomeAreaTematiche varchar(20) not null,
+     nomeAreaTematica varchar(20) not null,
      CF varchar(20) not null,
-     constraint ID_SUPERVISIONE_AT_ID primary key (nomeAreaTematiche, CF));
+     constraint ID_SUPERVISIONE_AT_ID primary key (nomeAreaTematica, CF));
 
 create table SUPERVISIONE_G (
      nomeGiostra varchar(20) not null,
@@ -487,8 +487,8 @@ alter table LAVORATORE add constraint FKGESTIONE_G_FK
      references GIOSTRA (nomeGiostra);
 
 alter table LAVORATORE add constraint FKGESTIONE_AT_FK
-     foreign key (nomeAreaTematiche)
-     references AREA_TEMATICHE (nomeAreaTematiche);
+     foreign key (nomeAreaTematica)
+     references AREA_TEMATICA (nomeAreaTematica);
 
 alter table LAVORATORE add constraint FKGESTIONE_AP_FK
      foreign key (nomeAttrazionePaura)
@@ -508,8 +508,8 @@ alter table MANUTENZIONE add constraint FKMANUTENZIONE_G_FK
      references GIOSTRA (nomeGiostra);
 
 alter table MANUTENZIONE add constraint FKMANUTENZIONE_AT_FK
-     foreign key (nomeAreaTematiche)
-     references AREA_TEMATICHE (nomeAreaTematiche);
+     foreign key (nomeAreaTematica)
+     references AREA_TEMATICA (nomeAreaTematica);
 
 alter table MANUTENZIONE add constraint FKMANUTENZIONE_AP_FK
      foreign key (nomeAttrazionePaura)
@@ -528,8 +528,8 @@ alter table PARTECIPAZIONE add constraint FKALLA_RUOTA_FK
      references RUOTA_PANORAMICA (nomeRuota);
 
 alter table PARTECIPAZIONE add constraint FKALLA_AT_FK
-     foreign key (nomeAreaTematiche)
-     references AREA_TEMATICHE (nomeAreaTematiche);
+     foreign key (nomeAreaTematica)
+     references AREA_TEMATICA (nomeAreaTematica);
 
 alter table PARTECIPAZIONE add constraint FKALLA_AP_FK
      foreign key (nomeAttrazionePaura)
@@ -608,8 +608,8 @@ alter table SUPERVISIONE_AT add constraint FKSUP_LAV_2_FK
      references LAVORATORE (CF);
 
 alter table SUPERVISIONE_AT add constraint FKSUP_ARE
-     foreign key (nomeAreaTematiche)
-     references AREA_TEMATICHE (nomeAreaTematiche);
+     foreign key (nomeAreaTematica)
+     references AREA_TEMATICA (nomeAreaTematica);
 
 alter table SUPERVISIONE_G add constraint FKSUP_LAV_1_FK
      foreign key (CF)
@@ -713,8 +713,8 @@ create index FKACQ_VIS_IND
 create unique index FKACQ_FOT_IND
      on ACQUISTO_FOTO (codiceFoto);
 
-create unique index ID_AREA_TEMATICHE_IND
-     on AREA_TEMATICHE (nomeAreaTematiche);
+create unique index ID_AREA_TEMATICA_IND
+     on AREA_TEMATICA (nomeAreaTematica);
 
 create unique index ID_ATTIVITA_COMMERCIALE_IND
      on ATTIVITA_COMMERCIALE (codiceAttivita);
@@ -783,7 +783,7 @@ create index FKGESTIONE_G_IND
      on LAVORATORE (nomeGiostra);
 
 create index FKGESTIONE_AT_IND
-     on LAVORATORE (nomeAreaTematiche);
+     on LAVORATORE (nomeAreaTematica);
 
 create index FKGESTIONE_AP_IND
      on LAVORATORE (nomeAttrazionePaura);
@@ -798,7 +798,7 @@ create index FKMANUTENZIONE_G_IND
      on MANUTENZIONE (nomeGiostra);
 
 create index FKMANUTENZIONE_AT_IND
-     on MANUTENZIONE (nomeAreaTematiche);
+     on MANUTENZIONE (nomeAreaTematica);
 
 create index FKMANUTENZIONE_AP_IND
      on MANUTENZIONE (nomeAttrazionePaura);
@@ -816,7 +816,7 @@ create index FKALLA_RUOTA_IND
      on PARTECIPAZIONE (nomeRuota);
 
 create index FKALLA_AT_IND
-     on PARTECIPAZIONE (nomeAreaTematiche);
+     on PARTECIPAZIONE (nomeAreaTematica);
 
 create index FKALLA_AP_IND
      on PARTECIPAZIONE (nomeAttrazionePaura);
@@ -867,7 +867,7 @@ create index FKSUP_LAV_3_IND
      on SUPERVISIONE_AP (CF);
 
 create unique index ID_SUPERVISIONE_AT_IND
-     on SUPERVISIONE_AT (nomeAreaTematiche, CF);
+     on SUPERVISIONE_AT (nomeAreaTematica, CF);
 
 create index FKSUP_LAV_2_IND
      on SUPERVISIONE_AT (CF);
