@@ -291,12 +291,12 @@ values (1, 'Giornaliero'), (2, 'Flash Pass'), (3, 'Pomeridiano'), (4, '2 giorni 
 		(241, 'Giornaliero'), (242, 'Giornaliero'), (243, 'Giornaliero'), (244, 'Giornaliero');
 
 insert into cassa(numeroCassa, CF, orarioApertura, orarioChiusura, stato)
-values  ('1', 'PNISND95B14H501F', '10:00:00', '19:00:00', 'aperta'), ('2', 'LROMNC90E62F205L', '10:00:00', '19:00:00', 'aperta'),
-('3', 'MRIDVD88P08L219M', '10:00:00', '19:00:00', 'aperta'), ('4', 'BRTPLA96T52H501P', '10:00:00', '19:00:00', 'aperta'),
-('5', 'FNTLCA93D04F205D', '10:00:00', '19:00:00', 'chiusa'), ('6', 'VLLSRA97L55L219V', '10:00:00', '19:00:00', 'aperta'),
-('7', 'LNGFBA91M14F205K', '10:00:00', '19:00:00', 'chiusa'), ('8', 'SNTLNE94C65L219J', '10:00:00', '19:00:00', 'aperta'),
-('9', 'MLERRT89R02H501G', '10:00:00', '19:00:00', 'aperta'), ('10', 'RVIMCH97T70F205D', '10:00:00', '19:00:00', 'aperta'),
-('11', 'DSOMRC92E18L219S', '10:00:00', '19:00:00', 'chiusa'), ('12', 'GRSSNO95L47H501W', '10:00:00', '19:00:00', 'chiusa');
+values  ('1', 'PNISND95B14H501F', '10:00:00', '19:00:00', true), ('2', 'LROMNC90E62F205L', '10:00:00', '19:00:00', true),
+('3', 'MRIDVD88P08L219M', '10:00:00', '19:00:00', true), ('4', 'BRTPLA96T52H501P', '10:00:00', '19:00:00', true),
+('5', 'FNTLCA93D04F205D', '10:00:00', '19:00:00', false), ('6', 'VLLSRA97L55L219V', '10:00:00', '19:00:00', true),
+('7', 'LNGFBA91M14F205K', '10:00:00', '19:00:00', false), ('8', 'SNTLNE94C65L219J', '10:00:00', '19:00:00', true),
+('9', 'MLERRT89R02H501G', '10:00:00', '19:00:00', true), ('10', 'RVIMCH97T70F205D', '10:00:00', '19:00:00', true),
+('11', 'DSOMRC92E18L219S', '10:00:00', '19:00:00', false), ('12', 'GRSSNO95L47H501W', '10:00:00', '19:00:00', false);
 
 insert into manutenzione(codiceManutenzione, dataInizio, tipoGuasto, dataFine, impiantoInManutenzione, nomeRuota,
 						nomeGiostra, nomeAreaTematiche, nomeAttrazionePaura)
