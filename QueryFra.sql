@@ -71,7 +71,7 @@ INSERT INTO tipologia_biglietto (nomeBiglietto, prezzo) VALUES
 ('Pomeridiano', 19),
 ('Flash Pass', 60),
 ('Giornaliero', 40),
-('Due giorni con pernottamento', 200);
+('2 giorni con pernottamento', 200);
 
 -- 20 persone: data 2023-07-16
 INSERT INTO acquisto_a (CF, codAbbonamento, data, orario) VALUES
@@ -850,9 +850,7 @@ INSERT INTO acquisto_b (CF, codiceBiglietto, data, orario) VALUES
 ('LR27JK', 234, '2026-06-03', '10:34:00'), ('AB15LZ', 235, '2026-06-03', '10:36:00'),
 ('TP03XC', 236, '2026-06-03', '10:38:00'), ('PF18VB', 237, '2026-06-03', '10:40:00'),
 ('LN29SD', 238, '2026-06-03', '10:42:00'), ('BG07NM', 239, '2026-06-03', '10:44:00'),
-('MM14LK', 240, '2026-06-03', '10:46:00'), ('CB01QW', 241, '2026-06-03', '10:48:00'),
-('BS20ER', 242, '2026-06-03', '10:50:00'), ('DL30TY', 243, '2026-06-03', '10:52:00'),
-('EC12UI', 244, '2026-06-03', '10:54:00');
+('MM14LK', 240, '2026-06-03', '10:46:00'), ('CB01QW', 241, '2026-06-03', '10:48:00');
 
 -- Vendite sincronizzate con gli acquisti singoli (Codici 1-130)
 
@@ -1015,9 +1013,9 @@ INSERT INTO sconto (nomeBiglietto, motivazione, percentuale) VALUES
 ('Pomeridiano', 'Bambino', 50),
 ('Pomeridiano', 'Sponsor', 50),
 ('Pomeridiano', 'Gruppo', 10),
-('Due giorni con pernottamento', 'Disabilità', 30),
-('Due giorni con pernottamento', 'Over 65', 20),
-('Due giorni con pernottamento', 'Bambino', 20),
+('2 giorni con pernottamento', 'Disabilità', 30),
+('2 giorni con pernottamento', 'Over 65', 20),
+('2 giorni con pernottamento', 'Bambino', 20),
 ('Giornaliero', 'Disabilità', 60),
 ('Giornaliero', 'Over 65', 40),
 ('Giornaliero', 'Bambino', 50),
