@@ -293,7 +293,7 @@ values (1, 'Giornaliero'), (2, 'Flash Pass'), (3, 'Pomeridiano'), (4, '2 giorni 
 		(226, 'Giornaliero'), (227, 'Giornaliero'), (228, 'Giornaliero'), (229, 'Giornaliero'), (230, 'Giornaliero'),
 		(231, 'Giornaliero'), (232, 'Giornaliero'), (233, 'Giornaliero'), (234, 'Giornaliero'), (235, 'Giornaliero'),
 		(236, 'Giornaliero'), (237, 'Giornaliero'), (238, 'Giornaliero'), (239, 'Giornaliero'), (240, 'Giornaliero'),
-		(241, 'Giornaliero'), (242, 'Giornaliero'), (243, 'Giornaliero'), (244, 'Giornaliero');
+		(241, 'Giornaliero');
 
 insert into cassa(numeroCassa, CF, orarioApertura, orarioChiusura, stato)
 values  ('1', 'PNISND95B14H501F', '10:00:00', '19:00:00', true), ('2', 'LROMNC90E62F205L', '10:00:00', '19:00:00', true),
