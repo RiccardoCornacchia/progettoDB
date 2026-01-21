@@ -22,12 +22,12 @@ values
 ('Giorgia', 'Ponti', '1997-04-22', 'PNTGRG97D62L219U', '3335544332', 'g.ponti@email.it', 'RISTORATORE', '2023-10-05', 1310.00, 8, null, null, null, null, null),
 ('Riccardo', 'Costa', '1984-05-30', 'CSTRCC84E30H501E', '3289988776', 'r.costa@email.it', 'RISTORATORE', '2021-12-01', 1320.00, 3, null, null, null, null, null),
 ('Marta', 'Fontana', '1990-10-10', 'FNTMRT90R50F205R', '3406677881', 'm.fontana@email.it', 'RISTORATORE', '2022-01-15', 1335.00, 3, null, null, null, null, null),
-('Luca', 'Verdi', '1980-11-05', 'VRDLCA80S05L219G', '3201122334', 'l.verdi@email.it', 'RISTORATORE', '2021-03-01', 1310.00, 1, null, null, null, null, null),
-('Anna', 'Neri', '1995-12-30', 'NREANN95T70H501Q', '3385566778', 'a.neri@email.it', 'RISTORATORE', '2023-06-20', 1330.00, 1, null, null, null, null, null),
-('Marco', 'Galli', '1988-02-14', 'GLLMRC88B14F205D', '3293344556', 'm.galli@email.it', 'RISTORATORE', '2022-11-12', 1340.00, 2, null, null, null, null, null),
-('Elena', 'Rizzo', '1990-09-08', 'RZZLNE90P48L219W', '3407788990', 'e.rizzo@email.it', 'RISTORATORE', '2020-02-25', 1315.00, 2, null, null, null, null, null),
-('Paolo', 'Ferrari', '1975-05-19', 'FRRPLA75E19H501B', '3312233445', 'p.ferrari@email.it', 'RISTORATORE', '2019-09-15', 1325.00, 8, null, null, null, null, null),
-('Sofia', 'Russo', '1998-01-25', 'RSSSFO98A65F205C', '3456677889', 's.russo@email.it', 'RISTORATORE', '2023-08-01', 1345.00, 12, null, null, null, null, null),
+('Luca', 'Verdi', '1980-11-06', 'VRDLCA80S05L219G', '3201122334', 'l.verdi@email.it', 'RISTORATORE', '2021-03-01', 1310.00, 1, null, null, null, null, null),
+('Anna', 'Neri', '1995-11-20', 'NREANN95T70H501B', '3385566778', 'a.neri@email.it', 'RISTORATORE', '2023-06-22', 1330.00, 1, null, null, null, null, null),
+('Marco', 'Galli', '1988-03-12', 'GLLMRC88B14F202E', '3293344556', 'm.galli@email.it', 'RISTORATORE', '2022-10-11', 1340.00, 2, null, null, null, null, null),
+('Elena', 'Rizzo', '1990-04-03', 'RZZLNE90P48L213W', '3407788990', 'e.rizzo@email.it', 'RISTORATORE', '2020-03-15', 1315.00, 2, null, null, null, null, null),
+('Paolo', 'Ferrari', '1975-04-16', 'FRRPLA75E19H502S', '3312233445', 'p.ferrari@email.it', 'RISTORATORE', '2019-07-15', 1325.00, 8, null, null, null, null, null),
+('Sofia', 'Russo', '1998-02-22', 'RSSSFO98A65F202X', '3456677889', 's.russo@email.it', 'RISTORATORE', '2023-08-01', 1345.00, 12, null, null, null, null, null),
 
 ('Fabio', 'Guerra', '1986-06-18', 'GRRFBA86H18L219T', '3314455660', 'f.guerra@email.it', 'COMMESSO', '2023-04-10', 1530.00, null, 17, null, null, null, null),
 ('Sara', 'Bernardi', '1995-09-01', 'BRNSRA95P41H501N', '3421122334', 's.bernardi@email.it', 'COMMESSO', '2022-08-20', 1550.00, null, 18, null, null, null, null),
@@ -293,7 +293,7 @@ values (1, 'Giornaliero'), (2, 'Flash Pass'), (3, 'Pomeridiano'), (4, '2 giorni 
 		(226, 'Giornaliero'), (227, 'Giornaliero'), (228, 'Giornaliero'), (229, 'Giornaliero'), (230, 'Giornaliero'),
 		(231, 'Giornaliero'), (232, 'Giornaliero'), (233, 'Giornaliero'), (234, 'Giornaliero'), (235, 'Giornaliero'),
 		(236, 'Giornaliero'), (237, 'Giornaliero'), (238, 'Giornaliero'), (239, 'Giornaliero'), (240, 'Giornaliero'),
-		(241, 'Giornaliero'), (242, 'Giornaliero'), (243, 'Giornaliero'), (244, 'Giornaliero');
+		(241, 'Giornaliero');
 
 insert into cassa(numeroCassa, CF, orarioApertura, orarioChiusura, stato)
 values  ('1', 'PNISND95B14H501F', '10:00:00', '19:00:00', true), ('2', 'LROMNC90E62F205L', '10:00:00', '19:00:00', true),
