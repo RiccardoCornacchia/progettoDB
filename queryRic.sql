@@ -22,7 +22,7 @@ values
 ('Giorgia', 'Ponti', '1997-04-22', 'PNTGRG97D62L219U', '3335544332', 'g.ponti@email.it', 'RISTORATORE', '2023-10-05', 1310.00, 8, null, null, null, null, null),
 ('Riccardo', 'Costa', '1984-05-30', 'CSTRCC84E30H501E', '3289988776', 'r.costa@email.it', 'RISTORATORE', '2021-12-01', 1320.00, 3, null, null, null, null, null),
 ('Marta', 'Fontana', '1990-10-10', 'FNTMRT90R50F205R', '3406677881', 'm.fontana@email.it', 'RISTORATORE', '2022-01-15', 1335.00, 3, null, null, null, null, null),
-('Luca', 'Verdi', '1980-11-05', 'VRDLCA80S05L219X', '3201122334', 'l.verdi@email.it', 'RISTORATORE', '2021-03-01', 1310.00, 1, null, null, null, null, null),
+('Luca', 'Verdi', '1980-11-05', 'VRDLCA80S05L219G', '3201122334', 'l.verdi@email.it', 'RISTORATORE', '2021-03-01', 1310.00, 1, null, null, null, null, null),
 ('Anna', 'Neri', '1995-12-30', 'NREANN95T70H501Q', '3385566778', 'a.neri@email.it', 'RISTORATORE', '2023-06-20', 1330.00, 1, null, null, null, null, null),
 ('Marco', 'Galli', '1988-02-14', 'GLLMRC88B14F205D', '3293344556', 'm.galli@email.it', 'RISTORATORE', '2022-11-12', 1340.00, 2, null, null, null, null, null),
 ('Elena', 'Rizzo', '1990-09-08', 'RZZLNE90P48L219W', '3407788990', 'e.rizzo@email.it', 'RISTORATORE', '2020-02-25', 1315.00, 2, null, null, null, null, null),
