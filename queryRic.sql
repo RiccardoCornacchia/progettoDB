@@ -57,11 +57,11 @@ values
 ('Ilaria', 'Vitali', '1994-02-28', 'VTLRLI94B68H501I', '3319988776', 'i.vitali@email.it', 'COMMESSO', '2022-03-22', 1525.00, null, 42, null, null, null, null),
 ('Valerio', 'Marini', '1981-06-08', 'MRNVLR81H08F205L', '3275544332', 'v.marini@email.it', 'COMMESSO', '2019-12-01', 1550.00, null, 43, null, null, null, null),
 ('Camilla', 'Sarti', '1996-09-12', 'SRTCML96P52L219M', '3401122556', 'c.sarti@email.it', 'COMMESSO', '2023-07-10', 1490.00, null, 44, null, null, null, null),
-('Gianluca', 'Guerra', '1979-04-30', 'GRRGLC79D30H501B', '3338877665', 'g.guerra@email.it', 'COMMESSO', '2018-02-15', 1580.00, null, 45, null, null, null, null),
+('Gianluca', 'Guerri', '1979-09-30', 'GRRGLC79D30H501B', '3338877665', 'g.guerra@email.it', 'COMMESSO', '2018-02-15', 1580.00, null, 45, null, null, null, null),
 ('Lara', 'Ferrari', '1991-01-10', 'FRRPLA91A50F205N', '3294433221', 'l.ferrari91@email.it', 'COMMESSO', '2022-10-01', 1535.00, null, 46, null, null, null, null),
 ('Mattia', 'Gatti', '1984-08-22', 'GTTMRA84M22L219P', '3475566778', 'm.gatti84@email.it', 'COMMESSO', '2021-08-20', 1520.00, null, 47, null, null, null, null),
 ('Elisa', 'Pellegrini', '1995-11-05', 'PLLELS95S45H501S', '3312233667', 'e.pellegrini@email.it', 'COMMESSO', '2023-03-12', 1510.00, null, 48, null, null, null, null),
-('Renato', 'Carli', '1976-12-18', 'CRLRNT76T18F205T', '3209988112', 'r.carli@email.it', 'COMMESSO', '2017-06-01', 1600.00, null, 49, null, null, null, null),
+('Renato', 'Carling', '1978-11-08', 'CRLRNT76T18F205T', '3209988112', 'r.carli@email.it', 'COMMESSO', '2017-06-01', 1600.00, null, 49, null, null, null, null),
 ('Vanessa', 'Bosi', '1992-05-30', 'BSLVNS92E70L219V', '3487766554', 'v.bosi@email.it', 'COMMESSO', '2022-01-15', 1525.00, null, 50, null, null, null, null),
 ('Tommaso', 'Rinaldi', '1988-02-14', 'RLNTMS88B14H501Q', '3332211445', 't.rinaldi@email.it', 'COMMESSO', '2020-05-10', 1545.00, null, 51, null, null, null, null),
 ('Cinzia', 'Neri', '1990-03-12', 'NRRCNZ90C52F205R', '3296655443', 'c.neri90@email.it', 'COMMESSO', '2021-04-20', 1530.00, null, 52, null, null, null, null),
@@ -226,6 +226,12 @@ values
 ('Valeria', 'Bosi', '1995-01-18', 'BSOVLR95A58L219Z', '3317766554', 'v.bosi@email.it', 'MANUTENTORE', '2023-06-20', 1890.00, null, null, null, null, null, null),
 ('Daniele', 'Rizzo', '1986-02-12', 'RZZDNL86B12F205X', '3298877661', 'd.rizzo@email.it', 'MANUTENTORE', '2020-07-01', 1915.00, null, null, null, null, null, null);
 
+-- insert into lavoratore(nome, cognome, dataNascita, CF, numeroTelefono, e_mail, mansione, dataInizioContratto, stipendio,
+-- 						  codiceAttivita_puntoRistoro, codiceAttivita_negozio, nomeGiostra, nomeAreaTematica, nomeRuota,
+--                        nomeAttrazionePaura)
+-- values
+
+                        
 insert into attrazione_di_paura(nomeAttrazionePaura, disponibilita, prezzoAggiuntivo, dataInizio, dataFine)
 values ('Phobia', 1, 15, '2026-04-01', '2026-10-31'), ('Mortal Circus', 1, 12, '2026-10-01', '2026-10-31'),
 		('Acid Rain', 1, 0, '2026-10-01', '2026-10-31'), ('Llorona', 1, 0, '2026-04-01', '2026-10-31'),
