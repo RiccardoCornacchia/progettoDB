@@ -34,6 +34,15 @@ ORDER BY frequenzaTotale
 LIMIT 3; 
 /* 6. Dato un numero n di anni, visualizzare gli eventi tenuti negli ultimi n anni */
 SELECT *
-FROM EVENTO
-WHERE dataEvento >= DATE_SUB(current_date(), INTERVAL 4 YEAR);
+FROM EVENTO e
+WHERE e.data >= DATE_SUB(current_date(), INTERVAL 3 YEAR);
 /* 7. Quali attività commerciali hanno fatturato di più */
+SELECT 
+    a.nomeAttivita, 
+    a.tipologiaAttivita, 
+    SUM(u.prezzoAcquisto) AS fatturatoTotale 
+FROM ATTIVITA_COMMERCIALE a
+JOIN USUFRUIZIONE u ON a.codiceAttivita = u.codiceAttivita
+WHERE a.tipologiaAttivita IN ('puntiRistoro', 'salaGiochi', 'NegozioSouvenirs')
+GROUP BY a.nomeAttivita, a.tipologiaAttivita
+ORDER BY fatturatoTotale DESC;
