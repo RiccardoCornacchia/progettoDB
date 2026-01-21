@@ -18,8 +18,9 @@ ORDER BY biglietti_comprati DESC
 LIMIT 10;
 
 SELECT L.nome, L.cognome, L.mansione,
-IF(T.data_turno = '2026-07-28' AND '12:00:00' BETWEEN T.ora_inizio AND T.ora_fine, 'Sì', 'No') AS attualmente_a_lavoro
+IF(T.data = '2026-07-28' AND '12:00:00' BETWEEN T.oraInizio AND T.oraFine, 'Sì', 'No') AS attualmente_a_lavoro
 FROM lavoratore L JOIN turno_di_lavoro T ON L.CF = T.CF
+AND T.data = '2026-07-28'
 ORDER BY L.dataInizioContratto ASC
 LIMIT 10;
 
@@ -28,7 +29,7 @@ FROM lavoratore
 GROUP BY mansione
 ORDER BY stipendio_medio DESC;
 
-SELECT tipoGuasto, impiantoInManutenzione, nomeRuota, nomeGiostra, nomeAreaTematiche, nomeAttrazionePaura,
+SELECT tipoGuasto, impiantoInManutenzione, nomeRuota, nomeGiostra, nomeAreaTematica, nomeAttrazionePaura,
 	DATEDIFF(IFNULL(dataFine, curdate()), dataInizio) AS giorni_in_manutenzione
 FROM Manutenzione
 ORDER BY giorni_in_manutenzione DESC
