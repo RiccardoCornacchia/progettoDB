@@ -17,10 +17,10 @@ GROUP BY V.CF
 ORDER BY biglietti_comprati DESC
 LIMIT 10;
 
-SELECT L.nome, L.cognome, L.mansione,
+SELECT L.nome, L.cognome, L.mansione, L.dataInizioContratto,
 IF(T.data = '2026-07-28' AND '12:00:00' BETWEEN T.oraInizio AND T.oraFine, 'Sì', 'No') AS attualmente_a_lavoro
 FROM lavoratore L JOIN turno_di_lavoro T ON L.CF = T.CF
-AND T.data = '2026-07-28'
+WHERE T.data = '2026-07-28'
 ORDER BY L.dataInizioContratto ASC
 LIMIT 10;
 
