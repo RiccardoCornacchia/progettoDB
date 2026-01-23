@@ -249,13 +249,13 @@ insert into bagno(disponibilita, codiceBagno)
 values (1, 1), (1, 2), (0, 3), (1, 4), (1, 5), (1, 6), (1, 7), (1, 8), (1, 9), (0, 10), (1, 11), (1, 12);
 
 insert into biglietto(codiceBiglietto, nomeBiglietto)
-values (1, 'Giornaliero'), (2, 'Flash Pass'), (3, 'Pomeridiano'), (4, '2 giorni con pernottamento'),
+values (1, 'Pomeridiano'), (2, 'Flash Pass'), (3, 'Pomeridiano'), (4, '2 giorni con pernottamento'),
 		(5, 'Giornaliero'), (6, 'Pomeridiano'), (7, 'Pomeridiano'), (8, 'Flash Pass'),
-        (9, 'Giornaliero'), (10, 'Flash Pass'), (11, '2 giorni con pernottamento'), (12, 'Flash Pass'),
-        (13, 'Pomeridiano'), (14, 'Flash Pass'), (15, 'Giornaliero'), (16, '2 giorni con pernottamento'),
-        (17, 'Giornaliero'), (18, '2 giorni con pernottamento'), (19, 'Pomeridiano'), (20, 'Giornaliero'),
-        (21, 'Pomeridiano'), (22, 'Flash Pass'), (23, 'Giornaliero'), (24, 'Giornaliero'),
-        (25, 'Giornaliero'), (26, '2 giorni con pernottamento'), (27, 'Flash Pass'), (28, 'Flash Pass'),
+        (9, 'Giornaliero'), (10, 'Flash Pass'), (11, 'Pomeridiano'), (12, 'Flash Pass'),
+        (13, 'Pomeridiano'), (14, 'Pomeridiano'), (15, 'Giornaliero'), (16, '2 giorni con pernottamento'),
+        (17, 'Pomeridiano'), (18, '2 giorni con pernottamento'), (19, 'Pomeridiano'), (20, 'Giornaliero'),
+        (21, 'Pomeridiano'), (22, 'Pomeridiano'), (23, 'Giornaliero'), (24, 'Giornaliero'),
+        (25, 'Pomeridiano'), (26, '2 giorni con pernottamento'), (27, 'Flash Pass'), (28, 'Pomeridiano'),
         (29, 'Pomeridiano'), (30, 'Giornaliero'), (31, '2 giorni con pernottamento'), (32, 'Pomeridiano'),
         (33, 'Flash Pass'), (34, 'Giornaliero'), (35, 'Giornaliero'), (36, 'Pomeridiano'),
         (37, 'Flash Pass'), (38, 'Giornaliero'), (39, 'Pomeridiano'), (40, 'Flash Pass'),
@@ -265,13 +265,13 @@ values (1, 'Giornaliero'), (2, 'Flash Pass'), (3, 'Pomeridiano'), (4, '2 giorni 
         (53, 'Giornaliero'), (54, 'Pomeridiano'), (55, 'Giornaliero'), (56, 'Giornaliero'),
         (57, 'Flash Pass'), (58, 'Pomeridiano'), (59, 'Giornaliero'), (60, 'Pomeridiano'),
         (61, '2 giorni con pernottamento'), (62, 'Flash Pass'), (63, 'Giornaliero'), (64, 'Giornaliero'),
-        (65, 'Pomeridiano'), (66, 'Flash Pass'), (67, 'Giornaliero'), (68, 'Flash Pass'), (69, 'Pomeridiano'),
-        (70, '2 giorni con pernottamento'), (71, 'Giornaliero'), (72, 'Pomeridiano'), (73, '2 giorni con pernottamento'),
-        (74, 'Flash Pass'), (75, 'Giornaliero'), (76, 'Pomeridiano'), (77, 'Flash Pass'), (78, 'Giornaliero'),
-        (79, 'Giornaliero'), (80, 'Pomeridiano'), (81, 'Flash Pass'), (82, '2 giorni con pernottamento'), (83, 'Giornaliero'),
-        (84, 'Pomeridiano'), (85, 'Flash Pass'), (86, 'Giornaliero'), (87, 'Giornaliero'), (88, 'Pomeridiano'),
-        (89, 'Flash Pass'), (90, 'Giornaliero'), (91, '2 giorni con pernottamento'), (92, 'Pomeridiano'), (93, 'Flash Pass'),
-        (94, 'Giornaliero'), (95, 'Giornaliero'), (96, 'Pomeridiano'), (97, 'Flash Pass'),
+        (65, 'Pomeridiano'), (66, 'Flash Pass'), (67, 'Giornaliero'), (68, 'Flash Pass'), (69, 'Flash Pass'),
+        (70, '2 giorni con pernottamento'), (71, 'Flash Pass'), (72, 'Pomeridiano'), (73, '2 giorni con pernottamento'),
+        (74, 'Flash Pass'), (75, 'Giornaliero'), (76, 'Flash Pass'), (77, 'Flash Pass'), (78, 'Giornaliero'),
+        (79, 'Flash Pass'), (80, 'Pomeridiano'), (81, 'Flash Pass'), (82, '2 giorni con pernottamento'), (83, 'Giornaliero'),
+        (84, 'Flash Pass'), (85, 'Flash Pass'), (86, 'Giornaliero'), (87, 'Giornaliero'), (88, 'Flash Pass'),
+        (89, 'Flash Pass'), (90, 'Giornaliero'), (91, 'Flash Pass'), (92, 'Pomeridiano'), (93, 'Flash Pass'),
+        (94, 'Giornaliero'), (95, 'Flash Pass'), (96, 'Pomeridiano'), (97, 'Flash Pass'),
         (98, '2 giorni con pernottamento'), (99, 'Giornaliero'), (100, 'Pomeridiano'), (101, 'Giornaliero'),
 		(102, 'Pomeridiano'), (103, '2 giorni con pernottamento'), (104, 'Giornaliero'), (105, 'Pomeridiano'),
 		(106, '2 giorni con pernottamento'), (107, 'Giornaliero'), (108, 'Pomeridiano'), (109, '2 giorni con pernottamento'),
@@ -302,7 +302,10 @@ values (1, 'Giornaliero'), (2, 'Flash Pass'), (3, 'Pomeridiano'), (4, '2 giorni 
 		(226, 'Giornaliero'), (227, 'Giornaliero'), (228, 'Giornaliero'), (229, 'Giornaliero'), (230, 'Giornaliero'),
 		(231, 'Giornaliero'), (232, 'Giornaliero'), (233, 'Giornaliero'), (234, 'Giornaliero'), (235, 'Giornaliero'),
 		(236, 'Giornaliero'), (237, 'Giornaliero'), (238, 'Giornaliero'), (239, 'Giornaliero'), (240, 'Giornaliero'),
-		(241, 'Giornaliero');
+		(241, 'Giornaliero'), (242, 'Pomeridiano'), (244, 'Giornaliero'), (255, 'Giornaliero'), (243, 'Pomeridiano'), 
+        (246, 'Giornaliero'), (247, 'Giornaliero'), (248, 'Pomeridiano'), (249, 'Pomeridiano'), (250, 'Pomeridiano'), 
+        (251, 'Giornaliero'), (252, 'Giornaliero'), (253, 'Giornaliero'), (254, 'Giornaliero'), (256, 'Giornaliero'), 
+        (257, 'Giornaliero'), (258, 'Pomeridiano'), (259, 'Pomeridiano'), (260, 'Pomeridiano'); 
 
 insert into cassa(numeroCassa, CF, orarioApertura, orarioChiusura, stato)
 values  ('1', 'PNISND95B14H501F', '10:00:00', '19:00:00', true), ('2', 'LROMNC90E62F205L', '10:00:00', '19:00:00', true),
