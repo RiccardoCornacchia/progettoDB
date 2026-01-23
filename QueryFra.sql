@@ -585,6 +585,47 @@ INSERT INTO visitatore (nome, cognome, dataNascita, CF, numeroTelefono, e_mail, 
 ('Miro', 'Meli', '2014-09-14', 'MM14LK', NULL, NULL, 126),
 ('Clo', 'Basso', '2014-12-01', 'CB01QW', NULL, NULL, 115);
 
+INSERT INTO appartenenza (codiceGruppo, CF) VALUES 
+(1, 'MR12GH'), (1, 'SG22KL'), (1, 'LF15TY'), (1, 'AB08RE'), (1, 'TS29PL'), 
+(1, 'GM10MN'), (1, 'RC03CV'), (1, 'EN18BN'), (1, 'GR25XC'), (1, 'AF12FG'), 
+(1, 'EM05OP'), (1, 'GV01RT'), (1, 'FS27QW'), (1, 'BG09AS'), (1, 'AB20DF'), 
+(1, 'VL14GH'), (1, 'DP11JK'), (1, 'LM30LZ'), (1, 'FV04XN'), (1, 'MG17PO'), 
+(1, 'LD28MA'), (1, 'CP06SD'), (1, 'SF22VB'), (1, 'NB15ER'), (1, 'CP08UI');
+
+INSERT INTO appartenenza (codiceGruppo, CF) VALUES 
+(2, 'VD12ZX'),(2, 'MS25KL'),(2, 'KR15MN'),(2, 'AG08OP'),(2, 'MB30QW'),
+(2, 'GN10ER'),(2, 'CF22TY'),(2, 'DP14UI'),(2, 'YC05AS'),(2, 'SV19DF'),
+(2, 'IM03GH'),(2, 'ES27JK'),(2, 'TM06LZ'),(2, 'MP31XC'),(2, 'AF20VB');
+
+INSERT INTO appartenenza (codiceGruppo, CF) VALUES 
+(4, 'PG10BN'), (4, 'LS22MK'),(4, 'FM05JH'),(4, 'AB19RT'),(4, 'GP13WE'),
+(4, 'MC30CV'),(4, 'BB08FG'),(4, 'VF21OP'),(4, 'DP18SD'),(4, 'NA06VB'),
+(4, 'ZC24LK'),(4, 'MF12QW'),(4, 'EM28ER'),(4, 'LC14TY'),(4, 'GV03UI'),
+(4, 'RO07AS'),(4, 'IS28DF'),(4, 'AD22GH'),(4, 'UF19JK'),(4, 'IP30LZ'),
+(4, 'OG15XC'),(4, 'TM01VB'),(4, 'LR12SD'),(4, 'CB09NM'),(4, 'EP22LK');
+
+INSERT INTO appartenenza (codiceGruppo, CF) VALUES 
+(6, 'RF17QW'),(6, 'AS28ER'),(6, 'VM04TY'),(6, 'MB22UI'),(6, 'AM16OP'),
+(6, 'LV09AS'),(6, 'IS01DF'),(6, 'OG07GH'),(6, 'NB19JK'),(6, 'LL05LZ'),
+(6, 'AP20XC'),(6, 'AM06VB'),(6, 'LV13SD'),(6, 'AG30NM'),(6, 'ID08LK'),
+(6, 'AP01QW'),(6, 'UF11ER'),(6, 'IB18TY'),(6, 'IP02UI'),(6, 'IM24OP'),
+(6, 'ON12AS'),(6, 'LR06DF');
+
+INSERT INTO appartenenza (codiceGruppo, CF) VALUES 
+(7, 'EF15GH'),(7, 'NP21JK'),(7, 'OS03LZ'),(7, 'TA19XC'),(7, 'NC28VB'),
+(7, 'MF12SD'),(7, 'OM21NM'),(7, 'MC14LK'),(7, 'OV08QW'),(7, 'DO17ER'),
+(7, 'AS25TY'),(7, 'LD04UI'),(7, 'EF19OP'),(7, 'EP11AS'),(7, 'IG22DF'),
+(7, 'ZM09GH'),(7, 'LR27JK'),(7, 'AB15LZ'),(7, 'TP03XC'),(7, 'PF18VB'),
+(7, 'LN29SD'),(7, 'BG07NM'),(7, 'MM14LK'),(7, 'CB01QW');
+
+INSERT INTO appartenenza (codiceGruppo, CF) VALUES 
+(3, 'ML19AA'),(3, 'VB25CC'),(3, 'IG21GG'),(3, 'SR10KK'),(3, 'RM23NN'), 
+(3, 'AC18QQ'),(3, 'DA31VV'), (3, 'EM12YY'), (3, 'GO24CB'),(3, 'SP29GF');
+
+INSERT INTO appartenenza (codiceGruppo, CF) VALUES 
+(5, 'CN22AA'),(5, 'VB03CC'), (5, 'GM05HH'), (5, 'MF22ZZ'), (5, 'TR12UU'), 
+(5, 'RC08GH'),(5, 'MC04XC'),(5, 'MD09LK');
+
 -- 20 persone: data 2023-07-16
 INSERT INTO acquisto_a (CF, codAbbonamento, data, orario) VALUES
 ('MR12AB', 1, '2023-07-16', '10:12:45'), ('LB05CD', 2, '2023-07-16', '10:45:12'),
