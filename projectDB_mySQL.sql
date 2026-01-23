@@ -484,7 +484,7 @@ alter table LAVORATORE add constraint FKLAVORO_FK
      references ATTIVITA_COMMERCIALE (codiceAttivita);
 
 alter table LAVORATORE add constraint FKIMPIEGO_FK
-     foreign key (odiceAttivita_negozio)
+     foreign key (codiceAttivita_negozio)
      references ATTIVITA_COMMERCIALE (codiceAttivita);
 
 alter table LAVORATORE add constraint FKGESTIONE_RUOTA_FK
@@ -785,10 +785,10 @@ create unique index ID_LAVORATORE_IND
      on LAVORATORE (CF);
 
 create index FKLAVORO_IND
-     on LAVORATORE (codiceAttivita);
+     on LAVORATORE (codiceAttivita_puntoRistoro);
 
 create index FKIMPIEGO_IND
-     on LAVORATORE (IMP_codiceAttivita);
+     on LAVORATORE (codiceAttivita_negozio);
 
 create index FKGESTIONE_RUOTA_IND
      on LAVORATORE (nomeRuota);
