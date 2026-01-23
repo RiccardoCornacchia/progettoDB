@@ -27,7 +27,7 @@ values
 ('Marco', 'Galli', '1988-03-12', 'GLLMRC88B14F202E', '3293344557', 'm.galli2@email.it', 'RISTORATORE', '2022-10-11', 1340.00, 2, null, null, null, null, null),
 ('Elena', 'Rizzo', '1990-04-03', 'RZZLNE90P48L213W', '3407788991', 'e.rizzo2@email.it', 'RISTORATORE', '2020-03-15', 1315.00, 2, null, null, null, null, null),
 ('Paolo', 'Ferrari', '1975-04-16', 'FRRPLA75E19H502S', '3312233446', 'p.ferrari2@email.it', 'RISTORATORE', '2019-07-15', 1325.00, 8, null, null, null, null, null),
-('Sofia', 'Russo', '1998-02-22', 'RSSSFO98A65F202X', '3456677889', 's.russo2@email.it', 'RISTORATORE', '2023-08-01', 1345.00, 12, null, null, null, null, null),
+('Sofia', 'Russo', '1998-02-22', 'RSSSFO98A65F202X', '3456677888', 's.russo2@email.it', 'RISTORATORE', '2023-08-01', 1345.00, 12, null, null, null, null, null),
 
 ('Fabio', 'Guerra', '1986-06-18', 'GRRFBA86H18L219T', '3314455660', 'f.guerra@email.it', 'COMMESSO', '2023-04-10', 1530.00, null, 17, null, null, null, null),
 ('Sara', 'Bernardi', '1995-09-01', 'BRNSRA95P41H501N', '3421122334', 's.bernardi@email.it', 'COMMESSO', '2022-08-20', 1550.00, null, 18, null, null, null, null),
@@ -73,11 +73,11 @@ values
 
 ('Christian', 'Parisi', '1984-11-15', 'PRSCRS84S15L219A', '3402233445', 'c.parisi@email.it', 'ADDETTO PARCO', '2022-06-15', 1420.00, null, null, 'Katun', null, null, null),
 ('Noemi', 'Riva', '1998-03-30', 'RVINMI98C70H502R', '3318899001', 'n.riva@email.it', 'ADDETTO PARCO', '2023-09-12', 1400.00, null, null, 'Desmo Race', null, null, null),
-('Claudio', 'Fabbri', '1982-05-05', 'FBBCLD82E05F207C', '3426677889', 'c.fabbri@email.it', 'ADDETTO PARCO', '2021-02-20', 1410.00, null, null, 'Gold Digger', null, null, null),
+('Claudio', 'Fabbri', '1982-05-05', 'FBBCLD82E05F207C', '3426677889', 'c.fabbri2@email.it', 'ADDETTO PARCO', '2021-02-20', 1410.00, null, null, 'Gold Digger', null, null, null),
 ('Sabrina', 'Donati', '1990-04-18', 'DNTSBN90D58L218R', '3354455667', 's.donati@email.it', 'ADDETTO PARCO', '2020-05-15', 1430.00, null, null, 'Master Thai', null, null, null),
 ('Emanuele', 'Palmieri', '1987-07-25', 'PLMMNL87L25H506F', '3481122334', 'e.palmieri@email.it', 'ADDETTO PARCO', '2023-01-05', 1440.00, null, null, 'Rexplorer', null, null, null),
 ('Rachele', 'Fiori', '1993-10-12', 'FRIRCL93R52F208E', '3203344556', 'r.fiori@email.it', 'ADDETTO PARCO', '2022-08-10', 1415.00, null, null, 'Buffalo Bill Rodeo', null, null, null),
-('Mirko', 'Lupi', '1985-11-20', 'LPUMRK85S20L211H', '3345566778', 'm.lupi@email.it', 'ADDETTO PARCO', '2021-03-12', 1425.00, null, null, 'Diavel Ring', null, null, null),
+('Mirko', 'Lupi', '1985-11-20', 'LPUMRK85S20L211H', '3345566778', 'm.lupi2@email.it', 'ADDETTO PARCO', '2021-03-12', 1425.00, null, null, 'Diavel Ring', null, null, null),
 ('Ilaria', 'Vitali', '1994-02-28', 'VTLRLI94B68H501P', '3478899001', 'i.vitali@email.it', 'ADDETTO PARCO', '2023-04-15', 1405.00, null, null, 'Vortex', null, null, null),
 ('Valerio', 'Mariani', '1981-06-08', 'MRNVLR81H08F203L', '3332233445', 'v.mariani@email.it', 'ADDETTO PARCO', '2020-11-01', 1435.00, null, null, 'Titan', null, null, null),
 ('Camilla', 'Sartori', '1996-09-12', 'SRTCML96P52L218M', '3404455667', 'c.sartori@email.it', 'ADDETTO PARCO', '2022-02-20', 1410.00, null, null, 'Sky Piercer', null, null, null),
@@ -85,7 +85,7 @@ values
 ('Paola', 'Ferri', '1991-01-10', 'FRRPLA91A50F207N', '3428899001', 'p.ferri@email.it', 'ADDETTO PARCO', '2021-12-15', 1400.00, null, null, 'Cobra Express', null, null, null),
 ('Mauro', 'Gatti', '1984-08-22', 'GTTMRA84M22L217P', '3351122334', 'm.gatti@email.it', 'ADDETTO PARCO', '2022-05-01', 1430.00, null, null, 'Meteorite', null, null, null),
 ('Elisa', 'Pellegrini', '1995-11-05', 'PLLELS95S45H503S', '3484455667', 'e.pellegrini2@email.it', 'ADDETTO PARCO', '2023-07-20', 1415.00, null, null, 'Reset', null, null, null),
-('Renato', 'Carli', '1976-12-18', 'CRLRNT76T18F201T', '3209988776', 'r.carli@email.it', 'ADDETTO PARCO', '2019-03-10', 1420.00, null, null, 'Rio Bravo', null, null, null),
+('Renato', 'Carli', '1976-12-18', 'CRLRNT76T18F201T', '3209988776', 'r.carli2@email.it', 'ADDETTO PARCO', '2019-03-10', 1420.00, null, null, 'Rio Bravo', null, null, null),
 ('Vanessa', 'Basile', '1992-05-30', 'BSLVNS92E70L218V', '3347788990', 'v.basile@email.it', 'ADDETTO PARCO', '2021-10-01', 1440.00, null, null, 'Autosplash', null, null, null),
 ('Alberto', 'Genovese', '1983-05-14', 'GNVLBR83E14F205H', '3331122334', 'a.genovese@email.it', 'ADDETTO PARCO', '2020-02-15', 1450.00, null, null, 'El Dorado Falls', null, null, null),
 ('Simona', 'Mastri', '1992-08-22', 'MSTRMN92M62L219P', '3475566778', 's.mastri@email.it', 'ADDETTO PARCO', '2021-06-10', 1410.00, null, null, 'Raratonga', null, null, null),
@@ -94,7 +94,7 @@ values
 ('Daniele', 'Grisolia', '1980-09-01', 'GRSDNL80P01L219Y', '3382233445', 'd.grisolia@email.it', 'ADDETTO PARCO', '2018-05-14', 1460.00, null, null, 'Aquila Tonante', null, null, null),
 ('Elena', 'Bernardi', '1994-01-25', 'BRNLNE94A65H501J', '3406677889', 'e.bernardi@email.it', 'ADDETTO PARCO', '2023-01-12', 1415.00, null, null, 'Torri Geronimo', null, null, null),
 ('Paolo', 'Rizzo', '1988-06-18', 'RZZPLA88H18F205W', '3351122990', 'p.rizzo88@email.it', 'ADDETTO PARCO', '2020-11-01', 1425.00, null, null, 'Boots'' Balloons', null, null, null),
-('Marta', 'Fontana', '1991-03-03', 'FNTMRT91C43L219G', '3427788991', 'm.fontana@email.it', 'ADDETTO PARCO', '2021-08-15', 1440.00, null, null, 'Bicisauro', null, null, null),
+('Marta', 'Fontana', '1991-03-03', 'FNTMRT91C43L219G', '3427788991', 'm.fontana2@email.it', 'ADDETTO PARCO', '2021-08-15', 1440.00, null, null, 'Bicisauro', null, null, null),
 ('Stefano', 'Moretti', '1985-07-28', 'MRTSFN85L28H501R', '3318899002', 's.moretti@email.it', 'ADDETTO PARCO', '2019-05-30', 1430.00, null, null, 'Cowabunga Carts', null, null, null),
 ('Chiara', 'Longo', '1997-12-05', 'LNGCHR97T45F205L', '3483344556', 'c.longo97@email.it', 'ADDETTO PARCO', '2023-05-20', 1400.00, null, null, 'Jellyfish Jam', null, null, null),
 ('Giacomo', 'Pellegrino', '1982-10-15', 'PLLGCM82R15L219X', '3291122334', 'g.pellegrino@email.it', 'ADDETTO PARCO', '2020-04-12', 1445.00, null, null, 'Kiddy Monster', null, null, null),
@@ -143,7 +143,7 @@ values
 ('Valentina', 'Dotti', '1996-01-30', 'DTTVNT96A70F205P', '3490011334', 'v.dotti@email.it', 'ADDETTO SICUREZZA', '2023-04-15', 1630.00, null, null, 'Raratonga', null, null, null),
 ('Fabio', 'Moretti', '1981-11-14', 'MRTFBA81S14L219Q', '3317788001', 'f.moretti@email.it', 'ADDETTO SICUREZZA', '2019-06-20', 1655.00, null, null, 'Rubble''s Rapids', null, null, null),
 ('Elena', 'Parodi', '1994-09-02', 'PRDLNE94P42H501B', '3426677112', 'e.parodi@email.it', 'ADDETTO SICUREZZA', '2022-02-10', 1620.00, null, null, 'Adventure Bay Carousel', null, null, null),
-('Daniele', 'Bruno', '1988-07-28', 'BRNDNL88L28F205M', '3354455883', 'd.bruno@email.it', 'ADDETTO SICUREZZA', '2021-09-01', 1645.00, null, null, 'Aquila Tonante', null, null, null),
+('Daniele', 'Bruno', '1988-07-28', 'BRNDNL88L28F205M', '3354455883', 'd.bruno2@email.it', 'ADDETTO SICUREZZA', '2021-09-01', 1645.00, null, null, 'Aquila Tonante', null, null, null),
 ('Chiara', 'Serra', '1993-02-15', 'SRRCHR93B55L219Y', '3481122667', 'c.serra@email.it', 'ADDETTO SICUREZZA', '2023-02-28', 1635.00, null, null, 'Torri Geronimo', null, null, null),
 ('Alessio', 'De Luca', '1985-10-10', 'DLCLSS85R10H501W', '3203344889', 'a.deluca@email.it', 'ADDETTO SICUREZZA', '2020-11-12', 1650.00, null, null, 'Boots'' Balloons', null, null, null),
 ('Federica', 'Costa', '1990-12-04', 'CSTFRC90T44F205G', '3345566112', 'f.costa@email.it', 'ADDETTO SICUREZZA', '2021-07-20', 1625.00, null, null, 'Bicisauro', null, null, null),
@@ -187,7 +187,7 @@ values
 ('Sabrina', 'Vitali', '1991-06-18', 'VTLSBR91H58H501F', '3475566778', 's.vitali@email.it', 'PULITORE', '2022-12-01', 1280.00, null, null, null, null, null, null),
 ('Valerio', 'Mariani', '1988-09-01', 'MRNVLR88P01F205W', '3331122334', 'v.mariani@email.it', 'PULITORE', '2020-02-14', 1250.00, null, null, null, null, null, null),
 ('Elisa', 'Marchetti', '1997-12-12', 'MRCHLS97T52L219K', '3402233445', 'e.marchetti@email.it', 'PULITORE', '2023-06-15', 1290.00, null, null, null, null, null, null),
-('Mauro', 'Caruso', '1983-08-28', 'CRSMRA83M28H501X', '3318899001', 'm.caruso@email.it', 'PULITORE', '2021-08-10', 1270.00, null, null, null, null, null, null),
+('Mauro', 'Caruso', '1983-08-28', 'CRSMRA83M28H501X', '3318899001', 'm.caruso3@email.it', 'PULITORE', '2021-08-10', 1270.00, null, null, null, null, null, null),
 ('Vanessa', 'Bernardi', '1994-11-20', 'BRNVNS94S60F205C', '3426677889', 'v.bernardi@email.it', 'PULITORE', '2022-09-20', 1255.00, null, null, null, null, null, null),
 ('Tommaso', 'Giraudo', '1981-04-04', 'GRDTMS81D04L219D', '3354455667', 't.giraudo@email.it', 'PULITORE', '2020-03-12', 1285.00, null, null, null, null, null, null),
 ('Cinzia', 'Donati', '1996-10-10', 'DNTCNZ96R50H501H', '3481122334', 'c.donati@email.it', 'PULITORE', '2023-04-05', 1275.00, null, null, null, null, null, null),
@@ -208,7 +208,7 @@ values
 ('Davide', 'Mori', '1988-09-08', 'MRIDVD88P08L219M', '3209988776', 'd.mori@email.it', 'CASSIERE', '2021-10-10', 1360.00, null, null, null, null, null, null),
 ('Paola', 'Berti', '1996-12-12', 'BRTPLA96T52H501P', '3346677889', 'p.berti@email.it', 'CASSIERE', '2023-01-20', 1390.00, null, null, null, null, null, null),
 ('Luca', 'Fante', '1993-04-04', 'FNTLCA93D04F205D', '3405566778', 'l.fante@email.it', 'CASSIERE', '2022-04-12', 1375.00, null, null, null, null, null, null),
-('Sara', 'Villa', '1997-07-15', 'VLLSRA97L55L219V', '3312233445', 's.villa@email.it', 'CASSIERE', '2023-05-05', 1385.00, null, null, null, null, null, null),
+('Sara', 'Villa', '1997-07-15', 'VLLSRA97L55L219V', '3312233449', 's.villa@email.it', 'CASSIERE', '2023-05-05', 1385.00, null, null, null, null, null, null),
 ('Fabio', 'Longo', '1991-08-14', 'LNGFBA91M14F205K', '3334455112', 'f.longo@email.it', 'CASSIERE', '2023-02-10', 1375.00, null, null, null, null, null, null),
 ('Elena', 'Santi', '1994-03-25', 'SNTLNE94C65L219J', '3471122991', 'e.santi@email.it', 'CASSIERE', '2022-11-05', 1380.00, null, null, null, null, null, null),
 ('Roberto', 'Mele', '1989-10-02', 'MLERRT89R02H501G', '3209988443', 'r.mele@email.it', 'CASSIERE', '2021-06-20', 1365.00, null, null, null, null, null, null),
@@ -228,7 +228,7 @@ values
 
 -- insert into lavoratore(nome, cognome, dataNascita, CF, numeroTelefono, e_mail, mansione, dataInizioContratto, stipendio,
 -- 						  codiceAttivita_puntoRistoro, codiceAttivita_negozio, nomeGiostra, nomeAreaTematica, nomeRuota,
---                        nomeAttrazionePaura)
+-- 						  nomeAttrazionePaura)
 -- values
 
                         
