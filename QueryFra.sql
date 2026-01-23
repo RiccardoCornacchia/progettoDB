@@ -112,7 +112,7 @@ INSERT INTO abbonamento (scadenza, codAbbonamento, nomeAbbonamento) VALUES
 ('2024-10-31', 134, '5 ingressi'), 
 ('2024-10-31', 135, 'Stagionale');
 
-INSERT INTO visitatore (nome, cognome, dataNascita, CF, numeroTelefono, e_mail, altezzaVisitatore, codiceGruppo) VALUES
+INSERT INTO visitatore (nome, cognome, dataNascita, CF, numeroTelefono, e_mail, altezzaVisitatore) VALUES
 ('Mario','Rossi','2004-10-12','MR12AB','3333000001','mario.rossi@gmail.com',175),
 ('Luca','Bianchi','2001-03-05','LB05CD','3333000002','luca.bianchi@gmail.com',182),
 ('Anna','Verdi','1999-07-22','AV22EF','3333000003','anna.verdi@gmail.com',165),
@@ -888,11 +888,11 @@ INSERT INTO acquisto_b (CF, codiceBiglietto, data, orario) VALUES
 ('FM08BB', 252, '2026-07-11', '10:24:19'), 
 ('LD13EE', 253, '2025-06-16', '13:33:33'), 
 ('AR23JI', 254, '2024-05-12', '17:20:33'),
-('AR23JI', 255, '2026-05-18', '10:17:22'), 
-('FG11PQ', 256, '2023-09-13', '16:23:00'),
-('ML19AA', 257, '2025-05-14', '10:19:23'), 
-('ML19AA', 258, '2026-04-23', '10:45:56'), 
-('CN22AA', 259, '2026-04-23', '14:09:12');
+('AR23JI', 256, '2026-05-18', '10:17:22'), 
+('FG11PQ', 257, '2023-09-13', '16:23:00'),
+('ML19AA', 258, '2025-05-14', '10:19:23'), 
+('ML19AA', 259, '2026-04-23', '10:45:56'), 
+('CN22AA', 260, '2026-04-23', '14:09:12');
 
 
 INSERT INTO vendita_a (codAbbonamento, data, orario, numeroCassa) VALUES
@@ -1096,9 +1096,9 @@ INSERT INTO vendita_b (codiceBiglietto, data, orario, numeroCassa) VALUES
 (248, '2024-06-18', '17:08:52', 9), (249, '2025-08-07', '15:10:22', 5),
 (250, '2023-07-16', '11:37:23', 7), (251, '2025-08-12', '11:55:08', 3),
 (252, '2026-07-11', '10:24:19', 10), (253, '2025-06-16', '13:33:33', 6),
-(254, '2024-05-12', '17:20:33', 12), (255, '2026-05-18', '10:17:22', 1),
-(256, '2023-09-13', '16:23:00', 8), (257, '2025-05-14', '10:19:23', 4),
-(258, '2026-04-23', '10:45:56', 11), (259, '2026-04-23', '14:09:12', 2);
+(254, '2024-05-12', '17:20:33', 12), (256, '2026-05-18', '10:17:22', 1),
+(257, '2023-09-13', '16:23:00', 8), (258, '2025-05-14', '10:19:23', 4),
+(259, '2026-04-23', '10:45:56', 11), (260, '2026-04-23', '14:09:12', 2);
 
 INSERT INTO sconto (nomeBiglietto, motivazione, percentuale) VALUES 
 ('Pomeridiano', 'Disabilità', 60),
