@@ -16,8 +16,7 @@ INSERT INTO gruppo (codiceGruppo, gruppoScuola) VALUES
 (5, false),
 (6, true),
 (7, true);
-INSERT INTO abbonamento (scadenza, codAbbonamento, nomeAbbonamento) VALUES
-('2025-10-31', 121, 'Stagionale');
+
 INSERT INTO abbonamento (scadenza, codAbbonamento, nomeAbbonamento) VALUES
 -- Acquisti del 2023
 ('2023-10-31', 1, 'Stagionale'), ('2023-10-31', 2, '5 ingressi'),
