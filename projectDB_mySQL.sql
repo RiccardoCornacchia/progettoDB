@@ -30,16 +30,14 @@ create table ACQUISTO_A (
      codAbbonamento int not null,
      data char(10) not null,
      orario varchar(10) not null,
-     constraint FKACQ_VIS_2_ID primary key (CF),
-     constraint FKACQ_ABB_ID unique (codAbbonamento));
+     constraint FKACQ_ABB_ID primary key (codAbbonamento));
 
 create table ACQUISTO_B (
      CF varchar(20) not null,
      codiceBiglietto int not null,
      data char(10) not null,
      orario varchar(10) not null,
-     constraint FKACQ_VIS_1_ID primary key (CF),
-     constraint FKACQ_BIG_ID unique (codiceBiglietto));
+     constraint FKACQ_BIG_ID primary key (codiceBiglietto));
 
 create table ACQUISTO_FOTO (
      codiceFoto int not null,
@@ -47,6 +45,11 @@ create table ACQUISTO_FOTO (
      orario char(10) not null,
      CF varchar(20) not null,
      constraint FKACQ_FOT_ID primary key (codiceFoto));
+
+create table APPARTENENZA (
+	  codiceGruppo int not null,
+	  CF varchar(20) not null,
+      constraint ID_APPARTENENZA_ID primary key (CF, codiceGruppo));
 
 create table AREA_TEMATICA (
      nomeAreaTematica varchar(20) not null,
@@ -154,7 +157,7 @@ create table LAVORATORE (
      stipendio decimal(10,2) not null,
      codiceAttivita_puntoRistoro int,
      codiceAttivita_negozio int,
-     nomeRuota varchar(20),
+     nomeRuota varchar(50),
      nomeGiostra varchar(20),
      nomeAreaTematica varchar(20),
      nomeAttrazionePaura varchar(30),
@@ -167,7 +170,7 @@ create table MANUTENZIONE (
      dataFine char(10),
      impiantoInManutenzione varchar(20) not null,
      nomeRuota varchar(20),
-     nomeGiostra varchar(20),
+     nomeGiostra varchar(50),
      nomeAreaTematica varchar(20),
      nomeAttrazionePaura varchar(20),
      constraint ID_MANUTENZIONE_ID primary key (codiceManutenzione));
@@ -221,11 +224,10 @@ create table SALITA (
      constraint ID_SALITA_ID primary key (CF, nomeGiostra, data, orario));
 
 create table SCONTO (
-     nomeBiglietto varchar(15) not null,
+     nomeBiglietto varchar(35) not null,
      motivazione varchar(15) not null,
      percentuale int not null,
-     constraint ID_SCONTO_ID primary key (nomeBiglietto, motivazione),
-     constraint FKAPPLICAZIONE_ID unique (nomeBiglietto));
+     constraint ID_SCONTO_ID primary key (nomeBiglietto, motivazione));
 
 create table SPETTACOLO (
      durataSpettacolo int not null,
@@ -313,7 +315,6 @@ create table VISITATORE (
      numeroTelefono bigint,
      e_mail varchar(30),
      altezzaVisitatore int not null,
-     codiceGruppo int,
      constraint ID_VISITATORE_ID primary key (CF));
 
 
@@ -345,6 +346,19 @@ alter table ACQUISTO_A add constraint FKACQ_ABB_FK
 alter table ACQUISTO_B add constraint FKACQ_VIS_1_FK
      foreign key (CF)
      references VISITATORE (CF);
+     
+ALTER TABLE `schema_relazionale_aggiornato`.`ACQUISTO_A` 
+DROP FOREIGN KEY `FKACQ_VIS_2_FK`;
+
+ALTER TABLE `schema_relazionale_aggiornato`.`ACQUISTO_A` 
+DROP PRIMARY KEY,
+ADD PRIMARY KEY (`codAbbonamento`),
+DROP INDEX `FKACQ_ABB_ID`;
+
+ALTER TABLE `schema_relazionale_aggiornato`.`ACQUISTO_A` 
+ADD CONSTRAINT `FKACQ_VIS_2_FK` 
+FOREIGN KEY (`CF`) 
+REFERENCES `VISITATORE` (`CF`);
 
 alter table ACQUISTO_B add constraint FKACQ_BIG_FK
      foreign key (codiceBiglietto)
@@ -357,6 +371,14 @@ alter table ACQUISTO_FOTO add constraint FKACQ_VIS_FK
 alter table ACQUISTO_FOTO add constraint FKACQ_FOT_FK
      foreign key (codiceFoto)
      references FOTO (codiceFoto);
+     
+alter table APPARTENENZA add constraint FKAPP_VIS_FK
+     foreign key (CF)
+     references VISITATORE (CF);
+
+alter table APPARTENENZA add constraint FKAPP_GRU_FK
+     foreign key (codiceGruppo)
+     references GRUPPO (codiceGruppo);
 
 -- Not implemented
 -- alter table AREA_TEMATICHE add constraint ID_AREA_TEMATICHE_CHK
@@ -681,10 +703,6 @@ alter table VENDITA_FOTO add constraint FKVEN_ATT_FK
      foreign key (codiceAttivita)
      references ATTIVITA_COMMERCIALE (codiceAttivita);
 
-alter table VISITATORE add constraint FKAPPARTENENZA_FK
-     foreign key (codiceGruppo)
-     references GRUPPO (codiceGruppo);
-
 
 -- Index Section
 -- _____________ 
@@ -695,13 +713,13 @@ create unique index ID_ABBONAMENTO_IND
 create index FKTIPO_A_IND
      on ABBONAMENTO (nomeAbbonamento);
 
-create unique index FKACQ_VIS_2_IND
+create index FKACQ_VIS_2_IND
      on ACQUISTO_A (CF);
 
 create unique index FKACQ_ABB_IND
      on ACQUISTO_A (codAbbonamento);
 
-create unique index FKACQ_VIS_1_IND
+create index FKACQ_VIS_1_IND
      on ACQUISTO_B (CF);
 
 create unique index FKACQ_BIG_IND
@@ -712,6 +730,15 @@ create index FKACQ_VIS_IND
 
 create unique index FKACQ_FOT_IND
      on ACQUISTO_FOTO (codiceFoto);
+
+create unique index ID_APPARTENENZA_IND
+     on APPARTENENZA (CF, codiceGruppo);
+
+create index FKAPP_VIS_IND
+     on APPARTENENZA (CF);
+
+create index FKAPP_GRU_IND
+     on APPARTENENZA (codiceGruppo);
 
 create unique index ID_AREA_TEMATICA_IND
      on AREA_TEMATICA (nomeAreaTematica);
@@ -925,7 +952,4 @@ create index FKVEN_ATT_IND
 
 create unique index ID_VISITATORE_IND
      on VISITATORE (CF);
-
-create index FKAPPARTENENZA_IND
-     on VISITATORE (codiceGruppo);
 
