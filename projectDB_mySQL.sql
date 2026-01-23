@@ -346,19 +346,6 @@ alter table ACQUISTO_A add constraint FKACQ_ABB_FK
 alter table ACQUISTO_B add constraint FKACQ_VIS_1_FK
      foreign key (CF)
      references VISITATORE (CF);
-     
-ALTER TABLE `schema_relazionale_aggiornato`.`ACQUISTO_A` 
-DROP FOREIGN KEY `FKACQ_VIS_2_FK`;
-
-ALTER TABLE `schema_relazionale_aggiornato`.`ACQUISTO_A` 
-DROP PRIMARY KEY,
-ADD PRIMARY KEY (`codAbbonamento`),
-DROP INDEX `FKACQ_ABB_ID`;
-
-ALTER TABLE `schema_relazionale_aggiornato`.`ACQUISTO_A` 
-ADD CONSTRAINT `FKACQ_VIS_2_FK` 
-FOREIGN KEY (`CF`) 
-REFERENCES `VISITATORE` (`CF`);
 
 alter table ACQUISTO_B add constraint FKACQ_BIG_FK
      foreign key (codiceBiglietto)
@@ -493,11 +480,11 @@ alter table ESIBIZIONE_S add constraint FKESI_LAV_FK
 --                  where TURNO_DI_LAVORO.CF = CF)); 
 
 alter table LAVORATORE add constraint FKLAVORO_FK
-     foreign key (codiceAttivita)
+     foreign key (codiceAttivita_puntoRistoro)
      references ATTIVITA_COMMERCIALE (codiceAttivita);
 
 alter table LAVORATORE add constraint FKIMPIEGO_FK
-     foreign key (IMP_codiceAttivita)
+     foreign key (codiceAttivita_negozio)
      references ATTIVITA_COMMERCIALE (codiceAttivita);
 
 alter table LAVORATORE add constraint FKGESTIONE_RUOTA_FK
@@ -798,10 +785,10 @@ create unique index ID_LAVORATORE_IND
      on LAVORATORE (CF);
 
 create index FKLAVORO_IND
-     on LAVORATORE (codiceAttivita);
+     on LAVORATORE (codiceAttivita_puntoRistoro);
 
 create index FKIMPIEGO_IND
-     on LAVORATORE (IMP_codiceAttivita);
+     on LAVORATORE (codiceAttivita_negozio);
 
 create index FKGESTIONE_RUOTA_IND
      on LAVORATORE (nomeRuota);
