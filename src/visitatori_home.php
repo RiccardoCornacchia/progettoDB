@@ -177,6 +177,39 @@ try {
             .banner-ticket { flex-direction: column; text-align: center; gap: 20px; }
         }
 
+        .site-footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-nav a {
+            color: #bdc3c7;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-nav a:hover {
+            color: #3498db; /* Colore accent che abbiamo usato nella pagina mansioni */
+        }
+
+        /* Stile specifico per evidenziare "Lavora con noi" */
+        .footer-link {
+            font-weight: bold;
+        }
+
     </style>
 </head>
 <body>
@@ -283,6 +316,19 @@ try {
         </div>
 
     </div>
+
+    <footer class="site-footer">
+    <div class="footer-content">
+        <p>&copy; Parco di divertimenti 2026</p>
+        <nav class="footer-nav">
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="contatti.php">Contatti</a></li>
+                <li><a href="mansioni_lavori_lato_cliente.php" class="footer-link">Lavora con noi</a></li>
+            </ul>
+        </nav>
+    </div>
+</footer>
 
 </body>
 </html>

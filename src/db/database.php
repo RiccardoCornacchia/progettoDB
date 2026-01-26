@@ -106,6 +106,13 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function getMansioni() {
+        $query = "SELECT DISTINCT mansione FROM LAVORATORE";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
     
 }
 ?>
