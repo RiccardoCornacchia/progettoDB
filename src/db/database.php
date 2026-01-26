@@ -40,6 +40,13 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+    /*GET Ruota Panoramica*/ 
+    public function getRuotaPanoramica() {
+        $stmt = $this->db->prepare("SELECT * FROM RUOTA_PANORAMICA");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
 
     /* GET Biglietti*/
     public function getTipologieBiglietti() {
@@ -98,5 +105,7 @@ class DatabaseHelper {
         $stmt->bind_param('s', $nomeBiglietto);
         return $stmt->execute();
     }
+
+    
 }
 ?>
