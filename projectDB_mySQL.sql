@@ -85,6 +85,7 @@ create table BAGNO (
 create table BIGLIETTO (
      codiceBiglietto int not null,
      nomeBiglietto varchar(35) not null,
+     dataValidita date not null,
      constraint ID_BIGLIETTO_ID primary key (codiceBiglietto));
 
 create table CASSA (
@@ -158,7 +159,7 @@ create table LAVORATORE (
      codiceAttivita_puntoRistoro int,
      codiceAttivita_negozio int,
      nomeRuota varchar(50),
-     nomeGiostra varchar(50),
+     nomeGiostra varchar(20),
      nomeAreaTematica varchar(20),
      nomeAttrazionePaura varchar(30),
      constraint ID_LAVORATORE_ID primary key (CF));
@@ -789,6 +790,9 @@ create index FKLAVORO_IND
 
 create index FKIMPIEGO_IND
      on LAVORATORE (codiceAttivita_negozio);
+     
+create unique index ID_LAVORATORE_EMAIL_IND
+	on LAVORATORE (e_mail);
 
 create index FKGESTIONE_RUOTA_IND
      on LAVORATORE (nomeRuota);
@@ -801,6 +805,9 @@ create index FKGESTIONE_AT_IND
 
 create index FKGESTIONE_AP_IND
      on LAVORATORE (nomeAttrazionePaura);
+
+create unique index ID_LAVORATORE_TELEFONO_IND
+	on LAVORATORE (numeroTelefono);
 
 create unique index ID_MANUTENZIONE_IND
      on MANUTENZIONE (codiceManutenzione);
