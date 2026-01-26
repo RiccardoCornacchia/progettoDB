@@ -159,7 +159,7 @@ create table LAVORATORE (
      codiceAttivita_puntoRistoro int,
      codiceAttivita_negozio int,
      nomeRuota varchar(50),
-     nomeGiostra varchar(20),
+     nomeGiostra varchar(50),
      nomeAreaTematica varchar(20),
      nomeAttrazionePaura varchar(30),
      constraint ID_LAVORATORE_ID primary key (CF));
