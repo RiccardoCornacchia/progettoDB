@@ -180,18 +180,26 @@ try {
         .site-footer {
             background-color: #2c3e50;
             color: white;
-            padding: 20px 0;
+            padding: 30px 20px;
             margin-top: 50px;
-            text-align: center;
+            
+            /* Centratura del contenitore */
+            display: flex;
+            flex-direction: column; /* Dispone gli elementi (copyright e nav) uno sotto l'altro */
+            align-items: center;    /* Centra orizzontalmente */
+            text-align: center;     /* Centra il testo all'interno dei paragrafi */
         }
 
         .footer-nav ul {
             list-style: none;
             padding: 0;
-            margin: 10px 0 0;
+            margin: 15px 0 0;
+            
+            /* Centratura della lista link */
             display: flex;
-            justify-content: center;
-            gap: 20px;
+            justify-content: center; /* Centra i link orizzontalmente */
+            gap: 20px;               /* Spazio tra un link e l'altro */
+            flex-wrap: wrap;         /* Se lo schermo è piccolo, i link vanno a capo restando centrati */
         }
 
         .footer-nav a {
@@ -202,10 +210,9 @@ try {
         }
 
         .footer-nav a:hover {
-            color: #3498db; /* Colore accent che abbiamo usato nella pagina mansioni */
+            color: #3498db;
         }
 
-        /* Stile specifico per evidenziare "Lavora con noi" */
         .footer-link {
             font-weight: bold;
         }
@@ -319,11 +326,11 @@ try {
 
     <footer class="site-footer">
     <div class="footer-content">
-        <p>&copy; Parco di divertimenti 2026</p>
+        <p>&copy; WonderPark 2026</p>
         <nav class="footer-nav">
             <ul>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="contatti.php">Contatti</a></li>
+                <li><a href="#">Contatti</a></li>
                 <li><a href="mansioni_lavori_lato_cliente.php" class="footer-link">Lavora con noi</a></li>
             </ul>
         </nav>

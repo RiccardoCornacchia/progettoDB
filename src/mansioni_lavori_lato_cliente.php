@@ -70,7 +70,6 @@ $mansioni = $dbh->getMansioni();
 
         .apply-btn:hover { background-color: #2980b9; }
 
-        /* Stile del messaggio di successo (nascosto di default) */
         .success-message {
             display: none;
             margin-top: 20px;
