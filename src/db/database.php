@@ -109,6 +109,24 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    /*INsert nuova Attrazione */
+    public function insertAttrazionePaura($nome, $disp, $prezzo, $inizio, $fine) {
+        $query = "INSERT INTO ATTRAZIONE_DI_PAURA (nomeAttrazionePaura, disponibilita, prezzoAggiuntivo, dataInizio, dataFine) 
+                    VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssdss', $nome, $disp, $prezzo, $inizio, $fine);
+        return $stmt->execute();
+    }
+
+     /*Insert Attivita Commerciale */ 
+    public function insertAttivitaCommerciale($codice, $nome, $apertura, $chiusura, $disp, $dipendenti, $tipo) {
+        $query = "INSERT INTO ATTIVITA_COMMERCIALE (codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('issssis', $codice, $nome, $apertura, $chiusura, $disp, $dipendenti, $tipo);
+        return $stmt->execute();
+    }
+
     /*DELETE GIOSTRA */
     public function deleteGiostra($nomeGiostra) {
         $stmt = $this->db->prepare("DELETE FROM GIOSTRA WHERE nomeGiostra = ?");
@@ -122,6 +140,19 @@ class DatabaseHelper {
         $stmt->bind_param('s', $nomeBiglietto);
         return $stmt->execute();
     }
+
+    /*DELETE Attrazione*/
+    public function deleteAttrazionePaura($nome) {
+        $stmt = $this->db->prepare("DELETE FROM ATTRAZIONE_DI_PAURA WHERE nomeAttrazionePaura = ?");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
     
+    /*DELETE Attività*/
+    public function deleteAttivitaCommerciale($codice) {
+        $stmt = $this->db->prepare("DELETE FROM ATTIVITA_COMMERCIALE WHERE codiceAttivita = ?");
+        $stmt->bind_param('i', $codice);
+        return $stmt->execute();
+    }
 }
 ?>
