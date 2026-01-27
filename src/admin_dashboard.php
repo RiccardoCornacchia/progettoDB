@@ -57,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_biglietto'])) {
 
 $lista_giostre = $dbh->getGiostre();
 $lista_biglietti = $dbh->getTipologieBiglietti();
-$num_visitatori = $dbh->countVisitatori();
+$num_lavoratori = $dbh->countLavoratori();
 ?>
 
 <!DOCTYPE html>
@@ -96,7 +96,6 @@ $num_visitatori = $dbh->countVisitatori();
         <h2>🔧 ADMIN PANEL</h2>
         <a href="#statistiche" class="menu-link active">Dashboard</a>
         <a href="#gestione-giostre" class="menu-link">🎢 Gestione Giostre</a>
-        <a href="#gestione-biglietti" class="menu-link">🎟 Biglietti & Prezzi</a>
         <a href="logout.php" class="menu-link logout">Esci</a>
     </div>
 
@@ -109,8 +108,8 @@ $num_visitatori = $dbh->countVisitatori();
 
         <div class="stats-container" id="statistiche">
             <div class="stat-card">
-                <div>Visitatori Registrati</div>
-                <div class="stat-number"><?php echo $num_visitatori; ?></div>
+                <div>Lavoratori </div>
+                <div class="stat-number"><?php echo $num_lavoratori; ?></div>
             </div>
             <div class="stat-card">
                 <div>Giostre Attive</div>
@@ -157,10 +156,9 @@ $num_visitatori = $dbh->countVisitatori();
                 <div class="form-grid">
                     <input type="text" name="nome" placeholder="Nome Giostra (es. Katun)" required>
                     <select name="tipo">
-                        <option value="Adrenalina">Adrenalina</option>
+                        <option value="Montagna Russa">Montagna Russa</option>
                         <option value="Bambini">Bambini</option>
-                        <option value="Acqua">Acqua</option>
-                        <option value="Famiglia">Famiglia</option>
+                        <option value="Avventura">Avventura</option>
                     </select>
                     <input type="number" name="capienza" placeholder="Capienza Persone" required>
                     <input type="number" name="eta" placeholder="Età Minima (anni)" required>
@@ -173,7 +171,6 @@ $num_visitatori = $dbh->countVisitatori();
                     </select>
                     <select name="disponibilita">
                         <option value="Aperta">Aperta</option>
-                        <option value="Manutenzione">Manutenzione</option>
                         <option value="Chiusa">Chiusa</option>
                     </select>
 
@@ -181,43 +178,6 @@ $num_visitatori = $dbh->countVisitatori();
                 </div>
             </form>
         </div>
-
-        <div class="section-box" id="gestione-biglietti">
-            <h3>🎟 Gestione Prezzi Biglietti</h3>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nome Biglietto</th>
-                        <th>Prezzo Attuale</th>
-                        <th>Azioni</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($lista_biglietti as $b): ?>
-                    <tr>
-                        <td><?php echo htmlspecialchars($b['nomeBiglietto']); ?></td>
-                        <td><?php echo htmlspecialchars($b['prezzo']); ?> €</td>
-                        <td>
-                            <a href="?action=delete_biglietto&id=<?php echo urlencode($b['nomeBiglietto']); ?>" 
-                               class="btn-delete" onclick="return confirm('Eliminare questo biglietto?');">Elimina</a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-
-            <h4>Crea Nuovo Tipo Biglietto</h4>
-            <form method="post">
-                <input type="hidden" name="form_biglietto" value="1">
-                <div class="form-grid">
-                    <input type="text" name="nome" placeholder="Nome (es. VIP Pass)" required>
-                    <input type="number" step="0.01" name="prezzo" placeholder="Prezzo (€)" required>
-                    <button type="submit" class="btn-add" style="background:#f39c12;">+ Crea Biglietto</button>
-                </div>
-            </form>
-        </div>
-
     </div>
 
 </body>
