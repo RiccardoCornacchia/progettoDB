@@ -97,6 +97,7 @@ $num_visitatori = $dbh->countVisitatori();
         <a href="#statistiche" class="menu-link active">Dashboard</a>
         <a href="#gestione-giostre" class="menu-link">🎢 Gestione Giostre</a>
         <a href="#gestione-biglietti" class="menu-link">🎟 Biglietti & Prezzi</a>
+        <a href="sezione_lavoratori_admin.php" class="menu-link">🔨 Gestione Lavoratori</a>
         <a href="logout.php" class="menu-link logout">Esci</a>
     </div>
 

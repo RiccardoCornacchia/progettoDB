@@ -65,10 +65,9 @@ class DatabaseHelper {
     }
 
    
-
     // Statistica: Conta i visitatori totali
     public function countVisitatori() {
-        $stmt = $this->db->prepare("SELECT COUNT(*) as totale FROM LAVORATORE");
+        $stmt = $this->db->prepare("SELECT COUNT(*) as totale FROM VISITATORE");
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
@@ -106,12 +105,78 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function getNomeAttivita($codiceAttivita) {
+        $stmt = $this->db->prepare("SELECT nomeAttivita FROM ATTIVITA_COMMERCIALE WHERE codiceAttivita = ?");
+        $stmt->bind_param("s", $codiceAttivita);
+        $stmt->execute();
+        $res = $stmt->get_result()->fetch_assoc();
+        return $res['nomeAttivita'] ?? $codiceAttivita;
+    }
+
+    // Recupera tutti i lavoratori
+    public function getLavoratori() {
+        $query = "SELECT * FROM LAVORATORE";
+        $result = $this->db->query($query);
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Aggiunge un lavoratore
+    public function addLavoratore($nome, $cognome, $dataNascita, $CF, $numeroTelefono, $e_mail, $mansione, $dataInizioContratto, $stipendio,
+						$codiceAttivita_puntoRistoro, $codiceAttivita_negozio, $nomeGiostra, $nomeAreaTematica, $nomeRuota,
+                        $nomeAttrazionePaura) {
+        $query = "INSERT INTO lavoratore (nome, cognome, dataNascita, CF, numeroTelefono, e_mail, mansione, dataInizioContratto, stipendio,
+						codiceAttivita_puntoRistoro, codiceAttivita_negozio, nomeGiostra, nomeAreaTematica, nomeRuota,
+                        nomeAttrazionePaura) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssssssssdssssss", $nome, $cognome, $dataNascita, $CF, $numeroTelefono, $e_mail, $mansione, $dataInizioContratto, $stipendio,
+						$codiceAttivita_puntoRistoro, $codiceAttivita_negozio, $nomeGiostra, $nomeAreaTematica, $nomeRuota,
+                        $nomeAttrazionePaura);
+        return $stmt->execute();
+    }
+
+    // Elimina un lavoratore tramite ID
+    public function deleteLavoratore($CF) {
+        $query = "DELETE FROM lavoratore WHERE CF = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("i", $CF);
+        return $stmt->execute();
+    }
+
     public function getMansioni() {
         $query = "SELECT DISTINCT mansione FROM LAVORATORE";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function top3giostre(){
+        $query = "SELECT nomeGiostra, COUNT(*) AS frequenzaTotale
+            FROM SALITA
+            GROUP BY nomeGiostra
+            ORDER BY frequenzaTotale
+            LIMIT 3; ";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function spettacoliEventiDatoOrario(){
+        
+    }
+
+    public function eventiDatiUltimiAnni($numeroAnni){
+        $query = "SELECT * FROM EVENTO WHERE data >= DATE_SUB('2026-07-28', INTERVAL ? YEAR)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('i', $numeroAnni); // 'i' sta per integer
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function storicoBigliettiAbbonamenti(){
+        
     }
     
 }

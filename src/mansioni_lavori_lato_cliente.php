@@ -90,10 +90,7 @@ $mansioni = $dbh->getMansioni();
     <h1>Lavora con noi</h1>
 
     <div class="jobs-grid">
-        <?php 
-        /* Se il tuo metodo restituisce un array di oggetti o array associativi, 
-           lo cicliamo qui sotto.
-        */
+        <?php
         if (!empty($mansioni)): 
             foreach ($mansioni as $lavoro): ?>
                 <div class="job-card">

@@ -177,6 +177,46 @@ try {
             .banner-ticket { flex-direction: column; text-align: center; gap: 20px; }
         }
 
+        .wrapper-centrato {
+            display: flex;
+            justify-content: center; /* Centra orizzontalmente */
+            align-items: center;     /* Centra verticalmente */
+            min-height: 200px;       /* Altezza minima per vedere l'effetto centratura */
+            padding: 40px;
+        }
+
+        .box-link {
+            text-decoration: none; /* Rimuove la sottolineatura dal link */
+            display: inline-block; /* Permette al link di avvolgere il div correttamente */
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+        }
+
+        .card-statistiche {
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card-statistiche:hover {
+            background-color: #f0f8ff; /* Cambia colore al passaggio del mouse */
+            border-color: #3498db;
+        }
+
+        .card-statistiche h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+        }
+
+        .card-statistiche p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
         .site-footer {
             background-color: #2c3e50;
             color: white;
@@ -320,6 +360,15 @@ try {
             </div>
             
             <a href="acquisto_biglietti.php" class="btn-buy">Acquista Ora ➔</a>
+        </div>
+            
+        <div class="wrapper-centrato">
+            <a href="statistiche_lato_client.php" class="box-link">
+                <div class="card-statistiche">
+                    <h3>Visualizza Statistiche</h3>
+                    <p>Accedi alla pagina in cui potrai visualizzare alcuni dati che potrebbero interessarti</p>
+                </div>
+            </a>
         </div>
 
     </div>
