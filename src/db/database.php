@@ -35,7 +35,7 @@ class DatabaseHelper {
 
     /*/* GET Attrazzioni di Paura*/ 
     public function getAttrazioniPaura() {
-        $stmt = $this->db->prepare("SELECT * FROM ATTRAZIONE_DI_PAURA");
+        $stmt = $this->db->prepare("SELECT * FROM ATTRAZIONE_DI_PAURA WHERE dataInizio >= CURDATE() ORDER BY dataInizio ASC");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -118,7 +118,7 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
-     /*Insert Attivita Commerciale */ 
+    /*Insert Attivita Commerciale */ 
     public function insertAttivitaCommerciale($codice, $nome, $apertura, $chiusura, $disp, $dipendenti, $tipo) {
         $query = "INSERT INTO ATTIVITA_COMMERCIALE (codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) 
                   VALUES (?, ?, ?, ?, ?, ?, ?)";
@@ -147,7 +147,7 @@ class DatabaseHelper {
         $stmt->bind_param('s', $nome);
         return $stmt->execute();
     }
-    
+
     /*DELETE Attività*/
     public function deleteAttivitaCommerciale($codice) {
         $stmt = $this->db->prepare("DELETE FROM ATTIVITA_COMMERCIALE WHERE codiceAttivita = ?");
