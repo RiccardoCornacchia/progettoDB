@@ -18,12 +18,12 @@ class DatabaseHelper {
     }
 
     /* GET Evento*/
-    public function getEventi() {
-        $stmt = $this->db->prepare("SELECT * FROM EVENTO");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
-    }
+   public function getEventi() {
+    $stmt = $this->db->prepare("SELECT * FROM EVENTO WHERE data >= CURDATE() ORDER BY data ASC, oraInizio ASC");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
 
     /* GET Spettacolo*/
     public function getSpettacoli() {
@@ -51,6 +51,23 @@ class DatabaseHelper {
     /* GET Biglietti*/
     public function getTipologieBiglietti() {
         $stmt = $this->db->prepare("SELECT * FROM TIPOLOGIA_BIGLIETTO");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /* GET Attività Commerciali*/
+    public function getAttivitaCommerciali() {
+        $stmt = $this->db->prepare("SELECT * FROM ATTIVITA_COMMERCIALE");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /* GET Mansioni*/
+    public function getMansioni() {
+        $query = "SELECT DISTINCT mansione FROM LAVORATORE";
+        $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -104,14 +121,6 @@ class DatabaseHelper {
         $stmt = $this->db->prepare("DELETE FROM TIPOLOGIA_BIGLIETTO WHERE nomeBiglietto = ?");
         $stmt->bind_param('s', $nomeBiglietto);
         return $stmt->execute();
-    }
-
-    public function getMansioni() {
-        $query = "SELECT DISTINCT mansione FROM LAVORATORE";
-        $stmt = $this->db->prepare($query);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
     }
     
 }
