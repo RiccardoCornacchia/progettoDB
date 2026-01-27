@@ -18,11 +18,11 @@ class DatabaseHelper {
     }
 
     /* GET Evento*/
-    public function getEventi() {
-        $stmt = $this->db->prepare("SELECT * FROM EVENTO");
-        $stmt->execute();
-        $result = $stmt->get_result();
-        return $result->fetch_all(MYSQLI_ASSOC);
+   public function getEventi() {
+    $stmt = $this->db->prepare("SELECT * FROM EVENTO WHERE data >= CURDATE() ORDER BY data ASC, oraInizio ASC");
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     /* GET Spettacolo*/
@@ -35,11 +35,12 @@ class DatabaseHelper {
 
     /*/* GET Attrazzioni di Paura*/ 
     public function getAttrazioniPaura() {
-        $stmt = $this->db->prepare("SELECT * FROM ATTRAZIONE_DI_PAURA");
+        $stmt = $this->db->prepare("SELECT * FROM ATTRAZIONE_DI_PAURA WHERE dataInizio >= CURDATE() ORDER BY dataInizio ASC");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
+
     /*GET Ruota Panoramica*/ 
     public function getRuotaPanoramica() {
         $stmt = $this->db->prepare("SELECT * FROM RUOTA_PANORAMICA");
@@ -54,6 +55,30 @@ class DatabaseHelper {
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /* GET Attività Commerciali*/
+    public function getAttivitaCommerciali() {
+        $stmt = $this->db->prepare("SELECT * FROM ATTIVITA_COMMERCIALE");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /* GET Mansioni*/
+    public function getMansioni() {
+        $query = "SELECT DISTINCT mansione FROM LAVORATORE";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    /*GET AREA TEMATICA */
+    public function getAreeTematiche() {
+        $stmt = $this->db->prepare("SELECT * FROM AREA_TEMATICA");
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
     /*POST acquisto*/
@@ -88,6 +113,40 @@ class DatabaseHelper {
         $query = "INSERT INTO TIPOLOGIA_BIGLIETTO (nomeBiglietto, prezzo) VALUES (?, ?)";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param('sd', $nome, $prezzo);
+        return $stmt->execute();
+    }
+
+    /*INsert nuova Attrazione */
+    public function insertAttrazionePaura($nome, $disp, $prezzo, $inizio, $fine) {
+        $query = "INSERT INTO ATTRAZIONE_DI_PAURA (nomeAttrazionePaura, disponibilita, prezzoAggiuntivo, dataInizio, dataFine) 
+                    VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssdss', $nome, $disp, $prezzo, $inizio, $fine);
+        return $stmt->execute();
+    }
+
+    /*Insert Attivita Commerciale */ 
+    public function insertAttivitaCommerciale($codice, $nome, $apertura, $chiusura, $disp, $dipendenti, $tipo) {
+        $query = "INSERT INTO ATTIVITA_COMMERCIALE (codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('issssis', $codice, $nome, $apertura, $chiusura, $disp, $dipendenti, $tipo);
+        return $stmt->execute();
+    }
+    /*Insert Area Tematica */ 
+    public function insertAreaTematica($nome, $tema, $disp, $inizio, $fine) {
+        $query = "INSERT INTO AREA_TEMATICA (nomeAreaTematica, tema, disponibilita, dataInizio, dataFine) 
+                  VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssss', $nome, $tema, $disp, $inizio, $fine);
+        return $stmt->execute();
+    }
+    /*Insert Ruota Panoramica */
+    public function insertRuotaPanoramica($nome, $disp, $durata, $altezza) {
+        $query = "INSERT INTO RUOTA_PANORAMICA (nomeRuota, disponibilita, durataRuotaPanoramica, altezzaRuotaPanoramica) 
+                  VALUES (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('ssid', $nome, $disp, $durata, $altezza);
         return $stmt->execute();
     }
 
@@ -179,5 +238,32 @@ class DatabaseHelper {
         
     }
     
+    /*DELETE Attrazione*/
+    public function deleteAttrazionePaura($nome) {
+        $stmt = $this->db->prepare("DELETE FROM ATTRAZIONE_DI_PAURA WHERE nomeAttrazionePaura = ?");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
+
+    /*DELETE Attività*/
+    public function deleteAttivitaCommerciale($codice) {
+        $stmt = $this->db->prepare("DELETE FROM ATTIVITA_COMMERCIALE WHERE codiceAttivita = ?");
+        $stmt->bind_param('i', $codice);
+        return $stmt->execute();
+    }
+
+    /*DELETE  Area Tematica*/
+    public function deleteAreaTematica($nome) {
+        $stmt = $this->db->prepare("DELETE FROM AREA_TEMATICA WHERE nomeAreaTematica = ?");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
+
+    /*DELETE Ruota Panoramica */
+    public function deleteRuotaPanoramica($nome) {
+        $stmt = $this->db->prepare("DELETE FROM RUOTA_PANORAMICA WHERE nomeRuota = ?");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
 }
 ?>

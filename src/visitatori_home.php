@@ -9,13 +9,13 @@ if (!isset($_SESSION['ruolo'])) {
 
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : null;
 
-
 $titolo_sezione = "";
 $elenco_elementi = [];
 $col_nome = "";      
 $col_info = "";      
 $label_info = "";    
-$col_status = "";    
+$col_status = "";
+$col_info_2 = ""; 
 
 try {
     if ($categoria) {
@@ -31,10 +31,11 @@ try {
                 break;
 
             case 'Eventi':
-                $elenco_elementi = $dbh->getEventi();
+                $elenco_elementi = $dbh->getEventi(); 
                 $col_nome = 'nomeEvento';
-                $col_info = 'oraInizio';
-                $label_info = "Inizio ore:";
+                $col_info = 'data';
+                $label_info = "Data:";
+                $col_info_2 = 'oraInizio';
                 $col_status = null; 
                 $titolo_sezione = "Eventi in Programma";
                 break;
@@ -57,15 +58,22 @@ try {
                 $titolo_sezione = "Attrazioni da Brivido";
                 break;
 
-            // --- NUOVO CASO AGGIUNTO: RUOTA PANORAMICA ---
             case 'RuotaPanoramica':
                 $elenco_elementi = $dbh->getRuotaPanoramica();
                 $col_nome = 'nomeRuota';
-                // Dal tuo schema SQL la colonna è 'altezzaRuotaPanoramica'
                 $col_info = 'altezzaRuotaPanoramica'; 
                 $label_info = "Altezza (m):";
                 $col_status = 'disponibilita';
                 $titolo_sezione = "Giro Panoramico";
+                break;
+
+            case 'AttivitaCommerciali':
+                $elenco_elementi = $dbh->getAttivitaCommerciali();
+                $col_nome = 'nomeAttivita';
+                $col_info = 'tipologiaAttivita'; 
+                $label_info = "Tipologia:";
+                $col_status = 'disponibilita';
+                $titolo_sezione = "Negozi e Ristorazione";
                 break;
 
             default:
@@ -94,7 +102,6 @@ try {
 
         .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
 
-       
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin-top: 50px; }
         
         .menu-card {
@@ -104,17 +111,17 @@ try {
         }
         .menu-card:hover { transform: translateY(-5px); }
         
-        
+        /* Colori Card */
         .card-giostre { border-bottom-color: #3498db; }
         .card-eventi { border-bottom-color: #9b59b6; }
         .card-spettacoli { border-bottom-color: #f1c40f; }
         .card-horror { border-bottom-color: #e74c3c; }
         .card-ruota { border-bottom-color: #2ecc71; } 
+        .card-attivita { border-bottom-color: #8e44ad; } 
 
         .menu-icon { font-size: 3.5rem; display: block; margin-bottom: 15px; }
         .menu-title { font-size: 1.5rem; font-weight: bold; display: block; }
 
-        
         .header-risultati { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; border-bottom: 2px solid #ddd; padding-bottom: 15px; }
         .btn-back { background: #ecf0f1; color: #333; padding: 10px 15px; border-radius: 50%; text-decoration: none; font-weight: bold; font-size: 1.2rem; }
         .btn-back:hover { background: #bdc3c7; }
@@ -125,12 +132,25 @@ try {
         }
         
         .badge { padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: bold; text-transform: uppercase; }
-        .status-ok { background: #d4edda; color: #155724; } /* Verde */
-        .status-ko { background: #FF0000; color: #721c24; } /* Rosso */
+        .status-ok { background: #d4edda; color: #155724; }
+        .status-ko { background: #FF0000; color: #721c24; }
 
+        .btn-shop-foto {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-shop-foto:hover { background-color: #2980b9; }
         
         .banner-ticket {
-            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%); /* Oro/Arancio */
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
             color: #fff;
             border-radius: 15px;
             padding: 30px 40px;
@@ -222,24 +242,20 @@ try {
             color: white;
             padding: 30px 20px;
             margin-top: 50px;
-            
-            /* Centratura del contenitore */
             display: flex;
-            flex-direction: column; /* Dispone gli elementi (copyright e nav) uno sotto l'altro */
-            align-items: center;    /* Centra orizzontalmente */
-            text-align: center;     /* Centra il testo all'interno dei paragrafi */
+            flex-direction: column; 
+            align-items: center;    
+            text-align: center;     
         }
 
         .footer-nav ul {
             list-style: none;
             padding: 0;
             margin: 15px 0 0;
-            
-            /* Centratura della lista link */
             display: flex;
-            justify-content: center; /* Centra i link orizzontalmente */
-            gap: 20px;               /* Spazio tra un link e l'altro */
-            flex-wrap: wrap;         /* Se lo schermo è piccolo, i link vanno a capo restando centrati */
+            justify-content: center; 
+            gap: 20px;               
+            flex-wrap: wrap;         
         }
 
         .footer-nav a {
@@ -249,13 +265,8 @@ try {
             transition: color 0.3s ease;
         }
 
-        .footer-nav a:hover {
-            color: #3498db;
-        }
-
-        .footer-link {
-            font-weight: bold;
-        }
+        .footer-nav a:hover { color: #3498db; }
+        .footer-link { font-weight: bold; }
 
     </style>
 </head>
@@ -303,6 +314,11 @@ try {
                     <span class="menu-icon">🎡</span>
                     <span class="menu-title">Ruota Panoramica</span>
                 </a>
+
+                <a href="?categoria=AttivitaCommerciali" class="menu-card card-attivita">
+                    <span class="menu-icon">🛍️</span>
+                    <span class="menu-title">Negozi & Food</span>
+                </a>
             </div>
 
         <?php else: ?>
@@ -329,11 +345,27 @@ try {
                                 <?php echo $label_info; ?> 
                                 <strong><?php echo htmlspecialchars($item[$col_info]); ?></strong>
                             </span>
+
+                            <?php if ($col_info_2 && isset($item[$col_info_2])): ?>
+                                <br>
+                                <span style="color: #666; font-size: 0.9rem;">
+                                    Ore: <strong><?php echo htmlspecialchars($item[$col_info_2]); ?></strong>
+                                </span>
+                            <?php endif; ?>
+
+
+                            <?php 
+                            // Logica per Negozi di Foto
+                            if ($categoria === 'AttivitaCommerciali' && isset($item['tipologiaAttivita'])) {
+                                if (stripos($item['tipologiaAttivita'], 'Foto') !== false) {
+                                    echo '<br><a href="acquisto_foto.php?id=' . $item['codiceAttivita'] . '" class="btn-shop-foto">📸 Acquista Foto</a>';
+                                }
+                            }
+                            ?>
                         </div>
 
                         <?php if ($col_status): ?>
                             <?php 
-                                // Gestione sicura dello stato
                                 $stato_val = isset($item[$col_status]) ? $item[$col_status] : 'N/D';
                                 $css_class = (stripos($stato_val, 'chius') === false) ? 'status-ok' : 'status-ko';
                             ?>
@@ -374,17 +406,17 @@ try {
     </div>
 
     <footer class="site-footer">
-    <div class="footer-content">
-        <p>&copy; WonderPark 2026</p>
-        <nav class="footer-nav">
-            <ul>
-                <li><a href="index.php">Home</a></li>
-                <li><a href="#">Contatti</a></li>
-                <li><a href="mansioni_lavori_lato_cliente.php" class="footer-link">Lavora con noi</a></li>
-            </ul>
-        </nav>
-    </div>
-</footer>
+        <div class="footer-content">
+            <p>&copy; WonderPark 2026</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="#">Contatti</a></li>
+                    <li><a href="mansioni_lavori_lato_cliente.php" class="footer-link">Lavora con noi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 
 </body>
 </html>
