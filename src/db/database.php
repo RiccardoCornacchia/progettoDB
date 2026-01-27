@@ -84,7 +84,7 @@ class DatabaseHelper {
    
 
     // Statistica: Conta i visitatori totali
-    public function countVisitatori() {
+    public function countLavoratori() {
         $stmt = $this->db->prepare("SELECT COUNT(*) as totale FROM LAVORATORE");
         $stmt->execute();
         $result = $stmt->get_result();
