@@ -33,6 +33,9 @@ $pagina_corrente = basename($_SERVER['PHP_SELF']);
     <a href="admin_ruote.php" class="menu-link <?php echo ($pagina_corrente == 'admin_ruote.php') ? 'active' : ''; ?>">
         Ruota Panoramica
     </a>
+    <a href="admin_statoParco.php" class = "menu-link <?php ($pagina_corrente == 'admin_statoParco.php') ? 'active' : ''; ?>">
+        Stato Parco e Manutenzioni
+    </a>
     
     <a href="logout.php" class="menu-link logout">Esci</a>
 </div>

@@ -275,5 +275,71 @@ class DatabaseHelper {
         $stmt->bind_param('s', $nome);
         return $stmt->execute();
     }
+
+    public function updateStatoGiostra($nome) {
+        $sql = "UPDATE GIOSTRA SET disponibilita = 1 - disponibilita WHERE nomeGiostra = ?";
+        return $this->db->prepare($sql)->execute([$nome]);
+    }
+
+    public function updateStatoAttivita($nome) {
+        $sql = "UPDATE ATTIVITA_COMMERCIALE SET disponibilita = 1 - disponibilita WHERE nomeAttivita = ?";
+        return $this->db->prepare($sql)->execute([$nome]);
+    }
+
+    public function updateStatoAttrazionePaura($nome) {
+        $sql = "UPDATE ATTRAZIONE_DI_PAURA SET disponibilita = 1 - disponibilita WHERE nomeAttrazionePaura = ?";
+        return $this->db->prepare($sql)->execute([$nome]);
+    }
+
+    public function updateStatoCassa($id) {
+        // Nota: 'i' se numeroCassa è un numero, 's' se è una stringa
+        $stmt = $this->db->prepare("UPDATE CASSA SET stato = NOT stato WHERE numeroCassa = ?");
+        $stmt->bind_param("i", $id); 
+        return $stmt->execute();
+    }
+
+    public function updateStatoBagno($id) {
+        $stmt = $this->db->prepare("UPDATE BAGNO SET disponibilita = 1 - disponibilita WHERE codiceBagno = ?");
+        $stmt->bind_param("s", $id);
+        return $stmt->execute();
+    }
+
+    // Recupera tutte le casse
+    public function getCasse() {
+        $sql = "SELECT * FROM CASSA";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    // Recupera tutti i bagni
+    public function getBagni() {
+        $sql = "SELECT * FROM BAGNO";
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getAllAttrazioniPaura() {
+        $stmt = $this->db->prepare("SELECT * FROM ATTRAZIONE_DI_PAURA ORDER BY nomeAttrazionePaura ASC");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function getManutenzioniAttive() {
+    // Selezioniamo solo quelle dove dataFine è NULL
+    $query = "SELECT *, 
+              COALESCE(nomeGiostra, nomeRuota, nomeAreaTematica, nomeAttrazionePaura) AS nomeImpianto
+              FROM manutenzione 
+              WHERE dataFine IS NULL 
+              ORDER BY dataInizio DESC";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
 }
 ?>
