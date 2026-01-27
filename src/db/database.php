@@ -79,6 +79,14 @@ class DatabaseHelper {
         $stmt->execute();
         return $stmt->affected_rows > 0;
     }
+    
+    public function countLavoratori() {
+        $stmt = $this->db->prepare("SELECT COUNT(*) as totale FROM LAVORATORE");
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        return $row['totale'];
+    }
 
    
     // Statistica: Conta i visitatori totali
@@ -205,7 +213,7 @@ class DatabaseHelper {
             FROM SALITA
             GROUP BY nomeGiostra
             ORDER BY frequenzaTotale
-            LIMIT 3; ";
+            LIMIT 3";
         $stmt = $this->db->prepare($query);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -224,7 +232,18 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
+    /* Attività con maggior fatturato */
+    public function getTopFatturato() {
+        $query = "SELECT a.nomeAttivita, a.tipologiaAttivita, SUM(u.prezzoAcquisto) AS fatturatoTotale 
+                  FROM ATTIVITA_COMMERCIALE a
+                  JOIN USUFRUIZIONE u ON a.codiceAttivita = u.codiceAttivita
+                  WHERE a.tipologiaAttivita IN ('puntiRistoro', 'salaGiochi', 'NegozioSouvenirs')
+                  GROUP BY a.nomeAttivita, a.tipologiaAttivita
+                  ORDER BY fatturatoTotale DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
     public function storicoBigliettiAbbonamenti(){
         
     }
