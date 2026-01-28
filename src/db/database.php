@@ -330,16 +330,23 @@ class DatabaseHelper {
     }
 
     public function getManutenzioniAttive() {
-    // Selezioniamo solo quelle dove dataFine è NULL
-    $query = "SELECT *, 
-              COALESCE(nomeGiostra, nomeRuota, nomeAreaTematica, nomeAttrazionePaura) AS nomeImpianto
-              FROM manutenzione 
-              WHERE dataFine IS NULL 
-              ORDER BY dataInizio DESC";
-    $stmt = $this->db->prepare($query);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    return $result->fetch_all(MYSQLI_ASSOC);
-}
+        // Selezioniamo solo quelle dove dataFine è NULL
+        $query = "SELECT *, 
+                COALESCE(nomeGiostra, nomeRuota, nomeAreaTematica, nomeAttrazionePaura) AS nomeImpianto
+                FROM manutenzione 
+                WHERE dataFine IS NULL 
+                ORDER BY dataInizio DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Recupera gli abbonamenti
+    public function getTipologieAbbonamenti() {
+        $stmt = $this->db->prepare("SELECT * FROM tipologia_abbonamento ORDER BY prezzo ASC");
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }
 ?>

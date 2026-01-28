@@ -391,7 +391,7 @@ try {
                 <p>Salta la fila alle casse! Acquista online e accedi subito al parco.</p>
             </div>
             
-            <a href="acquisto_biglietti.php" class="btn-buy">Acquista Ora ➔</a>
+            <a href="client_acquistoBiglietti_Abbonamenti.php" class="btn-buy">Acquista Ora ➔</a>
         </div>
             
         <div class="wrapper-centrato">
