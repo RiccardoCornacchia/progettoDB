@@ -14,14 +14,19 @@ $num_ruote = count($dbh->getRuotaPanoramica());
 $num_lavoratori = method_exists($dbh, 'countLavoratori') ? $dbh->countLavoratori() : 0; 
 $num_biglietti = count($dbh->getTipologieBiglietti());
 
-
-// RECUPERO STATISTICHE AVANZATE (Le tue nuove query)
-
 // 1. Top 3 Giostre
 $top_giostre = $dbh->top3Giostre();
 
 // 2. Top Fatturato
 $top_fatturato = $dbh->getTopFatturato();
+
+$topVisitatori = $dbh->top10visitatori();
+
+$longevi = $dbh->lavoratoriPiuLongevi();
+
+$guastoTop = $dbh->GuastoPiuLungo(); 
+// Prendiamo il primo (e unico) risultato
+$x = !empty($guastoTop) ? $guastoTop[0] : null;
 
 // 3. Eventi Recenti (Logica del Form)
 $anni_scelti = isset($_GET['anni']) ? (int)$_GET['anni'] : 1; // Default 1 anno
@@ -173,6 +178,110 @@ $eventi_recenti = $dbh->eventiDatiUltimiAnni($anni_scelti);
                     </table>
                 <?php else: ?>
                     <p style="color:#777;">Nessun evento trovato negli ultimi <?php echo $anni_scelti; ?> anni.</p>
+                <?php endif; ?>
+            </div>
+
+            <div class="chart-box">
+                <div class="card-header-v">
+                    <h3>🏆 Top 10 Visitatori</h3>
+                    <p>I clienti che hanno acquistato più biglietti in assoluto.</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Visitatore</th>
+                                <th class="text-center">Biglietti Comprati</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $rank = 1; foreach ($topVisitatori as $v): ?>
+                            <tr>
+                                <td><span class="rank-circle"><?php echo $rank++; ?></span></td>
+                                <td><strong><?php echo htmlspecialchars($v['nome'] . " " . $v['cognome']); ?></strong></td>
+                                <td class="text-center">
+                                    <span class="ticket-badge"><?php echo $v['biglietti_comprati']; ?></span>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="chart-box">
+                <div class="card-header-l">
+                    <h3>⏳ Pilastri del Parco</h3>
+                    <p>I 10 lavoratori con la data di inizio contratto più remota.</p>
+                </div>
+                <div class="table-responsive">
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Mansione</th>
+                                <th>Inizio Contratto</th>
+                                <th class="text-center">In Servizio Ora</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($longevi as $l): ?>
+                            <tr>
+                                <td><strong><?php echo htmlspecialchars($l['nome'] . " " . $l['cognome']); ?></strong></td>
+                                <td><?php echo htmlspecialchars($l['mansione']); ?></td>
+                                <td><?php echo date('d/m/Y', strtotime($l['dataInizioContratto'])); ?></td>
+                                <td class="text-center">
+                                    <?php if ($l[ 'attualmente_a_lavoro' ] === 'Sì'): ?>
+                                        <span class="status-badge online">Sì</span>
+                                    <?php else: ?>
+                                        <span class="status-badge offline">No</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+           <div class="chart-box">
+                <?php if ($x): ?>
+                    <div class="alert-header">
+                        <div class="alert-title">
+                            <span class="alert-icon">⚠️</span><h3>Manutenzione Critica Rilevata</h3>
+                            <p>Questo è il guasto con la durata maggiore registrato nel sistema.</p>
+                        </div>
+                    </div>
+
+                    <div class="alert-body">
+                        <div class="alert-info">
+                            <span class="label">Impianto:</span>
+                            <span class="value">
+                                <?php 
+                                    echo htmlspecialchars(
+                                        $x['nomeGiostra'] ?? 
+                                        $x['nomeRuota'] ?? 
+                                        $x['nomeAreaTematica'] ?? 
+                                        $x['nomeAttrazionePaura'] ?? 
+                                        $x['impiantoInManutenzione']
+                                    ); 
+                                ?>
+                            </span>
+                        </div>
+                        <div class="alert-info">
+                            <span class="label">Tipo di Guasto:</span>
+                            <span class="value"><?php echo htmlspecialchars($x['tipoGuasto']); ?></span>
+                        </div>
+                        <div class="alert-stats">
+                            <div class="days-counter">
+                                <span class="number"><?php echo $x['giorni_in_manutenzione']; ?></span>
+                                <span class="text">Giorni totali</span>
+                            </div>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <p>Nessun dato di manutenzione disponibile.</p>
                 <?php endif; ?>
             </div>
 

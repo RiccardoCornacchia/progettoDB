@@ -7,7 +7,9 @@ if (!isset($_SESSION['ruolo'])) {
 }
 
 // Valore di default se l'utente non ha ancora inserito nulla
-$anniScelti = 3; 
+$anniScelti = 3;
+$risultato4 = [];
+$CF = $_GET['CF'] ?? null;
 
 // Controlliamo se l'utente ha inviato un valore tramite il form
 if (isset($_GET['anni']) && is_numeric($_GET['anni'])) {
@@ -17,7 +19,9 @@ if (isset($_GET['anni']) && is_numeric($_GET['anni'])) {
 $risultato1 = $dbh->top3giostre();
 $risultato2 = $dbh->spettacoliEventiDatoOrario();
 $risultato3 = $dbh->eventiDatiUltimiAnni($anniScelti);
-$risultato4 = $dbh->storicoBigliettiAbbonamenti();
+if ($CF) {
+    $risultato4 = $dbh->storicoBigliettiAbbonamenti($CF);
+}
 
 // Funzione helper per generare tabelle al volo partendo dai risultati
 function renderTable($data, $titolo) {
@@ -88,6 +92,14 @@ function renderTable($data, $titolo) {
     </div>
 
     <div class="query-section">
+        <div class="search-box">
+            <h3>Cerca Storico Visitatore</h3>
+            <form method="GET" action="">
+                <input type="text" name="CF" placeholder="Inserisci Codice Fiscale (es. BNCHGL...)" 
+                    value="<?php echo htmlspecialchars($_GET['CF'] ?? ''); ?>" required>
+                <button type="submit" class="btn-search">🔍 Cerca</button>
+            </form>
+        </div>
         <?php renderTable($risultato4, "4. Qui puoi vedere tutti i biglietti e gli abbonamenti che hai comprato"); ?>
     </div>
 </div>
