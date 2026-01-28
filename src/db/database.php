@@ -419,5 +419,18 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function insertEvento($nome, $data, $inizio, $fine, $tipo) {
+        $query = "INSERT INTO EVENTO (nomeEvento, data, oraInizio, oraFine, tipologiaEvento) 
+                  VALUES (?, ?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param('sssss', $nome, $data, $inizio, $fine, $tipo);
+        return $stmt->execute();
+    }
+
+    public function deleteEvento($nome) {
+        $stmt = $this->db->prepare("DELETE FROM EVENTO WHERE nomeEvento = ?");
+        $stmt->bind_param('s', $nome);
+        return $stmt->execute();
+    }
 }
 ?>

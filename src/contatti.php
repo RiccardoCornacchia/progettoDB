@@ -8,105 +8,53 @@ session_start();
     <meta charset="UTF-8">
     <title>Contatti - WonderPark</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f6f8; margin: 0; }
-        
-        /* NAVBAR STILE UNIFICATO */
-        nav { background: #2c3e50; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        .logo { font-weight: bold; color: #ff6b6b; font-size: 1.2rem; text-transform: uppercase; }
-        
-        /* BOTTONE INDIETRO */
-        .btn-home { 
-            background: #3498db; color: white; text-decoration: none; 
-            padding: 8px 20px; border-radius: 20px; font-size: 0.9rem; transition: 0.3s; 
-        }
-        .btn-home:hover { background: #2980b9; }
+    /* RESET E BASE */
+    body { font-family: sans-serif; background-color: #f9f9f9; margin: 0; color: #333; }
+    a { text-decoration: none; }
 
-        /* CONTENITORE CENTRALE */
-        .container { 
-            max-width: 600px; /* Più stretto perché c'è solo un box */
-            margin: 60px auto; 
-            padding: 0 20px; 
-        }
+    /* NAVBAR: Barra scura semplice */
+    nav { background: #333; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+    .logo { font-weight: bold; font-size: 1.2rem; }
+    
+    /* BOTTONE INDIETRO: Grigio semplice */
+    .btn-home { background: #ddd; color: #333; padding: 5px 15px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; }
+    .btn-home:hover { background: #ccc; }
 
-        /* CARD BIANCA */
-        .contact-card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
-            text-align: center; /* Testo centrato per eleganza */
-        }
+    /* CONTENITORE PRINCIPALE */
+    .container { max-width: 600px; margin: 40px auto; padding: 0 15px; }
 
-        h1 { margin-top: 0; color: #2c3e50; margin-bottom: 30px; }
-        p.intro { color: #7f8c8d; margin-bottom: 40px; }
+    /* CARD CONTATTI: Niente ombre, solo un bordo sottile */
+    .contact-card {
+        background: white;
+        border: 1px solid #ccc; /* Bordo grigio al posto dell'ombra */
+        padding: 30px;
+        text-align: center;
+        border-radius: 4px;
+    }
 
-        /* LISTA INFO */
-        .info-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            text-align: left; /* Le info le allineiamo a sinistra per ordine */
-            display: inline-block; /* Per centrare il blocco rispetto alla card */
-        }
+    h1 { margin-top: 0; color: #333; }
+    p.intro { color: #666; margin-bottom: 30px; }
 
-        .info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            font-size: 1.1rem;
-            color: #333;
-        }
+    /* LISTA INFORMAZIONI */
+    .info-list { list-style: none; padding: 0; text-align: left; display: inline-block; }
+    
+    .info-item { display: flex; align-items: center; margin-bottom: 20px; }
+    
+    /* ICONE: Semplici, senza cerchio di sfondo */
+    .icon { font-size: 1.8rem; margin-right: 15px; }
+    
+    .label { display: block; font-weight: bold; font-size: 0.85rem; color: #555; text-transform: uppercase; }
 
-        .icon {
-            font-size: 1.5rem;
-            margin-right: 20px;
-            background: #ecf0f1;
-            width: 50px; height: 50px;
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 50%;
-        }
-
-        .label {
-            display: block;
-            font-size: 0.85rem;
-            color: #999;
-            text-transform: uppercase;
-            font-weight: bold;
-            letter-spacing: 1px;
-            margin-bottom: 2px;
-        }
-        .site-footer {
-            background-color: #2c3e50;
-            color: white;
-            padding: 30px 20px;
-            margin-top: 50px;
-            display: flex;
-            flex-direction: column; 
-            align-items: center;    
-            text-align: center;     
-        }
-
-        .footer-nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 15px 0 0;
-            display: flex;
-            justify-content: center; 
-            gap: 20px;               
-            flex-wrap: wrap;         
-        }
-
-        .footer-nav a {
-            color: #bdc3c7;
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-nav a:hover { color: #3498db; }
-        .footer-link { font-weight: bold; }
-
-    </style>
+    /* FOOTER */
+    .site-footer {
+        background-color: #eee; color: #555;
+        padding: 20px; margin-top: 40px; text-align: center;
+        border-top: 1px solid #ccc;
+    }
+    .footer-nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 15px; }
+    .footer-nav a { color: #555; }
+    .footer-nav a:hover { text-decoration: underline; color: #000; }
+</style>
 </head>
 <body>
 
