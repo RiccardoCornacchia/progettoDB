@@ -19,7 +19,7 @@ class DatabaseHelper {
 
     /* GET Evento*/
    public function getEventi() {
-    $stmt = $this->db->prepare("SELECT * FROM EVENTO WHERE data >= CURDATE() ORDER BY data ASC, oraInizio ASC");
+    $stmt = $this->db->prepare("SELECT * FROM EVENTO WHERE data >= '2026-07-28' ORDER BY data ASC, codiceEvento ASC");
     $stmt->execute();
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
@@ -349,16 +349,16 @@ class DatabaseHelper {
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function insertEvento($nome, $data, $inizio, $fine, $tipo) {
-        $query = "INSERT INTO EVENTO (nomeEvento, data, oraInizio, oraFine, tipologiaEvento) 
-                  VALUES (?, ?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssss', $nome, $data, $inizio, $fine, $tipo);
+    public function insertEvento($codice, $nome, $tematica, $inizio, $fine, $data) {
+        $stmt = $this->db->prepare( "INSERT INTO EVENTO (codiceEvento, nomeEvento, tematica, oraInizio, oraFine, data) 
+        VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssssss', $codice, $nome, $tematica, $inizio, $fine, $data);
+        
         return $stmt->execute();
     }
 
     public function deleteEvento($nome) {
-        $stmt = $this->db->prepare("DELETE FROM EVENTO WHERE nomeEvento = ?");
+        $stmt = $this->db->prepare("DELETE FROM EVENTO WHERE codiceEvento = ?");
         $stmt->bind_param('s', $nome);
         return $stmt->execute();
     }
