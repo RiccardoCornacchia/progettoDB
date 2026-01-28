@@ -111,6 +111,7 @@ $lavoratori = $dbh->getLavoratori();
 <body>
 
 <div class="container">
+    <a href="admin_dashboard.php" style="text-decoration:none;">&larr; Torna a Admin dashboard</a>
     <h1>Gestione Personale Parco</h1>
 
     <div class="form-container">

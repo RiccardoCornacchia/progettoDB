@@ -218,7 +218,21 @@ class DatabaseHelper {
     }
 
     public function spettacoliEventiDatoOrario(){
-        
+        $query = "SELECT 'Spettacolo' AS Tipo, nomeSpettacolo AS Nome, data, oraInizio, oraFine
+                FROM REPLICA_SPETTACOLO
+                WHERE data = '2026-07-28' AND oraFine >= CURTIME()
+
+                UNION ALL
+
+                SELECT 'Evento' AS Tipo, nomeEvento AS Nome, data, oraInizio, oraFine
+                FROM EVENTO
+                WHERE data = '2026-07-28' AND oraFine >= CURTIME()
+
+                ORDER BY data ASC, oraInizio ASC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function eventiDatiUltimiAnni($numeroAnni){
@@ -242,8 +256,24 @@ class DatabaseHelper {
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function storicoBigliettiAbbonamenti(){
-        
+    public function storicoBigliettiAbbonamenti($CF){
+        $query= "SELECT data, orario, 'Abbonamento' AS prodottoAcquistato, nomeAbbonamento AS tipologia
+                    FROM acquisto_a
+                    JOIN abbonamento ON acquisto_a.codAbbonamento = abbonamento.codAbbonamento
+                    WHERE CF = ?
+
+                    UNION ALL 
+
+                    SELECT data, orario, 'Biglietto' AS prodottoAcquistato, b.nomeBiglietto AS tipologia
+                    FROM acquisto_b ab
+                    JOIN biglietto b ON ab.codiceBiglietto = b.codiceBiglietto
+                    WHERE ab.CF = ?";
+        $stmt = $this->db->prepare($query);
+        // Passiamo il CF due volte: una per la prima SELECT e una per la seconda
+        $stmt->bind_param("ss", $CF, $CF);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function top10visitatori(){
@@ -261,7 +291,7 @@ class DatabaseHelper {
 
     public function lavoratoriPiuLongevi(){
         $query = "SELECT L.nome, L.cognome, L.mansione, L.dataInizioContratto,
-                 IF(T.data = '2026-07-28' AND '12:00:00' BETWEEN T.oraInizio AND T.oraFine, 'Sì', 'No') AS attualmente_a_lavoro
+                 IF(T.data = '2026-07-28' AND CURTIME() BETWEEN T.oraInizio AND T.oraFine, 'Sì', 'No') AS attualmente_a_lavoro
                  FROM lavoratore L JOIN turno_di_lavoro T ON L.CF = T.CF
                  WHERE T.data = '2026-07-28'
                  ORDER BY L.dataInizioContratto ASC
