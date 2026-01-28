@@ -472,7 +472,7 @@ class DatabaseHelper {
         $stmt->bind_param('s', $nome);
         return $stmt->execute();
     }
-}
+
 
 public function eseguiAcquistoAbbonamento($cf, $nome, $cognome, $data_n, $tel, $mail, $alt, $nomeAbbo, $scadenza, $data, $ora) {
     $sqlV = "INSERT INTO visitatore (nome, cognome, CF, dataNascita, numeroTelefono, e_mail, altezzaVisitatore)
@@ -536,5 +536,5 @@ public function eseguiAcquistoBiglietto($cf, $nome, $cognome, $data_n, $tel, $ma
     $stmtVen->execute();
 }
 
-
+}
 ?>
