@@ -482,12 +482,15 @@ public function eseguiAcquistoAbbonamento($cf, $nome, $cognome, $data_n, $tel, $
     $stmtV->bind_param('ssssssi', $nome, $cognome, $cf, $data_n, $tel, $mail, $alt);
     $stmtV->execute();
 
-    $sqlA = "INSERT INTO abbonamento (nomeAbbonamento, scadenza) VALUES (?, ?)";
+    $res = $this->db->query("SELECT MAX(codAbbonamento) + 1 AS prossimoID FROM abbonamento");
+    $row = $res->fetch_assoc();
+    $id_abbonamento = $row['prossimoID'];
+
+    $sqlA = "INSERT INTO abbonamento (codAbbonamento, nomeAbbonamento, scadenza) VALUES (?, ?, ?)";
     $stmtA = $this->db->prepare($sqlA);
-    $stmtA->bind_param('ss', $nomeAbbo, $scadenza);
+    $stmtA->bind_param('iss', $id_abbonamento, $nomeAbbo, $scadenza);
     $stmtA->execute();
     
-    $id_abbonamento = $this->db->insert_id; 
 
     $sqlQ = "INSERT INTO acquisto_a (CF, codAbbonamento, data, orario) VALUES (?, ?, ?, ?)";
     $stmtQ = $this->db->prepare($sqlQ);
