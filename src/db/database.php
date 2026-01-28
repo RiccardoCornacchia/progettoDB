@@ -321,21 +321,25 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    /*cambia stato giostra */
     public function updateStatoGiostra($nome) {
         $sql = "UPDATE GIOSTRA SET disponibilita = 1 - disponibilita WHERE nomeGiostra = ?";
         return $this->db->prepare($sql)->execute([$nome]);
     }
 
+    /*cambia stato attività */
     public function updateStatoAttivita($nome) {
         $sql = "UPDATE ATTIVITA_COMMERCIALE SET disponibilita = 1 - disponibilita WHERE nomeAttivita = ?";
         return $this->db->prepare($sql)->execute([$nome]);
     }
 
+    /*cambia stato attrazione */
     public function updateStatoAttrazionePaura($nome) {
         $sql = "UPDATE ATTRAZIONE_DI_PAURA SET disponibilita = 1 - disponibilita WHERE nomeAttrazionePaura = ?";
         return $this->db->prepare($sql)->execute([$nome]);
     }
 
+    /*cambia stato cassa */
     public function updateStatoCassa($id) {
         // Nota: 'i' se numeroCassa è un numero, 's' se è una stringa
         $stmt = $this->db->prepare("UPDATE CASSA SET stato = NOT stato WHERE numeroCassa = ?");
@@ -343,13 +347,13 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    /*cambia stato bagno */
     public function updateStatoBagno($id) {
         $stmt = $this->db->prepare("UPDATE BAGNO SET disponibilita = 1 - disponibilita WHERE codiceBagno = ?");
         $stmt->bind_param("s", $id);
         return $stmt->execute();
     }
 
-    // Recupera tutte le casse
     public function getCasse() {
         $sql = "SELECT * FROM CASSA";
         $stmt = $this->db->prepare($sql);
@@ -358,7 +362,6 @@ class DatabaseHelper {
         return $result->fetch_all(MYSQLI_ASSOC);
     }
     
-    // Recupera tutti i bagni
     public function getBagni() {
         $sql = "SELECT * FROM BAGNO";
         $stmt = $this->db->prepare($sql);
@@ -375,7 +378,6 @@ class DatabaseHelper {
     }
 
     public function getManutenzioniAttive() {
-        // Selezioniamo solo quelle dove dataFine è NULL
         $query = "SELECT *, 
                 COALESCE(nomeGiostra, nomeRuota, nomeAreaTematica, nomeAttrazionePaura) AS nomeImpianto
                 FROM manutenzione 
@@ -386,8 +388,7 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-
-    // Recupera gli abbonamenti
+    
     public function getTipologieAbbonamenti() {
         $stmt = $this->db->prepare("SELECT * FROM tipologia_abbonamento ORDER BY prezzo ASC");
         $stmt->execute();
@@ -433,4 +434,68 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 }
+
+public function eseguiAcquistoAbbonamento($cf, $nome, $cognome, $data_n, $tel, $mail, $alt, $nomeAbbo, $scadenza, $data, $ora) {
+    $sqlV = "INSERT INTO visitatore (nome, cognome, CF, dataNascita, numeroTelefono, e_mail, altezzaVisitatore)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE CF=CF";
+    $stmtV = $this->db->prepare($sqlV);
+    $stmtV->bind_param('ssssssi', $nome, $cognome, $cf, $data_n, $tel, $mail, $alt);
+    $stmtV->execute();
+
+    $sqlA = "INSERT INTO abbonamento (nomeAbbonamento, scadenza) VALUES (?, ?)";
+    $stmtA = $this->db->prepare($sqlA);
+    $stmtA->bind_param('ss', $nomeAbbo, $scadenza);
+    $stmtA->execute();
+    
+    $id_abbonamento = $this->db->insert_id; 
+
+    $sqlQ = "INSERT INTO acquisto_a (CF, codAbbonamento, data, orario) VALUES (?, ?, ?, ?)";
+    $stmtQ = $this->db->prepare($sqlQ);
+    $stmtQ->bind_param('siss', $cf, $id_abbonamento, $data, $ora);
+    $stmtQ->execute();
+
+    $sqlVendita = "INSERT INTO vendita_a (codAbbonamento, data, orario, numeroCassa) 
+                    SELECT ?, ?, ?, numeroCassa 
+                    FROM cassa 
+                    WHERE stato = true 
+                    ORDER BY RAND() 
+                    LIMIT 1";
+    $stmtVen = $this->db->prepare($sqlVendita);
+    $stmtVen->bind_param('iss', $id_abbonamento, $data, $ora);
+    $stmtVen->execute();
+}
+
+public function eseguiAcquistoBiglietto($cf, $nome, $cognome, $data_n, $tel, $mail, $alt, $nomeBiglietto, $dataValidita, $dataAcquisto, $oraAcquisto) {
+    $sqlV = "INSERT INTO visitatore (nome, cognome, CF, dataNascita, numeroTelefono, e_mail, altezzaVisitatore)
+                VALUES (?, ?, ?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE CF=CF";
+    $stmtV = $this->db->prepare($sqlV);
+    $stmtV->bind_param('ssssssi', $cf, $nome, $cognome, $data_n, $tel, $mail, $alt);
+    $stmtV->execute();
+
+    $sqlB = "INSERT INTO biglietto (nomeBiglietto, dataValidita) VALUES (?, ?)";
+    $stmtB = $this->db->prepare($sqlB);
+    $stmtB->bind_param('ss', $nomeBiglietto, $dataValidita);
+    $stmtB->execute();
+    
+    $id_biglietto = $this->db->insert_id; 
+
+    $sqlQ = "INSERT INTO acquisto_b (CF, codiceBiglietto, data, orario) VALUES (?, ?, ?, ?)";
+    $stmtQ = $this->db->prepare($sqlQ);
+    $stmtQ->bind_param('siss', $cf, $id_biglietto, $dataAcquisto, $oraAcquisto);
+    $stmtQ->execute();
+
+    $sqlVendita = "INSERT INTO vendita_b (codiceBiglietto, data, orario, numeroCassa) 
+                    SELECT ?, ?, ?, numeroCassa 
+                    FROM cassa 
+                    WHERE stato = true 
+                    ORDER BY RAND() 
+                    LIMIT 1";
+    $stmtVen = $this->db->prepare($sqlVendita);
+    $stmtVen->bind_param('iss', $id_biglietto, $dataAcquisto, $oraAcquisto);
+    $stmtVen->execute();
+}
+
+
 ?>
