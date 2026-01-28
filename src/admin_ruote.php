@@ -5,24 +5,44 @@ if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { header("Loca
 
 $messaggio = ""; $errore = "";
 
-// DELETE
+$lista_ruote = $dbh->getRuotaPanoramica();
+
 if (isset($_GET['action']) && $_GET['action'] == 'delete_ruota' && isset($_GET['id'])) {
     try {
         $dbh->deleteRuotaPanoramica($_GET['id']);
         $messaggio = "Ruota Panoramica eliminata!";
+        $lista_ruote = $dbh->getRuotaPanoramica();
     } catch (Exception $e) { $errore = "Impossibile eliminare."; }
 }
 
-// INSERT
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_ruota'])) {
-    $res = $dbh->insertRuotaPanoramica(
-        $_POST['nome'], $_POST['disponibilita'], 
-        $_POST['durata'], $_POST['altezza']
-    );
-    if ($res) $messaggio = "Nuova Ruota Panoramica aggiunta!"; else $errore = "Errore inserimento.";
-}
+    
+    $nome_inserito = $_POST['nome'];
+    $esiste_gia = false;
 
-$lista_ruote = $dbh->getRuotaPanoramica();
+    foreach ($lista_ruote as $r) {
+        if (strcasecmp($r['nomeRuota'], $nome_inserito) == 0) {
+            $esiste_gia = true;
+            break;
+        }
+    }
+
+    if ($esiste_gia) {
+        $errore = "Attenzione: Esiste già una Ruota con il nome '$nome_inserito'!";
+    } else {
+        $res = $dbh->insertRuotaPanoramica(
+            $_POST['nome'], $_POST['disponibilita'], 
+            $_POST['durata'], $_POST['altezza']
+        );
+        
+        if ($res) {
+            $messaggio = "Nuova Ruota Panoramica aggiunta!"; 
+            $lista_ruote = $dbh->getRuotaPanoramica();
+        } else {
+            $errore = "Errore inserimento.";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -88,9 +108,8 @@ $lista_ruote = $dbh->getRuotaPanoramica();
                     <input type="number" name="durata" placeholder="Durata Giro (minuti)" required>
                     
                     <select name="disponibilita">
-                        <option value="Aperta">Aperta</option>
-                        <option value="Chiusa">Chiusa</option>
-                        <option value="Manutenzione">Manutenzione</option>
+                        <option value="1">Aperta</option>
+                        <option value="0">Chiusa</option>
                     </select>
                     <button type="submit" class="btn-add">Aggiungi Ruota</button>
                 </div>
