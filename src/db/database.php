@@ -171,14 +171,12 @@ class DatabaseHelper {
         return $res['nomeAttivita'] ?? $codiceAttivita;
     }
 
-    // Recupera tutti i lavoratori
     public function getLavoratori() {
         $query = "SELECT * FROM LAVORATORE";
         $result = $this->db->query($query);
         return $result->fetch_all(MYSQLI_ASSOC);
     }
 
-    // Aggiunge un lavoratore
     public function addLavoratore($nome, $cognome, $dataNascita, $CF, $numeroTelefono, $e_mail, $mansione, $dataInizioContratto, $stipendio,
 						$codiceAttivita_puntoRistoro, $codiceAttivita_negozio, $nomeGiostra, $nomeAreaTematica, $nomeRuota,
                         $nomeAttrazionePaura) {
@@ -192,7 +190,6 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
-    // Elimina un lavoratore tramite ID
     public function deleteLavoratore($CF) {
         $query = "DELETE FROM lavoratore WHERE CF = ?";
         $stmt = $this->db->prepare($query);
@@ -232,7 +229,7 @@ class DatabaseHelper {
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
     }
-    /* Attività con maggior fatturato */
+    
     public function getTopFatturato() {
         $query = "SELECT a.nomeAttivita, a.tipologiaAttivita, SUM(u.prezzoAcquisto) AS fatturatoTotale 
                   FROM ATTIVITA_COMMERCIALE a
@@ -244,8 +241,56 @@ class DatabaseHelper {
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
     public function storicoBigliettiAbbonamenti(){
         
+    }
+
+    public function top10visitatori(){
+        $query = "SELECT nome, cognome, count(*) as biglietti_comprati
+                 FROM visitatore V, acquisto_b A
+                 WHERE V.CF = A.CF
+                 GROUP BY V.CF
+                 ORDER BY biglietti_comprati DESC
+                 LIMIT 10";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function lavoratoriPiuLongevi(){
+        $query = "SELECT L.nome, L.cognome, L.mansione, L.dataInizioContratto,
+                 IF(T.data = '2026-07-28' AND '12:00:00' BETWEEN T.oraInizio AND T.oraFine, 'Sì', 'No') AS attualmente_a_lavoro
+                 FROM lavoratore L JOIN turno_di_lavoro T ON L.CF = T.CF
+                 WHERE T.data = '2026-07-28'
+                 ORDER BY L.dataInizioContratto ASC
+                 LIMIT 10";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function lavoratoriPerMansione(){
+        $query = "SELECT mansione, count(*) AS numero_lavoratori, ROUND(AVG(Stipendio), 2) AS stipendio_medio
+                 FROM lavoratore
+                 GROUP BY mansione
+                 ORDER BY stipendio_medio DESC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
+    }
+
+    public function GuastoPiuLungo(){
+        $query = "SELECT tipoGuasto, impiantoInManutenzione, nomeRuota, nomeGiostra, nomeAreaTematica, nomeAttrazionePaura,
+                    DATEDIFF(IFNULL(dataFine, '2026-07-28'), dataInizio) AS giorni_in_manutenzione
+                FROM MANUTENZIONE
+                ORDER BY giorni_in_manutenzione DESC
+                LIMIT 1";
+        $result = $this->db->query($query);
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
     
     /*DELETE Attrazione*/
@@ -348,5 +393,31 @@ class DatabaseHelper {
         $stmt->execute();
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
+
+    // Recupera i turni per una data specifica
+    public function getTurniPerData($data) {
+        $query = "SELECT * FROM turno_di_lavoro WHERE data = ? ORDER BY oraInizio ASC";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $data);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
+
+    // Inserisce un nuovo turno
+    public function addTurno($cf, $inizio, $fine, $data) {
+        $query = "INSERT INTO turno_di_lavoro (CF, oraInizio, oraFine, data) VALUES (?, ?, ?, ?)";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssss", $cf, $inizio, $fine, $data);
+        return $stmt->execute();
+    }
+
+    // Elimina un turno specifico
+    public function deleteTurno($cf, $data, $inizio) {
+        $query = "DELETE FROM turno_di_lavoro WHERE CF = ? AND data = ? AND oraInizio = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sss", $cf, $data, $inizio);
+        return $stmt->execute();
+    }
+
 }
 ?>
