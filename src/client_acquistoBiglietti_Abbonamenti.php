@@ -31,6 +31,9 @@ $abbonamenti = $dbh->getTipologieAbbonamenti();
             margin-top: 20px; 
         }
 
+        /* Modificato per supportare il link */
+        .ticket-link { text-decoration: none; color: inherit; display: block; }
+
         .ticket-card {
             background: white;
             border-radius: 15px;
@@ -40,13 +43,16 @@ $abbonamenti = $dbh->getTipologieAbbonamenti();
             justify-content: space-between;
             align-items: center;
             border-left: 8px solid #f39c12;
-            transition: transform 0.2s;
+            transition: transform 0.2s, box-shadow 0.2s;
+            cursor: pointer;
         }
 
-        .ticket-card:hover { transform: scale(1.02); }
+        .ticket-card:hover { 
+            transform: scale(1.02); 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
 
         .ticket-info h3 { margin: 0; color: #333; font-size: 1.4rem; }
-        .ticket-info p { margin: 5px 0 0; color: #7f8c8d; }
 
         .ticket-price {
             text-align: right;
@@ -86,35 +92,39 @@ $abbonamenti = $dbh->getTipologieAbbonamenti();
     <a href="visitatori_home.php" class="btn-back">⬅ Torna alla Home</a>
     
     <h1 style="text-align: center; color: #2c3e50;">Scegli la tua avventura</h1>
-    <p style="text-align: center; color: #7f8c8d;">Seleziona la tipologia di ingresso più adatta alle tue esigenze.</p>
+    <p style="text-align: center; color: #7f8c8d;">Clicca su un biglietto o abbonamento per procedere all'acquisto.</p>
 
     <h2 class="section-title">🎟 Biglietti Singoli</h2>
     <div class="ticket-grid">
         <?php foreach ($biglietti as $b): ?>
-            <div class="ticket-card">
-                <div class="ticket-info">
-                    <h3><?php echo htmlspecialchars($b['nomeBiglietto']); ?></h3>
+            <a href="client_form_acquisto.php?tipo=biglietto&nome=<?php echo urlencode($b['nomeBiglietto']); ?>" class="ticket-link">
+                <div class="ticket-card">
+                    <div class="ticket-info">
+                        <h3><?php echo htmlspecialchars($b['nomeBiglietto']); ?></h3>
+                    </div>
+                    <div class="ticket-price">
+                        <?php echo $b['prezzo']; ?>€
+                        <br><span>Persona</span>
+                    </div>
                 </div>
-                <div class="ticket-price">
-                    <?php echo $b['prezzo']; ?>€
-                    <br><span>Persona</span>
-                </div>
-            </div>
+            </a>
         <?php endforeach; ?>
     </div>
 
     <h2 class="section-title" style="border-bottom-color: #9b59b6;">💳 Abbonamenti</h2>
     <div class="ticket-grid">
         <?php foreach ($abbonamenti as $a): ?>
-            <div class="ticket-card" style="border-left-color: #9b59b6;">
-                <div class="ticket-info">
-                    <h3><?php echo htmlspecialchars($a['nomeAbbonamento']); ?></h3>
+            <a href="client_form_acquisto.php?tipo=abbonamento&nome=<?php echo urlencode($a['nomeAbbonamento']); ?>" class="ticket-link">
+                <div class="ticket-card" style="border-left-color: #9b59b6;">
+                    <div class="ticket-info">
+                        <h3><?php echo htmlspecialchars($a['nomeAbbonamento']); ?></h3>
+                    </div>
+                    <div class="ticket-price">
+                        <?php echo $a['prezzo']; ?>€
+                        <br><span>Abbonato</span>
+                    </div>
                 </div>
-                <div class="ticket-price">
-                    <?php echo $a['prezzo']; ?>€
-                    <br><span>Abbonato</span>
-                </div>
-            </div>
+            </a>
         <?php endforeach; ?>
     </div>
 

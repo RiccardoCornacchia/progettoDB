@@ -1,0 +1,151 @@
+<?php
+require 'config/config.php';
+
+if (!isset($_SESSION['ruolo'])) {
+    header("Location: login.php");
+    exit;
+}
+
+// Recuperiamo i dati passati dall'URL
+$tipo_acquisto = $_GET['tipo'] ?? 'biglietto'; 
+$nome_prodotto = $_GET['nome'] ?? '';
+$oggi = date('Y-m-d'); 
+?>
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Dati Acquisto - WonderPark</title>
+    <style>
+        /* Stili condivisi dalla visitatori_home */
+        body { font-family: sans-serif; background-color: #f9f9f9; margin: 0; color: #333; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        
+        nav { background: #333; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .logo { font-weight: bold; font-size: 1.2rem; }
+        .btn-logout { background: #d9534f; color: white; padding: 5px 15px; border-radius: 4px; font-size: 0.9rem; }
+
+        .container { max-width: 700px; margin: 30px auto; padding: 0 15px; }
+        
+        /* Stile Card e Form */
+        .item-card { 
+            background: white; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            padding: 25px; 
+            margin-bottom: 20px; 
+        }
+
+        .header-risultati { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .btn-back { background: #ddd; color: #333; padding: 5px 10px; border-radius: 4px; font-weight: bold; }
+
+        .info-box { background: #f0f4f8; padding: 15px; border-radius: 5px; margin-bottom: 25px; border-left: 4px solid #f0ad4e; }
+        
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .full-width { grid-column: span 2; }
+
+        label { display: block; font-weight: bold; font-size: 0.85rem; color: #555; margin-bottom: 5px; }
+        input { 
+            width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; 
+            font-size: 1rem; box-sizing: border-box; 
+        }
+
+        .btn-confirm { 
+            width: 100%; background-color: #5cb85c; color: white; border: none; 
+            padding: 15px; border-radius: 4px; font-weight: bold; cursor: pointer; 
+            font-size: 1rem; margin-top: 20px; transition: background 0.2s;
+        }
+        .btn-confirm:hover { background-color: #4cae4c; }
+
+        .site-footer {
+            background-color: #eee; color: #555; padding: 20px; margin-top: 50px; 
+            text-align: center; border-top: 1px solid #ccc;
+        }
+        
+        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } .form-grid > * { grid-column: span 1; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">WonderPark App</div>
+        <div>
+            Benvenuto, <?php echo htmlspecialchars($_SESSION['ruolo']); ?>
+            <a href="logout.php" class="btn-logout" style="margin-left: 15px;">Esci</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="header-risultati">
+            <a href="client_acquistoBiglietti_Abbonamenti.php" class="btn-back">⬅</a>
+            <h2 style="margin:0; color: #2c3e50;">Dati Intestatario</h2>
+        </div>
+
+        <div class="item-card">
+            <div class="info-box">
+                Stai acquistando: <strong><?php echo htmlspecialchars($nome_prodotto); ?></strong><br>
+                Categoria: <span style="text-transform: capitalize;"><?php echo htmlspecialchars($tipo_acquisto); ?></span>
+            </div>
+
+            <form action="processa_acquisto.php" method="POST" class="form-grid">
+                <input type="hidden" name="tipo" value="<?php echo htmlspecialchars($tipo_acquisto); ?>">
+                <input type="hidden" name="nome_prodotto" value="<?php echo htmlspecialchars($nome_prodotto); ?>">
+
+                <?php if ($tipo_acquisto === 'biglietto'): ?>
+                    <div class="full-width">
+                        <label for="data_validita">Data di utilizzo del biglietto *</label>
+                        <input type="date" id="data_validita" name="data_validita" min="<?php echo $oggi; ?>" required>
+                        <hr style="margin-top: 20px; border: 0; border-top: 1px solid #eee;">
+                    </div>
+                <?php endif; ?>
+
+                <div>
+                    <label for="nome">Nome *</label>
+                    <input type="text" id="nome" name="nome" placeholder="es. Mario" required>
+                </div>
+
+                <div>
+                    <label for="cognome">Cognome *</label>
+                    <input type="text" id="cognome" name="cognome" placeholder="es. Rossi" required>
+                </div>
+
+                <div>
+                    <label for="data_nascita">Data di Nascita *</label>
+                    <input type="date" id="data_nascita" name="data_nascita" required>
+                </div>
+
+                <div>
+                    <label for="codice_fiscale">Codice Fiscale *</label>
+                    <input type="text" id="codice_fiscale" name="codice_fiscale" maxlength="16" required style="text-transform: uppercase;">
+                </div>
+
+                <div>
+                    <label for="altezza">Altezza (cm) *</label>
+                    <input type="number" id="altezza" name="altezza" min="50" max="250" placeholder="es. 175" required>
+                </div>
+
+                <div>
+                    <label for="telefono">Telefono (opzionale)</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="333 1234567">
+                </div>
+
+                <div class="full-width">
+                    <label for="email">Email (opzionale)</label>
+                    <input type="email" id="email" name="email" placeholder="mario.rossi@esempio.com">
+                </div>
+
+                <div class="full-width">
+                    <button type="submit" class="btn-confirm">Conferma l'acquisto ➔</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; WonderPark 2026</p>
+    </footer>
+
+</body>
+</html>
