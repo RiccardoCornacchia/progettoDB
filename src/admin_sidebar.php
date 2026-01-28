@@ -11,7 +11,7 @@ $pagina_corrente = basename($_SERVER['PHP_SELF']);
     </a>
     
     <a href="sezione_lavoratori_admin.php" class="menu-link <?php echo ($pagina_corrente == 'sezione_lavoratori_admin.php') ? 'active' : ''; ?>">
-        Lavoratori
+        🔨Lavoratori
     </a>
     
     <a href="admin_giostre.php" class="menu-link <?php echo ($pagina_corrente == 'admin_giostre.php') ? 'active' : ''; ?>">
@@ -28,6 +28,10 @@ $pagina_corrente = basename($_SERVER['PHP_SELF']);
     
     <a href="admin_aree.php" class="menu-link <?php echo ($pagina_corrente == 'admin_aree.php') ? 'active' : ''; ?>">
         Aree Tematiche
+    </a>
+
+    <a href="admin_eventi.php" class="menu-link <?php echo ($pagina_corrente == 'admin_eventi.php') ? 'active' : ''; ?>">
+        Eventi
     </a>
     
     <a href="admin_ruote.php" class="menu-link <?php echo ($pagina_corrente == 'admin_ruote.php') ? 'active' : ''; ?>">
