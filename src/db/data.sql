@@ -635,109 +635,109 @@ INSERT INTO appartenenza (codiceGruppo, CF) VALUES
 
 /*ATTIVITA COMMERICIALE*/
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) VALUES 
-(1, 'Toro In Piedi Saloon', '11:30:00', '22:30:00', 1, 4, 'puntiRistoro'),
-(2, 'Paddock Coffee', '11:30:00', '22:30:00', 1, 4, 'puntiRistoro'),
-(3, 'Akira Sushi', '11:30:00', '22:30:00', 1, 5, 'puntiRistoro'),
-(4, 'Dino''s pizza time', '11:30:00', '22:30:00', 1, 3, 'puntiRistoro'),
-(5, 'Katun Grill', '11:30:00', '22:30:00', 1, 10, 'puntiRistoro'),
-(6, 'Scrambler BBQ', '11:30:00', '22:30:00', 1, 7, 'puntiRistoro'),
-(7, 'Cantina El Tesoro', '11:30:00', '22:30:00', 1, 7, 'puntiRistoro'),
-(8, 'McDonald', '11:30:00', '22:30:00', 1, 10, 'puntiRistoro'),
-(9, 'Churros & Magia', '11:30:00', '22:30:00', 1, 3, 'puntiRistoro'),
-(10, 'Pretzel Planet', '11:30:00', '22:30:00', 1, 3, 'puntiRistoro'),
-(11, 'Popcorn Volcano', '11:30:00', '22:30:00', 1, 2, 'puntiRistoro'),
-(12, 'Il Saloon dello Sceriffo', '11:30:00', '22:30:00', 1, 7, 'puntiRistoro'),
-(13, 'Pizzeria La Piazza Incantata', '11:30:00', '22:30:00', 1, 7, 'puntiRistoro'),
-(14, 'Chiosco da Riccardo', '11:30:00', '22:30:00', 1, 2, 'puntiRistoro'),
-(15, 'Trattoria da Giovanni', '11:30:00', '22:30:00', 1, 5, 'puntiRistoro'),
-(16, 'CandyShop by Francesca', '11:30:00', '22:30:00', 1, 1, 'puntiRistoro');
+(1, 'Toro In Piedi Saloon', '11:30:00', '22:30:00', 1, 4, 'Punto Ristoro'),
+(2, 'Paddock Coffee', '11:30:00', '22:30:00', 1, 4, 'Punto Ristoro'),
+(3, 'Akira Sushi', '11:30:00', '22:30:00', 1, 5, 'Punto Ristoro'),
+(4, 'Dino''s pizza time', '11:30:00', '22:30:00', 1, 3, 'Punto Ristoro'),
+(5, 'Katun Grill', '11:30:00', '22:30:00', 1, 10, 'Punto Ristoro'),
+(6, 'Scrambler BBQ', '11:30:00', '22:30:00', 1, 7, 'Punto Ristoro'),
+(7, 'Cantina El Tesoro', '11:30:00', '22:30:00', 1, 7, 'Punto Ristoro'),
+(8, 'McDonald', '11:30:00', '22:30:00', 1, 10, 'Punto Ristoro'),
+(9, 'Churros & Magia', '11:30:00', '22:30:00', 1, 3, 'Punto Ristoro'),
+(10, 'Pretzel Planet', '11:30:00', '22:30:00', 1, 3, 'Punto Ristoro'),
+(11, 'Popcorn Volcano', '11:30:00', '22:30:00', 1, 2, 'Punto Ristoro'),
+(12, 'Il Saloon dello Sceriffo', '11:30:00', '22:30:00', 1, 7, 'Punto Ristoro'),
+(13, 'Pizzeria La Piazza Incantata', '11:30:00', '22:30:00', 1, 7, 'Punto Ristoro'),
+(14, 'Chiosco da Riccardo', '11:30:00', '22:30:00', 1, 2, 'Punto Ristoro'),
+(15, 'Trattoria da Giovanni', '11:30:00', '22:30:00', 1, 5, 'Punto Ristoro'),
+(16, 'CandyShop by Francesca', '11:30:00', '22:30:00', 1, 1, 'Punto Ristoro');
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) VALUES 
-(17, 'Katun Scream Shot', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(18, 'Desmo Photo Finish', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(19, 'Gold Digger Click', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(20, 'Master Thai Photo', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(21, 'Rexplorer Memories', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(22, 'Buffalo Bill Snaps', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(23, 'Diavel Ring Pic', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(24, 'Vortex Action Photo', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(25, 'Titan Sky View', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(26, 'Sky Piercer Shot', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(27, 'Shadow Racer Flash', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(28, 'Cobra Photo Point', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(29, 'Meteorite Space Shot', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(30, 'Reset Future Cam', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(31, 'Rio Bravo Splash', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(32, 'Autosplash Wash', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(33, 'El Dorado Waterfall', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(34, 'Raratonga Volcano Pic', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(35, 'Rubble Rapids Photo', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(36, 'Adventure Bay Smiles', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(37, 'Aquila Flight Photo', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(38, 'Geronimo Jump Shot', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(39, 'Boots Balloon Pic', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(40, 'Bicisauro Photo', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(41, 'Cowabunga Snap', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(42, 'Jellyfish Memories', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(43, 'Kiddy Monster Pic', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(44, 'Monosauro Egg Photo', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(45, 'Raptotana Cave Pic', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(46, 'AlgigaWheel View', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(47, 'Reptilium Photo', '11:30:00', '22:30:00', 1, 2, 'NegozioFoto'),
-(48, 'Trenino Rainbow Pic', '11:30:00', '22:30:00', 1, 3, 'NegozioFoto'),
-(49, 'Tazze Magiche Spin', '11:30:00', '22:30:00', 1, 3, 'NegozioFoto');
+(17, 'Katun Scream Shot', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(18, 'Desmo Photo Finish', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(19, 'Gold Digger Click', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(20, 'Master Thai Photo', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(21, 'Rexplorer Memories', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(22, 'Buffalo Bill Snaps', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(23, 'Diavel Ring Pic', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(24, 'Vortex Action Photo', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(25, 'Titan Sky View', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(26, 'Sky Piercer Shot', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(27, 'Shadow Racer Flash', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(28, 'Cobra Photo Point', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(29, 'Meteorite Space Shot', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(30, 'Reset Future Cam', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(31, 'Rio Bravo Splash', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(32, 'Autosplash Wash', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(33, 'El Dorado Waterfall', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(34, 'Raratonga Volcano Pic', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(35, 'Rubble Rapids Photo', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(36, 'Adventure Bay Smiles', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(37, 'Aquila Flight Photo', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(38, 'Geronimo Jump Shot', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(39, 'Boots Balloon Pic', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(40, 'Bicisauro Photo', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(41, 'Cowabunga Snap', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(42, 'Jellyfish Memories', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(43, 'Kiddy Monster Pic', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(44, 'Monosauro Egg Photo', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(45, 'Raptotana Cave Pic', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(46, 'AlgigaWheel View', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(47, 'Reptilium Photo', '11:30:00', '22:30:00', 1, 2, 'Negozio Foto'),
+(48, 'Trenino Rainbow Pic', '11:30:00', '22:30:00', 1, 3, 'Negozio Foto'),
+(49, 'Tazze Magiche Spin', '11:30:00', '22:30:00', 1, 3, 'Negozio Foto');
 
 /* --- NEGOZI DI SOUVENIRS e Sala Giochi --- */
 
 INSERT INTO ATTIVITA_COMMERCIALE(codiceAttivita, nomeAttivita, orarioApertura, orarioChiusura, disponibilita, numeroDipendenti, tipologiaAttivita) VALUES 
-(50, 'Mirabilia Emporium', '10:00:00', '23:00:00', 1, 3, 'ShopSouvenirs'),
-(51, 'Dino Market', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
-(52, 'Western General Store', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
-(53, 'Galactic Gadgets', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
-(54, 'Il Tesoro dei Pirati', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
-(55, 'La Bottega delle Fate', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
-(56, 'Speed Shop', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
-(57, 'Peluche Paradise', '11:30:00', '22:30:00', 1, 3, 'ShopSouvenirs'),
-(58, 'Arcade Kingdom', '10:30:00', '22:45:00', 1, 3, 'salaGiochi');
+(50, 'Mirabilia Emporium', '10:00:00', '23:00:00', 1, 3, 'Shop Souvenirs'),
+(51, 'Dino Market', '11:30:00', '22:30:00', 1, 3, 'Shop Souvenirs'),
+(52, 'Western General Store', '11:30:00', '22:30:00', 1, 3, 'Shop Souvenirs'),
+(53, 'Galactic Gadgets', '11:30:00', '22:30:00', 1, 3, 'Shop Souvenirs'),
+(54, 'Il Tesoro dei Pirati', '11:30:00', '22:30:00', 1, 3, 'Shop Souvenirs'),
+(55, 'La Bottega delle Fate', '11:30:00', '22:30:00', 1, 3, 'Shop Souvenirs'),
+(56, 'Speed Shop', '11:30:00', '22:30:00', 1, 3, 'Shop Souvenirs'),
+(57, 'Peluche Paradise', '11:30:00', '22:30:00', 1, 3, 'Shop Souvenirs'),
+(58, 'Arcade Kingdom', '10:30:00', '22:45:00', 1, 3, 'Sala Giochi');
 
 /*Giostra*/
 INSERT INTO GIOSTRA(nomeGiostra,capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Katun',32, 1, 12, 145, 1, 80, 110, 200, 'Montagne Russe');
+VALUES ('Katun',32, 1, 12, 145, 1, 80, 110, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Desmo Race', 24, 1, 10, 120, FALSE, 80, 100, 200, 'Montagne Russe');
+VALUES ('Desmo Race', 24, 1, 10, 120, FALSE, 80, 100, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Gold Digger', 4, 1, 6, 180, FALSE, 99, 45, 200, 'Montagne Russe');
+VALUES ('Gold Digger', 4, 1, 6, 180, FALSE, 99, 45, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Master Thai', 20, 1, 6, 110, FALSE, 99, 50, 200, 'Montagne Russe');
+VALUES ('Master Thai', 20, 1, 6, 110, FALSE, 99, 50, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra,capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Rexplorer', 20, 1, 5, 90, FALSE, 99, 35, 190, 'Montagne Russe');
+VALUES ('Rexplorer', 20, 1, 5, 90, FALSE, 99, 35, 190, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Buffalo Bill Rodeo', 40, 1, 8, 120, FALSE, 99, 50, 200, 'Montagne Russe');
+VALUES ('Buffalo Bill Rodeo', 40, 1, 8, 120, FALSE, 99, 50, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Diavel Ring', 24, 1, 10, 120, FALSE, 99, 30, 195, 'Montagne Russe');
+VALUES ('Diavel Ring', 24, 1, 10, 120, FALSE, 99, 30, 195, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Vortex', 28, 1, 14, 130, FALSE, 80, 95, 200, 'Montagne Russe');
+VALUES ('Vortex', 28, 1, 14, 130, FALSE, 80, 95, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Titan', 32, 1, 14, 160, FALSE, 80, 120, 200, 'Montagne Russe');
+VALUES ('Titan', 32, 1, 14, 160, FALSE, 80, 120, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Sky Piercer', 16, 1, 12, 60, FALSE, 80, 130, 200, 'Montagne Russe');
+VALUES ('Sky Piercer', 16, 1, 12, 60, FALSE, 80, 130, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Shadow Racer', 20, 1, 10, 110, FALSE, 80, 70, 200, 'Montagne Russe');
+VALUES ('Shadow Racer', 20, 1, 10, 110, FALSE, 80, 70, 200, 'Montagna Russa');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
 VALUES ('Cobra Express', 24, 1, 8, 100, FALSE, 99, 60, 200, 'Montagne Russe');
 
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
-VALUES ('Meteorite', 18, 1, 12, 90, FALSE, 80, 85, 200, 'Montagne Russe');
+VALUES ('Meteorite', 18, 1, 12, 90, FALSE, 80, 85, 200, 'Montagna Russa');
 
 /* Avventura */
 INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra)
@@ -803,12 +803,12 @@ VALUES ('Le Tazze Magiche', 30, 1, 3, 120, FALSE, 12, 10, 160, 'Bambini');
 
 /*Area Tematica*/
 INSERT INTO AREA_TEMATICA(nomeAreaTematica, disponibilita, tema, dataInizio, dataFine) VALUES 
-('Adventureland', 1, 'avventura e natura', '2026-04-01', '2026-10-31'),
-('Nickelodeon Land', 1, 'cartoni animati Nickelodeon', '2026-04-01', '2026-10-31'), 
+('Adventureland', 1, 'Avventura e Natura', '2026-04-01', '2026-10-31'),
+('Nickelodeon Land', 1, 'Cartoni animati Nickelodeon', '2026-04-01', '2026-10-31'), 
 ('Ducati World', 1, 'Ducati e moto', '2026-04-01', '2026-10-31'),
-('FarWest Valley', 1, 'farwest', '2026-04-01', '2026-10-31'),
+('FarWest Valley', 1, 'Farwest', '2026-04-01', '2026-10-31'),
 ('Route 66', 0, 'Viaggio e USA', '2025-04-01', '2025-10-31'),
-('Racing Track', 0, 'corse e auto', '2024-04-01', '2024-10-31');
+('Racing Track', 0, 'Corse e Auto', '2024-04-01', '2024-10-31');
 /*Attrazioni di Paura*/
 INSERT INTO attrazione_di_paura(nomeAttrazionePaura, disponibilita, prezzoAggiuntivo, dataInizio, dataFine)
 VALUES ('Phobia', 1, 15, '2026-04-01', '2026-10-31'), ('Mortal Circus', 1, 12, '2026-10-01', '2026-10-31'),
