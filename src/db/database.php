@@ -510,15 +510,17 @@ public function eseguiAcquistoBiglietto($cf, $nome, $cognome, $data_n, $tel, $ma
                 VALUES (?, ?, ?, ?, ?, ?, ?)
                 ON DUPLICATE KEY UPDATE CF=CF";
     $stmtV = $this->db->prepare($sqlV);
-    $stmtV->bind_param('ssssssi', $cf, $nome, $cognome, $data_n, $tel, $mail, $alt);
+    $stmtV->bind_param('ssssssi', $nome, $cognome, $cf, $data_n, $tel, $mail, $alt);
     $stmtV->execute();
 
-    $sqlB = "INSERT INTO biglietto (nomeBiglietto, dataValidita) VALUES (?, ?)";
+    $res = $this->db->query("SELECT MAX(codiceBiglietto) + 1 AS prossimoID FROM biglietto");
+    $row = $res->fetch_assoc();
+    $id_biglietto = $row['prossimoID'];
+
+    $sqlB = "INSERT INTO biglietto (codiceBiglietto, nomeBiglietto, dataValidita) VALUES (?, ?, ?)";
     $stmtB = $this->db->prepare($sqlB);
-    $stmtB->bind_param('ss', $nomeBiglietto, $dataValidita);
+    $stmtB->bind_param('iss',$id_biglietto, $nomeBiglietto, $dataValidita);
     $stmtB->execute();
-    
-    $id_biglietto = $this->db->insert_id; 
 
     $sqlQ = "INSERT INTO acquisto_b (CF, codiceBiglietto, data, orario) VALUES (?, ?, ?, ?)";
     $stmtQ = $this->db->prepare($sqlQ);
