@@ -76,6 +76,15 @@ try {
                 $titolo_sezione = "Negozi e Ristorazione";
                 break;
 
+            case 'AreeTematiche':
+                $elenco_elementi = $dbh->getAreeTematiche();
+                $col_nome = 'nomeAreaTematica';
+                $col_info = 'tema'; 
+                $label_info = "Tema:";
+                $col_status = 'disponibilita';
+                $titolo_sezione = "Le nostre Aree Tematiche";
+                break;
+
             default:
                 $categoria = null; 
                 break;
@@ -118,6 +127,7 @@ try {
         .card-horror { border-bottom-color: #e74c3c; }
         .card-ruota { border-bottom-color: #2ecc71; } 
         .card-attivita { border-bottom-color: #8e44ad; } 
+        .card-aree { border-bottom-color: #1abc9c; } /* Nuovo colore (Verde acqua) */
 
         .menu-icon { font-size: 3.5rem; display: block; margin-bottom: 15px; }
         .menu-title { font-size: 1.5rem; font-weight: bold; display: block; }
@@ -319,6 +329,11 @@ try {
                     <span class="menu-icon">🛍️</span>
                     <span class="menu-title">Negozi & Food</span>
                 </a>
+
+                <a href="?categoria=AreeTematiche" class="menu-card card-aree">
+                    <span class="menu-icon"></span>
+                    <span class="menu-title">Aree Tematiche</span>
+                </a>
             </div>
 
         <?php else: ?>
@@ -410,8 +425,8 @@ try {
             <p>&copy; WonderPark 2026</p>
             <nav class="footer-nav">
                 <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="#">Contatti</a></li>
+                    <li><a href="index.php">Login</a></li>
+                    <li><a href="contatti.php">Contatti</a></li>
                     <li><a href="mansioni_lavori_lato_cliente.php" class="footer-link">Lavora con noi</a></li>
                 </ul>
             </nav>
