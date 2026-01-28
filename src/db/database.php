@@ -441,29 +441,13 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
-    // Elimina un turno specifico
-    public function deleteTurno($cf, $data, $inizio) {
-        $query = "DELETE FROM turno_di_lavoro WHERE CF = ? AND data = ? AND oraInizio = ?";
+    public function esisteTurno($cf, $data, $oraInizio) {
+        $query = "SELECT * FROM turno_di_lavoro WHERE CF = ? AND data = ? AND oraInizio = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("sss", $cf, $data, $inizio);
-        return $stmt->execute();
-    }
-
-    // Recupera i turni per una data specifica
-    public function getTurniPerData($data) {
-        $query = "SELECT * FROM turno_di_lavoro WHERE data = ? ORDER BY oraInizio ASC";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("s", $data);
+        $stmt->bind_param("sss", $cf, $data, $oraInizio);
         $stmt->execute();
-        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-    }
-
-    // Inserisce un nuovo turno
-    public function addTurno($cf, $inizio, $fine, $data) {
-        $query = "INSERT INTO turno_di_lavoro (CF, oraInizio, oraFine, data) VALUES (?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param("ssss", $cf, $inizio, $fine, $data);
-        return $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
     }
 
     // Elimina un turno specifico

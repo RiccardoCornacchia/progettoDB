@@ -8,9 +8,23 @@ if (isset($_GET['elimina_cf'])) {
 }
 
 if (isset($_POST['azione']) && $_POST['azione'] == 'aggiungi_turno') {
-    $dbh->addTurno($_POST['cf'], $_POST['oraInizio'], $_POST['oraFine'], $_POST['data']);
-    header("Location: gestione_turni_lavoro.php?data_sel=" . $_POST['data']);
-    exit();
+    $cf = $_POST['cf'];
+    $data = $_POST['data'];
+    $oraInizio = $_POST['oraInizio'];
+    $oraFine = $_POST['oraFine'];
+
+    if ($dbh->esisteTurno($cf, $data, $oraInizio)) {
+        header("Location: gestione_turni_lavoro.php?data_sel=$data&errore=turno_duplicato");
+        exit();
+    } else {
+        if ($oraFine <= $oraInizio) {
+            header("Location: gestione_turni_lavoro.php?data_sel=$data&errore=orario_invalido");
+            exit();
+        }
+        $dbh->addTurno($cf, $oraInizio, $oraFine, $data);
+        header("Location: gestione_turni_lavoro.php?data_sel=$data&successo=1");
+        exit();
+    }
 }
 
 $dataSelezionata = $_GET['data_sel'] ?? date('2026-07-28');
