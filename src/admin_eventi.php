@@ -1,7 +1,6 @@
 <?php
 require 'config/config.php';
 
-// Controllo accesso
 if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
     header("Location: login.php");
     exit;
@@ -10,35 +9,62 @@ if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
 $messaggio = ""; 
 $errore = "";
 
-// 1. GESTIONE CANCELLAZIONE
+$lista_eventi = $dbh->getEventi();
+
 if (isset($_GET['action']) && $_GET['action'] == 'delete_evento' && isset($_GET['id'])) {
     try {
         $dbh->deleteEvento($_GET['id']);
         $messaggio = "Evento eliminato con successo!";
+        $lista_eventi = $dbh->getEventi();
     } catch (Exception $e) { 
-        $errore = "Impossibile eliminare l'evento (forse è già passato o collegato ad altro)."; 
+        $errore = "Impossibile eliminare l'evento."; 
     }
 }
 
-// 2. GESTIONE INSERIMENTO
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_evento'])) {
-    // Recupero dati dal form
-    $nome = $_POST['nome'];
-    $data = $_POST['data'];
-    $inizio = $_POST['inizio'];
-    $fine = $_POST['fine'];
-    $tipo = $_POST['tipo'];
+    
+    $codice_inserito = $_POST['codice'];
+    $esiste_gia = false;
 
-    // Chiamata al DB
-    $res = $dbh->insertEvento($nome, $data, $inizio, $fine, $tipo);
+    foreach ($lista_eventi as $ev) {
+        if ($ev['codiceEvento'] == $codice_inserito) {
+            $esiste_gia = true;
+            break;
+        }
+    }
 
-    if ($res) {
-        $messaggio = "Nuovo evento programmato!";
+    if ($esiste_gia) {
+        $errore = "Attenzione: Esiste già un evento con il Codice '$codice_inserito'!";
     } else {
-        $errore = "Errore durante l'inserimento (controlla se il nome esiste già).";
+        $inizio = $_POST['inizio'];
+        $fine = $_POST['fine'];
+        
+        $ts_inizio = strtotime($inizio);
+        $ts_fine = strtotime($fine);
+        $diff_secondi = $ts_fine - $ts_inizio;
+
+        if ($diff_secondi < 1800) {
+            if ($diff_secondi < 0) {
+                $errore = "Errore: L'ora di fine non può essere precedente all'ora di inizio.";
+            } else {
+                $errore = "Errore: L'evento deve durare almeno 30 minuti.";
+            }
+        } else {
+            $nome = $_POST['nome'];
+            $tematica = $_POST['tematica'];
+            $data = $_POST['data'];
+
+            $res = $dbh->insertEvento($codice_inserito, $nome, $tematica, $inizio, $fine, $data);
+
+            if ($res) {
+                $messaggio = "Nuovo evento aggiunto correttamente!";
+                $lista_eventi = $dbh->getEventi();
+            } else {
+                $errore = "Errore durante l'inserimento nel database.";
+            }
+        }
     }
 }
-$lista_eventi = $dbh->getEventi();
 ?>
 
 <!DOCTYPE html>
@@ -59,13 +85,13 @@ $lista_eventi = $dbh->getEventi();
         th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
         th { background: #f0f0f0; }
         .btn-delete { background: #d9534f; color: white; padding: 5px 10px; text-decoration: none; font-size: 0.8rem; }
-        .btn-add { background: #5cb85c; color: white; padding: 10px; border: none; cursor: pointer; font-size: 1rem; margin-top: 10px; width: 100%; }
         .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
         input, select { padding: 8px; border: 1px solid #ccc; width: 100%; box-sizing: border-box; }
         label { font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block; }
+        .btn-add { grid-column: span 2; background: #5cb85c; color: white; padding: 10px; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
         .msg-success { background: #dff0d8; color: #3c763d; padding: 15px; margin-bottom: 20px; border: 1px solid #d6e9c6; }
         .msg-error { background: #f2dede; color: #a94442; padding: 15px; margin-bottom: 20px; border: 1px solid #ebccd1; }
-</style>
+    </style>
 </head>
 <body>
 
@@ -78,14 +104,15 @@ $lista_eventi = $dbh->getEventi();
         <?php if ($errore): ?> <div class="msg-error"><?php echo $errore; ?></div> <?php endif; ?>
 
         <div class="section-box">
-            <h3>📅 Eventi Programmati</h3>
+            <h3>📅 Elenco Eventi</h3>
             <table>
                 <thead>
                     <tr>
-                        <th>Nome Evento</th>
+                        <th>Codice</th>
+                        <th>Nome</th>
+                        <th>Tematica</th>
                         <th>Data</th>
                         <th>Orario</th>
-                        <th>Tipo</th>
                         <th>Azioni</th>
                     </tr>
                 </thead>
@@ -93,21 +120,22 @@ $lista_eventi = $dbh->getEventi();
                     <?php if(count($lista_eventi) > 0): ?>
                         <?php foreach ($lista_eventi as $ev): ?>
                         <tr>
+                            <td><?php echo htmlspecialchars($ev['codiceEvento']); ?></td>
                             <td><b><?php echo htmlspecialchars($ev['nomeEvento']); ?></b></td>
+                            <td><?php echo htmlspecialchars($ev['tematica']); ?></td>
                             <td><?php echo htmlspecialchars($ev['data']); ?></td>
                             <td>
                                 <?php echo substr($ev['oraInizio'], 0, 5); ?> - 
                                 <?php echo isset($ev['oraFine']) ? substr($ev['oraFine'], 0, 5) : '?'; ?>
                             </td>
-                            <td><?php echo htmlspecialchars($ev['tipologiaEvento'] ?? '-'); ?></td>
                             <td>
-                                <a href="?action=delete_evento&id=<?php echo urlencode($ev['nomeEvento']); ?>" 
-                                   class="btn-delete" onclick="return confirm('Sei sicuro di voler eliminare questo evento?');">Elimina</a>
+                                <a href="?action=delete_evento&id=<?php echo urlencode($ev['codiceEvento']); ?>" 
+                                   class="btn-delete" onclick="return confirm('Vuoi eliminare l\'evento <?php echo htmlspecialchars($ev['nomeEvento']); ?>?');">Elimina</a>
                             </td>
                         </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
-                        <tr><td colspan="5" style="text-align:center; color:#777;">Nessun evento futuro in programma.</td></tr>
+                        <tr><td colspan="6" style="text-align:center; color:#777;">Nessun evento in programma.</td></tr>
                     <?php endif; ?>
                 </tbody>
             </table>
@@ -119,24 +147,24 @@ $lista_eventi = $dbh->getEventi();
                 <input type="hidden" name="form_evento" value="1">
                 <div class="form-grid">
                     
-                    <div style="grid-column: span 2;">
+                    <div>
+                        <label>Codice Evento</label>
+                        <input type="number" name="codice" placeholder="Es. 101" required>
+                    </div>
+
+                    <div>
                         <label>Nome Evento</label>
                         <input type="text" name="nome" placeholder="Es. Notte Bianca" required>
                     </div>
 
-                    <div>
-                        <label>Data</label>
-                        <input type="date" name="data" required>
+                    <div style="grid-column: span 2;">
+                        <label>Tematica</label>
+                        <input type="text" name="tematica" placeholder="Es. Musicale, Horror, Cartoni..." required>
                     </div>
 
-                    <div>
-                        <label>Tipologia</label>
-                        <select name="tipo">
-                            <option value="Parata">Parata</option>
-                            <option value="Concerto">Concerto</option>
-                            <option value="Spettacolo">Spettacolo Pirotecnico</option>
-                            <option value="Animazione">Animazione Bambini</option>
-                        </select>
+                    <div style="grid-column: span 2;">
+                        <label>Data</label>
+                        <input type="date" name="data" required>
                     </div>
 
                     <div>
