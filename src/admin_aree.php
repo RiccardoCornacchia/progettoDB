@@ -5,7 +5,6 @@ if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { header("Loca
 
 $messaggio = ""; $errore = "";
 
-// DELETE
 if (isset($_GET['action']) && $_GET['action'] == 'delete_area' && isset($_GET['id'])) {
     try {
         $dbh->deleteAreaTematica($_GET['id']);
@@ -13,7 +12,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete_area' && isset($_GET['i
     } catch (Exception $e) { $errore = "Impossibile eliminare."; }
 }
 
-// INSERT
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_area'])) {
     $res = $dbh->insertAreaTematica(
         $_POST['nome'], $_POST['tema'], $_POST['disponibilita'], 
