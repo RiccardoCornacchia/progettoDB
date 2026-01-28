@@ -1,11 +1,8 @@
 <?php
 require 'config/config.php';
 
-// --- LOGICA DI GESTIONE AZIONI ---
-
 // 1. Azione Aggiunta
 if (isset($_POST['azione']) && $_POST['azione'] == 'aggiungi') {
-    // Recupero dati obbligatori e opzionali
     $nome = $_POST['nome'];
     $cognome = $_POST['cognome'];
     $dataNascita = $_POST['dataNascita'];
@@ -16,7 +13,6 @@ if (isset($_POST['azione']) && $_POST['azione'] == 'aggiungi') {
     $dataInizioContratto = $_POST['dataInizioContratto'];
     $stipendio = $_POST['stipendio'];
     
-    // Campi specifici (assegniamo NULL se vuoti)
     $codiceAttivita_puntoRistoro = !empty($_POST['codiceAttivita_puntoRistoro']) ? $_POST['codiceAttivita_puntoRistoro'] : null;
     $codiceAttivita_negozio = !empty($_POST['codiceAttivita_negozio']) ? $_POST['codiceAttivita_negozio'] : null;
     $nomeGiostra = !empty($_POST['nomeGiostra']) ? $_POST['nomeGiostra'] : null;
@@ -147,6 +143,12 @@ $lavoratori = $dbh->getLavoratori();
     <div class="nav-actions">
         <a href="turni_di_lavoro_admin.php" class="btn-turni">
             <span class="icon">📅</span> Gestione Turni di Lavoro
+        </a>
+    </div>
+
+    <div class="nav-actions">
+        <a href="elenco_lavoratori.php" class="btn-turni">
+            Elenco Lavoratori Per Mansione
         </a>
     </div>
 
