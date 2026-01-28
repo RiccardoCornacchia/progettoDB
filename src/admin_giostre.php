@@ -9,28 +9,47 @@ if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
 $messaggio = "";
 $errore = "";
 
-// DELETE GIOSTRA
+$lista_giostre = $dbh->getGiostre();
+
 if (isset($_GET['action']) && $_GET['action'] == 'delete_giostra' && isset($_GET['id'])) {
     try {
         $dbh->deleteGiostra($_GET['id']);
         $messaggio = "Giostra eliminata!";
+        $lista_giostre = $dbh->getGiostre();
     } catch (Exception $e) {
         $errore = "Impossibile eliminare: usata altrove.";
     }
 }
 
-// INSERT GIOSTRA
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
-    $res = $dbh->insertGiostra(
-        $_POST['nome'], $_POST['capienza'], $_POST['disponibilita'], 
-        $_POST['eta'], $_POST['durata'], $_POST['acquatica'], 
-        $_POST['velocita'], $_POST['tipo']
-    );
-    if ($res) $messaggio = "Nuova giostra aggiunta!";
-    else $errore = "Errore inserimento.";
-}
+    
+    $nome_inserito = $_POST['nome'];
+    $esiste_gia = false;
 
-$lista_giostre = $dbh->getGiostre();
+    foreach ($lista_giostre as $g) {
+        if (strcasecmp($g['nomeGiostra'], $nome_inserito) == 0) {
+            $esiste_gia = true;
+            break;
+        }
+    }
+
+    if ($esiste_gia) {
+        $errore = "Attenzione: Esiste già una giostra con il nome '$nome_inserito'!";
+    } else {
+        $res = $dbh->insertGiostra(
+            $_POST['nome'], $_POST['capienza'], $_POST['disponibilita'], 
+            $_POST['eta'], $_POST['durata'], $_POST['acquatica'], 
+            $_POST['velocita'], $_POST['tipo']
+        );
+
+        if ($res) {
+            $messaggio = "Nuova giostra aggiunta!";
+            $lista_giostre = $dbh->getGiostre();
+        } else {
+            $errore = "Errore generico durante l'inserimento.";
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -98,17 +117,16 @@ $lista_giostre = $dbh->getGiostre();
                 <div class="form-grid">
                     <input type="text" name="nome" placeholder="Nome Giostra" required>
                     <select name="tipo">
-                        <option value="Adrenalina">Adrenalina</option>
-                        <option value="Bambini">Bambini</option>
-                        <option value="Famiglia">Famiglia</option>
                         <option value="Avventura">Avventura</option>
+                        <option value="Bambini">Bambini</option>
+                        <option value="Motantagna Russa">Motantagna Russa</option>
                     </select>
                     <input type="number" name="capienza" placeholder="Capienza" required>
                     <input type="number" name="eta" placeholder="Età Minima" required>
                     <input type="number" name="durata" placeholder="Durata (min)" required>
                     <input type="number" step="0.1" name="velocita" placeholder="Velocità (km/h)" required>
-                    <select name="acquatica"><option value="No">No Acqua</option><option value="Si">Si Acqua</option></select>
-                    <select name="disponibilita"><option value="Aperta">Aperta</option><option value="Chiusa">Chiusa</option></select>
+                    <select name="acquatica"><option value="0">No Acqua</option><option value="1">Si Acqua</option></select>
+                    <select name="disponibilita"><option value="1">Aperta</option><option value="0">Chiusa</option></select>
                     <button type="submit" class="btn-add">Aggiungi Giostra</button>
                 </div>
             </form>

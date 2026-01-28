@@ -20,7 +20,17 @@ if (isset($_POST['azione']) && $_POST['azione'] == 'aggiungi') {
     $nomeRuota = !empty($_POST['nomeRuota']) ? $_POST['nomeRuota'] : null;
     $nomeAttrazionePaura = !empty($_POST['nomeAttrazionePaura']) ? $_POST['nomeAttrazionePaura'] : null;
 
-    if (!empty($nome) && !empty($cognome)) {
+    $esiste_gia = false;
+    foreach ($lavoratori as $l) {
+        if (strcasecmp($l['CF'], $CF) == 0) {
+            $esiste_gia = true;
+            break;
+        }
+    }
+
+    if ($esiste_gia) {
+        $errore = "Attenzione: Esiste già una giostra con il nome '$nome_inserito'!";
+    } else if (!empty($nome) && !empty($cognome) && !empty($CF)) {
         $dbh->addLavoratore($nome, $cognome, $dataNascita, $CF, $numeroTelefono, $e_mail, $mansione, $dataInizioContratto, $stipendio, $codiceAttivita_puntoRistoro, $codiceAttivita_negozio, $nomeGiostra, $nomeAreaTematica, $nomeRuota, $nomeAttrazionePaura);
     }
     header("Location: sezione_lavoratoratori_admin.php");
@@ -111,6 +121,7 @@ $lavoratori = $dbh->getLavoratori();
 <body>
 
 <div class="container">
+    <a href="admin_dashboard.php" style="text-decoration:none;">&larr; Torna a Admin dashboard</a>
     <h1>Gestione Personale Parco</h1>
 
     <div class="form-container">

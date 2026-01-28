@@ -19,7 +19,7 @@ class DatabaseHelper {
 
     /* GET Evento*/
    public function getEventi() {
-    $stmt = $this->db->prepare("SELECT * FROM EVENTO WHERE data >= CURDATE() ORDER BY data ASC, oraInizio ASC");
+    $stmt = $this->db->prepare("SELECT * FROM EVENTO WHERE data >= '2026-07-28' ORDER BY data ASC, codiceEvento ASC");
     $stmt->execute();
     $result = $stmt->get_result();
     return $result->fetch_all(MYSQLI_ASSOC);
@@ -218,7 +218,21 @@ class DatabaseHelper {
     }
 
     public function spettacoliEventiDatoOrario(){
-        
+        $query = "SELECT 'Spettacolo' AS Tipo, nomeSpettacolo AS Nome, data, oraInizio, oraFine
+                FROM REPLICA_SPETTACOLO
+                WHERE data = '2026-07-28' AND oraFine >= CURTIME()
+
+                UNION ALL
+
+                SELECT 'Evento' AS Tipo, nomeEvento AS Nome, data, oraInizio, oraFine
+                FROM EVENTO
+                WHERE data = '2026-07-28' AND oraFine >= CURTIME()
+
+                ORDER BY data ASC, oraInizio ASC";
+        $stmt = $this->db->prepare($query);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function eventiDatiUltimiAnni($numeroAnni){
@@ -242,8 +256,24 @@ class DatabaseHelper {
         return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
     }
 
-    public function storicoBigliettiAbbonamenti(){
-        
+    public function storicoBigliettiAbbonamenti($CF){
+        $query= "SELECT data, orario, 'Abbonamento' AS prodottoAcquistato, nomeAbbonamento AS tipologia
+                    FROM acquisto_a
+                    JOIN abbonamento ON acquisto_a.codAbbonamento = abbonamento.codAbbonamento
+                    WHERE CF = ?
+
+                    UNION ALL 
+
+                    SELECT data, orario, 'Biglietto' AS prodottoAcquistato, b.nomeBiglietto AS tipologia
+                    FROM acquisto_b ab
+                    JOIN biglietto b ON ab.codiceBiglietto = b.codiceBiglietto
+                    WHERE ab.CF = ?";
+        $stmt = $this->db->prepare($query);
+        // Passiamo il CF due volte: una per la prima SELECT e una per la seconda
+        $stmt->bind_param("ss", $CF, $CF);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->fetch_all(MYSQLI_ASSOC);
     }
 
     public function top10visitatori(){
@@ -261,7 +291,7 @@ class DatabaseHelper {
 
     public function lavoratoriPiuLongevi(){
         $query = "SELECT L.nome, L.cognome, L.mansione, L.dataInizioContratto,
-                 IF(T.data = '2026-07-28' AND '12:00:00' BETWEEN T.oraInizio AND T.oraFine, 'Sì', 'No') AS attualmente_a_lavoro
+                 IF(T.data = '2026-07-28' AND CURTIME() BETWEEN T.oraInizio AND T.oraFine, 'Sì', 'No') AS attualmente_a_lavoro
                  FROM lavoratore L JOIN turno_di_lavoro T ON L.CF = T.CF
                  WHERE T.data = '2026-07-28'
                  ORDER BY L.dataInizioContratto ASC
@@ -412,6 +442,15 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
+    public function esisteTurno($cf, $data, $oraInizio) {
+        $query = "SELECT * FROM turno_di_lavoro WHERE CF = ? AND data = ? AND oraInizio = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("sss", $cf, $data, $oraInizio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
+
     // Elimina un turno specifico
     public function deleteTurno($cf, $data, $inizio) {
         $query = "DELETE FROM turno_di_lavoro WHERE CF = ? AND data = ? AND oraInizio = ?";
@@ -420,16 +459,16 @@ class DatabaseHelper {
         return $stmt->execute();
     }
 
-    public function insertEvento($nome, $data, $inizio, $fine, $tipo) {
-        $query = "INSERT INTO EVENTO (nomeEvento, data, oraInizio, oraFine, tipologiaEvento) 
-                  VALUES (?, ?, ?, ?, ?)";
-        $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssss', $nome, $data, $inizio, $fine, $tipo);
+    public function insertEvento($codice, $nome, $tematica, $inizio, $fine, $data) {
+        $stmt = $this->db->prepare( "INSERT INTO EVENTO (codiceEvento, nomeEvento, tematica, oraInizio, oraFine, data) 
+        VALUES (?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssssss', $codice, $nome, $tematica, $inizio, $fine, $data);
+        
         return $stmt->execute();
     }
 
     public function deleteEvento($nome) {
-        $stmt = $this->db->prepare("DELETE FROM EVENTO WHERE nomeEvento = ?");
+        $stmt = $this->db->prepare("DELETE FROM EVENTO WHERE codiceEvento = ?");
         $stmt->bind_param('s', $nome);
         return $stmt->execute();
     }

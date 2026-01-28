@@ -236,7 +236,7 @@ try {
                 </a>
 
                 <a href="?categoria=AreeTematiche" class="menu-card card-aree">
-                    <span class="menu-icon"></span>
+                    <span class="menu-icon">💫</span>
                     <span class="menu-title">Aree Tematiche</span>
                 </a>
             </div>

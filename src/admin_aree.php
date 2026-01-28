@@ -145,8 +145,8 @@ $lista_aree = $dbh->getAreeTematiche();
                     <div style="grid-column: span 1;"><label>Fine:</label><input type="date" name="fine" required></div>
 
                     <select name="disponibilita" style="grid-column: span 2;">
-                        <option value="Aperta">Aperta</option>
-                        <option value="Chiusa">Chiusa</option>
+                        <option value= "1">Aperta</option>
+                        <option value= "0">Chiusa</option>
                     </select>
                     <button type="submit" class="btn-add">Crea Area</button>
                 </div>
