@@ -1,5 +1,4 @@
 <?php
-// Capiamo in che pagina siamo per evidenziare il link giusto
 $pagina_corrente = basename($_SERVER['PHP_SELF']);
 ?>
 
@@ -7,7 +6,7 @@ $pagina_corrente = basename($_SERVER['PHP_SELF']);
     <h2>🔧 ADMIN PANEL</h2>
     
     <a href="admin_dashboard.php" class="menu-link <?php echo ($pagina_corrente == 'admin_dashboard.php') ? 'active' : ''; ?>">
-        Dashboard
+        📊 Dashboard
     </a>
     
     <a href="sezione_lavoratori_admin.php" class="menu-link <?php echo ($pagina_corrente == 'sezione_lavoratori_admin.php') ? 'active' : ''; ?>">
@@ -15,30 +14,30 @@ $pagina_corrente = basename($_SERVER['PHP_SELF']);
     </a>
     
     <a href="admin_giostre.php" class="menu-link <?php echo ($pagina_corrente == 'admin_giostre.php') ? 'active' : ''; ?>">
-        Giostre
+        🎢 Giostre
     </a>
     
     <a href="admin_attrazioni.php" class="menu-link <?php echo ($pagina_corrente == 'admin_attrazioni.php') ? 'active' : ''; ?>">
-        Attrazioni Horror
+        👻 Attrazioni Horror
     </a>
     
     <a href="admin_attivita.php" class="menu-link <?php echo ($pagina_corrente == 'admin_attivita.php') ? 'active' : ''; ?>">
-        Attività Commerciali
+        🛍️ Attività Commerciali
     </a>
     
     <a href="admin_aree.php" class="menu-link <?php echo ($pagina_corrente == 'admin_aree.php') ? 'active' : ''; ?>">
-        Aree Tematiche
+        💫 Aree Tematiche
     </a>
 
     <a href="admin_eventi.php" class="menu-link <?php echo ($pagina_corrente == 'admin_eventi.php') ? 'active' : ''; ?>">
-        Eventi
+        🎪 Eventi
     </a>
     
     <a href="admin_ruote.php" class="menu-link <?php echo ($pagina_corrente == 'admin_ruote.php') ? 'active' : ''; ?>">
-        Ruota Panoramica
+        🎡 Ruota Panoramica
     </a>
     <a href="admin_statoParco.php" class = "menu-link <?php ($pagina_corrente == 'admin_statoParco.php') ? 'active' : ''; ?>">
-        Stato Parco e Manutenzioni
+        🛠️ Stato Parco e Manutenzioni
     </a>
     
     <a href="logout.php" class="menu-link logout">Esci</a>

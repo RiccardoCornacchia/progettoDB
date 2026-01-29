@@ -650,6 +650,14 @@ alter table SUPERVISIONE_RUOTA add constraint FKSUP_LAV_FK
 alter table TURNO_DI_LAVORO add constraint FKASSEGNAZIONE
      foreign key (CF)
      references LAVORATORE (CF);
+     
+ALTER TABLE turno_di_lavoro 
+DROP FOREIGN KEY FKASSEGNAZIONE;
+
+ALTER TABLE turno_di_lavoro 
+ADD CONSTRAINT FKASSEGNAZIONE 
+FOREIGN KEY (CF) REFERENCES lavoratore(CF) 
+ON DELETE CASCADE;
 
 alter table USUFRUIZIONE add constraint FKEFFETTUAZIONE_FK
      foreign key (CF)
@@ -781,6 +789,12 @@ create unique index ID_GIOSTRA_IND
 
 create unique index ID_GRUPPO_IND
      on GRUPPO (codiceGruppo);
+     
+create unique index ID_LAVORATORE_TELEFONO_IND
+	on LAVORATORE (numeroTelefono);
+
+create unique index ID_LAVORATORE_EMAIL_IND
+	on LAVORATORE (e_mail);
 
 create unique index ID_LAVORATORE_IND
      on LAVORATORE (CF);
@@ -790,9 +804,6 @@ create index FKLAVORO_IND
 
 create index FKIMPIEGO_IND
      on LAVORATORE (codiceAttivita_negozio);
-     
-create unique index ID_LAVORATORE_EMAIL_IND
-	on LAVORATORE (e_mail);
 
 create index FKGESTIONE_RUOTA_IND
      on LAVORATORE (nomeRuota);
@@ -805,9 +816,6 @@ create index FKGESTIONE_AT_IND
 
 create index FKGESTIONE_AP_IND
      on LAVORATORE (nomeAttrazionePaura);
-
-create unique index ID_LAVORATORE_TELEFONO_IND
-	on LAVORATORE (numeroTelefono);
 
 create unique index ID_MANUTENZIONE_IND
      on MANUTENZIONE (codiceManutenzione);

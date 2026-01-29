@@ -35,7 +35,7 @@ class DatabaseHelper {
 
     /*/* GET Attrazzioni di Paura*/ 
     public function getAttrazioniPaura() {
-        $stmt = $this->db->prepare("SELECT * FROM ATTRAZIONE_DI_PAURA WHERE dataInizio >= CURDATE() ORDER BY dataInizio ASC");
+        $stmt = $this->db->prepare("SELECT * FROM ATTRAZIONE_DI_PAURA WHERE dataInizio >= '2026-07-28' ORDER BY dataInizio ASC");
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -99,11 +99,11 @@ class DatabaseHelper {
     }
 
     /* INSERT nuova Giostra*/
-    public function insertGiostra($nome, $capienza, $disp, $eta, $durata, $acqua, $vel, $tipo) {
-        $query = "INSERT INTO GIOSTRA (nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, velocita, tipologiaGiostra) 
-                  VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    public function insertGiostra($nome, $capienza, $disp, $etaMin, $durata, $acqua, $etaMax, $vel, $altMax, $tipo) {
+        $query = "INSERT INTO GIOSTRA(nomeGiostra, capienza, disponibilita, etaMinima, durataGiostra, acquatica, etaMassima, velocita, altezzaMaxVisitatore, tipologiaGiostra) 
+                  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sisiisds', $nome, $capienza, $disp, $eta, $durata, $acqua, $vel, $tipo);
+        $stmt->bind_param('sisiiiidis', $nome, $capienza, $disp, $etaMin, $durata, $acqua, $etaMax, $vel, $altMax, $tipo);
         return $stmt->execute();
     }
 
@@ -132,12 +132,13 @@ class DatabaseHelper {
         $stmt->bind_param('issssis', $codice, $nome, $apertura, $chiusura, $disp, $dipendenti, $tipo);
         return $stmt->execute();
     }
-    /*Insert Area Tematica */ 
-    public function insertAreaTematica($nome, $tema, $disp, $inizio, $fine) {
-        $query = "INSERT INTO AREA_TEMATICA (nomeAreaTematica, tema, disponibilita, dataInizio, dataFine) 
+
+    /* Insert Area Tematica */ 
+    public function insertAreaTematica($nome, $disp, $tema, $inizio, $fine) {
+        $query = "INSERT INTO AREA_TEMATICA (nomeAreaTematica, disponibilita, tema, dataInizio, dataFine) 
                   VALUES (?, ?, ?, ?, ?)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('sssss', $nome, $tema, $disp, $inizio, $fine);
+        $stmt->bind_param('sisss', $nome, $disp, $tema, $inizio, $fine);
         return $stmt->execute();
     }
     /*Insert Ruota Panoramica */
@@ -193,7 +194,7 @@ class DatabaseHelper {
     public function deleteLavoratore($CF) {
         $query = "DELETE FROM lavoratore WHERE CF = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $CF);
+        $stmt->bind_param("s", $CF);
         return $stmt->execute();
     }
 
@@ -446,6 +447,21 @@ class DatabaseHelper {
         $query = "SELECT * FROM turno_di_lavoro WHERE CF = ? AND data = ? AND oraInizio = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("sss", $cf, $data, $oraInizio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
+
+    public function verificaSovrapposizioneTurno($cf, $data, $nuovaOraInizio) {
+        // Cerchiamo se esiste un turno dove l'ora di inizio inserita 
+        // è compresa tra l'inizio e la fine di un turno già registrato
+        $query = "SELECT * FROM turno_di_lavoro 
+                WHERE CF = ? 
+                AND data = ? 
+                AND ? < oraFine 
+                AND ? >= oraInizio";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssss", $cf, $data, $nuovaOraInizio, $nuovaOraInizio);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->num_rows > 0;

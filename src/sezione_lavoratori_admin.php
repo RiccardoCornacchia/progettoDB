@@ -33,15 +33,15 @@ if (isset($_POST['azione']) && $_POST['azione'] == 'aggiungi') {
     } else if (!empty($nome) && !empty($cognome) && !empty($CF)) {
         $dbh->addLavoratore($nome, $cognome, $dataNascita, $CF, $numeroTelefono, $e_mail, $mansione, $dataInizioContratto, $stipendio, $codiceAttivita_puntoRistoro, $codiceAttivita_negozio, $nomeGiostra, $nomeAreaTematica, $nomeRuota, $nomeAttrazionePaura);
     }
-    header("Location: sezione_lavoratoratori_admin.php");
+    header("Location: sezione_lavoratori_admin.php");
     exit();
 }
 
 // 2. Azione Eliminazione
 if (isset($_GET['elimina'])) {
-    $id = (int)$_GET['elimina'];
+    $CF = $_GET['elimina'];
     $dbh->deleteLavoratore($CF);
-    header("Location: sezione_lavoratoratori_admin.php");
+    header("Location: sezione_lavoratori_admin.php");
 }
 
 // 3. Recupero dati aggiornati

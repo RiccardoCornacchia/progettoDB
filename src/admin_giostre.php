@@ -2,13 +2,14 @@
 require 'config/config.php';
 
 if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 }
 
 $messaggio = "";
 $errore = "";
 
+// 1. Recupero lista subito per controlli
 $lista_giostre = $dbh->getGiostre();
 
 if (isset($_GET['action']) && $_GET['action'] == 'delete_giostra' && isset($_GET['id'])) {
@@ -26,6 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
     $nome_inserito = $_POST['nome'];
     $esiste_gia = false;
 
+    // Controllo duplicati
     foreach ($lista_giostre as $g) {
         if (strcasecmp($g['nomeGiostra'], $nome_inserito) == 0) {
             $esiste_gia = true;
@@ -36,17 +38,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
     if ($esiste_gia) {
         $errore = "Attenzione: Esiste già una giostra con il nome '$nome_inserito'!";
     } else {
+        // Chiamata alla funzione aggiornata con TUTTI i parametri
         $res = $dbh->insertGiostra(
-            $_POST['nome'], $_POST['capienza'], $_POST['disponibilita'], 
-            $_POST['eta'], $_POST['durata'], $_POST['acquatica'], 
-            $_POST['velocita'], $_POST['tipo']
+            $_POST['nome'], 
+            $_POST['capienza'], 
+            $_POST['disponibilita'], 
+            $_POST['etamin'],       // Età Minima
+            $_POST['durata'], 
+            $_POST['acquatica'], 
+            $_POST['etamax'],       // NUOVO: Età Massima
+            $_POST['velocita'], 
+            $_POST['altezzamax'],   // NUOVO: Altezza Max
+            $_POST['tipo']
         );
 
         if ($res) {
             $messaggio = "Nuova giostra aggiunta!";
             $lista_giostre = $dbh->getGiostre();
         } else {
-            $errore = "Errore generico durante l'inserimento.";
+            $errore = "Errore generico durante l'inserimento (controlla i dati).";
         }
     }
 }
@@ -75,7 +85,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
         .btn-add { grid-column: span 2; background: #5cb85c; color: white; padding: 10px; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
         .msg-success { background: #dff0d8; color: #3c763d; padding: 15px; margin-bottom: 20px; border: 1px solid #d6e9c6; }
         .msg-error { background: #f2dede; color: #a94442; padding: 15px; margin-bottom: 20px; border: 1px solid #ebccd1; }
-</style>
+        label { font-size: 0.8rem; font-weight: bold; margin-bottom: 2px; display: block; }
+    </style>
 </head>
 <body>
 
@@ -100,7 +111,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
                     <tr>
                         <td><b><?php echo htmlspecialchars($g['nomeGiostra']); ?></b></td>
                         <td><?php echo htmlspecialchars($g['tipologiaGiostra']); ?></td>
-                        <td><?php echo htmlspecialchars($g['disponibilita']); ?></td>
+                        <td><?php echo ($g['disponibilita'] == 1 || $g['disponibilita'] == 'Aperta') ? 'Aperta' : 'Chiusa'; ?></td>
                         <td><?php echo htmlspecialchars($g['capienza']); ?></td>
                         <td>
                             <a href="?action=delete_giostra&id=<?php echo urlencode($g['nomeGiostra']); ?>" 
@@ -115,18 +126,41 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
             <form method="post">
                 <input type="hidden" name="form_giostra" value="1">
                 <div class="form-grid">
-                    <input type="text" name="nome" placeholder="Nome Giostra" required>
-                    <select name="tipo">
-                        <option value="Avventura">Avventura</option>
-                        <option value="Bambini">Bambini</option>
-                        <option value="Motantagna Russa">Motantagna Russa</option>
-                    </select>
-                    <input type="number" name="capienza" placeholder="Capienza" required>
-                    <input type="number" name="eta" placeholder="Età Minima" required>
-                    <input type="number" name="durata" placeholder="Durata (min)" required>
-                    <input type="number" step="0.1" name="velocita" placeholder="Velocità (km/h)" required>
-                    <select name="acquatica"><option value="0">No Acqua</option><option value="1">Si Acqua</option></select>
-                    <select name="disponibilita"><option value="1">Aperta</option><option value="0">Chiusa</option></select>
+                    <div><label>Nome Giostra</label><input type="text" name="nome" placeholder="Es. Brucomela" required></div>
+                    
+                    <div>
+                        <label>Tipologia</label>
+                        <select name="tipo">
+                            <option value="Avventura">Avventura</option>
+                            <option value="Bambini">Bambini</option>
+                            <option value="Montagna Russa">Montagna Russa</option>
+                        </select>
+                    </div>
+
+                    <div><label>Capienza Persone</label><input type="number" name="capienza" placeholder="Es. 20" required></div>
+                    <div><label>Durata (min)</label><input type="number" name="durata" placeholder="Es. 5" required></div>
+                    
+                    <div><label>Età Minima</label><input type="number" name="etamin" placeholder="Es. 6" required></div>
+                    <div><label>Età Massima</label><input type="number" name="etamax" placeholder="Es. 90" required></div>
+
+                    <div><label>Velocità (km/h)</label><input type="number" step="0.1" name="velocita" placeholder="Es. 50.5" required></div>
+                    <div><label>Altezza Max Visitatore (cm)</label><input type="number" name="altezzamax" placeholder="Es. 200" required></div>
+
+                    <div>
+                        <label>Acquatica</label>
+                        <select name="acquatica">
+                            <option value="0">No</option>
+                            <option value="1">Si</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Stato</label>
+                        <select name="disponibilita">
+                            <option value="1">Aperta</option>
+                            <option value="0">Chiusa</option>
+                        </select>
+                    </div>
+
                     <button type="submit" class="btn-add">Aggiungi Giostra</button>
                 </div>
             </form>

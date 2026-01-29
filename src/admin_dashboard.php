@@ -2,11 +2,10 @@
 require 'config/config.php';
 
 if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 }
 
-// RECUPERO STATISTICHE GENERALI (I contatori in alto)
 $num_giostre = count($dbh->getGiostre());
 $num_attivita = count($dbh->getAttivitaCommerciali());
 $num_aree = count($dbh->getAreeTematiche());
@@ -14,10 +13,8 @@ $num_ruote = count($dbh->getRuotaPanoramica());
 $num_lavoratori = method_exists($dbh, 'countLavoratori') ? $dbh->countLavoratori() : 0; 
 $num_biglietti = count($dbh->getTipologieBiglietti());
 
-// 1. Top 3 Giostre
 $top_giostre = $dbh->top3Giostre();
 
-// 2. Top Fatturato
 $top_fatturato = $dbh->getTopFatturato();
 
 $topVisitatori = $dbh->top10visitatori();
@@ -25,11 +22,9 @@ $topVisitatori = $dbh->top10visitatori();
 $longevi = $dbh->lavoratoriPiuLongevi();
 
 $guastoTop = $dbh->GuastoPiuLungo(); 
-// Prendiamo il primo (e unico) risultato
 $x = !empty($guastoTop) ? $guastoTop[0] : null;
 
-// 3. Eventi Recenti (Logica del Form)
-$anni_scelti = isset($_GET['anni']) ? (int)$_GET['anni'] : 1; // Default 1 anno
+$anni_scelti = isset($_GET['anni']) ? (int)$_GET['anni'] : 1; 
 $eventi_recenti = $dbh->eventiDatiUltimiAnni($anni_scelti);
 
 ?>
@@ -40,35 +35,26 @@ $eventi_recenti = $dbh->eventiDatiUltimiAnni($anni_scelti);
     <meta charset="UTF-8">
     <title>Admin Dashboard - WonderPark</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; height: 100vh; background: #f4f6f8; }
-        .sidebar { width: 250px; background: #2c3e50; color: white; display: flex; flex-direction: column; padding: 20px; overflow-y: auto; }
-        .sidebar h2 { color: #ecf0f1; text-align: center; margin-bottom: 30px; }
-        .menu-link { padding: 15px; color: #bdc3c7; text-decoration: none; border-radius: 5px; margin-bottom: 5px; display: block; }
-        .menu-link:hover, .active { background: #34495e; color: white; }
-        .logout { margin-top: auto; background: #e74c3c; color: white; text-align: center; }
+        body { font-family: sans-serif; margin: 0; display: flex; height: 100vh; background: #eee; }
+        .sidebar { width: 250px; background: #333; color: white; display: flex; flex-direction: column; padding: 20px; overflow-y: auto; }
+        .sidebar h2 { text-align: center; margin-bottom: 30px; }
+        .menu-link { padding: 10px; color: #ccc; text-decoration: none; display: block; margin-bottom: 5px; }
+        .menu-link:hover, .active { background: #444; color: white; }
+        .logout { margin-top: auto; background: #b00; color: white; text-align: center; }
         .main-content { flex: 1; padding: 40px; overflow-y: auto; }
-        
-        /* Stats Cards in alto */
-        .stats-container { display: flex; gap: 20px; margin-bottom: 40px; flex-wrap: wrap; }
-        .stat-card { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex: 1; min-width: 120px; text-align: center; }
-        .stat-number { font-size: 2rem; font-weight: bold; color: #2980b9; margin: 5px 0; }
-
-        /* Griglia per le statistiche avanzate */
-        .dashboard-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
-        
-        .chart-box { background: white; padding: 25px; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .chart-box h3 { margin-top: 0; color: #34495e; border-bottom: 2px solid #f1f1f1; padding-bottom: 10px; }
-
-        /* Tabelle interne */
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
-        th { background: #f8f9fa; color: #555; }
-        
-        /* Form per gli anni */
-        .filter-form { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; background: #f9f9f9; padding: 10px; border-radius: 5px; }
-        .filter-form input { padding: 5px; width: 60px; border: 1px solid #ddd; border-radius: 4px; }
-        .filter-form button { padding: 5px 15px; background: #3498db; color: white; border: none; border-radius: 4px; cursor: pointer; }
-    </style>
+        .stats-container { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
+        .stat-card { background: white; padding: 20px; border: 1px solid #ccc; flex: 1; text-align: center; }
+        .stat-number { font-size: 2rem; font-weight: bold; color: #337ab7; margin: 5px 0; }
+        .dashboard-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .chart-box { background: white; padding: 20px; border: 1px solid #ccc; }
+        .chart-box h3 { margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f0f0f0; }
+        .filter-form { display: flex; gap: 10px; align-items: center; margin-bottom: 15px; }
+        .filter-form input { padding: 5px; border: 1px solid #ccc; }
+        .filter-form button { padding: 6px 15px; background: #337ab7; color: white; border: none; cursor: pointer; }
+</style>
 </head>
 <body>
 

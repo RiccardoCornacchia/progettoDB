@@ -3,7 +3,7 @@ require 'config/config.php';
 
 // Controllo sicurezza: solo l'admin può accedere
 if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 }
 
@@ -56,37 +56,25 @@ $lista_manutenzioni = $dbh->getManutenzioniAttive();
     <meta charset="UTF-8">
     <title>Stato Parco - WonderPark</title>
     <style>
-        /* CSS in linea con Gestione Giostre */
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; display: flex; height: 100vh; background: #f4f6f8; }
-        .sidebar { width: 250px; background: #2c3e50; color: white; display: flex; flex-direction: column; padding: 20px; overflow-y: auto; }
-        .sidebar h2 { color: #ecf0f1; text-align: center; margin-bottom: 30px; }
-        .menu-link { padding: 15px; color: #bdc3c7; text-decoration: none; border-radius: 5px; margin-bottom: 5px; display: block; }
-        .menu-link:hover, .active { background: #34495e; color: white; }
-        .logout { margin-top: auto; background: #e74c3c; color: white; text-align: center; }
-        
+        body { font-family: sans-serif; margin: 0; display: flex; height: 100vh; background: #eee; }
+        .sidebar { width: 250px; background: #333; color: white; display: flex; flex-direction: column; padding: 20px; overflow-y: auto; }
+        .sidebar h2 { text-align: center; margin-bottom: 30px; }
+        .menu-link { padding: 10px; color: #ccc; text-decoration: none; display: block; margin-bottom: 5px; }
+        .menu-link:hover, .active { background: #444; color: white; }
+        .logout { margin-top: auto; background: #b00; color: white; text-align: center; }
         .main-content { flex: 1; padding: 40px; overflow-y: auto; }
-        .section-box { background: white; padding: 30px; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 40px; }
-        
-        table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 0.9rem; }
-        th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
-        th { background: #f8f9fa; color: #34495e; text-transform: uppercase; font-size: 0.75rem; }
-        
-        /* Badges e Bottoni */
-        .status-badge { padding: 4px 8px; border-radius: 4px; font-weight: bold; font-size: 0.8rem; }
-        .bg-open { background: #d4edda; color: #155724; }
-        .bg-closed { background: #f8d7da; color: #721c24; }
-        
-        .btn-toggle { 
-            background: #3498db; color: white; padding: 5px 10px; 
-            text-decoration: none; border-radius: 4px; font-size: 0.8rem; 
-        }
-        .btn-toggle:hover { background: #2980b9; }
-        
-        .msg-success { background: #d4edda; color: #155724; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
-        .msg-error { background: #f8d7da; color: #721c24; padding: 15px; margin-bottom: 20px; border-radius: 5px; }
-        
+        .section-box { background: white; padding: 20px; border: 1px solid #ccc; margin-bottom: 30px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f0f0f0; }
+        .status-badge { padding: 5px 10px; font-size: 0.8rem; font-weight: bold; }
+        .bg-open { background: #dff0d8; color: #3c763d; }
+        .bg-closed { background: #f2dede; color: #a94442; }
+        .btn-toggle { background: #337ab7; color: white; padding: 5px 10px; text-decoration: none; font-size: 0.8rem; }
+        .msg-success { background: #dff0d8; color: #3c763d; padding: 15px; margin-bottom: 20px; border: 1px solid #d6e9c6; }
+        .msg-error { background: #f2dede; color: #a94442; padding: 15px; margin-bottom: 20px; border: 1px solid #ebccd1; }
         .grid-container { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    </style>
+</style>
 </head>
 <body>
 
@@ -184,8 +172,8 @@ $lista_manutenzioni = $dbh->getManutenzioniAttive();
                     </tbody>
                 </table>
             </div>
-            <div class="section-box" style="border-top: 5px solid #e67e22;">
-                <h3 style="color: #e67e22;">🛠 Manutenzioni In Corso</h3>
+            <div class="section-box">
+                <h3>🛠 Manutenzioni In Corso</h3>
                 <table>
                     <thead><tr>
                     <th>Impianto</th>

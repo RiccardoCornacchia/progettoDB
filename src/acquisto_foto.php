@@ -2,7 +2,7 @@
 require 'config/config.php';
 
 if (!isset($_SESSION['ruolo'])) {
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 }
 
