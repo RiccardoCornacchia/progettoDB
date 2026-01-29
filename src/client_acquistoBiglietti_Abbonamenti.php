@@ -121,7 +121,7 @@ try {
                             <div style="display: flex; align-items: center; gap: 20px;">
                                 <div class="price-tag">
                                     <?php echo number_format($b['prezzo'], 2); ?>€
-                                    <span>singolo</span>
+                                    <span>singoloa</span>
                                 </div>
                                 <span class="badge-buy">Scegli ➔</span>
                             </div>
