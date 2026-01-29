@@ -1,29 +1,64 @@
 <?php
 require 'config/config.php';
 
-if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { header("Location: login.php"); exit; }
+if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { 
+    header("Location: login.php"); 
+    exit; 
+}
 
 $messaggio = ""; 
 $errore = "";
 
-// DELETE
+$lista_attrazioni = $dbh->getAttrazioniPaura();
+
 if (isset($_GET['action']) && $_GET['action'] == 'delete_attrazione' && isset($_GET['id'])) {
     try {
         $dbh->deleteAttrazionePaura($_GET['id']);
         $messaggio = "Attrazione eliminata con successo!";
-    } catch (Exception $e) { $errore = "Impossibile eliminare: usata altrove."; }
+        $lista_attrazioni = $dbh->getAttrazioniPaura();
+    } catch (Exception $e) { 
+        $errore = "Impossibile eliminare: usata altrove."; 
+    }
 }
 
-// INSERT
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_attrazione'])) {
-    $res = $dbh->insertAttrazionePaura(
-        $_POST['nome'], $_POST['disponibilita'], $_POST['prezzo'], 
-        $_POST['inizio'], $_POST['fine']
-    );
-    if ($res) $messaggio = "Nuova attrazione horror aggiunta!"; else $errore = "Errore inserimento.";
-}
+    
+    $nome_inserito = $_POST['nome'];
+    $esiste_gia = false;
 
-$lista_attrazioni = $dbh->getAttrazioniPaura();
+    foreach ($lista_attrazioni as $a) {
+        if (strcasecmp($a['nomeAttrazionePaura'], $nome_inserito) == 0) {
+            $esiste_gia = true;
+            break;
+        }
+    }
+
+    if ($esiste_gia) {
+        $errore = "Attenzione: Esiste già un'attrazione con il nome '$nome_inserito'!";
+    } else {
+        $inizio = $_POST['inizio'];
+        $fine = $_POST['fine'];
+        
+        if ($fine <= $inizio) {
+            $errore = "Errore: La data di fine deve essere successiva alla data di inizio.";
+        } else {
+            $res = $dbh->insertAttrazionePaura(
+                $nome_inserito, 
+                $_POST['disponibilita'], 
+                $_POST['prezzo'], 
+                $inizio, 
+                $fine
+            );
+            
+            if ($res) {
+                $messaggio = "Nuova attrazione horror aggiunta!"; 
+                $lista_attrazioni = $dbh->getAttrazioniPaura();
+            } else { 
+                $errore = "Errore durante l'inserimento nel database."; 
+            }
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -49,7 +84,8 @@ $lista_attrazioni = $dbh->getAttrazioniPaura();
         .btn-add { grid-column: span 2; background: #5cb85c; color: white; padding: 10px; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
         .msg-success { background: #dff0d8; color: #3c763d; padding: 15px; margin-bottom: 20px; border: 1px solid #d6e9c6; }
         .msg-error { background: #f2dede; color: #a94442; padding: 15px; margin-bottom: 20px; border: 1px solid #ebccd1; }
-</style>
+        label { font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block; }
+    </style>
 </head>
 <body>
     <?php include 'admin_sidebar.php'; ?>
@@ -66,17 +102,23 @@ $lista_attrazioni = $dbh->getAttrazioniPaura();
                     <tr><th>Nome</th><th>Prezzo Extra</th><th>Periodo</th><th>Stato</th><th>Azioni</th></tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($lista_attrazioni as $a): ?>
-                    <tr>
-                        <td><b><?php echo htmlspecialchars($a['nomeAttrazionePaura']); ?></b></td>
-                        <td><?php echo htmlspecialchars($a['prezzoAggiuntivo']); ?> €</td>
-                        <td><?php echo $a['dataInizio'] . ' / ' . $a['dataFine']; ?></td>
-                        <td><?php echo htmlspecialchars($a['disponibilita']); ?></td>
-                        <td>
-                            <a href="?action=delete_attrazione&id=<?php echo urlencode($a['nomeAttrazionePaura']); ?>" class="btn-delete" onclick="return confirm('Sicuro?');">Elimina</a>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
+                    <?php if(count($lista_attrazioni) > 0): ?>
+                        <?php foreach ($lista_attrazioni as $a): ?>
+                        <tr>
+                            <td><b><?php echo htmlspecialchars($a['nomeAttrazionePaura']); ?></b></td>
+                            <td><?php echo htmlspecialchars($a['prezzoAggiuntivo']); ?> €</td>
+                            <td><?php echo $a['dataInizio'] . ' / ' . $a['dataFine']; ?></td>
+                            <td>
+                                <?php echo ($a['disponibilita'] == 1 || $a['disponibilita'] == 'Aperta') ? 'Aperta' : 'Chiusa'; ?>
+                            </td>
+                            <td>
+                                <a href="?action=delete_attrazione&id=<?php echo urlencode($a['nomeAttrazionePaura']); ?>" class="btn-delete" onclick="return confirm('Sei sicuro di voler eliminare questa attrazione?');">Elimina</a>
+                            </td>
+                        </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr><td colspan="5" style="text-align:center;">Nessuna attrazione presente.</td></tr>
+                    <?php endif; ?>
                 </tbody>
             </table>
 
@@ -84,16 +126,34 @@ $lista_attrazioni = $dbh->getAttrazioniPaura();
             <form method="post">
                 <input type="hidden" name="form_attrazione" value="1">
                 <div class="form-grid">
-                    <input type="text" name="nome" placeholder="Nome Attrazione" required>
-                    <input type="number" step="0.50" name="prezzo" placeholder="Prezzo Extra (€)" required>
-                    
-                    <div style="grid-column: span 1;"><label>Inizio:</label><input type="date" name="inizio" required></div>
-                    <div style="grid-column: span 1;"><label>Fine:</label><input type="date" name="fine" required></div>
+                    <div style="grid-column: span 2;">
+                        <label>Nome Attrazione</label>
+                        <input type="text" name="nome" placeholder="Es. Casa degli Orrori" required>
+                    </div>
 
-                    <select name="disponibilita" style="grid-column: span 2;">
-                        <option value="Aperta">Aperta</option>
-                        <option value="Chiusa">Chiusa</option>
-                    </select>
+                    <div style="grid-column: span 2;">
+                        <label>Prezzo Extra (€)</label>
+                        <input type="number" step="0.50" name="prezzo" placeholder="Es. 5.00" required>
+                    </div>
+                    
+                    <div>
+                        <label>Data di Apertura</label>
+                        <input type="date" name="inizio" required>
+                    </div>
+                    
+                    <div>
+                        <label>Data di Chiusura</label>
+                        <input type="date" name="fine" required>
+                    </div>
+
+                    <div style="grid-column: span 2;">
+                        <label>Stato</label>
+                        <select name="disponibilita">
+                            <option value="1">Aperta</option>
+                            <option value="0">Chiusa</option>
+                        </select>
+                    </div>
+                    
                     <button type="submit" class="btn-add">Aggiungi Attrazione</button>
                 </div>
             </form>
