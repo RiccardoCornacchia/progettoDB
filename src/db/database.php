@@ -557,5 +557,38 @@ public function eseguiAcquistoBiglietto($cf, $nome, $cognome, $data_n, $tel, $ma
     $stmtVen->execute();
 }
 
+public function eseguiAcquistoFoto($cf, $prezzo, $codiceAttivita) {
+    $checkVisitor = $this->db->prepare("SELECT CF FROM VISITATORE WHERE CF = ?");
+    $checkVisitor->bind_param('s', $cf);
+    $checkVisitor->execute();
+    if ($checkVisitor->get_result()->num_rows === 0) {
+        return "visitatore_non_presente";
+    }
+    $this->db->begin_transaction();
+    try {
+        $res = $this->db->query("SELECT IFNULL(MAX(codiceFoto), 0) + 1 as prossimo FROM FOTO");
+        $nuovoCodice = $res->fetch_assoc()['prossimo'];
+        $dataFissa = '2026-07-28';
+
+        $stmt1 = $this->db->prepare("INSERT INTO FOTO (codiceFoto, prezzo) VALUES (?, ?)");
+        $stmt1->bind_param('id', $nuovoCodice, $prezzo);
+        $stmt1->execute();
+
+        $stmt2 = $this->db->prepare("INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) VALUES (?, ?, CURTIME(), ?)");
+        $stmt2->bind_param('iss', $nuovoCodice, $dataFissa, $cf);
+        $stmt2->execute();
+
+        $stmt3 = $this->db->prepare("INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) VALUES (?, ?, CURTIME(), ?)");
+        $stmt3->bind_param('isi', $nuovoCodice, $dataFissa, $codiceAttivita);
+        $stmt3->execute();
+
+        $this->db->commit();
+        return true;
+    } catch (Exception $e) {
+        $this->db->rollback();
+        return false;
+    }
 }
+}
+
 ?>
