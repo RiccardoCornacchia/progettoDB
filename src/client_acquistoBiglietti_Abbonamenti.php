@@ -7,131 +7,161 @@ if (!isset($_SESSION['ruolo'])) {
 }
 
 // Recupero dei dati dal database
-$biglietti = $dbh->getTipologieBiglietti();
-$abbonamenti = $dbh->getTipologieAbbonamenti();
+try {
+    $biglietti = $dbh->getTipologieBiglietti();
+    $abbonamenti = $dbh->getTipologieAbbonamenti();
+} catch (Exception $e) {
+    $errore_db = "Errore nel recupero dei prezzi: " . $e->getMessage();
+}
 ?>
 
 <!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <title>Acquisto Titoli di Ingresso - WonderPark</title>
+    <title>Acquisto Biglietti - WonderPark</title>
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background-color: #f4f4f9; margin: 0; }
-        nav { background: #2c3e50; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; color: white; }
-        .logo { font-weight: bold; color: #ff6b6b; font-size: 1.2rem; text-transform: uppercase; text-decoration: none; }
+        body { font-family: sans-serif; background-color: #f9f9f9; margin: 0; color: #333; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
         
-        .container { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
-        .section-title { color: #2c3e50; border-bottom: 3px solid #f1c40f; padding-bottom: 10px; margin-top: 40px; }
+        nav { background: #333; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; color: white; }
+        .logo { font-weight: bold; font-size: 1.2rem; }
         
-        .ticket-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 20px; 
-            margin-top: 20px; 
-        }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 15px; }
+        
+        .header-risultati { display: flex; align-items: center; gap: 15px; margin-bottom: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px; }
+        .btn-back { background: #ddd; color: #333; padding: 5px 10px; border-radius: 4px; font-weight: bold; }
 
-        /* Modificato per supportare il link */
-        .ticket-link { text-decoration: none; color: inherit; display: block; }
-
-        .ticket-card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            display: flex;
-            justify-content: space-between;
+        .sezione-titolo { margin: 40px 0 20px 0; color: #2c3e50; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        
+        /* Grid e Card uniformate allo stile "item-card" */
+        .ticket-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
+        
+        .item-card { 
+            background: white; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: space-between; 
             align-items: center;
-            border-left: 8px solid #f39c12;
-            transition: transform 0.2s, box-shadow 0.2s;
-            cursor: pointer;
+            transition: background 0.2s;
         }
+        .item-card:hover { background-color: #f0f0f0; border-color: #bbb; }
 
-        .ticket-card:hover { 
-            transform: scale(1.02); 
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        .price-tag { 
+            font-size: 1.4rem; 
+            font-weight: bold; 
+            color: #2c3e50; 
+            text-align: right; 
         }
+        .price-tag span { font-size: 0.8rem; color: #7f8c8d; display: block; font-weight: normal; }
 
-        .ticket-info h3 { margin: 0; color: #333; font-size: 1.4rem; }
-
-        .ticket-price {
-            text-align: right;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-
-        .ticket-price span { font-size: 1rem; color: #999; }
-
-        .btn-back { 
-            display: inline-block; 
-            margin-bottom: 20px; 
-            color: #3498db; 
-            text-decoration: none; 
+        .badge-buy { 
+            background: #5cb85c; 
+            color: white; 
+            padding: 8px 15px; 
+            border-radius: 4px; 
+            font-size: 0.9rem; 
             font-weight: bold; 
         }
 
-        .footer-note {
-            margin-top: 50px;
-            padding: 20px;
-            background: #ecf0f1;
-            border-radius: 10px;
-            text-align: center;
-            color: #7f8c8d;
+        .info-box {
+            background-color: #eee; 
+            color: #555;
+            padding: 20px; 
+            border-radius: 5px; 
+            margin-top: 50px; 
+            text-align: center; 
+            font-size: 0.9rem;
+            border: 1px solid #ccc;
+        }
+
+        .site-footer {
+            background-color: #eee; color: #555;
+            padding: 20px; margin-top: 50px; text-align: center; border-top: 1px solid #ccc;
         }
     </style>
 </head>
 <body>
 
-<nav>
-    <a href="visitatori_home.php" class="logo">WonderPark App</a>
-    <div>Utente: <strong><?php echo htmlspecialchars($_SESSION['ruolo']); ?></strong></div>
-</nav>
+    <nav>
+        <div class="logo">WonderPark App</div>
+        <div>
+            Benvenuto, <strong><?php echo htmlspecialchars($_SESSION['ruolo']); ?></strong>
+        </div>
+    </nav>
 
-<div class="container">
-    <a href="visitatori_home.php" class="btn-back">⬅ Torna alla Home</a>
-    
-    <h1 style="text-align: center; color: #2c3e50;">Scegli la tua avventura</h1>
-    <p style="text-align: center; color: #7f8c8d;">Clicca su un biglietto o abbonamento per procedere all'acquisto.</p>
+    <div class="container">
 
-    <h2 class="section-title">🎟 Biglietti Singoli</h2>
-    <div class="ticket-grid">
-        <?php foreach ($biglietti as $b): ?>
-            <a href="client_form_acquisto.php?tipo=biglietto&nome=<?php echo urlencode($b['nomeBiglietto']); ?>" class="ticket-link">
-                <div class="ticket-card">
-                    <div class="ticket-info">
-                        <h3><?php echo htmlspecialchars($b['nomeBiglietto']); ?></h3>
-                    </div>
-                    <div class="ticket-price">
-                        <?php echo $b['prezzo']; ?>€
-                        <br><span>Persona</span>
-                    </div>
-                </div>
-            </a>
-        <?php endforeach; ?>
+        <div class="header-risultati">
+            <a href="visitatori_home.php" class="btn-back">⬅</a>
+            <h2 style="margin:0; color: #2c3e50;">Acquista Titoli d'Ingresso</h2>
+        </div>
+
+        <div style="text-align: center; margin-bottom: 30px;">
+            <p style="color: #7f8c8d; font-size: 1.1rem;">Scegli la soluzione perfetta per la tua giornata nel parco.</p>
+        </div>
+
+        <?php if (isset($errore_db)): ?>
+            <div style="background:#f8d7da; color:#721c24; padding:15px; border-radius:5px;">
+                <?php echo $errore_db; ?>
+            </div>
+        <?php else: ?>
+
+            <div class="sezione-titolo">🎟 Biglietti Singoli</div>
+            <div class="ticket-grid">
+                <?php foreach ($biglietti as $b): ?>
+                    <a href="client_form_acquisto.php?tipo=biglietto&nome=<?php echo urlencode($b['nomeBiglietto']); ?>">
+                        <div class="item-card">
+                            <div>
+                                <h3 style="margin: 0; color: #333;"><?php echo htmlspecialchars($b['nomeBiglietto']); ?></h3>
+                                <span style="color: #666; font-size: 0.9rem;">Ingresso giornaliero</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 20px;">
+                                <div class="price-tag">
+                                    <?php echo number_format($b['prezzo'], 2); ?>€
+                                    <span>singolo</span>
+                                </div>
+                                <span class="badge-buy">Scegli ➔</span>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="sezione-titolo">💳 Abbonamenti</div>
+            <div class="ticket-grid">
+                <?php foreach ($abbonamenti as $a): ?>
+                    <a href="client_form_acquisto.php?tipo=abbonamento&nome=<?php echo urlencode($a['nomeAbbonamento']); ?>">
+                        <div class="item-card" style="border-left: 5px solid #9b59b6;">
+                            <div>
+                                <h3 style="margin: 0; color: #333;"><?php echo htmlspecialchars($a['nomeAbbonamento']); ?></h3>
+                                <span style="color: #666; font-size: 0.9rem;">Divertimento senza limiti</span>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: 20px;">
+                                <div class="price-tag">
+                                    <?php echo number_format($a['prezzo'], 2); ?>€
+                                    <span>stagionale</span>
+                                </div>
+                                <span class="badge-buy" style="background: #9b59b6;">Scegli ➔</span>
+                            </div>
+                        </div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+
+        <?php endif; ?>
+
+        <div class="info-box">
+            <p>I prezzi indicati sono comprensivi di IVA. Una volta confermato l'acquisto, i titoli verranno associati al tuo account e non saranno rimborsabili.</p>
+        </div>
+
     </div>
 
-    <h2 class="section-title" style="border-bottom-color: #9b59b6;">💳 Abbonamenti</h2>
-    <div class="ticket-grid">
-        <?php foreach ($abbonamenti as $a): ?>
-            <a href="client_form_acquisto.php?tipo=abbonamento&nome=<?php echo urlencode($a['nomeAbbonamento']); ?>" class="ticket-link">
-                <div class="ticket-card" style="border-left-color: #9b59b6;">
-                    <div class="ticket-info">
-                        <h3><?php echo htmlspecialchars($a['nomeAbbonamento']); ?></h3>
-                    </div>
-                    <div class="ticket-price">
-                        <?php echo $a['prezzo']; ?>€
-                        <br><span>Abbonato</span>
-                    </div>
-                </div>
-            </a>
-        <?php endforeach; ?>
-    </div>
-
-    <div class="footer-note">
-        <p>I prezzi indicati sono comprensivi di IVA. I biglietti e gli abbonamenti acquistati non sono rimborsabili.</p>
-    </div>
-</div>
+    <footer class="site-footer">
+        <p>&copy; WonderPark 2026 - Area Acquisti Sicuri</p>
+    </footer>
 
 </body>
 </html>
