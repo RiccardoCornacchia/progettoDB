@@ -193,7 +193,7 @@ class DatabaseHelper {
     public function deleteLavoratore($CF) {
         $query = "DELETE FROM lavoratore WHERE CF = ?";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param("i", $CF);
+        $stmt->bind_param("s", $CF);
         return $stmt->execute();
     }
 
@@ -445,6 +445,21 @@ class DatabaseHelper {
         $query = "SELECT * FROM turno_di_lavoro WHERE CF = ? AND data = ? AND oraInizio = ?";
         $stmt = $this->db->prepare($query);
         $stmt->bind_param("sss", $cf, $data, $oraInizio);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
+
+    public function verificaSovrapposizioneTurno($cf, $data, $nuovaOraInizio) {
+        // Cerchiamo se esiste un turno dove l'ora di inizio inserita 
+        // è compresa tra l'inizio e la fine di un turno già registrato
+        $query = "SELECT * FROM turno_di_lavoro 
+                WHERE CF = ? 
+                AND data = ? 
+                AND ? < oraFine 
+                AND ? >= oraInizio";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("ssss", $cf, $data, $nuovaOraInizio, $nuovaOraInizio);
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->num_rows > 0;

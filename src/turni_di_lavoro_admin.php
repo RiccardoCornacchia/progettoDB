@@ -3,7 +3,7 @@ require 'config/config.php';
 
 if (isset($_GET['elimina_cf'])) {
     $dbh->deleteTurno($_GET['elimina_cf'], $_GET['data_t'], $_GET['inizio_t']);
-    header("Location: gestione_turni_lavoro.php?data_sel=" . $_GET['data_t']);
+    header("Location: turni_di_lavoro_admin.php?data_sel=" . $_GET['data_t']);
     exit();
 }
 
@@ -14,20 +14,24 @@ if (isset($_POST['azione']) && $_POST['azione'] == 'aggiungi_turno') {
     $oraFine = $_POST['oraFine'];
 
     if ($dbh->esisteTurno($cf, $data, $oraInizio)) {
-        header("Location: gestione_turni_lavoro.php?data_sel=$data&errore=turno_duplicato");
+        header("Location: turni_di_lavoro_admin.php?data_sel=$data&errore=turno_duplicato");
         exit();
     } else {
         if ($oraFine <= $oraInizio) {
-            header("Location: gestione_turni_lavoro.php?data_sel=$data&errore=orario_invalido");
+            header("Location: turni_di_lavoro_admin.php?data_sel=$data&errore=orario_invalido");
             exit();
         }
+        if ($dbh->verificaSovrapposizioneTurno($cf, $data, $oraInizio)) {
+            header("Location: turni_di_lavoro_admin.php?data_sel=$data&errore=sovrapposizione");
+            exit();
+            }
         $dbh->addTurno($cf, $oraInizio, $oraFine, $data);
-        header("Location: gestione_turni_lavoro.php?data_sel=$data&successo=1");
+        header("Location: turni_di_lavoro_admin.php?data_sel=$data&successo=1");
         exit();
     }
 }
 
-$dataSelezionata = $_GET['data_sel'] ?? date('2026-07-28');
+$dataSelezionata = $_GET['data_sel'] ?? '2026-07-28';
 $turni = $dbh->getTurniPerData($dataSelezionata);
 ?>
 
@@ -60,7 +64,7 @@ $turni = $dbh->getTurniPerData($dataSelezionata);
     <div class="form-box">
         <h3>Inserisci Nuovo Turno</h3>
         <form method="POST">
-            <input type="hidden" name="action" value="aggiungi_turno">
+            <input type="hidden" name="azione" value="aggiungi_turno">
             <div class="grid-form">
                 <input type="text" name="cf" placeholder="Codice Fiscale" required>
                 <input type="date" name="data" value="<?php echo $dataSelezionata; ?>" required>
