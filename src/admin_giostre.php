@@ -133,7 +133,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
                         <select name="tipo">
                             <option value="Avventura">Avventura</option>
                             <option value="Bambini">Bambini</option>
-                            <option value="Adrenalina">Adrenalina</option>
                             <option value="Montagna Russa">Montagna Russa</option>
                         </select>
                     </div>
