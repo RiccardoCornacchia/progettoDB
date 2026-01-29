@@ -1,7 +1,6 @@
 <?php
 require 'config/config.php';
 
-// Controllo Login
 if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { 
     header("Location: login.php"); 
     exit; 
@@ -10,30 +9,24 @@ if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
 $messaggio = ""; 
 $errore = "";
 
-// 1. RECUPERO LA LISTA SUBITO (Serve per i controlli duplicati)
 $lista_aree = $dbh->getAreeTematiche();
 
-// 2. GESTIONE CANCELLAZIONE
 if (isset($_GET['action']) && $_GET['action'] == 'delete_area' && isset($_GET['id'])) {
     try {
         $dbh->deleteAreaTematica($_GET['id']);
         $messaggio = "Area Tematica eliminata!";
-        // Aggiorno la lista
         $lista_aree = $dbh->getAreeTematiche();
     } catch (Exception $e) { 
         $errore = "Impossibile eliminare: l'area potrebbe essere collegata ad altre tabelle."; 
     }
 }
 
-// 3. GESTIONE INSERIMENTO
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_area'])) {
     
     $nome_inserito = $_POST['nome'];
     $esiste_gia = false;
 
-    // A. CONTROLLO DUPLICATI
     foreach ($lista_aree as $area) {
-        // strcasecmp confronta due stringhe ignorando maiuscole/minuscole
         if (strcasecmp($area['nomeAreaTematica'], $nome_inserito) == 0) {
             $esiste_gia = true;
             break;
@@ -43,29 +36,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_area'])) {
     if ($esiste_gia) {
         $errore = "Attenzione: Esiste già un'Area Tematica con il nome '$nome_inserito'!";
     } else {
-        // B. CONTROLLO DATE (Durata > 1 giorno)
         $inizio = $_POST['inizio'];
         $fine = $_POST['fine'];
         
         $ts_inizio = strtotime($inizio);
         $ts_fine = strtotime($fine);
 
-        // Se la fine è minore o uguale all'inizio, non dura più di un giorno
         if ($ts_fine <= $ts_inizio) {
-            $errore = "Errore: La data di fine deve essere successiva alla data di inizio (durata minima 1 giorno).";
+            $errore = "Errore: La data di fine deve essere successiva alla data di inizio.";
         } else {
-            // Se tutto è OK, procedo all'inserimento
             $res = $dbh->insertAreaTematica(
                 $nome_inserito, 
-                $_POST['tema'], 
                 $_POST['disponibilita'], 
+                $_POST['tema'],        
                 $inizio, 
                 $fine
             );
 
             if ($res) {
                 $messaggio = "Nuova Area Tematica creata!";
-                // Aggiorno la lista
                 $lista_aree = $dbh->getAreeTematiche();
             } else {
                 $errore = "Errore durante l'inserimento nel database.";
