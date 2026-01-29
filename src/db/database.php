@@ -610,6 +610,29 @@ public function eseguiAcquistoFoto($cf, $prezzo, $codiceAttivita) {
         return false;
     }
 }
+
+public function getGruppiScolasticiPiuNumerosi() {
+    $query = "SELECT g.codiceGruppo, COUNT(a.CF) AS numeroPartecipanti
+              FROM gruppo g
+              JOIN appartenenza a ON g.codiceGruppo = a.codiceGruppo 
+              WHERE g.gruppoScuola = true
+              GROUP BY g.codiceGruppo
+              HAVING COUNT(a.CF) = (
+                  SELECT MAX(conteggio)
+                  FROM (
+                      SELECT COUNT(CF) AS conteggio 
+                      FROM appartenenza a2
+                      JOIN gruppo g2 ON a2.codiceGruppo = g2.codiceGruppo
+                      WHERE g2.gruppoScuola = true
+                      GROUP BY a2.codiceGruppo
+                  ) AS sottogruppi
+              )";
+    $stmt = $this->db->prepare($query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
 }
 
 ?>

@@ -27,6 +27,8 @@ $x = !empty($guastoTop) ? $guastoTop[0] : null;
 $anni_scelti = isset($_GET['anni']) ? (int)$_GET['anni'] : 1; 
 $eventi_recenti = $dbh->eventiDatiUltimiAnni($anni_scelti);
 
+$gruppi_numerosi = $dbh->getGruppiScolasticiPiuNumerosi();
+
 ?>
 
 <!DOCTYPE html>
@@ -270,6 +272,39 @@ $eventi_recenti = $dbh->eventiDatiUltimiAnni($anni_scelti);
                     <p>Nessun dato di manutenzione disponibile.</p>
                 <?php endif; ?>
             </div>
+
+            <div class="chart-box">
+            <div class="card-header-v">
+                <h3>🎓 Record Gruppi Scolastici</h3>
+                <p>I gruppi delle scuole con il maggior numero di partecipanti.</p>
+            </div>
+            <div class="table-responsive">
+                <?php if(count($gruppi_numerosi) > 0): ?>
+                    <table class="custom-table">
+                        <thead>
+                            <tr>
+                                <th>Codice Gruppo</th>
+                                <th class="text-center">Numero Partecipanti</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($gruppi_numerosi as $gruppo): ?>
+                            <tr>
+                                <td><strong><?php echo htmlspecialchars($gruppo['codiceGruppo']); ?></strong></td>
+                                <td class="text-center">
+                                    <span class="ticket-badge" style="background: #e67e22; color: white; padding: 4px 10px; border-radius: 12px; font-weight: bold;">
+                                        <?php echo $gruppo['numeroPartecipanti']; ?>
+                                    </span>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <p style="color:#777; margin-top: 15px;">Nessun gruppo scolastico registrato.</p>
+                <?php endif; ?>
+            </div>
+        </div>
 
         </div>
     </div>
