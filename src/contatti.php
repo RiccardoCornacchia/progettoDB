@@ -8,44 +8,26 @@ session_start();
     <meta charset="UTF-8">
     <title>Contatti - WonderPark</title>
     <style>
-    /* RESET E BASE */
     body { font-family: sans-serif; background-color: #f9f9f9; margin: 0; color: #333; }
     a { text-decoration: none; }
-
-    /* NAVBAR: Barra scura semplice */
     nav { background: #333; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
     .logo { font-weight: bold; font-size: 1.2rem; }
-    
-    /* BOTTONE INDIETRO: Grigio semplice */
     .btn-home { background: #ddd; color: #333; padding: 5px 15px; border-radius: 4px; font-weight: bold; font-size: 0.9rem; }
     .btn-home:hover { background: #ccc; }
-
-    /* CONTENITORE PRINCIPALE */
     .container { max-width: 600px; margin: 40px auto; padding: 0 15px; }
-
-    /* CARD CONTATTI: Niente ombre, solo un bordo sottile */
     .contact-card {
         background: white;
-        border: 1px solid #ccc; /* Bordo grigio al posto dell'ombra */
+        border: 1px solid #ccc; 
         padding: 30px;
         text-align: center;
         border-radius: 4px;
     }
-
     h1 { margin-top: 0; color: #333; }
     p.intro { color: #666; margin-bottom: 30px; }
-
-    /* LISTA INFORMAZIONI */
     .info-list { list-style: none; padding: 0; text-align: left; display: inline-block; }
-    
     .info-item { display: flex; align-items: center; margin-bottom: 20px; }
-    
-    /* ICONE: Semplici, senza cerchio di sfondo */
-    .icon { font-size: 1.8rem; margin-right: 15px; }
-    
+    .icon { font-size: 1.8rem; margin-right: 15px; }    
     .label { display: block; font-weight: bold; font-size: 0.85rem; color: #555; text-transform: uppercase; }
-
-    /* FOOTER */
     .site-footer {
         background-color: #eee; color: #555;
         padding: 20px; margin-top: 40px; text-align: center;
