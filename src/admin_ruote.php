@@ -1,7 +1,10 @@
 <?php
 require 'config/config.php';
 
-if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { header("Location: login.php"); exit; }
+if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { 
+    header("Location: index.php"); 
+    exit; 
+}
 
 $messaggio = ""; $errore = "";
 

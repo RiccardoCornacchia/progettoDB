@@ -3,7 +3,7 @@ require 'config/config.php';
 
 // Controllo sicurezza: solo l'admin può accedere
 if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
-    header("Location: login.php");
+    header("Location: index.php");
     exit;
 }
 
