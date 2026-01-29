@@ -65,11 +65,11 @@ FROM biglietto;
 -- OPERAZIONE: ACQUISTO ABBONAMENTO (lato client)
 -- Inserimento Visitatore (solo se non esiste)
 INSERT INTO visitatore (CF, nome, cognome, dataNascita, numeroTelefono, e_mail, altezzaVisitatore)
-SELECT DISTINCT ?, ?, ?, ?, ?, ?, ?
-FROM visitatore
-WHERE NOT EXISTS (
-    SELECT 1 FROM visitatore WHERE CF = ?
-);
+VALUES (?, ?, ?, ?, ?, ?, ?)
+ON DUPLICATE KEY UPDATE 
+    numeroTelefono = VALUES(numeroTelefono),
+    e_mail = VALUES(e_mail),
+    altezzaVisitatore = VALUES(altezzaVisitatore);
 
 INSERT INTO abbonamento (codAbbonamento, nomeAbbonamento, scadenza) 
 SELECT MAX(codAbbonamento) + 1, ?, ? 
@@ -86,14 +86,16 @@ FROM abbonamento;
 -- OPERAZIONE: ACQUISTO FOTO MEDIANTE CODICE (lato client)
 
 INSERT INTO FOTO (codiceFoto, prezzo)
-SELECT MAX(codiceFoto) + 1 , ? 
+SELECT MAX(codiceFoto) + 1 AS cod, ? 
 FROM FOTO;
 
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) 
-VALUES (MAX(codiceFoto),  '2026-07-28', CURTIME(), ?); 
+SELECT MAX(codiceFoto),  '2026-07-28', CURTIME(), ?
+FROM FOTO;
 
 INSERT INTO VENDITA_FOTO (codiceFoto, data, orario, codiceAttivita) 
-VALUES (MAX(codiceFoto),  '2026-07-28', CURTIME(), ?);
+SELECT MAX(codiceFoto),  '2026-07-28', CURTIME(), ?
+FROM FOTO;
 
 
 -- OPERAZIONE: CAMBIO STATO-DISPONIBILITA' (lato amministratore)

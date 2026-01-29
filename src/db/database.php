@@ -491,70 +491,91 @@ class DatabaseHelper {
 
 
 public function eseguiAcquistoAbbonamento($cf, $nome, $cognome, $data_n, $tel, $mail, $alt, $nomeAbbo, $scadenza, $data, $ora) {
-    $sqlV = "INSERT INTO visitatore (nome, cognome, CF, dataNascita, numeroTelefono, e_mail, altezzaVisitatore)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-                ON DUPLICATE KEY UPDATE CF=CF";
-    $stmtV = $this->db->prepare($sqlV);
-    $stmtV->bind_param('ssssssi', $nome, $cognome, $cf, $data_n, $tel, $mail, $alt);
-    $stmtV->execute();
+    $this->db->begin_transaction();
+    try {
+        $sqlV = "INSERT INTO visitatore (nome, cognome, CF, dataNascita, numeroTelefono, e_mail, altezzaVisitatore)
+                 VALUES (?, ?, ?, ?, ?, ?, ?)
+                 ON DUPLICATE KEY UPDATE CF=CF";
+        $stmtV = $this->db->prepare($sqlV);
+        $stmtV->bind_param('ssssssi', $nome, $cognome, $cf, $data_n, $tel, $mail, $alt);
+        $stmtV->execute();
 
-    $res = $this->db->query("SELECT MAX(codAbbonamento) + 1 AS prossimoID FROM abbonamento");
-    $row = $res->fetch_assoc();
-    $id_abbonamento = $row['prossimoID'];
+        $res = $this->db->query("SELECT IFNULL(MAX(codAbbonamento), 0) + 1 AS prossimoID FROM abbonamento");
+        $row = $res->fetch_assoc();
+        $id_abbonamento = $row['prossimoID'];
 
-    $sqlA = "INSERT INTO abbonamento (codAbbonamento, nomeAbbonamento, scadenza) VALUES (?, ?, ?)";
-    $stmtA = $this->db->prepare($sqlA);
-    $stmtA->bind_param('iss', $id_abbonamento, $nomeAbbo, $scadenza);
-    $stmtA->execute();
-    
+        $sqlA = "INSERT INTO abbonamento (codAbbonamento, nomeAbbonamento, scadenza) VALUES (?, ?, ?)";
+        $stmtA = $this->db->prepare($sqlA);
+        $stmtA->bind_param('iss', $id_abbonamento, $nomeAbbo, $scadenza);
+        $stmtA->execute();
 
-    $sqlQ = "INSERT INTO acquisto_a (CF, codAbbonamento, data, orario) VALUES (?, ?, ?, ?)";
-    $stmtQ = $this->db->prepare($sqlQ);
-    $stmtQ->bind_param('siss', $cf, $id_abbonamento, $data, $ora);
-    $stmtQ->execute();
+        $sqlQ = "INSERT INTO acquisto_a (CF, codAbbonamento, data, orario) VALUES (?, ?, ?, ?)";
+        $stmtQ = $this->db->prepare($sqlQ);
+        $stmtQ->bind_param('siss', $cf, $id_abbonamento, $data, $ora);
+        $stmtQ->execute();
 
-    $sqlVendita = "INSERT INTO vendita_a (codAbbonamento, data, orario, numeroCassa) 
-                    SELECT ?, ?, ?, numeroCassa 
-                    FROM cassa 
-                    WHERE stato = true 
-                    ORDER BY RAND() 
-                    LIMIT 1";
-    $stmtVen = $this->db->prepare($sqlVendita);
-    $stmtVen->bind_param('iss', $id_abbonamento, $data, $ora);
-    $stmtVen->execute();
+        $sqlVendita = "INSERT INTO vendita_a (codAbbonamento, data, orario, numeroCassa) 
+                        SELECT ?, ?, ?, numeroCassa 
+                        FROM cassa 
+                        WHERE stato = true 
+                        ORDER BY RAND() 
+                        LIMIT 1";
+        $stmtVen = $this->db->prepare($sqlVendita);
+        $stmtVen->bind_param('iss', $id_abbonamento, $data, $ora);
+        $stmtVen->execute();
+
+        $this->db->commit();
+        return true;
+
+    } catch (Exception $e) {
+        $this->db->rollback();
+        return false;
+    }
 }
 
+
 public function eseguiAcquistoBiglietto($cf, $nome, $cognome, $data_n, $tel, $mail, $alt, $nomeBiglietto, $dataValidita, $dataAcquisto, $oraAcquisto) {
-    $sqlV = "INSERT INTO visitatore (nome, cognome, CF, dataNascita, numeroTelefono, e_mail, altezzaVisitatore)
-                VALUES (?, ?, ?, ?, ?, ?, ?)
-                ON DUPLICATE KEY UPDATE CF=CF";
-    $stmtV = $this->db->prepare($sqlV);
-    $stmtV->bind_param('ssssssi', $nome, $cognome, $cf, $data_n, $tel, $mail, $alt);
-    $stmtV->execute();
+    $this->db->begin_transaction();
 
-    $res = $this->db->query("SELECT MAX(codiceBiglietto) + 1 AS prossimoID FROM biglietto");
-    $row = $res->fetch_assoc();
-    $id_biglietto = $row['prossimoID'];
+    try {
+        $sqlV = "INSERT INTO visitatore (nome, cognome, CF, dataNascita, numeroTelefono, e_mail, altezzaVisitatore)
+                 VALUES (?, ?, ?, ?, ?, ?, ?)
+                 ON DUPLICATE KEY UPDATE CF=CF";
+        $stmtV = $this->db->prepare($sqlV);
+        $stmtV->bind_param('ssssssi', $nome, $cognome, $cf, $data_n, $tel, $mail, $alt);
+        $stmtV->execute();
 
-    $sqlB = "INSERT INTO biglietto (codiceBiglietto, nomeBiglietto, dataValidita) VALUES (?, ?, ?)";
-    $stmtB = $this->db->prepare($sqlB);
-    $stmtB->bind_param('iss',$id_biglietto, $nomeBiglietto, $dataValidita);
-    $stmtB->execute();
+        $res = $this->db->query("SELECT IFNULL(MAX(codiceBiglietto), 0) + 1 AS prossimoID FROM biglietto");
+        $row = $res->fetch_assoc();
+        $id_biglietto = $row['prossimoID'];
 
-    $sqlQ = "INSERT INTO acquisto_b (CF, codiceBiglietto, data, orario) VALUES (?, ?, ?, ?)";
-    $stmtQ = $this->db->prepare($sqlQ);
-    $stmtQ->bind_param('siss', $cf, $id_biglietto, $dataAcquisto, $oraAcquisto);
-    $stmtQ->execute();
+        $sqlB = "INSERT INTO biglietto (codiceBiglietto, nomeBiglietto, dataValidita) VALUES (?, ?, ?)";
+        $stmtB = $this->db->prepare($sqlB);
+        $stmtB->bind_param('iss', $id_biglietto, $nomeBiglietto, $dataValidita);
+        $stmtB->execute();
 
-    $sqlVendita = "INSERT INTO vendita_b (codiceBiglietto, data, orario, numeroCassa) 
-                    SELECT ?, ?, ?, numeroCassa 
-                    FROM cassa 
-                    WHERE stato = true 
-                    ORDER BY RAND() 
-                    LIMIT 1";
-    $stmtVen = $this->db->prepare($sqlVendita);
-    $stmtVen->bind_param('iss', $id_biglietto, $dataAcquisto, $oraAcquisto);
-    $stmtVen->execute();
+        $sqlQ = "INSERT INTO acquisto_b (CF, codiceBiglietto, data, orario) VALUES (?, ?, ?, ?)";
+        $stmtQ = $this->db->prepare($sqlQ);
+        $stmtQ->bind_param('siss', $cf, $id_biglietto, $dataAcquisto, $oraAcquisto);
+        $stmtQ->execute();
+
+        $sqlVendita = "INSERT INTO vendita_b (codiceBiglietto, data, orario, numeroCassa) 
+                        SELECT ?, ?, ?, numeroCassa 
+                        FROM cassa 
+                        WHERE stato = true 
+                        ORDER BY RAND() 
+                        LIMIT 1";
+        $stmtVen = $this->db->prepare($sqlVendita);
+        $stmtVen->bind_param('iss', $id_biglietto, $dataAcquisto, $oraAcquisto);
+        $stmtVen->execute();
+
+        $this->db->commit();
+        return true;
+
+    } catch (Exception $e) {
+        $this->db->rollback();
+        return false;
+    }
 }
 
 public function eseguiAcquistoFoto($cf, $prezzo, $codiceAttivita) {

@@ -160,7 +160,7 @@ try {
     </div>
 
     <footer class="site-footer">
-        <p>&copy; WonderPark 2026 - Area Acquisti Sicuri</p>
+        <p>&copy; WonderPark 2026 - Area Acquisti</p>
     </footer>
 
 </body>
