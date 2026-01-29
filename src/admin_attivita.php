@@ -1,26 +1,73 @@
 <?php
 require 'config/config.php';
 
-if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { header("Location: login.php"); exit; }
+if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') { 
+    header("Location: login.php"); 
+    exit; 
+}
 
-$messaggio = ""; $errore = "";
+$messaggio = ""; 
+$errore = "";
+$lista_attivita = $dbh->getAttivitaCommerciali();
 
 if (isset($_GET['action']) && $_GET['action'] == 'delete_attivita' && isset($_GET['id'])) {
     try {
         $dbh->deleteAttivitaCommerciale($_GET['id']);
         $messaggio = "Attività eliminata!";
-    } catch (Exception $e) { $errore = "Impossibile eliminare."; }
+        // Aggiorno la lista
+        $lista_attivita = $dbh->getAttivitaCommerciali();
+    } catch (Exception $e) { 
+        $errore = "Impossibile eliminare l'attività."; 
+    }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_attivita'])) {
-    $res = $dbh->insertAttivitaCommerciale(
-        $_POST['codice'], $_POST['nome'], $_POST['apertura'], 
-        $_POST['chiusura'], $_POST['disponibilita'], $_POST['dipendenti'], $_POST['tipo']
-    );
-    if ($res) $messaggio = "Nuova attività aggiunta!"; else $errore = "Errore inserimento (ID duplicato?).";
-}
+    
+    $codice_ins = $_POST['codice'];
+    $nome_ins = $_POST['nome'];
+    $dipendenti = $_POST['dipendenti'];
+    $apertura = $_POST['apertura'];
+    $chiusura = $_POST['chiusura'];
+    
+    $duplicato_id = false;
+    $duplicato_nome = false;
 
-$lista_attivita = $dbh->getAttivitaCommerciali();
+    foreach ($lista_attivita as $ac) {
+        if ($ac['codiceAttivita'] == $codice_ins) {
+            $duplicato_id = true;
+        }
+        if (strcasecmp($ac['nomeAttivita'], $nome_ins) == 0) {
+            $duplicato_nome = true;
+        }
+    }
+
+    if ($duplicato_id) {
+        $errore = "Errore: Esiste già un'attività con il Codice ID '$codice_ins'.";
+    } elseif ($duplicato_nome) {
+        $errore = "Errore: Esiste già un'attività con il Nome '$nome_ins'.";
+    } elseif ($dipendenti < 1) {
+        $errore = "Errore: Il numero di dipendenti deve essere almeno 1.";
+    } else {
+        $ts_apertura = strtotime($apertura);
+        $ts_chiusura = strtotime($chiusura);
+        
+        if ($ts_chiusura < ($ts_apertura + 7200)) {
+            $errore = "Errore: L'orario di chiusura deve essere almeno 2 ore dopo l'apertura.";
+        } else {
+            $res = $dbh->insertAttivitaCommerciale(
+                $codice_ins, $nome_ins, $apertura, 
+                $chiusura, $_POST['disponibilita'], $dipendenti, $_POST['tipo']
+            );
+            
+            if ($res) {
+                $messaggio = "Nuova attività aggiunta correttamente!"; 
+                $lista_attivita = $dbh->getAttivitaCommerciali();
+            } else { 
+                $errore = "Errore generico durante l'inserimento nel DB."; 
+            }
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,6 +93,7 @@ $lista_attivita = $dbh->getAttivitaCommerciali();
         .btn-add { grid-column: span 2; background: #5cb85c; color: white; padding: 10px; border: none; cursor: pointer; font-weight: bold; margin-top: 10px; }
         .msg-success { background: #dff0d8; color: #3c763d; padding: 15px; margin-bottom: 20px; border: 1px solid #d6e9c6; }
         .msg-error { background: #f2dede; color: #a94442; padding: 15px; margin-bottom: 20px; border: 1px solid #ebccd1; }
+        label { font-weight: bold; font-size: 0.9rem; margin-bottom: 5px; display: block; }
 </style>
 </head>
 <body>
@@ -82,21 +130,47 @@ $lista_attivita = $dbh->getAttivitaCommerciali();
             <form method="post">
                 <input type="hidden" name="form_attivita" value="1">
                 <div class="form-grid">
-                    <input type="number" name="codice" placeholder="Codice ID (es. 101)" required>
-                    <input type="text" name="nome" placeholder="Nome Attività" required>
-                    <select name="tipo">
-                        <option value="Ristorante">Ristorante</option>
-                        <option value="Negozio">Negozio Souvenir</option>
-                        <option value="NegozioFoto">Negozio Foto</option>
-                        <option value="Bar">Bar/Chiosco</option>
-                    </select>
-                    <input type="number" name="dipendenti" placeholder="N. Dipendenti" required>
-                    <div style="grid-column: span 1;"><label>Apre:</label><input type="time" name="apertura" value="09:00" required></div>
-                    <div style="grid-column: span 1;"><label>Chiude:</label><input type="time" name="chiusura" value="22:00" required></div>
-                    <select name="disponibilita" style="grid-column: span 2;">
-                        <option value="Aperta">Aperta</option>
-                        <option value="Chiusa">Chiusa</option>
-                    </select>
+                    <div>
+                        <label>Codice ID</label>
+                        <input type="number" name="codice" placeholder="Es. 101" required>
+                    </div>
+                    <div>
+                        <label>Nome Attività</label>
+                        <input type="text" name="nome" placeholder="Nome Attività" required>
+                    </div>
+                    
+                    <div style="grid-column: span 2;">
+                        <label>Tipologia</label>
+                        <select name="tipo">
+                            <option value="Punto Ristoro">Punto Ristoro</option>
+                            <option value="NegozioSouvenir">Negozio Souvenir</option>
+                            <option value="NegozioFoto">Negozio Foto</option>
+                            <option value="Sala Giochi">Sala Giochi</option>
+                        </select>
+                    </div>
+
+                    <div style="grid-column: span 2;">
+                        <label>Num. Dipendenti</label>
+                        <input type="number" name="dipendenti" placeholder="Minimo 1" min="1" required>
+                    </div>
+
+                    <div>
+                        <label>Apertura:</label>
+                        <input type="time" name="apertura" value="09:00" required>
+                    </div>
+                    <div>
+                        <label>Chiusura:</label>
+                        <input type="time" name="chiusura" value="22:00" required>
+                    </div>
+
+                    <div style="grid-column: span 2;">
+                        <label>Stato:</label>
+                        <select name="disponibilita">
+                            <option value="1">Aperta</option>
+                            <option value="0">Chiusa</option>
+                        </select>
+                    </div>
+
                     <button type="submit" class="btn-add">Aggiungi Attività</button>
                 </div>
             </form>
