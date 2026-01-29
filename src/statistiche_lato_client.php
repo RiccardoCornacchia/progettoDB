@@ -67,7 +67,7 @@ function renderTable($data, $titolo) {
     </style>
 </head>
 <body>
-
+<a href="visitatori_home.php" style="text-decoration:none;">&larr; Torna alla Home Page</a>
 <div class="container">
     <h1>Alcuni dati interessanti!</h1>
 

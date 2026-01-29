@@ -44,40 +44,12 @@ $statsMansioni = $dbh->lavoratoriPerMansione();
     }
     .stats-table tr:hover { background: #fcfcfc; }
 
-    .back-container {
-        margin-bottom: 25px;
-    }
-
-    .btn-back {
-        display: inline-flex;
-        align-items: center;
-        padding: 10px 18px;
-        background-color: #f8f9fa; /* Grigio chiaro per non distrarre */
-        color: #2c3e50;
-        text-decoration: none;
-        border: 1px solid #dcdde1;
-        border-radius: 6px;
-        font-weight: 600;
-        font-size: 0.9rem;
-        transition: all 0.2s ease-in-out;
-    }
-
-    .btn-back .icon {
-        margin-right: 8px;
-        font-size: 1.1rem;
-    }
-
-    .btn-back:hover {
-        background-color: #3498db; /* Diventa blu al passaggio */
-        color: white;
-        border-color: #2980b9;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        transform: translateX(-3px); /* Leggero movimento verso sinistra */
-    }
 </style>
 </head>
 
 <body>
+<p></p>
+<a href="sezione_lavoratori_admin.php" style="text-decoration:none;">&larr; Torna a Gestione Lavoratori</a>
 <div class="stats-container">
     <div class="stats-header">
         <h3>📊 Riepilogo per Mansione</h3>
@@ -108,12 +80,6 @@ $statsMansioni = $dbh->lavoratoriPerMansione();
             </tbody>
         </table>
     </div>
-</div>
-
-<div class="back-container">
-    <a href="sezione_lavoratori_admin.php" class="btn-back">
-        <span class="icon">⬅</span> Torna a Gestione Lavoratori
-    </a>
 </div>
 </body>
 

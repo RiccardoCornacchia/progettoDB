@@ -85,8 +85,9 @@ FROM abbonamento;
 
 -- OPERAZIONE: ACQUISTO FOTO MEDIANTE CODICE (lato client)
 
-INSERT INTO FOTO (codiceFoto, prezzo) 
-VALUES (MAX(codiceFoto) + 1, ?);
+INSERT INTO FOTO (codiceFoto, prezzo)
+SELECT MAX(codiceFoto) + 1, ? 
+FROM FOTO;
 
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) 
 VALUES (MAX(codiceFoto),  '2026-07-28', CURTIME(), ?); 

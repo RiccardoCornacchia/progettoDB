@@ -176,8 +176,22 @@ try {
         background-color: #eee; color: #555;
         padding: 20px; margin-top: 50px; text-align: center; border-top: 1px solid #ccc;
     }
-    .footer-nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 15px; }
-    .footer-nav a:hover { text-decoration: underline; color: #333; }
+
+    .footer-nav ul { 
+        display: flex !important;
+        justify-content: center;
+        list-style: none; 
+        margin: 0 auto;
+        padding: 20px; 
+        gap: 30px;
+        width: 100%;
+    }
+
+    .footer-nav li {
+        display: block; 
+        text-align: center;
+    }
+    .footer-nav a:hover { text-decoration: underline; color: #ff5b9f; }
 
     @media (max-width: 600px) {
         .banner-ticket { flex-direction: column; text-align: center; gap: 15px; }

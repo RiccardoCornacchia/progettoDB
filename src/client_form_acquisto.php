@@ -12,6 +12,21 @@ $nome_prodotto = $_GET['nome'] ?? '';
 $oggi = date('Y-m-d'); 
 ?>
 
+<?php if (isset($_GET['success'])): ?>
+    <script>
+        alert("🎉 Acquisto effettuato con successo! Grazie per aver scelto WonderPark.");
+        // Opzionale: pulisce l'URL togliendo il ?success=1
+        window.history.replaceState({}, document.title, window.location.pathname);
+    </script>
+<?php endif; ?>
+
+<?php if (isset($_GET['error'])): ?>
+    <script>
+        alert("❌ Errore durante l'acquisto. Riprova o contatta l'assistenza.");
+        window.history.replaceState({}, document.title, window.location.pathname);
+    </script>
+<?php endif; ?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -89,7 +104,7 @@ $oggi = date('Y-m-d');
                 Categoria: <span style="text-transform: capitalize;"><?php echo htmlspecialchars($tipo_acquisto); ?></span>
             </div>
 
-            <form action="processa_acquisto.php" method="POST" class="form-grid">
+            <form action="dati_acquisto.php" method="POST" class="form-grid">
                 <input type="hidden" name="tipo" value="<?php echo htmlspecialchars($tipo_acquisto); ?>">
                 <input type="hidden" name="nome_prodotto" value="<?php echo htmlspecialchars($nome_prodotto); ?>">
 
