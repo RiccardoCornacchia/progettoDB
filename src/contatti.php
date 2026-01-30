@@ -33,9 +33,10 @@ session_start();
         padding: 20px; margin-top: 40px; text-align: center;
         border-top: 1px solid #ccc;
     }
-    .footer-nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 15px; }
-    .footer-nav a { color: #555; }
-    .footer-nav a:hover { text-decoration: underline; color: #000; }
+    .footer-nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 15px; width: 100%}
+    .footer-nav a { color: #e9dede; }
+    .footer-nav li { display: block; text-align: center;}
+    .footer-nav a:hover { text-decoration: underline; color: #ff3ec2; }
 </style>
 </head>
 <body>
