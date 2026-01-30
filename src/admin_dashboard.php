@@ -100,7 +100,7 @@ $gruppi_numerosi = $dbh->getGruppiScolasticiPiuNumerosi();
                                     ?>
                                 </td>
                                 <td><b><?php echo htmlspecialchars($g['nomeGiostra']); ?></b></td>
-                                <td><?php echo $g['frequenzaTotale']; ?></td>
+                                <td><?php echo $g['SaliteRegistrate']; ?></td>
                             </tr>
                             <?php $i++; endforeach; ?>
                         </tbody>
@@ -118,7 +118,7 @@ $gruppi_numerosi = $dbh->getGruppiScolasticiPiuNumerosi();
                             <tr>
                                 <th>Attività</th>
                                 <th>Tipo</th>
-                                <th>Fatturato (€)</th>
+                                <th>Incasso totale (€)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -237,7 +237,7 @@ $gruppi_numerosi = $dbh->getGruppiScolasticiPiuNumerosi();
                 <?php if ($x): ?>
                     <div class="alert-header">
                         <div class="alert-title">
-                            <span class="alert-icon">⚠️</span><h3>Manutenzione Critica Rilevata</h3>
+                            <h3><span class="alert-icon">⚠️</span>Manutenzione Critica Rilevata</h3>
                             <p>Questo è il guasto con la durata maggiore registrato nel sistema.</p>
                         </div>
                     </div>
@@ -257,10 +257,12 @@ $gruppi_numerosi = $dbh->getGruppiScolasticiPiuNumerosi();
                                 ?>
                             </span>
                         </div>
+                        <p></p>
                         <div class="alert-info">
                             <span class="label">Tipo di Guasto:</span>
                             <span class="value"><?php echo htmlspecialchars($x['tipoGuasto']); ?></span>
                         </div>
+                        <p></p>
                         <div class="alert-stats">
                             <div class="days-counter">
                                 <span class="number"><?php echo $x['giorni_in_manutenzione']; ?></span>
