@@ -1,5 +1,5 @@
-
 -- Database Section
+-- ________________ 
 
 create database schema_relazionale_aggiornato;
 use schema_relazionale_aggiornato;
@@ -357,7 +357,8 @@ alter table CASSA add constraint FKCOLLOCAZIONE_FK
 
 alter table ESECUZIONE add constraint FKESE_MAN
      foreign key (codiceManutenzione)
-     references MANUTENZIONE (codiceManutenzione);
+     references MANUTENZIONE (codiceManutenzione)
+     ON DELETE CASCADE;
 
 alter table ESECUZIONE add constraint FKESE_LAV_FK
      foreign key (CF)
@@ -369,7 +370,8 @@ alter table ESIBIZIONE_E add constraint FKESI_LAV_1_FK
 
 alter table ESIBIZIONE_E add constraint FKESI_EVE
      foreign key (codiceEvento)
-     references EVENTO (codiceEvento);
+     references EVENTO (codiceEvento)
+     ON DELETE CASCADE;
 
 alter table ESIBIZIONE_S add constraint FKESI_REP
      foreign key (codiceReplica)
@@ -381,43 +383,53 @@ alter table ESIBIZIONE_S add constraint FKESI_LAV_FK
 
 alter table LAVORATORE add constraint FKLAVORO_FK
      foreign key (codiceAttivita_puntoRistoro)
-     references ATTIVITA_COMMERCIALE (codiceAttivita);
+     references ATTIVITA_COMMERCIALE (codiceAttivita)
+     ON DELETE SET NULL;
 
 alter table LAVORATORE add constraint FKIMPIEGO_FK
      foreign key (codiceAttivita_negozio)
-     references ATTIVITA_COMMERCIALE (codiceAttivita);
+     references ATTIVITA_COMMERCIALE (codiceAttivita)
+     ON DELETE SET NULL;
 
 alter table LAVORATORE add constraint FKGESTIONE_RUOTA_FK
      foreign key (nomeRuota)
-     references RUOTA_PANORAMICA (nomeRuota);
+     references RUOTA_PANORAMICA (nomeRuota)
+     ON DELETE SET NULL;
 
 alter table LAVORATORE add constraint FKGESTIONE_G_FK
      foreign key (nomeGiostra)
-     references GIOSTRA (nomeGiostra);
+     references GIOSTRA (nomeGiostra)
+     ON DELETE SET NULL;
 
 alter table LAVORATORE add constraint FKGESTIONE_AT_FK
      foreign key (nomeAreaTematica)
-     references AREA_TEMATICA (nomeAreaTematica);
+     references AREA_TEMATICA (nomeAreaTematica)
+     ON DELETE SET NULL;
 
 alter table LAVORATORE add constraint FKGESTIONE_AP_FK
      foreign key (nomeAttrazionePaura)
-     references ATTRAZIONE_DI_PAURA (nomeAttrazionePaura);
-     
+     references ATTRAZIONE_DI_PAURA (nomeAttrazionePaura)
+     ON DELETE SET NULL;
+
 alter table MANUTENZIONE add constraint FKMANUTENZIONE_RUOTA_FK
      foreign key (nomeRuota)
-     references RUOTA_PANORAMICA (nomeRuota);
+     references RUOTA_PANORAMICA (nomeRuota)
+     ON DELETE CASCADE;
 
 alter table MANUTENZIONE add constraint FKMANUTENZIONE_G_FK
      foreign key (nomeGiostra)
-     references GIOSTRA (nomeGiostra);
+     references GIOSTRA (nomeGiostra)
+     ON DELETE CASCADE;
 
 alter table MANUTENZIONE add constraint FKMANUTENZIONE_AT_FK
      foreign key (nomeAreaTematica)
-     references AREA_TEMATICA (nomeAreaTematica);
+     references AREA_TEMATICA (nomeAreaTematica)
+     ON DELETE CASCADE;
 
 alter table MANUTENZIONE add constraint FKMANUTENZIONE_AP_FK
      foreign key (nomeAttrazionePaura)
-     references ATTRAZIONE_DI_PAURA (nomeAttrazionePaura);
+     references ATTRAZIONE_DI_PAURA (nomeAttrazionePaura)
+     ON DELETE CASCADE;
 
 alter table PARTECIPAZIONE add constraint FKVISIONE_FK
      foreign key (codiceReplica)
@@ -429,15 +441,18 @@ alter table PARTECIPAZIONE add constraint FKCOMPIMENTO_FK
 
 alter table PARTECIPAZIONE add constraint FKALLA_RUOTA_FK
      foreign key (nomeRuota)
-     references RUOTA_PANORAMICA (nomeRuota);
+     references RUOTA_PANORAMICA (nomeRuota)
+     ON DELETE CASCADE;
 
 alter table PARTECIPAZIONE add constraint FKALLA_AT_FK
      foreign key (nomeAreaTematica)
-     references AREA_TEMATICA (nomeAreaTematica);
+     references AREA_TEMATICA (nomeAreaTematica)
+     ON DELETE CASCADE;
 
 alter table PARTECIPAZIONE add constraint FKALLA_AP_FK
      foreign key (nomeAttrazionePaura)
-     references ATTRAZIONE_DI_PAURA (nomeAttrazionePaura);
+     references ATTRAZIONE_DI_PAURA (nomeAttrazionePaura)
+     ON DELETE CASCADE;
 
 alter table PRESENZA add constraint FKPRE_VIS_FK
      foreign key (CF)
@@ -445,7 +460,8 @@ alter table PRESENZA add constraint FKPRE_VIS_FK
 
 alter table PRESENZA add constraint FKPRE_EVE
      foreign key (codiceEvento)
-     references EVENTO (codiceEvento);
+     references EVENTO (codiceEvento)
+     ON DELETE CASCADE;
 
 alter table PULIZIA_A add constraint FKPUL_LAV_1_FK
      foreign key (CF)
@@ -453,7 +469,8 @@ alter table PULIZIA_A add constraint FKPUL_LAV_1_FK
 
 alter table PULIZIA_A add constraint FKPUL_ATT
      foreign key (codiceAttivita)
-     references ATTIVITA_COMMERCIALE (codiceAttivita);
+     references ATTIVITA_COMMERCIALE (codiceAttivita)
+     ON DELETE CASCADE;
 
 alter table PULIZIA_B add constraint FKPUL_LAV_FK
      foreign key (CF)
@@ -462,6 +479,7 @@ alter table PULIZIA_B add constraint FKPUL_LAV_FK
 alter table PULIZIA_B add constraint FKPUL_BAG
      foreign key (codiceBagno)
      references BAGNO (codiceBagno);
+ 
 
 alter table REPLICA_SPETTACOLO add constraint FKREPLICA_FK
      foreign key (nomeSpettacolo)
@@ -469,7 +487,8 @@ alter table REPLICA_SPETTACOLO add constraint FKREPLICA_FK
 
 alter table SALITA add constraint FKSULLA_FK
      foreign key (nomeGiostra)
-     references GIOSTRA (nomeGiostra);
+     references GIOSTRA (nomeGiostra)
+     ON DELETE CASCADE;
 
 alter table SALITA add constraint FKPROVA
      foreign key (CF)
@@ -477,7 +496,7 @@ alter table SALITA add constraint FKPROVA
 
 alter table SCONTO add constraint FKAPPLICAZIONE_FK
      foreign key (nomeBiglietto)
-     references TIPOLOGIA_BIGLIETTO (nomeBiglietto);
+     references TIPOLOGIA_BIGLIETTO (nomeBiglietto); 
 
 alter table SUPERVISIONE_AP add constraint FKSUP_LAV_3_FK
      foreign key (CF)
@@ -485,7 +504,8 @@ alter table SUPERVISIONE_AP add constraint FKSUP_LAV_3_FK
 
 alter table SUPERVISIONE_AP add constraint FKSUP_ATT
      foreign key (nomeAttrazionePaura)
-     references ATTRAZIONE_DI_PAURA (nomeAttrazionePaura);
+     references ATTRAZIONE_DI_PAURA (nomeAttrazionePaura)
+     ON DELETE CASCADE;
 
 alter table SUPERVISIONE_AT add constraint FKSUP_LAV_2_FK
      foreign key (CF)
@@ -493,7 +513,8 @@ alter table SUPERVISIONE_AT add constraint FKSUP_LAV_2_FK
 
 alter table SUPERVISIONE_AT add constraint FKSUP_ARE
      foreign key (nomeAreaTematica)
-     references AREA_TEMATICA (nomeAreaTematica);
+     references AREA_TEMATICA (nomeAreaTematica)
+     ON DELETE CASCADE;
 
 alter table SUPERVISIONE_G add constraint FKSUP_LAV_1_FK
      foreign key (CF)
@@ -501,11 +522,13 @@ alter table SUPERVISIONE_G add constraint FKSUP_LAV_1_FK
 
 alter table SUPERVISIONE_G add constraint FKSUP_GIO
      foreign key (nomeGiostra)
-     references GIOSTRA (nomeGiostra);
+     references GIOSTRA (nomeGiostra)
+     ON DELETE CASCADE;
 
 alter table SUPERVISIONE_RUOTA add constraint FKSUP_RUO
      foreign key (nomeRuota)
-     references RUOTA_PANORAMICA (nomeRuota);
+     references RUOTA_PANORAMICA (nomeRuota)
+     ON DELETE CASCADE;
 
 alter table SUPERVISIONE_RUOTA add constraint FKSUP_LAV_FK
      foreign key (CF)
@@ -514,6 +537,14 @@ alter table SUPERVISIONE_RUOTA add constraint FKSUP_LAV_FK
 alter table TURNO_DI_LAVORO add constraint FKASSEGNAZIONE
      foreign key (CF)
      references LAVORATORE (CF);
+     
+ALTER TABLE turno_di_lavoro 
+DROP FOREIGN KEY FKASSEGNAZIONE;
+
+ALTER TABLE turno_di_lavoro 
+ADD CONSTRAINT FKASSEGNAZIONE 
+FOREIGN KEY (CF) REFERENCES lavoratore(CF) 
+ON DELETE CASCADE;
 
 alter table USUFRUIZIONE add constraint FKEFFETTUAZIONE_FK
      foreign key (CF)
@@ -521,7 +552,8 @@ alter table USUFRUIZIONE add constraint FKEFFETTUAZIONE_FK
 
 alter table USUFRUIZIONE add constraint FKDELLA
      foreign key (codiceAttivita)
-     references ATTIVITA_COMMERCIALE (codiceAttivita);
+     references ATTIVITA_COMMERCIALE (codiceAttivita)
+     ON DELETE CASCADE;
 
 alter table UTILIZZO add constraint FKUTI_VIS_FK
      foreign key (CF)
@@ -553,7 +585,8 @@ alter table VENDITA_FOTO add constraint FKVEN_FOT_FK
 
 alter table VENDITA_FOTO add constraint FKVEN_ATT_FK
      foreign key (codiceAttivita)
-     references ATTIVITA_COMMERCIALE (codiceAttivita);
+     references ATTIVITA_COMMERCIALE (codiceAttivita)
+     ON DELETE CASCADE;
 
 
 -- Index Section
@@ -645,6 +678,12 @@ create unique index ID_GIOSTRA_IND
 
 create unique index ID_GRUPPO_IND
      on GRUPPO (codiceGruppo);
+     
+create unique index ID_LAVORATORE_TELEFONO_IND
+	on LAVORATORE (numeroTelefono);
+
+create unique index ID_LAVORATORE_EMAIL_IND
+	on LAVORATORE (e_mail);
 
 create unique index ID_LAVORATORE_IND
      on LAVORATORE (CF);
@@ -654,9 +693,6 @@ create index FKLAVORO_IND
 
 create index FKIMPIEGO_IND
      on LAVORATORE (codiceAttivita_negozio);
-     
-create unique index ID_LAVORATORE_EMAIL_IND
-	on LAVORATORE (e_mail);
 
 create index FKGESTIONE_RUOTA_IND
      on LAVORATORE (nomeRuota);
@@ -669,9 +705,6 @@ create index FKGESTIONE_AT_IND
 
 create index FKGESTIONE_AP_IND
      on LAVORATORE (nomeAttrazionePaura);
-
-create unique index ID_LAVORATORE_TELEFONO_IND
-	on LAVORATORE (numeroTelefono);
 
 create unique index ID_MANUTENZIONE_IND
      on MANUTENZIONE (codiceManutenzione);
