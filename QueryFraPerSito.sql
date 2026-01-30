@@ -51,7 +51,7 @@ WHERE NOT EXISTS (
 );
 
 INSERT INTO biglietto (codiceBiglietto, nomeBiglietto, dataValidita) 
-SELECT MAX(codiceBiglietto) + 1, ?, ?
+SELECT IFNULL(MAX(codiceBiglietto), 0) + 1, ?, ?
 FROM biglietto;
 
 INSERT INTO acquisto_b (CF, codiceBiglietto, data, orario) 
@@ -72,7 +72,7 @@ ON DUPLICATE KEY UPDATE
     altezzaVisitatore = VALUES(altezzaVisitatore);
 
 INSERT INTO abbonamento (codAbbonamento, nomeAbbonamento, scadenza) 
-SELECT MAX(codAbbonamento) + 1, ?, ? 
+SELECT IFNULL(MAX(codAbbonamento), 0 ) + 1, ?, ? 
 FROM abbonamento;
 
 INSERT INTO acquisto_a (CF, codAbbonamento, data, orario) 
@@ -86,7 +86,7 @@ FROM abbonamento;
 -- OPERAZIONE: ACQUISTO FOTO MEDIANTE CODICE (lato client)
 
 INSERT INTO FOTO (codiceFoto, prezzo)
-SELECT MAX(codiceFoto) + 1 AS cod, ? 
+SELECT IFNULL(MAX(codAbbonamento), 0 ) + 1, ? 
 FROM FOTO;
 
 INSERT INTO ACQUISTO_FOTO (codiceFoto, data, orario, CF) 

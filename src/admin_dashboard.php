@@ -275,7 +275,7 @@ $gruppi_numerosi = $dbh->getGruppiScolasticiPiuNumerosi();
 
             <div class="chart-box">
             <div class="card-header-v">
-                <h3>🎓 Record Gruppi Scolastici</h3>
+                <h3>🎓 Gruppi Scolastici Più Numerosi</h3>
                 <p>I gruppi delle scuole con il maggior numero di partecipanti.</p>
             </div>
             <div class="table-responsive">
