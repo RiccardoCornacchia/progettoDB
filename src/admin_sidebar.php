@@ -18,7 +18,7 @@ $pagina_corrente = basename($_SERVER['PHP_SELF']);
     </a>
     
     <a href="admin_attrazioni.php" class="menu-link <?php echo ($pagina_corrente == 'admin_attrazioni.php') ? 'active' : ''; ?>">
-        👻 Attrazioni Horror
+        👻 Attrazioni di Paura
     </a>
     
     <a href="admin_attivita.php" class="menu-link <?php echo ($pagina_corrente == 'admin_attivita.php') ? 'active' : ''; ?>">
