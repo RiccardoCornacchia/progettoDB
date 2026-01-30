@@ -83,7 +83,7 @@ function renderTable($data, $titolo) {
         <div class="search-box">
             <form method="GET" action="">
                 <label for="anni">Visualizza eventi degli ultimi: </label>
-                <input type="number" name="anni" id="anni" value="<?php echo $anniScelti; ?>" min="1" max="50">
+                <input type="number" name="anni" id="anni" value="<?php echo $anniScelti; ?>" min="1" max="15">
                 <span> anni</span>
                 <button type="submit"> Aggiorna</button>
             </form>

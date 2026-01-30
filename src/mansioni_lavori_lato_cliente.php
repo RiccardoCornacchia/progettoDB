@@ -108,13 +108,13 @@ $mansioni = $dbh->getMansioni();
         <?php endif; ?>
     </div>
 </div>
+<p></p>
+<a href="visitatori_home.php" style="text-decoration:none;">&larr; Torna alla Home</a>
 
 <script>
     function mostraConferma(button) {
         // Nasconde il pulsante cliccato
         button.style.display = 'none';
-        
-        // Trova il messaggio di successo nello stesso "card" e lo mostra
         const card = button.parentElement;
         const message = card.querySelector('.success-message');
         message.style.display = 'block';

@@ -207,10 +207,10 @@ class DatabaseHelper {
     }
 
     public function top3giostre(){
-        $query = "SELECT nomeGiostra, COUNT(*) AS frequenzaTotale
+        $query = "SELECT nomeGiostra, COUNT(*) AS SaliteRegistrate
             FROM SALITA
             GROUP BY nomeGiostra
-            ORDER BY frequenzaTotale
+            ORDER BY SaliteRegistrate
             LIMIT 3";
         $stmt = $this->db->prepare($query);
         $stmt->execute();

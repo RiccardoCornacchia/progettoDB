@@ -54,6 +54,7 @@ $lavoratori = $dbh->getLavoratori();
     <meta charset="UTF-8">
     <title>Admin - Gestione Lavoratori</title>
     <style>
+        
         body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; padding: 20px; }
         .container { max-width: 1100px; margin: 0 auto; }
         
