@@ -1,8 +1,8 @@
 -- Database Section
 -- ________________ 
 
-create database schema_relazionale_aggiornato;
-use schema_relazionale_aggiornato;
+create database parco_divertimenti_db;
+use parco_divertimenti_db;
 
 
 -- Tables Section
