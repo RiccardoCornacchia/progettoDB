@@ -249,7 +249,7 @@ class DatabaseHelper {
         $query = "SELECT a.nomeAttivita, a.tipologiaAttivita, SUM(u.prezzoAcquisto) AS fatturatoTotale 
                   FROM ATTIVITA_COMMERCIALE a
                   JOIN USUFRUIZIONE u ON a.codiceAttivita = u.codiceAttivita
-                  WHERE a.tipologiaAttivita IN ('puntiRistoro', 'salaGiochi', 'NegozioSouvenirs')
+                  WHERE a.tipologiaAttivita IN ('Punto Ristoro', 'Sala Giochi', 'Shop Souvenirs')
                   GROUP BY a.nomeAttivita, a.tipologiaAttivita
                   ORDER BY fatturatoTotale DESC";
         $stmt = $this->db->prepare($query);
