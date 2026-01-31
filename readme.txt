@@ -15,7 +15,7 @@ Il progetto utilizza un database MySQL. Per configurarlo si seguano questi passa
 3.  **Verificare la connessione.**
     Aprire il file `src/config/config.php`. All'interno si trovano le credenziali per la connessione al database:
     
-    `$dbh = new DatabaseHelper("127.0.0.1", "root", "", "schema_relazionale_aggiornato", 3306);`
+    `$dbh = new DatabaseHelper("127.0.0.1", "root", "", "parco_divertimenti_db", 3306);`
     
     Assicurarsi che il tuo server MySQL locale utilizzi queste credenziali (utente 'root' e password ''). In caso contrario,
     modificare il file con le credenziali corrette.
