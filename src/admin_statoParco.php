@@ -157,7 +157,7 @@ $lista_manutenzioni = $dbh->getManutenzioniAttive();
                 </table>
             </div>
             <div class="section-box">
-                <h3>💀 Attrazioni Horror</h3>
+                <h3>💀 Attrazioni di Paura</h3>
                 <table>
                     <thead><tr><th>Nome</th><th>Stato</th><th>Azione</th></tr></thead>
                     <tbody>
