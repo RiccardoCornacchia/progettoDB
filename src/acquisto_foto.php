@@ -1,7 +1,6 @@
 <?php
 require 'config/config.php';
 
-
 if (!isset($_SESSION['ruolo'])) {
     header("Location: index.php");
     exit;
@@ -67,7 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .btn-confirm { background-color: #5cb85c; color: white; border: none; padding: 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1rem; }
         .btn-confirm:hover { background-color: #4cae4c; }
 
-        /* Stili per i messaggi di feedback */
         .error-msg { color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 4px; text-align: center; font-weight: bold; margin-top: 15px; }
         .success-msg { color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 4px; text-align: center; font-weight: bold; margin-top: 15px; }
 

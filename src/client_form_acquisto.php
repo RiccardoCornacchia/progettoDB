@@ -6,7 +6,6 @@ if (!isset($_SESSION['ruolo'])) {
     exit;
 }
 
-
 $tipo_acquisto = $_REQUEST['tipo'] ?? 'biglietto'; 
 $nome_prodotto = $_REQUEST['nome_prodotto'] ?? ($_GET['nome'] ?? '');
 $oggi = date('Y-m-d'); 
@@ -16,18 +15,20 @@ $messaggioSuccesso = "";
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $cf = strtoupper(trim($_POST['codice_fiscale']));
-    $nome = trim($_POST['nome']);
-    $cognome = trim($_POST['cognome']);
-    $data_nascita = $_POST['data_nascita'];
-    $altezza = intval($_POST['altezza']);
-    $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
-    $telefono  = !empty($_POST['telefono']) ? trim($_POST['telefono']) : null;
+    
+    $cf            = strtoupper(trim($_POST['codice_fiscale']));
+    $nome          = trim($_POST['nome']);
+    $cognome       = trim($_POST['cognome']);
+    $data_nascita  = $_POST['data_nascita'];
+    $altezza       = intval($_POST['altezza']);
+    $email         = !empty($_POST['email']) ? trim($_POST['email']) : null;
+    $telefono      = !empty($_POST['telefono']) ? trim($_POST['telefono']) : null;
     
     $data_oggi = date('Y-m-d');
     $ora_attuale = date('H:i:s');
 
     if ($tipo_acquisto === 'abbonamento') {
+        
         $anno_scelto = intval($_POST['anno_utilizzo']);
         $scadenza_fissata = $anno_scelto . "-10-31";
         $risultato = $dbh->eseguiAcquistoAbbonamento(
@@ -35,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $altezza, $nome_prodotto, $scadenza_fissata, $data_oggi, $ora_attuale
         );
     } else {
+        
         $data_validita = $_POST['data_validita'] ?? $data_oggi;
         $risultato = $dbh->eseguiAcquistoBiglietto(
             $cf, $nome, $cognome, $data_nascita, $telefono, $email, 

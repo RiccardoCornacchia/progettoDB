@@ -1,7 +1,7 @@
 <?php
 require 'config/config.php';
 
-// 1. Azione Aggiunta
+
 if (isset($_POST['azione']) && $_POST['azione'] == 'aggiungi') {
     $nome = $_POST['nome'];
     $cognome = $_POST['cognome'];
@@ -37,14 +37,14 @@ if (isset($_POST['azione']) && $_POST['azione'] == 'aggiungi') {
     exit();
 }
 
-// 2. Azione Eliminazione
+
 if (isset($_GET['elimina'])) {
     $CF = $_GET['elimina'];
     $dbh->deleteLavoratore($CF);
     header("Location: sezione_lavoratori_admin.php");
 }
 
-// 3. Recupero dati aggiornati
+
 $lavoratori = $dbh->getLavoratori();
 ?>
 
@@ -186,10 +186,8 @@ $lavoratori = $dbh->getLavoratori();
                     <td>
                         <?php 
                             if (!empty($l['codiceAttivita_puntoRistoro'])) {
-                                // Chiamiamo il database per il nome del punto ristoro
                                 echo "Ristoro: " . htmlspecialchars($dbh->getNomeAttivita($l['codiceAttivita_puntoRistoro']));
                             } elseif (!empty($l['codiceAttivita_negozio'])) {
-                                // Chiamiamo il database per il nome del negozio
                                 echo "Negozio: " . htmlspecialchars($dbh->getNomeAttivita($l['codiceAttivita_negozio']));
                             } elseif (!empty($l['nomeGiostra'])) {
                                 echo "Giostra: " . htmlspecialchars($l['nomeGiostra']);

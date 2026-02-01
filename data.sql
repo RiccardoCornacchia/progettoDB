@@ -1094,7 +1094,7 @@ values (1, 'Pomeridiano', '2024-06-18'), (2, 'Flash Pass', '2024-06-18'), (3, 'P
         (89, 'Flash Pass', '2025-08-07'), (90, 'Giornaliero', '2025-08-07'), (91, 'Flash Pass', '2025-08-07'), 
         (92, 'Pomeridiano', '2025-08-07'), (93, 'Flash Pass', '2025-08-07'),
         (94, 'Giornaliero', '2025-08-07'), (95, 'Flash Pass', '2025-08-07'), (96, 'Pomeridiano', '2025-08-07'), (97, 'Flash Pass', '2025-08-07'),
-        (98, '2 giorni con pernottamento', '2025-08-07'), (99, 'Giornaliero'), (100, 'Pomeridiano', '2026-06-04'), (101, 'Giornaliero', '2026-06-04'),
+        (98, '2 giorni con pernottamento', '2025-08-07'), (99, 'Giornaliero', '2026-06-04'), (100, 'Pomeridiano', '2026-06-04'), (101, 'Giornaliero', '2026-06-04'),
 		(102, 'Pomeridiano', '2026-06-04'), (103, '2 giorni con pernottamento', '2026-06-04'), (104, 'Giornaliero', '2026-06-04'),
         (105, 'Pomeridiano', '2026-06-04'), (106, '2 giorni con pernottamento', '2026-06-04'), 
         (107, 'Giornaliero', '2026-06-04'), (108, 'Pomeridiano', '2026-06-04'), (109, '2 giorni con pernottamento', '2026-06-04'),

@@ -17,10 +17,10 @@ if (isset($_GET['action']) && $_GET['action'] == 'toggle' && isset($_GET['tipo']
     try {
         switch ($tipo) {
             case 'giostra':
-                $res = $dbh->updateStatoGiostra($id); 
+                $res = $dbh->updateStatoGiostra($id);
                 break;
             case 'attivita':
-                $res = $dbh->updateStatoAttivita($id);
+                $res = $dbh->updateStatoAttivita($id); 
                 break;
             case 'horror':
                 $res = $dbh->updateStatoAttrazionePaura($id); 
