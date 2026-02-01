@@ -9,7 +9,6 @@ if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
 $messaggio = "";
 $errore = "";
 
-// 1. Recupero lista subito per controlli
 $lista_giostre = $dbh->getGiostre();
 
 if (isset($_GET['action']) && $_GET['action'] == 'delete_giostra' && isset($_GET['id'])) {
@@ -27,7 +26,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
     $nome_inserito = $_POST['nome'];
     $esiste_gia = false;
 
-    // Controllo duplicati
     foreach ($lista_giostre as $g) {
         if (strcasecmp($g['nomeGiostra'], $nome_inserito) == 0) {
             $esiste_gia = true;
@@ -38,17 +36,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['form_giostra'])) {
     if ($esiste_gia) {
         $errore = "Attenzione: Esiste già una giostra con il nome '$nome_inserito'!";
     } else {
-        // Chiamata alla funzione aggiornata con TUTTI i parametri
         $res = $dbh->insertGiostra(
             $_POST['nome'], 
             $_POST['capienza'], 
             $_POST['disponibilita'], 
-            $_POST['etamin'],       // Età Minima
+            $_POST['etamin'],      
             $_POST['durata'], 
             $_POST['acquatica'], 
-            $_POST['etamax'],       // NUOVO: Età Massima
+            $_POST['etamax'],       
             $_POST['velocita'], 
-            $_POST['altezzamax'],   // NUOVO: Altezza Max
+            $_POST['altezzamax'],   
             $_POST['tipo']
         );
 

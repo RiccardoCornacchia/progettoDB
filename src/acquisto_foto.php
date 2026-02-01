@@ -1,13 +1,11 @@
 <?php
 require 'config/config.php';
 
-// Controllo sessione
 if (!isset($_SESSION['ruolo'])) {
     header("Location: index.php");
     exit;
 }
 
-// 1. Recupero dati per caricare la pagina (ID Negozio)
 $codiceNegozio = $_REQUEST['id'] ?? ($_POST['codiceAttivita'] ?? null);
 $nomeNegozio = "";
 
@@ -18,7 +16,7 @@ if ($codiceNegozio) {
     exit;
 }
 
-// 2. Logica di Elaborazione Acquisto
+
 $messaggioErrore = "";
 $messaggioSuccesso = "";
 
@@ -31,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($risultato === true) {
             $messaggioSuccesso = "Acquisto completato con successo! La foto è in stampa.";
-            // Puliamo il campo CF per il prossimo cliente
             $_POST['cf'] = ""; 
         } elseif ($risultato === "visitatore_non_presente") {
             $messaggioErrore = "Visitatore non presente in database, impossibile acquistare la foto.";
@@ -70,7 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         .btn-confirm { background-color: #5cb85c; color: white; border: none; padding: 12px; border-radius: 4px; font-weight: bold; cursor: pointer; font-size: 1rem; }
         .btn-confirm:hover { background-color: #4cae4c; }
 
-        /* Stili per i messaggi di feedback */
         .error-msg { color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 4px; text-align: center; font-weight: bold; margin-top: 15px; }
         .success-msg { color: #155724; background-color: #d4edda; border: 1px solid #c3e6cb; padding: 10px; border-radius: 4px; text-align: center; font-weight: bold; margin-top: 15px; }
 

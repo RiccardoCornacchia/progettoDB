@@ -1,7 +1,7 @@
 <?php
 class DatabaseHelper {
     private $db;
-    //copia delnevo
+    
     public function __construct($servername, $username, $password, $dbname, $port){
         $this->db = new mysqli($servername, $username, $password, $dbname, $port);
         if ($this->db->connect_error) {
@@ -89,7 +89,7 @@ class DatabaseHelper {
     }
 
    
-    // Statistica: Conta i visitatori totali
+    /*Conta i visitatori totali*/
     public function countVisitatori() {
         $stmt = $this->db->prepare("SELECT COUNT(*) as totale FROM VISITATORE");
         $stmt->execute();
@@ -239,7 +239,7 @@ class DatabaseHelper {
     public function eventiDatiUltimiAnni($numeroAnni){
         $query = "SELECT * FROM EVENTO WHERE data >= DATE_SUB('2026-07-28', INTERVAL ? YEAR)";
         $stmt = $this->db->prepare($query);
-        $stmt->bind_param('i', $numeroAnni); // 'i' sta per integer
+        $stmt->bind_param('i', $numeroAnni); 
         $stmt->execute();
         $result = $stmt->get_result();
         return $result->fetch_all(MYSQLI_ASSOC);
@@ -270,7 +270,7 @@ class DatabaseHelper {
                     JOIN biglietto b ON ab.codiceBiglietto = b.codiceBiglietto
                     WHERE ab.CF = ?";
         $stmt = $this->db->prepare($query);
-        // Passiamo il CF due volte: una per la prima SELECT e una per la seconda
+        
         $stmt->bind_param("ss", $CF, $CF);
         $stmt->execute();
         $result = $stmt->get_result();
@@ -372,7 +372,6 @@ class DatabaseHelper {
 
     /*cambia stato cassa */
     public function updateStatoCassa($id) {
-        // Nota: 'i' se numeroCassa è un numero, 's' se è una stringa
         $stmt = $this->db->prepare("UPDATE CASSA SET stato = NOT stato WHERE numeroCassa = ?");
         $stmt->bind_param("i", $id); 
         return $stmt->execute();
@@ -453,8 +452,6 @@ class DatabaseHelper {
     }
 
     public function verificaSovrapposizioneTurno($cf, $data, $nuovaOraInizio) {
-        // Cerchiamo se esiste un turno dove l'ora di inizio inserita 
-        // è compresa tra l'inizio e la fine di un turno già registrato
         $query = "SELECT * FROM turno_di_lavoro 
                 WHERE CF = ? 
                 AND data = ? 
@@ -467,7 +464,6 @@ class DatabaseHelper {
         return $result->num_rows > 0;
     }
 
-    // Elimina un turno specifico
     public function deleteTurno($cf, $data, $inizio) {
         $query = "DELETE FROM turno_di_lavoro WHERE CF = ? AND data = ? AND oraInizio = ?";
         $stmt = $this->db->prepare($query);

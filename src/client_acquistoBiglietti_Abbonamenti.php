@@ -6,7 +6,6 @@ if (!isset($_SESSION['ruolo'])) {
     exit;
 }
 
-// Recupero dei dati dal database
 try {
     $biglietti = $dbh->getTipologieBiglietti();
     $abbonamenti = $dbh->getTipologieAbbonamenti();
@@ -34,7 +33,6 @@ try {
 
         .sezione-titolo { margin: 40px 0 20px 0; color: #2c3e50; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
         
-        /* Grid e Card uniformate allo stile "item-card" */
         .ticket-grid { display: grid; grid-template-columns: 1fr; gap: 10px; }
         
         .item-card { 
