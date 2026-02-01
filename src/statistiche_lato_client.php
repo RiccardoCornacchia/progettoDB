@@ -21,7 +21,6 @@ if ($CF) {
     $risultato4 = $dbh->storicoBigliettiAbbonamenti($CF);
 }
 
-
 function renderTable($data, $titolo) {
     echo "<h3>$titolo</h3>";
     if (empty($data)) {

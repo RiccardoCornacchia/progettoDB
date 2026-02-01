@@ -18,10 +18,19 @@ $statsMansioni = $dbh->lavoratoriPerMansione();
         margin: 20px 0;
         border-top: 5px solid #3498db;
     }
-    .stats-header h3 { margin: 0; color: #2c3e50; }
-    .stats-header p { color: #7f8c8d; font-size: 0.9rem; margin-bottom: 20px; }
-    
-    .stats-table { width: 100%; border-collapse: collapse; }
+    .stats-header h3 { 
+        margin: 0; 
+        color: #2c3e50; 
+    }
+    .stats-header p { 
+        color: #7f8c8d; 
+        font-size: 0.9rem; 
+        margin-bottom: 20px; 
+    }
+    .stats-table { 
+        width: 100%; 
+        border-collapse: collapse; 
+    }
     .stats-table th { 
         text-align: left; 
         padding: 12px; 
@@ -30,10 +39,19 @@ $statsMansioni = $dbh->lavoratoriPerMansione();
         font-size: 0.85rem; 
         text-transform: uppercase; 
     }
-    .stats-table td { padding: 15px 12px; border-bottom: 1px solid #f1f1f1; }
+    .stats-table td { 
+        padding: 15px 12px; 
+        border-bottom: 1px solid #f1f1f1; 
+    }
     
-    .text-center { text-align: center; }
-    .text-right { text-align: right; font-family: 'Courier New', monospace; font-weight: bold; }
+    .text-center { 
+        text-align: center; 
+    }
+    .text-right { 
+        text-align: right; 
+        font-family: 'Courier New', monospace; 
+        font-weight: bold;
+    }
     
     .badge-count {
         background: #3498db;
@@ -42,7 +60,9 @@ $statsMansioni = $dbh->lavoratoriPerMansione();
         border-radius: 20px;
         font-size: 0.85rem;
     }
-    .stats-table tr:hover { background: #fcfcfc; }
+    .stats-table tr:hover { 
+        background: #fcfcfc; 
+    }
 
 </style>
 </head>

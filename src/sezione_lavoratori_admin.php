@@ -57,7 +57,6 @@ $lavoratori = $dbh->getLavoratori();
         
         body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; padding: 20px; }
         .container { max-width: 1100px; margin: 0 auto; }
-        
         .form-container { background: white; padding: 25px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 30px; }
         .grid-inputs { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 15px; }
         input { padding: 10px; border: 1px solid #ddd; border-radius: 4px; }
