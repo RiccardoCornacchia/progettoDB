@@ -11,7 +11,6 @@ $anniScelti = 3;
 $risultato4 = [];
 $CF = $_GET['CF'] ?? null;
 
-// Controlliamo se l'utente ha inviato un valore tramite il form
 if (isset($_GET['anni']) && is_numeric($_GET['anni'])) {
     $anniScelti = (int)$_GET['anni'];
 }
@@ -23,7 +22,6 @@ if ($CF) {
     $risultato4 = $dbh->storicoBigliettiAbbonamenti($CF);
 }
 
-// Funzione helper per generare tabelle al volo partendo dai risultati
 function renderTable($data, $titolo) {
     echo "<h3>$titolo</h3>";
     if (empty($data)) {
@@ -31,12 +29,10 @@ function renderTable($data, $titolo) {
         return;
     }
     echo "<div class='table-container'><table><thead><tr>";
-    // Intestazioni dinamiche prese dalle chiavi dell'array
     foreach (array_keys($data[0]) as $key) {
         echo "<th>" . htmlspecialchars(ucfirst($key)) . "</th>";
     }
     echo "</tr></thead><tbody>";
-    // Righe della tabella
     foreach ($data as $row) {
         echo "<tr>";
         foreach ($row as $cell) {

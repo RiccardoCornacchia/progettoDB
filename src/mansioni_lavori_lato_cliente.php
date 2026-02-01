@@ -21,16 +21,21 @@ $mansioni = $dbh->getMansioni();
             --accent-color: #3498db;
             --bg-color: #f4f7f6;
         }
-
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: var(--bg-color);
             margin: 0;
             padding: 40px 20px;
         }
-
-        .container { max-width: 1200px; margin: 0 auto; }
-        h1 { text-align: center; color: var(--primary-color); margin-bottom: 50px; }
+        .container { 
+            max-width: 1200px; 
+            margin: 0 auto; 
+        }
+        h1 { 
+            text-align: center; 
+            color: var(--primary-color); 
+            margin-bottom: 50px; 
+        }
 
         .jobs-grid {
             display: grid;
@@ -113,7 +118,6 @@ $mansioni = $dbh->getMansioni();
 
 <script>
     function mostraConferma(button) {
-        // Nasconde il pulsante cliccato
         button.style.display = 'none';
         const card = button.parentElement;
         const message = card.querySelector('.success-message');
