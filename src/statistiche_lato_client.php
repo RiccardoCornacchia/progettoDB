@@ -6,7 +6,6 @@ if (!isset($_SESSION['ruolo'])) {
     exit;
 }
 
-// Valore di default se l'utente non ha ancora inserito nulla
 $anniScelti = 3;
 $risultato4 = [];
 $CF = $_GET['CF'] ?? null;
@@ -29,10 +28,12 @@ function renderTable($data, $titolo) {
         return;
     }
     echo "<div class='table-container'><table><thead><tr>";
+    
     foreach (array_keys($data[0]) as $key) {
         echo "<th>" . htmlspecialchars(ucfirst($key)) . "</th>";
     }
     echo "</tr></thead><tbody>";
+    
     foreach ($data as $row) {
         echo "<tr>";
         foreach ($row as $cell) {

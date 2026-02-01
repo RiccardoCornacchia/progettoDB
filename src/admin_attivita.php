@@ -14,7 +14,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'delete_attivita' && isset($_GE
     try {
         $dbh->deleteAttivitaCommerciale($_GET['id']);
         $messaggio = "Attività eliminata!";
-        // Aggiorno la lista
         $lista_attivita = $dbh->getAttivitaCommerciali();
     } catch (Exception $e) { 
         $errore = "Impossibile eliminare l'attività."; 
