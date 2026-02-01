@@ -1,13 +1,12 @@
 <?php
 require 'config/config.php';
 
-// Controllo sessione
+
 if (!isset($_SESSION['ruolo'])) {
     header("Location: index.php");
     exit;
 }
 
-// 1. Recupero dati per caricare la pagina (ID Negozio)
 $codiceNegozio = $_REQUEST['id'] ?? ($_POST['codiceAttivita'] ?? null);
 $nomeNegozio = "";
 
@@ -18,7 +17,6 @@ if ($codiceNegozio) {
     exit;
 }
 
-// 2. Logica di Elaborazione Acquisto
 $messaggioErrore = "";
 $messaggioSuccesso = "";
 
@@ -31,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($risultato === true) {
             $messaggioSuccesso = "Acquisto completato con successo! La foto è in stampa.";
-            // Puliamo il campo CF per il prossimo cliente
             $_POST['cf'] = ""; 
         } elseif ($risultato === "visitatore_non_presente") {
             $messaggioErrore = "Visitatore non presente in database, impossibile acquistare la foto.";

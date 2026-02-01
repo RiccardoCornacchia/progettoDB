@@ -1,7 +1,6 @@
 <?php
 require 'config/config.php';
 
-// Controllo sicurezza: solo l'admin può accedere
 if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
     header("Location: index.php");
     exit;
@@ -10,7 +9,6 @@ if (!isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
 $messaggio = "";
 $errore = "";
 
-// GESTIONE CAMBIO STATO (Logica Toggle)
 if (isset($_GET['action']) && $_GET['action'] == 'toggle' && isset($_GET['tipo']) && isset($_GET['id'])) {
     $id = $_GET['id'];
     $tipo = $_GET['tipo'];
@@ -19,19 +17,19 @@ if (isset($_GET['action']) && $_GET['action'] == 'toggle' && isset($_GET['tipo']
     try {
         switch ($tipo) {
             case 'giostra':
-                $res = $dbh->updateStatoGiostra($id); // Esegue: 1 - disponibilita
+                $res = $dbh->updateStatoGiostra($id); 
                 break;
             case 'attivita':
-                $res = $dbh->updateStatoAttivita($id); // Esegue: 1 - disponibilita
+                $res = $dbh->updateStatoAttivita($id);
                 break;
             case 'horror':
-                $res = $dbh->updateStatoAttrazionePaura($id); // Esegue: 1 - disponibilita
+                $res = $dbh->updateStatoAttrazionePaura($id); 
                 break;
             case 'cassa':
-                $res = $dbh->updateStatoCassa($id); // Esegue: NOT stato
+                $res = $dbh->updateStatoCassa($id); 
                 break;
             case 'bagno':
-                $res = $dbh->updateStatoBagno($id); // Esegue: 1 - disponibilita
+                $res = $dbh->updateStatoBagno($id); 
                 break;
         }
         if ($res) $messaggio = "Stato di " . htmlspecialchars($id) . " aggiornato!";
@@ -41,7 +39,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'toggle' && isset($_GET['tipo']
     }
 }
 
-// RECUPERO DATI PER LE TABELLE
 $lista_giostre = $dbh->getGiostre();
 $lista_attivita = $dbh->getAttivitaCommerciali();
 $lista_horror = $dbh->getAllAttrazioniPaura();

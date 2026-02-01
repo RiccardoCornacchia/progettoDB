@@ -6,7 +6,7 @@ if (!isset($_SESSION['ruolo'])) {
     exit;
 }
 
-// 1. Recupero parametri iniziali
+
 $tipo_acquisto = $_REQUEST['tipo'] ?? 'biglietto'; 
 $nome_prodotto = $_REQUEST['nome_prodotto'] ?? ($_GET['nome'] ?? '');
 $oggi = date('Y-m-d'); 
@@ -14,31 +14,27 @@ $oggi = date('Y-m-d');
 $messaggioErrore = "";
 $messaggioSuccesso = "";
 
-// 2. Logica di Elaborazione Acquisto (POST)
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Recupero e pulizia dati comuni
-    $cf            = strtoupper(trim($_POST['codice_fiscale']));
-    $nome          = trim($_POST['nome']);
-    $cognome       = trim($_POST['cognome']);
-    $data_nascita  = $_POST['data_nascita'];
-    $altezza       = intval($_POST['altezza']);
-    $email         = !empty($_POST['email']) ? trim($_POST['email']) : null;
-    $telefono      = !empty($_POST['telefono']) ? trim($_POST['telefono']) : null;
+    $cf = strtoupper(trim($_POST['codice_fiscale']));
+    $nome = trim($_POST['nome']);
+    $cognome = trim($_POST['cognome']);
+    $data_nascita = $_POST['data_nascita'];
+    $altezza = intval($_POST['altezza']);
+    $email = !empty($_POST['email']) ? trim($_POST['email']) : null;
+    $telefono  = !empty($_POST['telefono']) ? trim($_POST['telefono']) : null;
     
-    $data_oggi     = date('Y-m-d');
-    $ora_attuale   = date('H:i:s');
+    $data_oggi = date('Y-m-d');
+    $ora_attuale = date('H:i:s');
 
     if ($tipo_acquisto === 'abbonamento') {
-        // Recupero l'anno inserito dall'utente e fisso la scadenza al 31 Ottobre
         $anno_scelto = intval($_POST['anno_utilizzo']);
         $scadenza_fissata = $anno_scelto . "-10-31";
-
         $risultato = $dbh->eseguiAcquistoAbbonamento(
             $cf, $nome, $cognome, $data_nascita, $telefono, $email, 
             $altezza, $nome_prodotto, $scadenza_fissata, $data_oggi, $ora_attuale
         );
     } else {
-        // Logica biglietto (rimasta invariata)
         $data_validita = $_POST['data_validita'] ?? $data_oggi;
         $risultato = $dbh->eseguiAcquistoBiglietto(
             $cf, $nome, $cognome, $data_nascita, $telefono, $email, 
